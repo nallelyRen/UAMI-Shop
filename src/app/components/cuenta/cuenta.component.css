@@ -1,0 +1,21 @@
+
+
+#contenido{
+    padding-top: 100px;
+    padding-left: 100px;   
+   
+}
+.list-group{
+    padding-top: 25px;
+    font-family: 'K2D', sans-serif;
+    font-weight: lighter;  
+    font-size: 20px;
+}
+
+#informacion{
+    font-family: 'K2D', sans-serif;
+    padding-left: 10px;
+    padding-top: 20px;
+    border-radius: 7px;
+    padding-right: 20px;
+}

@@ -1,0 +1,25 @@
+#titulo{
+    font-family: 'K2D', sans-serif;    
+    font-weight: lighter;
+    font-size: 26px;
+  }
+  .navbar-nav{
+    font-family: 'K2D', sans-serif;    
+    font-weight: lighter;
+    font-size: 18px;  
+  }
+  /* Navbar animation */
+.navbar {
+  background-color: rgba(28, 35, 49, 0.7); }
+
+.top-nav-collapse {
+  background-color: #1C2331; }
+
+/* Adding color to the Navbar on mobile */
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #1C2331; } }
+
+    #catalogo{
+      padding-right: 20px
+        }

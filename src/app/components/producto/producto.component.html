@@ -1,0 +1,107 @@
+<!-- Section: Magazine v.2 -->
+<section class="magazine-section my-5">
+
+  <!-- Section heading -->
+  <h2 id="titulo" *ngIf="producto" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2> 
+<!--Grid row-->
+<div id="contenido" *ngIf="producto" class="row animated fadeIn fast">
+  
+  <!--Grid column-->
+  <div class="col-md-5 mb-10 text-center">
+
+    <img [src]="producto.archivo.url" class="img-fluid z-depth-1-half" alt="">
+
+  </div>
+  <!--Grid column-->
+
+  <!--Grid column-->
+  <div class="col-md-6 mb-4">
+
+    <!-- Main heading -->
+    <h3 id="titulos" class="h3 mb-3">Descripción</h3>
+    <p>{{producto.descripcion}}</p>           
+    <!-- Main heading -->
+
+    
+<hr>
+    
+      <h3 id="titulos" class="h3 mb-3">Características</h3>
+   
+    
+              <!--First row-->
+              <div class="row">
+                <div class="col-1 mr-3">
+                  <i id="iconos" class="fa fa-check-circle fa-2x indigo-text"></i>
+                </div>
+                <div class="col-10">
+                  <h5 class="feature-title">Precio</h5>
+                  <p class="grey-text">$ {{producto.precio}}</p>
+                </div>
+              </div>
+              <!--/First row-->
+  
+              <div style="height:30px"></div>
+  
+              <!--Second row-->
+              <div class="row" >
+                <div class="col-1 mr-3">
+                  <i id="iconos" class="fa fa-check-circle fa-2x blue-text"></i>
+                </div>
+                <div class="col-10" *ngIf="usuarios">
+                  <h5 class="feature-title">Usuario</h5>
+                  <p class="grey-text" >Administrador
+                  </p>
+                </div>
+              </div>
+              <!--/Second row-->
+  
+              <div style="height:30px"></div>
+  
+              <!--Third row-->
+              <div class="row">
+                <div class="col-1 mr-3">
+                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                </div>
+                <div class="col-10">
+                  <h5 class="feature-title">Contacto</h5>
+                  <p class="grey-text" >correo: uamishopp@gmail.com   </p>
+                    <p class="grey-text" > telefono: 5544332211      </p>
+                </div>
+              </div>
+              <!--/Third row-->
+    <!-- CTA -->
+   
+    </div>
+  <!--Grid column
+   
+   <div class="row" >
+    <div class="col-1 mr-3">
+      <i id="iconos" class="fa fa-check-circle fa-2x blue-text"></i>
+    </div>
+    <div class="col-10" *ngIf="usuarios">
+      <h5 class="feature-title">Usuario</h5>
+      <p class="grey-text" *ngFor="let usuario of usuarios">{{usuario.nombre}}
+      </p>
+    </div>
+  </div>
+  
+
+  <div style="height:30px"></div>
+
+  
+  <div class="row">
+    <div class="col-1 mr-3">
+      <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+    </div>
+    <div class="col-10">
+      <h5 class="feature-title">Contacto</h5>
+      <p class="grey-text" *ngFor="let usuario of usuarios">correo: {{usuario.correo}} telefono: {{usuario.telefono}}
+      </p>
+    </div>
+  </div>
+  <!--/Third row-->
+  -->
+
+</div>
+
+

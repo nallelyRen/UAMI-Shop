@@ -1,0 +1,33 @@
+#contenido{
+    padding-top: 100px;
+}
+#tituloCategorias{
+    font-family: 'K2D', sans-serif;
+    font-weight: bold;  
+    font-size: 25px; 
+    background-color: rgba(0, 153, 0, 0.4);
+    
+}
+#Categorias{
+    font-family: 'K2D', sans-serif;
+    font-weight: lighter;  
+    font-size: 20px;
+}
+#myList{
+    padding-top: 25px;
+    
+   
+     
+}
+#productos{
+    padding-top: 25px;    
+    color:white;
+    border-radius: 7px;
+}
+
+#registro{
+    background-image:url(../../../assets/img/textura.jpg);
+}
+#textoR{
+    color:black;
+}
