@@ -28,11 +28,21 @@
                 <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list"
                     href="#" role="tab">Categorías</a>
                 <a class="list-group-item list-group-item-action " id="list-libros-list" data-toggle="list" href="#list-libros"
-                    role="tab" aria-controls="info">Información</a>
-                <a class="list-group-item list-group-item-action" id="list-productos-list" data-toggle="list" href="#list-productos"
-                    role="tab" aria-controls="productos">Mis productos</a>
-                <a class="list-group-item list-group-item-action" id="list-favoritos-list" data-toggle="list" href="#list-favoritos"
-                    role="tab" aria-controls="favoritos">Mis favoritos</a>
+                    role="tab" aria-controls="info">Libros</a>
+                <a class="list-group-item list-group-item-action" id="list-departamento-list" data-toggle="list" href="#list-departamento"
+                    role="tab" aria-controls="productos">Departamentos</a>
+                <a class="list-group-item list-group-item-action" id="list-tutoria-list" data-toggle="list" href="#list-tutoria"
+                    role="tab" aria-controls="favoritos">Tutorias</a>
+                <a class="list-group-item list-group-item-action" id="list-comida-list" data-toggle="list" href="#list-comida"
+                    role="tab" aria-controls="favoritos">Comida</a>
+                <a class="list-group-item list-group-item-action" id="list-servicio-list" data-toggle="list" href="#list-servicio"
+                    role="tab" aria-controls="favoritos">Servicios sociales</a>
+                <a class="list-group-item list-group-item-action" id="list-proyecto-list" data-toggle="list" href="#list-proyecto"
+                    role="tab" aria-controls="favoritos">Protectos terminales o de investigación</a>
+                <a class="list-group-item list-group-item-action" id="list-electronica-list" data-toggle="list" href="#list-electronica"
+                    role="tab" aria-controls="favoritos">Electrónica y computación</a>
+                <a class="list-group-item list-group-item-action" id="list-material-list" data-toggle="list" href="#list-material"
+                    role="tab" aria-controls="favoritos">Material escolar</a>
 
             </div>
         </div>
@@ -61,58 +71,149 @@
 
                 </div>
 
-                <div class="tab-pane fade" id="list-productos" role="tabpanel" aria-labelledby="list-productos-list">
-                    <h3 class="h3 mb-3">Productos del usuario</h3>
+                <div class="tab-pane fade" id="list-departamento" role="tabpanel" aria-labelledby="list-departamento-list">
+                    <h3 class="h3 mb-3">Departamentos</h3>
                     <hr>
 
+                    <div class="card-columns rounded " *ngIf="productos">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
+                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{product.nombre}}</h5>
+                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                        más</button>
+                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
+                                </div>
+                            </div>
+                        </div>
 
                 </div>
 
-                <div class="tab-pane fade" id="list-favoritos" role="tabpanel" aria-labelledby="list-favoritos-list">
-                    <h3 class="h3 mb-3">Favoritos</h3>
+                <div class="tab-pane fade" id="list-tutoria" role="tabpanel" aria-labelledby="list-tutoria-list">
+                    <h3 class="h3 mb-3">Tutorias</h3>
                     <hr>
 
+                    <div class="card-columns rounded " *ngIf="productos">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
+                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{product.nombre}}</h5>
+                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                        más</button>
+                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
+                                </div>
+                            </div>
+                        </div>
 
                 </div>
-                <div class="tab-pane fade" id="list-favoritos" role="tabpanel" aria-labelledby="list-favoritos-list">
-                    <h3 class="h3 mb-3">Favoritos</h3>
+                <div class="tab-pane fade" id="list-comida" role="tabpanel" aria-labelledby="list-comida-list">
+                    <h3 class="h3 mb-3">Comida</h3>
                     <hr>
 
+
+                    <div class="card-columns rounded " *ngIf="productos">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
+                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{product.nombre}}</h5>
+                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                        más</button>
+                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="tab-pane fade" id="list-servicio" role="tabpanel" aria-labelledby="list-servicio-list">
+                    <h3 class="h3 mb-3">Servicios sociales</h3>
+                    <hr>
+
+                    <div class="card-columns rounded " *ngIf="productos">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
+                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{product.nombre}}</h5>
+                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                        más</button>
+                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
+                                </div>
+                            </div>
+                        </div>
 
                 </div>
 
-                <div class="tab-pane fade" id="list-favoritos" role="tabpanel" aria-labelledby="list-favoritos-list">
-                    <h3 class="h3 mb-3">Favoritos</h3>
+                <div class="tab-pane fade" id="list-proyecto" role="tabpanel" aria-labelledby="list-proyecto-list">
+                    <h3 class="h3 mb-3">Proyectos terminales o de investigación</h3>
                     <hr>
 
+                    <div class="card-columns rounded " *ngIf="productos">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
+                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{product.nombre}}</h5>
+                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                        más</button>
+                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
+                                </div>
+                            </div>
+                        </div>
 
                 </div>
 
-                <div class="tab-pane fade" id="list-favoritos" role="tabpanel" aria-labelledby="list-favoritos-list">
-                    <h3 class="h3 mb-3">Favoritos</h3>
+                <div class="tab-pane fade" id="list-electronica" role="tabpanel" aria-labelledby="list-electronica-list">
+                    <h3 class="h3 mb-3">Electrónica y computación</h3>
                     <hr>
 
+                    <div class="card-columns rounded " *ngIf="productos">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
+                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{product.nombre}}</h5>
+                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                        más</button>
+                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
+                                </div>
+                            </div>
+                        </div>
 
                 </div>
 
-                <div class="tab-pane fade" id="list-favoritos" role="tabpanel" aria-labelledby="list-favoritos-list">
-                    <h3 class="h3 mb-3">Favoritos</h3>
+                <div class="tab-pane fade" id="list-material" role="tabpanel" aria-labelledby="list-material-list">
+                    <h3 class="h3 mb-3">Material escolar</h3>
                     <hr>
 
-
-                </div>
-
-                <div class="tab-pane fade" id="list-favoritos" role="tabpanel" aria-labelledby="list-favoritos-list">
-                    <h3 class="h3 mb-3">Favoritos</h3>
-                    <hr>
-
-
-                </div>
-
-                <div class="tab-pane fade" id="list-favoritos" role="tabpanel" aria-labelledby="list-favoritos-list">
-                    <h3 class="h3 mb-3">Favoritos</h3>
-                    <hr>
-
+                    <div class="card-columns rounded " *ngIf="productos">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
+                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{product.nombre}}</h5>
+                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                        más</button>
+                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
+                                </div>
+                            </div>
+                        </div>
 
                 </div>
 
