@@ -15,19 +15,12 @@
                 <a class="nav-link" [routerLink]="['ayuda']">Ayuda</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['sobreNosotros']">sobre nosotros</a>
+                <a class="nav-link" [routerLink]="['sobreNosotros']">Sobre nosotros</a>
             </li>
-            <li class="nav-item dropdown" routerLinkActive="active">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Cuenta
-        </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['miCuenta']">Mi cuenta</a>
-                    <a class="dropdown-item" [routerLink]="['favoritos']">Favoritos</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">otra cosa aqui</a>
-                </div>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['miCuenta']">Mi cuenta</a>
             </li>
+            
         </ul>
         <button type="button" class="btn btn-dark-green btn-rounded" [routerLink]="['/productos']">Ir al catalogo</button>        
         <!--Third row
