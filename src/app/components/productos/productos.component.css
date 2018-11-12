@@ -5,19 +5,15 @@
     font-family: 'K2D', sans-serif;
     font-weight: bold;  
     font-size: 25px; 
-    background-color: rgba(0, 153, 0, 0.4);
-    
+    text-align: center;  
+    padding-top: 25px; 
+    color:black;      
 }
-#Categorias{
+.list-group{
     font-family: 'K2D', sans-serif;
     font-weight: lighter;  
     font-size: 20px;
-}
-#myList{
-    padding-top: 25px;
-    
-   
-     
+    color:black;
 }
 #productos{
     padding-top: 25px;    
