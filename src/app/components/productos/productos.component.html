@@ -3,56 +3,237 @@
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 
 
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<div id="contenido" class="d-flex align-items-center">
-    <div class="row">
+<div id="contenido">
 
-        <div class="col-sm-3">
+        <div class="row">
+          <div class="col-sm-3">
             <!-- Card -->
-<div id="registro" class="card card-image">
+            <div id="registro" class="card card-image">
 
-    <!-- Content -->
-    <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-      <div>
-        <h5 id="textoR" class="green-text"><i class="fa fa-pie-chart"></i> Vende</h5>
-        <h3  id="textoR" class="card-title pt-2"><strong>Registra tus productos</strong></h3>
-        <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro
-            es totalmente gratuito
-        </p>
-        <a class="btn btn-green" [routerLink]="['principal']"><i class="fa fa-clone left"></i> Registrar producto</a>
-      </div>
-    </div>
-  
-  </div>
-  <!-- Card -->
-  
-            <div class="list-group " id="myList" role="tablist">
-                <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list"
-                    href="#home" role="tab">Categorías</a>
-                <a id="Categorias" class="list-group-item list-group-item-action " data-toggle="list" href="#productos" role="tab">Libros</a>
-                <a id="Categorias" class="list-group-item list-group-item-action disabled" data-toggle="list" href="#profile"
-                    role="tab">Departamentos</a>
-                <a id="Categorias" class="list-group-item list-group-item-action disabled" data-toggle="list" href="#messages"
-                    role="tab">Tutorías</a>
-                <a id="Categorias" class="list-group-item list-group-item-action disabled" data-toggle="list" href="#settings"
-                    role="tab">Comida</a>
+                    <!-- Content -->
+                    <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                        <div>
+                            <h5 id="textoR" class="green-text"><i class="fa fa-pie-chart"></i> Vende</h5>
+                            <h3 id="textoR" class="card-title pt-2"><strong>Registra tus productos</strong></h3>
+                            <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro
+                                es totalmente gratuito
+                            </p>
+                            <a class="btn btn-green" [routerLink]="['principal']"><i class="fa fa-clone left"></i>
+                                Registrar producto</a>
+                        </div>
+                    </div>    
+                </div>    
+                <!-- Card -->
+            <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                    <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list"
+                    href="#" role="tab">Categorías</a>
+              <a class="list-group-item list-group-item-action " id="list-info-list" data-toggle="list" href="#list-info"
+                role="tab" aria-controls="info">Información</a>
+              <a class="list-group-item list-group-item-action" id="list-productos-list" data-toggle="list" href="#list-productos"
+                role="tab" aria-controls="productos">Mis productos</a>
+              <a class="list-group-item list-group-item-action" id="list-favoritos-list" data-toggle="list" href="#list-favoritos"
+                role="tab" aria-controls="favoritos">Mis favoritos</a>
+      
             </div>
-        </div>
-        <div id="productos" class="col-sm-8 ">
-            <div class="card-columns rounded " *ngIf="productos">
-                <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
-                    <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
-                    <div class="card-body">
-                        <h5 class="card-title">{{product.nombre}}</h5>
-                        <p class="card-text text-white">{{product.descripcion}}</p>
+          </div>
+      
+      
+          <div class="col-sm-8">
+            <div class="tab-content" id="informacion">
+              <div class="tab-pane fade show active  border border-gray " id="list-info" role="tabpanel" aria-labelledby="list-info-list">
+      
+                <h3 class="h3 mb-3">Cuenta</h3>
+                <hr>
+                <!-- Extended default form grid -->
+                <form>
+                  <!-- Grid row -->
+                  <div class="form-row">
+                    <!-- Default input -->
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Email</label>
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    <!-- Default input -->
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Número telefónico</label>
+                      <input type="password" class="form-control" id="inputPassword4" placeholder="55555555">
+                    </div>
+                  </div>
+                  <!-- Grid row -->
+      
+                  <!-- Default input -->
+                  <div class="form-group">
+                    <label for="inputAddress">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Todoroki">
+                  </div>
+                  <!-- Grid row -->
+                  <div class="form-row">
+                    <!-- Default input -->
+                    <div class="form-group col-md-6">
+                      <label for="inputCity">Productos en venta</label>
+                      <input type="text" class="form-control" id="inputCity" placeholder="20">
+                    </div>
+                    <!-- Default input -->
+                    <div class="form-group col-md-6">
+                      <label for="inputZip">Productos favoritos</label>
+                      <input type="text" class="form-control" id="inputZip" placeholder="30">
+                    </div>
+                  </div>
+                  <!-- Grid row -->
+                  <button type="submit" class="btn btn-success btn-md">Guardar cambios</button>
+                </form>
+                <!-- Extended default form grid -->
+      
+              </div>
+      
+              <div class="tab-pane fade" id="list-productos" role="tabpanel" aria-labelledby="list-productos-list">
+                <h3 class="h3 mb-3">Productos del usuario</h3>
+                <hr>
+      
+                <div class="card-columns rounded ">
+                  <div class="card bg-dark animated fadeIn fast">
+                    <img class="card-img-top " src="../../../assets/img/p1.jpg" alt="Card image cap">
+                    <div class="card-body  text-white">
+                      <h5 class="card-title text-center">Resnik</h5>
+                      <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver más</button>
-                        <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
+                      <button class="btn btn-outline-success" [routerLink]="['/producto']">Editar información</button>
+                      <button class="btn btn-outline-danger" [routerLink]="['/producto']">Eliminar</button>
                     </div>
+                  </div>
+                  <div class="card bg-dark animated fadeIn fast">
+                      <img class="card-img-top " src="../../../assets/img/p2.jpg" alt="Card image cap">
+                      <div class="card-body  text-white">
+                        <h5 class="card-title text-center">Resnik</h5>
+                        <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+                      </div>
+                      <div class="card-footer">
+                        <button class="btn btn-outline-success" [routerLink]="['/producto']">Editar información</button>
+                        <button class="btn btn-outline-danger" [routerLink]="['/producto']">Eliminar</button>
+                      </div>
+                    </div>
+                    <div class="card bg-dark animated fadeIn fast">
+                        <img class="card-img-top " src="../../../assets/img/p3.jpg" alt="Card image cap">
+                        <div class="card-body  text-white">
+                          <h5 class="card-title text-center">Resnik</h5>
+                          <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+                        </div>
+                        <div class="card-footer">
+                          <button class="btn btn-outline-success" [routerLink]="['/producto']">Editar información</button>
+                          <button class="btn btn-outline-danger" [routerLink]="['/producto']">Eliminar</button>
+                        </div>
+                      </div>
+                      <div class="card bg-dark animated fadeIn fast">
+                          <img class="card-img-top " src="../../../assets/img/p4.jpg" alt="Card image cap">
+                          <div class="card-body  text-white">
+                            <h5 class="card-title text-center">Resnik</h5>
+                            <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+                          </div>
+                          <div class="card-footer">
+                            <button class="btn btn-outline-success" [routerLink]="['/producto']">Editar información</button>
+                            <button class="btn btn-outline-danger" [routerLink]="['/producto']">Eliminar</button>
+                          </div>
+                        </div>
+                        <div class="card bg-dark animated fadeIn fast">
+                            <img class="card-img-top " src="../../../assets/img/p5.jpe" alt="Card image cap">
+                            <div class="card-body  text-white">
+                              <h5 class="card-title text-center">Resnik</h5>
+                              <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+                            </div>
+                            <div class="card-footer">
+                              <button class="btn btn-outline-success" [routerLink]="['/producto']">Editar información</button>
+                              <button class="btn btn-outline-danger" [routerLink]="['/producto']">Eliminar</button>
+                            </div>
+                          </div>    
+                  
                 </div>
-            </div>            
+      
+      
+              </div>
+      
+              <div class="tab-pane fade" id="list-favoritos" role="tabpanel" aria-labelledby="list-favoritos-list">
+                <h3 class="h3 mb-3">Favoritos</h3>
+                <hr>
+      
+                <div class="card-columns rounded ">
+                    <div class="card bg-dark animated fadeIn fast">
+                      <img class="card-img-top " src="../../../assets/img/p1.jpg" alt="Card image cap">
+                      <div class="card-body  text-white">
+                        <h5 class="card-title text-center">Resnik</h5>
+                        <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+                      </div>
+                      <div class="card-footer">
+                        <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
+                        <button class="btn btn-outline-danger" [routerLink]="['/producto']">Quitar de favoritos</button>
+                      </div>
+                    </div>
+                    <div class="card bg-dark animated fadeIn fast">
+                        <img class="card-img-top " src="../../../assets/img/p2.jpg" alt="Card image cap">
+                        <div class="card-body  text-white">
+                          <h5 class="card-title text-center">Resnik</h5>
+                          <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
+                            <button class="btn btn-outline-danger" [routerLink]="['/producto']">Quitar de favoritos</button>
+                        </div>
+                      </div>
+                      <div class="card bg-dark animated fadeIn fast">
+                          <img class="card-img-top " src="../../../assets/img/p3.jpg" alt="Card image cap">
+                          <div class="card-body  text-white">
+                            <h5 class="card-title text-center">Resnik</h5>
+                            <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+                          </div>
+                          <div class="card-footer">
+                              <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
+                              <button class="btn btn-outline-danger" [routerLink]="['/producto']">Quitar de favoritos</button>
+                          </div>
+                        </div>
+                        <div class="card bg-dark animated fadeIn fast">
+                            <img class="card-img-top " src="../../../assets/img/p4.jpg" alt="Card image cap">
+                            <div class="card-body  text-white">
+                              <h5 class="card-title text-center">Resnik</h5>
+                              <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
+                                <button class="btn btn-outline-danger" [routerLink]="['/producto']">Quitar de favoritos</button>
+                            </div>
+                          </div>
+                          <div class="card bg-dark animated fadeIn fast">
+                              <img class="card-img-top " src="../../../assets/img/p5.jpe" alt="Card image cap">
+                              <div class="card-body  text-white">
+                                <h5 class="card-title text-center">Resnik                            
+                                </h5>
+                                <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+                              </div>
+                              <div class="card-footer">
+                                  <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
+                                  <button class="btn btn-outline-danger" [routerLink]="['/producto']">Quitar de favoritos</button>
+                              </div>
+                            </div>    
+                            <div class="card bg-dark animated fadeIn fast">
+                              <img class="card-img-top " src="../../../assets/img/p5.jpe" alt="Card image cap">
+                              <div class="card-body  text-white">
+                                <h5 class="card-title text-center">Resnik                            
+                                </h5>
+                                <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+                              </div>
+                              <div class="card-footer">
+                                  <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
+                                  <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
+                              </div>
+                            </div>
+                    
+                  </div>
+      
+              </div>
+      
+            </div>
+          </div>
         </div>
-    </div>
-</div>
-
+      
+      
+      
+      </div>
