@@ -117,15 +117,15 @@
                     <hr>
 
 
-                    <div class="card-columns rounded " *ngIf="productos">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
-                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                    <div class="card-columns rounded " *ngIf="comida">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let comida of comida; let i=index">
+                                <img class="card-img-top" [src]="comida.archivo.url" [alt]="comida.nombre">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{product.nombre}}</h5>
-                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                    <h5 class="card-title">{{comida.nombre}}</h5>
+                                    <p class="card-text text-white">{{comida.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', comida.id]">ver
                                         más</button>
                                     <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
                                 </div>
@@ -137,15 +137,15 @@
                     <h3 class="h3 mb-3">Servicios sociales</h3>
                     <hr>
 
-                    <div class="card-columns rounded " *ngIf="productos">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
-                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                    <div class="card-columns rounded " *ngIf="servicios">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let servicio of servicios; let i=index">
+                                <img class="card-img-top" [src]="servicio.archivo.url" [alt]="servicio.nombre">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{product.nombre}}</h5>
-                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                    <h5 class="card-title">{{servicio.nombre}}</h5>
+                                    <p class="card-text text-white">{{servicio.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', servicio.id]">ver
                                         más</button>
                                     <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
                                 </div>
@@ -158,15 +158,15 @@
                     <h3 class="h3 mb-3">Proyectos terminales o de investigación</h3>
                     <hr>
 
-                    <div class="card-columns rounded " *ngIf="productos">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
-                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                    <div class="card-columns rounded " *ngIf="proyectos">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let proyecto of proyectos; let i=index">
+                                <img class="card-img-top" [src]="proyecto.archivo.url" [alt]="proyecto.nombre">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{product.nombre}}</h5>
-                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                    <h5 class="card-title">{{proyecto.nombre}}</h5>
+                                    <p class="card-text text-white">{{proyecto.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', proyecto.id]">ver
                                         más</button>
                                     <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
                                 </div>
@@ -179,15 +179,15 @@
                     <h3 class="h3 mb-3">Electrónica y computación</h3>
                     <hr>
 
-                    <div class="card-columns rounded " *ngIf="productos">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
-                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                    <div class="card-columns rounded " *ngIf="electronica">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let electronica of electronica; let i=index">
+                                <img class="card-img-top" [src]="electronica.archivo.url" [alt]="electronica.nombre">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{product.nombre}}</h5>
-                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                    <h5 class="card-title">{{electronica.nombre}}</h5>
+                                    <p class="card-text text-white">{{electronica.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', electronica.id]">ver
                                         más</button>
                                     <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
                                 </div>
@@ -200,15 +200,15 @@
                     <h3 class="h3 mb-3">Material escolar</h3>
                     <hr>
 
-                    <div class="card-columns rounded " *ngIf="productos">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
-                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                    <div class="card-columns rounded " *ngIf="material">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let material of material; let i=index">
+                                <img class="card-img-top" [src]="material.archivo.url" [alt]="material.nombre">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{product.nombre}}</h5>
-                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                    <h5 class="card-title">{{material.nombre}}</h5>
+                                    <p class="card-text text-white">{{material.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', material.id]">ver
                                         más</button>
                                     <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
                                 </div>
