@@ -54,15 +54,15 @@
 
                     <h3 class="h3 mb-3">Libros</h3>
                     <hr>
-                    <div class="card-columns rounded " *ngIf="productos">
-                        <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
-                            <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                    <div class="card-columns rounded " *ngIf="libros">
+                        <div class="card bg-dark animated fadeIn fast " *ngFor="let libro of libros; let i=index">
+                            <img class="card-img-top" [src]="libro.archivo.url" [alt]="libro.nombre">
                             <div class="card-body">
-                                <h5 class="card-title">{{product.nombre}}</h5>
-                                <p class="card-text text-white">{{product.descripcion}}</p>
+                                <h5 class="card-title">{{libro.nombre}}</h5>
+                                <p class="card-text text-white">{{libro.descripcion}}</p>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                <button class="btn btn-outline-success" [routerLink]="['/producto', libro.id]">ver
                                     más</button>
                                 <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
                             </div>
@@ -75,15 +75,15 @@
                     <h3 class="h3 mb-3">Departamentos</h3>
                     <hr>
 
-                    <div class="card-columns rounded " *ngIf="productos">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
-                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                    <div class="card-columns rounded " *ngIf="departamentos">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let departamento of departamentos; let i=index">
+                                <img class="card-img-top" [src]="departamento.archivo.url" [alt]="departamento.nombre">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{product.nombre}}</h5>
-                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                    <h5 class="card-title">{{departamento.nombre}}</h5>
+                                    <p class="card-text text-white">{{departamento.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', departamento.id]">ver
                                         más</button>
                                     <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
                                 </div>
@@ -96,15 +96,15 @@
                     <h3 class="h3 mb-3">Tutorias</h3>
                     <hr>
 
-                    <div class="card-columns rounded " *ngIf="productos">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
-                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                    <div class="card-columns rounded " *ngIf="tutorias">
+                            <div class="card bg-dark animated fadeIn fast " *ngFor="let tutoria of tutorias; let i=index">
+                                <img class="card-img-top" [src]="tutoria.archivo.url" [alt]="tutoria.nombre">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{product.nombre}}</h5>
-                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                    <h5 class="card-title">{{tutoria.nombre}}</h5>
+                                    <p class="card-text text-white">{{tutoria.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                    <button class="btn btn-outline-success" [routerLink]="['/producto', tutoria.id]">ver
                                         más</button>
                                     <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
                                 </div>
