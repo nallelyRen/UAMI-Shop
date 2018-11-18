@@ -70,62 +70,19 @@
           <hr>
 
           <div class="card-columns rounded ">
-            <div class="card bg-dark animated fadeIn fast">
-              <img class="card-img-top " src="../../../assets/img/p1.jpg" alt="Card image cap">
-              <div class="card-body  text-white">
-                <h5 class="card-title text-center">Resnik</h5>
-                <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+
+            <div class="card bg-dark animated fadeIn fast " *ngFor="let producto of productos; let i=index">
+              <img class="card-img-top" [src]="producto.archivo.url" [alt]="producto.nombre">
+              <div class="card-body">
+                  <h5 class="card-title">{{producto.nombre}}</h5>
+                  <p class="card-text text-white">{{producto.descripcion}}</p>
               </div>
               <div class="card-footer">
-                <button class="btn btn-outline-success" [routerLink]="['/producto']">Editar información</button>
-                <button class="btn btn-outline-danger" [routerLink]="['/producto']">Eliminar</button>
-              </div>
-            </div>
-            <div class="card bg-dark animated fadeIn fast">
-                <img class="card-img-top " src="../../../assets/img/p2.jpg" alt="Card image cap">
-                <div class="card-body  text-white">
-                  <h5 class="card-title text-center">Resnik</h5>
-                  <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
-                </div>
-                <div class="card-footer">
-                  <button class="btn btn-outline-success" [routerLink]="['/producto']">Editar información</button>
+                  <button class="btn btn-outline-success" [routerLink]="['/producto', producto.id]">Editar información</button>
                   <button class="btn btn-outline-danger" [routerLink]="['/producto']">Eliminar</button>
-                </div>
               </div>
-              <div class="card bg-dark animated fadeIn fast">
-                  <img class="card-img-top " src="../../../assets/img/p3.jpg" alt="Card image cap">
-                  <div class="card-body  text-white">
-                    <h5 class="card-title text-center">Resnik</h5>
-                    <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
-                  </div>
-                  <div class="card-footer">
-                    <button class="btn btn-outline-success" [routerLink]="['/producto']">Editar información</button>
-                    <button class="btn btn-outline-danger" [routerLink]="['/producto']">Eliminar</button>
-                  </div>
-                </div>
-                <div class="card bg-dark animated fadeIn fast">
-                    <img class="card-img-top " src="../../../assets/img/p4.jpg" alt="Card image cap">
-                    <div class="card-body  text-white">
-                      <h5 class="card-title text-center">Resnik</h5>
-                      <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
-                    </div>
-                    <div class="card-footer">
-                      <button class="btn btn-outline-success" [routerLink]="['/producto']">Editar información</button>
-                      <button class="btn btn-outline-danger" [routerLink]="['/producto']">Eliminar</button>
-                    </div>
-                  </div>
-                  <div class="card bg-dark animated fadeIn fast">
-                      <img class="card-img-top " src="../../../assets/img/p5.jpe" alt="Card image cap">
-                      <div class="card-body  text-white">
-                        <h5 class="card-title text-center">Resnik</h5>
-                        <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
-                      </div>
-                      <div class="card-footer">
-                        <button class="btn btn-outline-success" [routerLink]="['/producto']">Editar información</button>
-                        <button class="btn btn-outline-danger" [routerLink]="['/producto']">Eliminar</button>
-                      </div>
-                    </div>    
-            
+
+          </div>                         
           </div>
 
 
@@ -136,74 +93,17 @@
           <hr>
 
           <div class="card-columns rounded ">
-              <div class="card bg-dark animated fadeIn fast">
-                <img class="card-img-top " src="../../../assets/img/p1.jpg" alt="Card image cap">
-                <div class="card-body  text-white">
-                  <h5 class="card-title text-center">Resnik</h5>
-                  <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
-                </div>
-                <div class="card-footer">
-                  <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
-                  <button class="btn btn-outline-danger" [routerLink]="['/producto']">Quitar de favoritos</button>
-                </div>
-              </div>
-              <div class="card bg-dark animated fadeIn fast">
-                  <img class="card-img-top " src="../../../assets/img/p2.jpg" alt="Card image cap">
-                  <div class="card-body  text-white">
-                    <h5 class="card-title text-center">Resnik</h5>
-                    <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
+              <div class="card bg-dark animated fadeIn fast " *ngFor="let producto of productos; let i=index">
+                  <img class="card-img-top" [src]="producto.archivo.url" [alt]="producto.nombre">
+                  <div class="card-body">
+                      <h5 class="card-title">{{producto.nombre}}</h5>
+                      <p class="card-text text-white">{{producto.descripcion}}</p>
                   </div>
                   <div class="card-footer">
-                      <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
+                      <button class="btn btn-outline-success" [routerLink]="['/producto', producto.id]">Ver más</button>
                       <button class="btn btn-outline-danger" [routerLink]="['/producto']">Quitar de favoritos</button>
-                  </div>
-                </div>
-                <div class="card bg-dark animated fadeIn fast">
-                    <img class="card-img-top " src="../../../assets/img/p3.jpg" alt="Card image cap">
-                    <div class="card-body  text-white">
-                      <h5 class="card-title text-center">Resnik</h5>
-                      <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
-                        <button class="btn btn-outline-danger" [routerLink]="['/producto']">Quitar de favoritos</button>
-                    </div>
-                  </div>
-                  <div class="card bg-dark animated fadeIn fast">
-                      <img class="card-img-top " src="../../../assets/img/p4.jpg" alt="Card image cap">
-                      <div class="card-body  text-white">
-                        <h5 class="card-title text-center">Resnik</h5>
-                        <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
-                      </div>
-                      <div class="card-footer">
-                          <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
-                          <button class="btn btn-outline-danger" [routerLink]="['/producto']">Quitar de favoritos</button>
-                      </div>
-                    </div>
-                    <div class="card bg-dark animated fadeIn fast">
-                        <img class="card-img-top " src="../../../assets/img/p5.jpe" alt="Card image cap">
-                        <div class="card-body  text-white">
-                          <h5 class="card-title text-center">Resnik                            
-                          </h5>
-                          <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
-                            <button class="btn btn-outline-danger" [routerLink]="['/producto']">Quitar de favoritos</button>
-                        </div>
-                      </div>    
-                      <div class="card bg-dark animated fadeIn fast">
-                        <img class="card-img-top " src="../../../assets/img/p5.jpe" alt="Card image cap">
-                        <div class="card-body  text-white">
-                          <h5 class="card-title text-center">Resnik                            
-                          </h5>
-                          <p class="card-text text-white">Este libro esta en exelentes condiciones, precio a tratar</p>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-outline-success" [routerLink]="['/producto']">Ver más</button>
-                            <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
-                        </div>
-                      </div>
+                  </div>    
+              </div>                
               
             </div>
 
