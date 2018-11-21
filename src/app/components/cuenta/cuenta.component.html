@@ -93,8 +93,8 @@
           <hr>
 
           <div class="card-columns rounded ">
-              <div class="card bg-dark animated fadeIn fast " *ngFor="let producto of productos; let i=index">
-                  <img class="card-img-top" [src]="producto.archivo.url" [alt]="producto.nombre">
+              <div class="card bg-dark animated fadeIn fast " *ngFor="let favorito of favoritos; let i=index">
+                  <img class="card-img-top" [src]="producto.archivo.url" [alt]="favorito.nombre">
                   <div class="card-body">
                       <h5 class="card-title">{{producto.nombre}}</h5>
                       <p class="card-text text-white">{{producto.descripcion}}</p>

@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 
 
@@ -15,35 +14,19 @@
                     <div>
                         <h5 id="textoR" class="green-text"><i class="fa fa-pie-chart"></i> Vende</h5>
                         <h3 id="textoR" class="card-title pt-2"><strong>Registra tus productos</strong></h3>
-                        <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro
-                            es totalmente gratuito
+                        <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro es totalmente gratuito
                         </p>
-                        <a class="btn btn-green" [routerLink]="['principal']"><i class="fa fa-clone left"></i>
+                        <a class="btn btn-green" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
                             Registrar producto</a>
                     </div>
                 </div>
             </div>
             <!-- Card -->
             <div class="list-group list-group-flush" id="list-tab" role="tablist">
-                <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list"
-                    href="#" role="tab">Categorías</a>
-                <a class="list-group-item list-group-item-action " id="list-libros-list" data-toggle="list" href="#list-libros"
-                    role="tab" aria-controls="info">Libros</a>
-                <a class="list-group-item list-group-item-action" id="list-departamento-list" data-toggle="list" href="#list-departamento"
-                    role="tab" aria-controls="productos">Departamentos</a>
-                <a class="list-group-item list-group-item-action" id="list-tutoria-list" data-toggle="list" href="#list-tutoria"
-                    role="tab" aria-controls="favoritos">Tutorias</a>
-                <a class="list-group-item list-group-item-action" id="list-comida-list" data-toggle="list" href="#list-comida"
-                    role="tab" aria-controls="favoritos">Comida</a>
-                <a class="list-group-item list-group-item-action" id="list-servicio-list" data-toggle="list" href="#list-servicio"
-                    role="tab" aria-controls="favoritos">Servicios sociales</a>
-                <a class="list-group-item list-group-item-action" id="list-proyecto-list" data-toggle="list" href="#list-proyecto"
-                    role="tab" aria-controls="favoritos">Protectos terminales o de investigación</a>
-                <a class="list-group-item list-group-item-action" id="list-electronica-list" data-toggle="list" href="#list-electronica"
-                    role="tab" aria-controls="favoritos">Electrónica y computación</a>
-                <a class="list-group-item list-group-item-action" id="list-material-list" data-toggle="list" href="#list-material"
-                    role="tab" aria-controls="favoritos">Material escolar</a>
-
+                <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list" href="#" role="tab">Categorías</a>
+                <a class="list-group-item list-group-item-action " id="list-libros-list" data-toggle="list" role="tab" (click)="cambio('libros')" aria-controls="info">Libros</a>
+                <a class="list-group-item list-group-item-action" id="list-proyecto-list" data-toggle="list" (click)="cambio('proyectos')" role="tab" aria-controls="favoritos">Protectos terminales o de investigación</a>
+                <a class="list-group-item list-group-item-action" id="list-electronica-list" data-toggle="list" (click)="cambio('electronica')" role="tab" aria-controls="favoritos">Electrónica y computación</a>
             </div>
         </div>
 
@@ -52,17 +35,17 @@
             <div class="tab-content" id="informacion">
                 <div class="tab-pane fade show active" id="list-libros" role="tabpanel" aria-labelledby="list-info-list">
 
-                    <h3 class="h3 mb-3">Libros</h3>
+                    <h3 class="h3 mb-3">{{categoria}}</h3>
                     <hr>
-                    <div class="card-columns rounded " *ngIf="libros">
-                        <div class="card bg-dark animated fadeIn fast " *ngFor="let libro of libros; let i=index">
-                            <img class="card-img-top" [src]="libro.archivo.url" [alt]="libro.nombre">
+                    <div id="productos" class="card-columns rounded " *ngIf="productos">
+                        <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
+                            <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
                             <div class="card-body">
-                                <h5 class="card-title">{{libro.nombre}}</h5>
-                                <p class="card-text text-white">{{libro.descripcion}}</p>
+                                <h5 class="card-title">{{product.nombre}}</h5>
+                                <p class="card-text text-white">{{product.descripcion}}</p>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-outline-success" [routerLink]="['/producto', libro.id]">ver
+                                <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
                                     más</button>
                                 <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
                             </div>
@@ -70,155 +53,6 @@
                     </div>
 
                 </div>
-
-                <div class="tab-pane fade" id="list-departamento" role="tabpanel" aria-labelledby="list-departamento-list">
-                    <h3 class="h3 mb-3">Departamentos</h3>
-                    <hr>
-
-                    <div class="card-columns rounded " *ngIf="departamentos">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let departamento of departamentos; let i=index">
-                                <img class="card-img-top" [src]="departamento.archivo.url" [alt]="departamento.nombre">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{departamento.nombre}}</h5>
-                                    <p class="card-text text-white">{{departamento.descripcion}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', departamento.id]">ver
-                                        más</button>
-                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
-                                </div>
-                            </div>
-                        </div>
-
-                </div>
-
-                <div class="tab-pane fade" id="list-tutoria" role="tabpanel" aria-labelledby="list-tutoria-list">
-                    <h3 class="h3 mb-3">Tutorias</h3>
-                    <hr>
-
-                    <div class="card-columns rounded " *ngIf="tutorias">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let tutoria of tutorias; let i=index">
-                                <img class="card-img-top" [src]="tutoria.archivo.url" [alt]="tutoria.nombre">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{tutoria.nombre}}</h5>
-                                    <p class="card-text text-white">{{tutoria.descripcion}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', tutoria.id]">ver
-                                        más</button>
-                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
-                                </div>
-                            </div>
-                        </div>
-
-                </div>
-                <div class="tab-pane fade" id="list-comida" role="tabpanel" aria-labelledby="list-comida-list">
-                    <h3 class="h3 mb-3">Comida</h3>
-                    <hr>
-
-
-                    <div class="card-columns rounded " *ngIf="comida">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let comida of comida; let i=index">
-                                <img class="card-img-top" [src]="comida.archivo.url" [alt]="comida.nombre">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{comida.nombre}}</h5>
-                                    <p class="card-text text-white">{{comida.descripcion}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', comida.id]">ver
-                                        más</button>
-                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                <div class="tab-pane fade" id="list-servicio" role="tabpanel" aria-labelledby="list-servicio-list">
-                    <h3 class="h3 mb-3">Servicios sociales</h3>
-                    <hr>
-
-                    <div class="card-columns rounded " *ngIf="servicios">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let servicio of servicios; let i=index">
-                                <img class="card-img-top" [src]="servicio.archivo.url" [alt]="servicio.nombre">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{servicio.nombre}}</h5>
-                                    <p class="card-text text-white">{{servicio.descripcion}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', servicio.id]">ver
-                                        más</button>
-                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
-                                </div>
-                            </div>
-                        </div>
-
-                </div>
-
-                <div class="tab-pane fade" id="list-proyecto" role="tabpanel" aria-labelledby="list-proyecto-list">
-                    <h3 class="h3 mb-3">Proyectos terminales o de investigación</h3>
-                    <hr>
-
-                    <div class="card-columns rounded " *ngIf="proyectos">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let proyecto of proyectos; let i=index">
-                                <img class="card-img-top" [src]="proyecto.archivo.url" [alt]="proyecto.nombre">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{proyecto.nombre}}</h5>
-                                    <p class="card-text text-white">{{proyecto.descripcion}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', proyecto.id]">ver
-                                        más</button>
-                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
-                                </div>
-                            </div>
-                        </div>
-
-                </div>
-
-                <div class="tab-pane fade" id="list-electronica" role="tabpanel" aria-labelledby="list-electronica-list">
-                    <h3 class="h3 mb-3">Electrónica y computación</h3>
-                    <hr>
-
-                    <div class="card-columns rounded " *ngIf="electronica">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let electronica of electronica; let i=index">
-                                <img class="card-img-top" [src]="electronica.archivo.url" [alt]="electronica.nombre">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{electronica.nombre}}</h5>
-                                    <p class="card-text text-white">{{electronica.descripcion}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', electronica.id]">ver
-                                        más</button>
-                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
-                                </div>
-                            </div>
-                        </div>
-
-                </div>
-
-                <div class="tab-pane fade" id="list-material" role="tabpanel" aria-labelledby="list-material-list">
-                    <h3 class="h3 mb-3">Material escolar</h3>
-                    <hr>
-
-                    <div class="card-columns rounded " *ngIf="material">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let material of material; let i=index">
-                                <img class="card-img-top" [src]="material.archivo.url" [alt]="material.nombre">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{material.nombre}}</h5>
-                                    <p class="card-text text-white">{{material.descripcion}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', material.id]">ver
-                                        más</button>
-                                    <button class="btn btn-outline-info" [routerLink]="['/producto']">Añadir a favoritos</button>
-                                </div>
-                            </div>
-                        </div>
-
-                </div>
-
-
-
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
+import { AgregarProductoComponent } from './components/agregar-producto/agregar-producto.component';
 
 const APP_ROUTES: Routes = [
     {path: 'principal', component: PrincipalComponent },
@@ -13,6 +14,7 @@ const APP_ROUTES: Routes = [
     {path: 'ayuda', component: AyudaComponent },
     {path: 'login', component: LoginComponent },
     {path: 'producto/:id', component: ProductoComponent },
+    {path: 'agregarProducto', component: AgregarProductoComponent},
     {path: 'productos', component: ProductosComponent },
     {path: 'sobreNosotros', component: SobreNosotrosComponent },
     {path: '**', pathMatch: 'full', redirectTo: 'principal'}

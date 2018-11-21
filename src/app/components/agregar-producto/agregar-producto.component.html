@@ -1,7 +1,7 @@
 <div class="main-container" id="contenedor_de_la_forma">
-    <h2 style="margin: 20px auto;">Registra Tu Producto</h2>
+    <h2 id="titulo" style="margin: 100px auto;">Registra Tu Producto</h2>
 
-    <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+    <form id="datos" [formGroup]="forma" (ngSubmit)="guardarCambios()">
         <!--Creo una forma en angular a la cual le inserto los datos-->
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
