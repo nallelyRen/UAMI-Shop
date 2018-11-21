@@ -76,8 +76,8 @@
                     <p class="card-text text-white">{{product.descripcion}}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">Editar información</button>
-                    <button class="btn btn-outline-danger" [routerLink]="['/productos',product.id]">Eliminar</button>
+                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]" disabled>Editar información</button>
+                    <button class="btn btn-outline-danger" [routerLink]="['/productos',product.id]" disabled>Eliminar</button>
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">Ver más</button>
-                    <button class="btn btn-outline-danger" [routerLink]="['/usuarios,idUsuario,/productos,idProducto']">Quitar de favoritos</button>
+                    <button class="btn btn-outline-danger" [routerLink]="['/usuarios,idUsuario,/productos,idProducto']" disabled>Quitar de favoritos</button>
                 </div>
             </div>
         </div>
