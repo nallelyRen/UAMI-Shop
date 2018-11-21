@@ -26,7 +26,7 @@ export class ProductoComponent implements OnInit {
   }
 
   obtenerProducto(id) {
-    this.productoService.obtenerLibros().subscribe(res => {
+    this.productoService.obtenerProductos().subscribe(res => {
       this.producto = res[id];
       console.log('producto', this.producto);
     });

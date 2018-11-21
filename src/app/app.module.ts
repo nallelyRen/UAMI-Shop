@@ -14,9 +14,11 @@ import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { LoginComponent } from './components/login/login.component';
 import { PiePaginaComponent } from './components/pie-pagina/pie-pagina.component';
 import { AyudaComponent } from './components/ayuda/ayuda.component';
+import { AgregarProductoComponent } from './components/agregar-producto/agregar-producto.component';
 
 
 // rutas
+import { RouterModule } from '@angular/router';
 import { APP_ROUTING } from './app.routes';
 import { ListUploadComponent } from './components/list-upload/list-upload.component';
 
@@ -34,11 +36,13 @@ import { ListUploadComponent } from './components/list-upload/list-upload.compon
     LoginComponent,
     PiePaginaComponent,
     AyudaComponent,
-    ListUploadComponent    
+    ListUploadComponent,
+    AgregarProductoComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     APP_ROUTING
