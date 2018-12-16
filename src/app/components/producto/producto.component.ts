@@ -35,6 +35,7 @@ export class ProductoComponent implements OnInit {
   obtenerUsuarios() {
     this.usuarioService.obtenerUsuarios().subscribe(res => {
       this.usuarios = res;
+      
       console.log(res);
       console.log(typeof(this.usuarios));
     });

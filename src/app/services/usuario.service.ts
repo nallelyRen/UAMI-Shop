@@ -29,5 +29,9 @@ export class UsuarioService {
       return res.json();
     }));
   }
+
+  validarUsuarios(){
+    
+  }
 }
 

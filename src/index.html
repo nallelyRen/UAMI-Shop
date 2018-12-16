@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>UAMIShop</title>
     <base href="/">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+   <meta name="google-signin-client_id" content=" AIzaSyDnTHoqmYFA6WqPcSM4am4IDxmPViLzAtQ ">
 
     <meta name="viewport" content="width=device-width,  initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -34,7 +36,7 @@
         usrCorreo = '';
         usrID = '';
         usrSexo = '';
-
+ 
         function statusChangeCallback(response) {
             console.log('statusChangeCallback');
             console.log(response);
@@ -42,29 +44,30 @@
                 console.log('logueado');
                 datPer(); // Extraer los datos
                 testAPI();
-                localStorage.setItem("nombre", this.usrNombre + ' ' + this.usrApellidos);                
+                localStorage.setItem("nombre", this.usrNombre + ' ' + this.usrApellidos);
                 localStorage.setItem("correo", this.usrCorreo);
                 localStorage.setItem("preuba", 1);
             });
             if (response.status === 'connected') {
-               
+ 
             } else {
                 console.log("no esta logueado")
-                //document.getElementById('status').innerHTML = 'Please log ' +
-                //  'into this app.';
+                    //document.getElementById('status').innerHTML = 'Please log ' +
+                    //  'into this app.';
                 localStorage.removeItem("nombre");
                 localStorage.removeItem("correo");
             }
         }
-
+ 
+ 
         function datPer() {
-
+ 
             FB.api(
                 '/me',
                 'GET', {
                     "fields": "email,first_name,last_name,id,gender"
                 },
-                function (response) {
+                function(response) {
                     this.usrNombre = response.first_name;
                     this.usrApellidos = response.last_name;
                     this.usrCorreo = response.email;
@@ -73,32 +76,32 @@
                     console.log(usrCorreo, usrNombre, usrApellidos, usrID, usrSexo);
                 }
             );
-
+ 
         }
-
+ 
         function checkLoginState() {
-            FB.getLoginStatus(function (response) {
+            FB.getLoginStatus(function(response) {
                 statusChangeCallback(response);
             });
         }
-
-        window.fbAsyncInit = function () {
+ 
+        window.fbAsyncInit = function() {
             FB.init({
                 appId: '108607856727273',
                 cookie: true,
                 xfbml: true,
                 version: 'v3.1'
             });
-
+ 
             FB.AppEvents.logPageView();
-
-            FB.getLoginStatus(function (response) {
+ 
+            FB.getLoginStatus(function(response) {
                 statusChangeCallback(response);
             });
-
+ 
         };
-
-        (function (d, s, id) {
+ 
+        (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s);
@@ -106,34 +109,57 @@
             js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=108607856727273&autoLogAppEvents=1';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-
+ 
         function testAPI() {
             // console.log('Welcome!  Fetching your information.... ');
-            FB.api('/me', function (response) {
+            FB.api('/me', function(response) {
                 console.log('Successful login for: ' + response.name);
                 console.log(response);
                 // document.getElementById('status').innerHTML =
                 // 'Thanks for logging in UAMIShop, ' + response.name + '!';
             });
         }
-
-
+ 
+ 
         //lo de google
+ 
+        gooNombre = ' ';
+        gooID = ' ';
+        gooEmail = ' ';
+        gooImagen = ' ';
+ 
+ 
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
+            this.gooNombre = profile.getName();
+            this.gooID = profile.getId();
+            this.gooEmail = profile.getEmail();
+            this.gooImagen = profile.getImageUrl();
+            localStorage.setItem("nombre", this.gooNombre);
+            localStorage.setItem("correo", this.gooEmail);
             console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-
-            function signOut() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                    console.log('User signed out.');
-                });
-            }
+        }
+ 
+        function Salir() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            localStorage.removeItem("nombre");
+            localStorage.removeItem("correo");
+            auth2.signOut().then(function() {
+                console.log('User signed out.');
+            });
+        }
+ 
+        function Datos() {
+            console.log('Name Goo: ' + gooNombre);
+            console.log('Email Goo: ' + gooEmail);
+            console.log('Imagen Goo: ' + gooImagen);
+            console.log('Name FB: ' + usrNombre);
         }
     </script>
+ 
 
 
 
