@@ -49,4 +49,16 @@ export class ProductosComponent implements OnInit {
       console.log('tipo', typeof(this.productos));
     });
 }
-}
+
+
+agregarFavorito(id) {
+     this.productoService.agregameEnFavoritos(1,id).subscribe(res => {
+       console.log(res);      
+    });
+      }
+
+
+
+      
+    }
+

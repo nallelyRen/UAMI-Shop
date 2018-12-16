@@ -17,7 +17,7 @@ export class ProductoComponent implements OnInit {
                 private productoService: ProductosService) {
                 this.router.params.subscribe(params => {
                   console.log(params['id']);
-                  this.id = params['id'] - 1;
+                  this.id = params['id'];
                   this.obtenerProducto(this.id);
                 });
               }
@@ -26,8 +26,8 @@ export class ProductoComponent implements OnInit {
   }
 
   obtenerProducto(id) {
-    this.productoService.obtenerProductos().subscribe(res => {
-      this.producto = res[id];
+    this.productoService.obtenerProductoConId(id).subscribe(res => {
+      this.producto = res;
       console.log('producto', this.producto);
     });
   }

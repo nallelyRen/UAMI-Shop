@@ -75,7 +75,7 @@ guardarCambios() {
     alert('El campo nombre,categoria y precio, son obligatorios');
   } else {
     if (this.forma.get('categoria').value === 'libro') {
-      this.productService.nuevoLibro(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file).subscribe(
+      this.productService.nuevoLibro(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file,1).subscribe(
         res => {
             alert('Tu libro ' + this.Libro.nombre + ' se a subido correctamente');
             this.forma.reset(this.Libro2);
@@ -84,14 +84,14 @@ guardarCambios() {
     } else {
       if (this.forma.get('categoria').value === 'proyecto') {
         this.productService.nuevoProyecto(this.Libro.nombre, this.Libro.representante,this.Libro.precio,this.Libro.descripcion,
-           this.Libro.requisitos, this.file).subscribe(
+           this.Libro.requisitos, this.file,1).subscribe(
           res => {
               alert('Tu proyecto ' + this.Libro.nombre + ' se a subido correctamente');
               this.forma.reset(this.Libro2);
           }
         );
       } else {
-        this.productService.nuevoElectronico(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file).subscribe(
+        this.productService.nuevoElectronico(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file,1).subscribe(
           res => {
               alert('Tu electronico ' + this.Libro.nombre + ' se a subido correctamente');
               this.forma.reset(this.Libro2);
