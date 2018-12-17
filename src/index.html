@@ -32,7 +32,6 @@
     <div id="fb-root"></div>
 
     <script>
-      
         usrNombre = '';
         usrApellidos = '';
         usrCorreo = '';
@@ -47,8 +46,7 @@
                 datPer(); // Extraer los datos
                 testAPI();
                 localStorage.setItem("nombre", this.usrNombre + ' ' + this.usrApellidos);
-                localStorage.setItem("correo", this.usrCorreo);
-                localStorage.setItem("preuba", 1);
+                localStorage.setItem("correo", this.usrCorreo);               
             });
             if (response.status === 'connected') {
  

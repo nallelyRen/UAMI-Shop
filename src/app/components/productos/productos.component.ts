@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
-
+import { UsuarioService } from '../../services/usuario.service';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -9,8 +9,8 @@ import { ProductosService } from '../../services/productos.service';
 export class ProductosComponent implements OnInit {
 
   productos: any[] = [];
-  categoria = 'Libros'; 
-  constructor(private productoService: ProductosService) {
+  categoria = 'Libros';
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
   }
 
   ngOnInit() {
@@ -19,26 +19,26 @@ export class ProductosComponent implements OnInit {
 
   cambio(categoria) {
     this.categoria = categoria;
-    if (categoria === 'libros'){
+    if (categoria === 'libros') {
       this.productoService.obtenerLibros().subscribe(res => {
         this.productos = res;
         console.log(res);
-        console.log('tipo', typeof(this.productos));
+        console.log('tipo', typeof (this.productos));
       });
     } else {
-      if (categoria === 'proyectos'){
+      if (categoria === 'proyectos') {
         this.productoService.obtenerProyectos().subscribe(res => {
           this.productos = res;
           console.log(res);
-          console.log('tipo', typeof(this.productos));
+          console.log('tipo', typeof (this.productos));
         });
       } else {
-      this.productoService.obtenerElectronicos().subscribe(res => {
-        this.productos = res;
-        console.log(res);
-        console.log('tipo', typeof(this.productos));
-      });
-    }
+        this.productoService.obtenerElectronicos().subscribe(res => {
+          this.productos = res;
+          console.log(res);
+          console.log('tipo', typeof (this.productos));
+        });
+      }
     }
   }
 
@@ -46,19 +46,21 @@ export class ProductosComponent implements OnInit {
     this.productoService.obtenerLibros().subscribe(res => {
       this.productos = res;
       console.log(res);
-      console.log('tipo', typeof(this.productos));
+      console.log('tipo', typeof (this.productos));
     });
-}
+  }
 
 
-agregarFavorito(id) {
-     this.productoService.agregameEnFavoritos(1,id).subscribe(res => {
-       console.log(res);      
-    });
-      }
-
-
-
-      
+  agregarFavorito(id) {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+      this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
     }
 
+  }
+
+}

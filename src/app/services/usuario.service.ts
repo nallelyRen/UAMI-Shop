@@ -11,6 +11,7 @@ export class UsuarioService {
   Nombre = "";
   Correo = "";
   id = "";
+
   obtenerUsuarios() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'usuarios')// .subscribe(res => console.log(res.json()));
@@ -21,10 +22,12 @@ export class UsuarioService {
   }
 
   logueo(nombre, correo) {    
+    console.log('entro en logueo');
     const formData: FormData = new FormData();
     formData.append('nombre', nombre);
     formData.append('correo', correo);
-    return this.http.post(this.url + 'usuarios', formData)
+    console.log('entro en logueo 2'+ nombre + correo);
+    return this.http.post(this.url + 'usuarios', formData)    
       .pipe(
         map(res => {
           console.log(res.json());
@@ -35,22 +38,37 @@ export class UsuarioService {
   validarUsuarios() {
     if (localStorage.getItem('nombre')) {
       if (this.id != "") {
-        this.id = this.id;
+        
         this.Nombre = localStorage.getItem('nombre');
         this.Correo = localStorage.getItem('correo');
-        console.log(this.Nombre + 'parece que si funciono correo ' + this.Correo);
+        console.log(this.Nombre + 'entro con id  ' + this.Correo);
+        return this.id;
       } else {
-        this.logueo(localStorage.getItem('nombre'), localStorage.getItem('correo'));
+        
+        this.logueo(localStorage.getItem('nombre'),localStorage.getItem('correo')).subscribe(res=>{
+          console.log(res);
+          this.id=res.id;
+          this.Nombre=res.nombre;
+          this.Correo=res.correo;
+          return this.id;
+        });
+        console.log(this.Nombre + 'entro sin id ' + this.Correo);
+
       }
 
     } else {
       this.Nombre = '';
       this.Correo = '';
       this.id = '';
-
+      console.log(this.Nombre + 'no esta logueado ' + this.Correo);
+      return -1;
     }
+  }
 
-
+  obtenerUsuarioPorId(id){
+      
+    return {"nombre":this.Nombre, "correo":this.Correo };
+      
   }
 }
 

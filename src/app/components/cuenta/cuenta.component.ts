@@ -11,71 +11,103 @@ import { UsuarioService } from '../../services/usuario.service';
 export class CuentaComponent implements OnInit {
 
   productos: any[] = [];
-  usuario:any[]=[];
-  categoria = 'Libros'; 
-  constructor(private productoService: ProductosService,private usuarioService: UsuarioService) {
+  usuario: any[] = [];
+  categoria = 'Libros';
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
   }
 
   ngOnInit() {
-   
+
   }
 
   cambio(categoria) {
     this.categoria = categoria;
-    if (categoria === 'libros'){
+    if (categoria === 'libros') {
       this.productoService.obtenerLibros().subscribe(res => {
         this.productos = res;
         console.log(res);
-        console.log('tipo', typeof(this.productos));
+        console.log('tipo', typeof (this.productos));
       });
     } else {
-      if (categoria === 'proyectos'){
+      if (categoria === 'proyectos') {
         this.productoService.obtenerProyectos().subscribe(res => {
           this.productos = res;
           console.log(res);
-          console.log('tipo', typeof(this.productos));
+          console.log('tipo', typeof (this.productos));
         });
       } else {
-      this.productoService.obtenerElectronicos().subscribe(res => {
-        this.productos = res;
-        console.log(res);
-        console.log('tipo', typeof(this.productos));
-      });
-    }
+        this.productoService.obtenerElectronicos().subscribe(res => {
+          this.productos = res;
+          console.log(res);
+          console.log('tipo', typeof (this.productos));
+        });
+      }
     }
   }
 
-  
-obtenerFavoritos(){
-  this.productoService.dameMisFavoritos(1).subscribe(res => {
-    this.productos = res;
-    console.log(res);   
-  });
-}
-obtenerProductosUsuario(){
-  this.productoService.dameMisProductos(1).subscribe(res => {
-    this.productos = res;
-    console.log(res);   
-  });
-}
-eliminarFavoritos(id){
-  this.productoService.eliminameEnFavoritos(1,id).subscribe(res => {
-    this.productos = res;
-    console.log(res);   
-  });
-}
-obtenerInfoUsuario(){
-  this.usuarioService.logueo('jorge','jorge@gmail.com').subscribe(res => {
-    this.usuario = res;
-    console.log(res);   
-  });
-}
 
-eliminarProducto(id){
-  this.productoService.eliminameProducto(1,id).subscribe(res => {
-    this.productos = res;
-    console.log(res);   
-  });
-}
+  obtenerFavoritos() {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+      this.productoService.dameMisFavoritos(idUsuario).subscribe(res => {
+        this.productos = res;
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
+    }
+
+  }
+  obtenerProductosUsuario() {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+      this.productoService.dameMisProductos(idUsuario).subscribe(res => {
+        this.productos = res;
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
+    }
+
+  }
+  eliminarFavoritos(id) {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+      this.productoService.eliminameEnFavoritos(idUsuario, id).subscribe(res => {
+        this.productos = res;
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
+    }
+
+  }
+  obtenerInfoUsuario() {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+    const usuario=this.usuarioService.obtenerUsuarioPorId(idUsuario);
+    console.log(usuario.nombre, usuario.correo);
+      this.usuarioService.logueo(usuario.nombre, usuario.correo).subscribe(res => {
+        this.usuario = res;
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
+    }
+
+  }
+
+  eliminarProducto(id) {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+      this.productoService.eliminameProducto(idUsuario, id).subscribe(res => {
+        this.productos = res;
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
+    }
+
+  }
 
 }
