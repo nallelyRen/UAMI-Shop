@@ -36,6 +36,9 @@ body,
   font-size: 75px;
   font-weight: lighter;
   color:#ffffff;
+  text-align: center;
+ padding-bottom: 170px;
+ text-shadow: 3px 2px black;
   
 }
 
@@ -44,6 +47,37 @@ body,
   font-size: 25px;
   font-weight: lighter;
   color:#ffffff;
+}
+
+#titulo2{
+  font-family: 'K2D', sans-serif;
+  font-size: 75px;
+  font-weight: lighter;
+  color:#000000;
+  text-align: center;
+ padding-bottom: 170px;
+ text-shadow: 3px 2px white;
+  
+}
+
+#cover2{
+  font-family: 'K2D', sans-serif;
+  font-size: 25px;
+  font-weight: lighter;
+  color: #000000;
+  text-shadow: 2px 2px white;
+}
+
+
+#titulo3{
+  font-family: 'K2D', sans-serif;
+  font-size: 75px;
+  font-weight: lighter;
+  color:#ffffff;
+  text-align: center;
+ padding-bottom: 170px;
+ text-shadow: 3px 2px black;
+  
 }
 
 .h2,h3,h4,h5,h6{  
@@ -55,7 +89,9 @@ body,
  color: #006600;
 }
 
-.
+#foot{
+  color:#ffffff;
+}
 /* Footer color for sake of consistency with Navbar */
 .page-footer {
   background-color: #1C2331; }

@@ -27,7 +27,8 @@
                 <a class="list-group-item list-group-item-action " id="list-libros-list" data-toggle="list" role="tab" (click)="cambio('libros')" aria-controls="info">Libros</a>
                 <a class="list-group-item list-group-item-action" id="list-proyecto-list" data-toggle="list" (click)="cambio('proyectos')" role="tab" aria-controls="favoritos">Proyectos terminales o servicio social</a>
                 <a class="list-group-item list-group-item-action" id="list-electronica-list" data-toggle="list" (click)="cambio('electronica')" role="tab" aria-controls="favoritos">Electrónica y computación</a>
-            </div>
+                <a class="list-group-item list-group-item-action" id="list-departamentos-list" data-toggle="list" (click)="cambio('departamentos')" role="tab" aria-controls="favoritos">Departamentos</a>
+                 </div>
         </div>
 
 
@@ -47,7 +48,7 @@
                             <div class="card-footer">
                                 <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
                                     más</button>
-                                <button class="btn btn-outline-info" [routerLink]="[]">Añadir a favoritos</button>
+                                <button class="btn btn-outline-info" (click)="agregarFavorito(product.id)">Añadir a favoritos</button>
                             </div>
                         </div>
                     </div>

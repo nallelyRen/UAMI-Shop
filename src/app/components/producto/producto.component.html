@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-10" *ngIf="usuarios">
                   <h5 class="feature-title">Usuario</h5>
-                  <p class="grey-text" >Administrador
+                  <p class="grey-text" >{{producto.usuario.nombre}}
                   </p>
                 </div>
               </div>
@@ -64,10 +64,58 @@
                 </div>
                 <div class="col-10">
                   <h5 class="feature-title">Contacto</h5>
-                  <p class="grey-text" >correo: uamishopp@gmail.com   </p>
-                    <p class="grey-text" > telefono: 5544332211      </p>
+                  <p class="grey-text" >correo: {{producto.usuario.correo}} </p>
+                    <p class="grey-text" > telefono: {{producto.usuario.telefono}}  </p>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-1 mr-3">
+                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                </div>
+                <div class="col-10">
+                  <h5 class="feature-title">Calificación del usuario</h5>
+                  <p class="grey-text" >Calificación: {{producto.usuario.calificacion}} </p>                   
+                </div>
+              </div>
+
+              <div class="row" *ngIf="producto.representante">
+                <div class="col-1 mr-3">
+                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                </div>
+                <div class="col-10" >
+                  <h5 class="feature-title">Representante del proyecto</h5>
+                  <p class="grey-text" >Representante: {{producto.representante}} </p>                   
+                </div>
+              </div>
+
+              <div class="row" *ngIf="producto.requisitos">
+                <div class="col-1 mr-3">
+                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                </div>
+                <div class="col-10" >
+                  <h5 class="feature-title">Requisitos para el proyecto</h5>
+                  <p class="grey-text" >{{producto.requisitos}} </p>                   
+                </div>
+              </div>
+              <!--
+              <div class="row" *ngIf="producto.direccion">
+                <div class="col-1 mr-3">
+                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                </div>
+                <div class="col-10" >
+                  <h5 class="feature-title">Dirección</h5>
+                  <p class="grey-text" >{{producto.direccion}} </p>                   
+                </div>
+              </div>
+            -->
+              <div class="form-group col-md-6">
+                <label for="inputCity"> </label>
+                <p class="grey-text" >
+                </p>
+              </div>
+
+
               <!--/Third row-->
     <!-- CTA -->
    

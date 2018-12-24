@@ -1,6 +1,5 @@
-
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolling-navbar">
     <a id="titulo" class="navbar-brand" [routerLink]="['principal']">UAMIShop</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
     aria-expanded="false" aria-label="Toggle navigation">
@@ -22,15 +21,20 @@
             </li>
             
         </ul>
-        <button type="button" class="btn btn-dark-green btn-rounded" [routerLink]="['/productos']">Ir al catalogo</button>        
+        <button type="button" class="btn btn-primary" [routerLink]="['/productos']">Ir al catalogo</button>            
         <!--Third row
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             
         </form>-->
-        <div class="fb-login-button" data-width="450" data-max-rows="1" data-size="medium" data-button-type="login_with" 
-                  data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+        <div class="g-signin2" data-width="120" data-height="30" data-onsuccess="onSignIn"></div>
+        <button class="#" onclick="Salir();" type="salir">Salir</button>
+ 
+
+        <div class="fb-login-button" data-width="450" data-max-rows="1" data-size="medium" data-button-type="login_with"
+         data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" onlogin="checkLoginState();"></div>
+
               
     </div>
     
