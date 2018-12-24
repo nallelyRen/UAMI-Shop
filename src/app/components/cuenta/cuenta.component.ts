@@ -11,7 +11,8 @@ import { UsuarioService } from '../../services/usuario.service';
 export class CuentaComponent implements OnInit {
 
   productos: any[] = [];
-  usuario: any[] = [];
+  usuario={"nombre":'',"correo":'',"telefono":'',"calificacion":''};
+ //usuario:  any[] = [];
   categoria = 'Libros';
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
   }
@@ -88,7 +89,11 @@ export class CuentaComponent implements OnInit {
     const usuario=this.usuarioService.obtenerUsuarioPorId(idUsuario);
     console.log(usuario.nombre, usuario.correo);
       this.usuarioService.logueo(usuario.nombre, usuario.correo).subscribe(res => {
-        this.usuario = res;
+    // this.usuario=res;
+      this.usuario.nombre= res.nombre;
+       this.usuario.telefono= res.telefono;
+       this.usuario.calificacion= res.calificacion;
+       this.usuario.correo= res.correo;
         console.log(res);
       });
     } else {

@@ -39,6 +39,13 @@ export class ProductosComponent implements OnInit {
           console.log('tipo', typeof (this.productos));
         });
       }
+      if (categoria === 'departamentos') {
+       // this.productoService.obtenerDepartamentos().subscribe(res => {
+         // this.productos = res;
+         // console.log(res);
+         // console.log('tipo', typeof (this.productos));
+        //});
+      }  
     }
   }
 

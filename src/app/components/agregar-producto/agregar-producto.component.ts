@@ -20,6 +20,7 @@ export class AgregarProductoComponent implements OnInit {
   };
   file: any;
   condicionProyecto = false;
+  condicionDepartamentos = false;
   SiImagen = false;
   // libro vacio 
   Libro2 = {
@@ -53,6 +54,11 @@ export class AgregarProductoComponent implements OnInit {
       this.condicionProyecto = true;
     } else {
       this.condicionProyecto = false;
+    }
+    if (this.forma.get('categoria').value === 'departamentos') {
+      this.condicionDepartamentos = true;
+    } else {
+      this.condicionDepartamentos = false;
     }
   }
 
