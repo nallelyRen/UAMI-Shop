@@ -14,7 +14,15 @@ export class CuentaComponent implements OnInit {
   usuario={"nombre":'',"correo":'',"telefono":'',"calificacion":''};
  //usuario:  any[] = [];
   categoria = 'Libros';
+  forma: FormGroup;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
+  // creacion del formulario
+  this.forma = new FormGroup({
+    'nombre': new FormControl(''),
+    'correo': new FormControl(''),
+    'telefono': new FormControl('', [Validators.required]),
+    'calificacion': new FormControl('')    
+  });
   }
 
   ngOnInit() {
@@ -113,6 +121,64 @@ export class CuentaComponent implements OnInit {
       console.log('no estas logueado');
     }
 
+  }
+
+  guardarCambios() {
+    this.Libro.nombre = this.forma.get('nombre').value;
+    this.Libro.categoria = this.forma.get('categoria').value;
+    this.Libro.precio = this.forma.get('precio').value;
+    this.Libro.representante = this.forma.get('representante').value;
+    this.Libro.requisitos = this.forma.get('requisitos').value;
+    this.Libro.descripcion = this.forma.get('descripcion').value;
+    // envio de la peticion al servicio
+    if (this.Libro.nombre === '' || this.Libro.precio === '' || this.Libro.categoria === '' || this.SiImagen === false) {
+      alert('El campo nombre,categoria y precio, son obligatorios');
+    } else {
+      if (this.forma.get('categoria').value === 'libro') {
+        const id = this.usuarioService.validarUsuarios();
+        if (id != -1) {
+          this.productService.nuevoLibro(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
+            res => {
+              alert('Tu libro ' + this.Libro.nombre + ' se a subido correctamente');
+              this.forma.reset(this.Libro2);
+            }
+          );
+        } else {
+          console.log('no esta logueado');
+        }
+
+      } else {
+        if (this.forma.get('categoria').value === 'proyecto') {
+          const id = this.usuarioService.validarUsuarios();
+          if (id != -1) {
+            this.productService.nuevoProyecto(this.Libro.nombre, this.Libro.representante, this.Libro.precio, this.Libro.descripcion,
+              this.Libro.requisitos, this.file, id).subscribe(
+                res => {
+                  alert('Tu proyecto ' + this.Libro.nombre + ' se a subido correctamente');
+                  this.forma.reset(this.Libro2);
+                }
+              );
+          }else {
+            console.log('no esta logueado');
+          }
+        } else {
+          const id = this.usuarioService.validarUsuarios();
+          if (id != -1) {
+            this.productService.nuevoElectronico(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
+            res => {
+              alert('Tu electronico ' + this.Libro.nombre + ' se a subido correctamente');
+              this.forma.reset(this.Libro2);
+            }
+          );  
+          }else {
+            console.log('no esta logueado');
+          }
+          
+        }
+      }
+    }
+
+    
   }
 
 }
