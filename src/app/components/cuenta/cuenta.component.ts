@@ -135,10 +135,10 @@ export class CuentaComponent implements OnInit {
     } else {
       const id = this.usuarioService.validarUsuarios();
       if (id != -1) {
-        this.usuarioService.modificarUsuario(this.usuario.nombre, this.usuario.correo,  this.usuario.telefono,  this.usuario.calificacion).subscribe(
+        this.usuarioService.modificarUsuario(id, this.usuario.telefono).subscribe(
           res => {
             alert('Tu número' + this.usuario.telefono + ' se ha actualizado correctamente');
-            this.forma.reset(this.Libro2);
+           // this.forma.reset(this.Libro2);
           }
         );
       } else {

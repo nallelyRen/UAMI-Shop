@@ -70,5 +70,13 @@ export class UsuarioService {
     return {"nombre":this.Nombre, "correo":this.Correo };
       
   }
+
+  modificarUsuario(id,tel){
+    return this.http.get(this.url + 'usuarios?idUsuario='+id+'&telefono='+tel)
+    .pipe(map(res => {
+      console.log(res.json());
+      return res.json();
+    }));
+  }
 }
 
