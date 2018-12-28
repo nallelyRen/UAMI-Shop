@@ -12,6 +12,8 @@ export class ProductoComponent implements OnInit {
   usuarios: any[] = [];
   id: any;
   producto: any;
+  produc: any;
+  flag=false;
   constructor(private router: ActivatedRoute
               , private usuarioService: UsuarioService,
                 private productoService: ProductosService) {
@@ -23,6 +25,18 @@ export class ProductoComponent implements OnInit {
               }
 
   ngOnInit() {
+  
+  }
+
+  condicionDepartamento(produc){
+    this.produc=produc;
+      if(this.produc.categoria==='electronica'){
+        console.log('categoria', this.produc.categoria);
+        return this.flag=true;
+      }else{
+        console.log('categoria', this.produc.categoria);
+        return this.flag=false;
+      }
   }
 
   obtenerProducto(id) {
