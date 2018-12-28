@@ -14,7 +14,7 @@ export class ProductosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.obtenerProductos();
+    
   }
 
   cambio(categoria) {
