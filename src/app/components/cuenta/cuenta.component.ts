@@ -11,8 +11,10 @@ import { UsuarioService } from '../../services/usuario.service';
 export class CuentaComponent implements OnInit {
 
   productos: any[] = [];
+
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   //usuario:  any[] = [];
+
   categoria = 'Libros';
   forma: FormGroup;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
