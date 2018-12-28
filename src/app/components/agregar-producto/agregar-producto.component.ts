@@ -124,23 +124,7 @@ export class AgregarProductoComponent implements OnInit {
       }
     }
 
-    /**console.log(this.forma);
-    this.Libro.nombre = this.forma.get('nombre').value;
-    this.Libro.categoria = 'libro',
-    this.Libro.precio = this.forma.get('precio').value;
-    this.Libro.descripcion = this.forma.get('descripcion').value;
-    // console.log('hacker', this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.Libro.archivo);
-    // envio de la peticion al servicio
-    if (this.Libro.nombre == '' || this.Libro.precio == '') {
-      alert('El campo nombre y precio, son obligatorios');
-    } else {
-    this.productService.nuevoLibro(this.Libro, this.file).subscribe(
-      res => {
-          alert('Tu producto ' + this.Libro.nombre + ' se a subido correctamente');
-          this.forma.reset(this.Libro)
-      }
-    );
-    }**/
+    
   }
 
 }

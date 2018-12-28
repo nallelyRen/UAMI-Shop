@@ -29,6 +29,12 @@ export class ProductosService {
     .pipe(map(res => res.json()));
   }
 
+  obtenerDepartamentos() {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url + 'departamentos') // .subscribe(res => console.log(res.json()));
+    .pipe(map(res => res.json()));
+  }
+
   obtenerProductos() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'productos') // .subscribe(res => console.log(res.json()));
@@ -78,6 +84,22 @@ export class ProductosService {
     formData.append('file', file);
     formData.append('idUsuario', idUsuario);
     return this.http.post( this.url + 'electronica', formData)
+    .pipe(
+    map(res => {
+      console.log('si entro');
+      console.log(res.json());
+      return res.json();
+    }));
+  }
+
+  nuevoDepartamento(nombre, precio, descripcion, file: File, idUsuario) {
+    const formData: FormData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('precio', precio);
+    formData.append('descripcion', descripcion);
+    formData.append('file', file);
+    formData.append('idUsuario', idUsuario);
+    return this.http.post( this.url + 'departamentos', formData)
     .pipe(
     map(res => {
       console.log('si entro');

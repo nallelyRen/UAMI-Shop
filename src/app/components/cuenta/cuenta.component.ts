@@ -11,10 +11,20 @@ import { UsuarioService } from '../../services/usuario.service';
 export class CuentaComponent implements OnInit {
 
   productos: any[] = [];
-  usuario={"nombre":'',"correo":'',"telefono":'',"calificacion":''};
- //usuario:  any[] = [];
+
+  usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
+  //usuario:  any[] = [];
+
   categoria = 'Libros';
+  forma: FormGroup;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
+    // creacion del formulario
+    this.forma = new FormGroup({
+      'nombre': new FormControl(''),
+      'correo': new FormControl(''),
+      'telefono': new FormControl('', [Validators.required]),
+      'calificacion': new FormControl('')
+    });
   }
 
   ngOnInit() {
@@ -86,14 +96,14 @@ export class CuentaComponent implements OnInit {
   obtenerInfoUsuario() {
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
-    const usuario=this.usuarioService.obtenerUsuarioPorId(idUsuario);
-    console.log(usuario.nombre, usuario.correo);
+      const usuario = this.usuarioService.obtenerUsuarioPorId(idUsuario);
+      console.log(usuario.nombre, usuario.correo);
       this.usuarioService.logueo(usuario.nombre, usuario.correo).subscribe(res => {
-    // this.usuario=res;
-      this.usuario.nombre= res.nombre;
-       this.usuario.telefono= res.telefono;
-       this.usuario.calificacion= res.calificacion;
-       this.usuario.correo= res.correo;
+        // this.usuario=res;
+        this.usuario.nombre = res.nombre;
+        this.usuario.telefono = res.telefono;
+        this.usuario.calificacion = res.calificacion;
+        this.usuario.correo = res.correo;
         console.log(res);
       });
     } else {
@@ -115,4 +125,28 @@ export class CuentaComponent implements OnInit {
 
   }
 
+  guardarCambios() {
+    this.usuario.nombre = this.forma.get('nombre').value;
+    this.usuario.correo = this.forma.get('correo').value;
+    this.usuario.telefono = this.forma.get('telefono').value;
+    this.usuario.calificacion = this.forma.get('calificacion').value;
+
+    // envio de la peticion al servicio
+    if (this.usuario.telefono === '') {
+      alert('El campo telefono es obligatorio');
+    } else {
+      const id = this.usuarioService.validarUsuarios();
+      if (id != -1) {
+        this.usuarioService.modificarUsuario(id, this.usuario.telefono).subscribe(
+          res => {
+            alert('Tu número' + this.usuario.telefono + ' se ha actualizado correctamente');
+           // this.forma.reset(this.Libro2);
+          }
+        );
+      } else {
+        console.log('no esta logueado');
+      }
+    }
+
+  }
 }
