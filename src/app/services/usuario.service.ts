@@ -36,11 +36,11 @@ export class UsuarioService {
         }));
   }
 
-  validarUsuarios() {
+   validarUsuarios() {
     if (localStorage.getItem('nombre')) {
       if (this.id != "") {
         
-        this.Nombre = localStorage.getItem('nombre');
+        this.Nombre =  localStorage.getItem('nombre');
         this.Correo = localStorage.getItem('correo');
         console.log(this.Nombre + 'entro con id  ' + this.Correo);
         return this.id;
