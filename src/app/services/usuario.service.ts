@@ -6,7 +6,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsuarioService {
-  url = 'https://uamishopbackend.azurewebsites.net/tutorial-spring-boot-0.1.0/';
+   // url = 'https://uamishopbackend.azurewebsites.net/tutorial-spring-boot-0.1.0/';
+   url = 'http://localhost:8080/';
   constructor(private http: Http) { }
   Nombre = "";
   Correo = "";
@@ -71,11 +72,11 @@ export class UsuarioService {
       
   }
 
-  modificarUsuario(id,tel){
-    return this.http.get(this.url + 'usuarios?idUsuario='+id+'&telefono='+tel)
-    .pipe(map(res => {
-      console.log(res.json());
-      return res.json();
-    }));
+  modificarUsuario(idUsuario, telefono) {
+    return this.http.put(this.url + 'usuarios?idUsuario=' + idUsuario + '&telefono=' + telefono, null)
+    .pipe(
+      map(res => {
+        return res.json();
+      }));
   }
 }
