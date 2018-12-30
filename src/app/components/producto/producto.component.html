@@ -2,8 +2,8 @@
 <section class="magazine-section my-5">
 
   <!-- Section heading -->
-  <h2 id="titulo" *ngIf="!condicionDepartamento(producto)" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2> 
-   <h2 id="tituloDepa" *ngIf="condicionDepartamento(producto)" class="h1-responsive font-weight-bold text-center my-5">Departamento</h2> 
+  <h2 id="titulo" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2> 
+   
 
 <div id="contenido" *ngIf="producto" class="row animated fadeIn fast">
   
@@ -41,13 +41,13 @@
               </div>
               <!--/First row-->
   
-                <div class="row" *ngIf="condicionDepartamento(producto)">
+                <div class="row" *ngIf="producto.direccion">
                 <div class="col-1 mr-3">
                   <i id="iconos" class="fa fa-check-circle fa-2x indigo-text"></i>
                 </div>
                 <div class="col-10">
                   <h5 class="feature-title">Dirección</h5>
-                  <p class="grey-text">{{producto.nombre}}</p>
+                  <p class="grey-text">{{producto.direccion}}</p>
                 </div>
               </div>
               <!--Second row-->

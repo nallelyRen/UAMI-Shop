@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators';
 })
 export class ProductosService {
   // cadena que contiene la ruta de las peticiones al back-end
-  // url = 'https://uamishopbackend.azurewebsites.net/tutorial-spring-boot-0.1.0/';
-  url = 'http://localhost:8080/';
+   url = 'https://uamishopbackend.azurewebsites.net/tutorial-spring-boot-0.1.0/';
+ // url = 'http://localhost:8080/';
   // en el constructor añadimos la clase http
   constructor( private http: Http) { }
 
