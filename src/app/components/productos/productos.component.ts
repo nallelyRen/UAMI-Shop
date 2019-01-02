@@ -34,11 +34,13 @@ export class ProductosComponent implements OnInit {
           console.log('tipo', typeof (this.productos));
         });
       } else {
+        if (categoria === 'electronica') {
         this.productoService.obtenerElectronicos().subscribe(res => {
           this.productos = res;
           console.log(res);
           console.log('tipo', typeof (this.productos));
         });
+      }
       }
       if (categoria === 'departamentos') {
 

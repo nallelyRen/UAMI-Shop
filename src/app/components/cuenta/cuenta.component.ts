@@ -138,10 +138,7 @@ export class CuentaComponent implements OnInit {
   }
 
   guardarCambios() {
-    this.usuario.nombre = this.forma.get('nombre').value;
-    this.usuario.correo = this.forma.get('correo').value;
-    this.usuario.telefono = this.forma.get('telefono').value;
-    this.usuario.calificacion = this.forma.get('calificacion').value;
+    this.usuario.telefono = this.forma.get('telefono').value;   
 
     // envio de la peticion al servicio
     if (this.usuario.telefono === '') {

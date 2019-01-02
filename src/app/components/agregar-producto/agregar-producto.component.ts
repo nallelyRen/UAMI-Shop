@@ -130,7 +130,7 @@ export class AgregarProductoComponent implements OnInit {
               if (id != -1) {
                 this.productService.nuevoDepartamento(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id,this.Libro.direccion).subscribe(
                   res => {
-                    alert('Tu electronico ' + this.Libro.nombre + ' se a subido correctamente');
+                    alert('Tu departamento ' + this.Libro.nombre + ' se a subido correctamente');
                     this.forma.reset(this.Libro2);
                   }
                 );
