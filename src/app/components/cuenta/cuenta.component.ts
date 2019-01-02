@@ -11,7 +11,7 @@ import { UsuarioService } from '../../services/usuario.service';
 export class CuentaComponent implements OnInit {
 
   productos: any[] = [];
-
+  Restriccion=true;
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   //usuario:  any[] = [];
 
@@ -28,7 +28,7 @@ export class CuentaComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.llamada();
   }
 
   cambio(categoria) {
@@ -111,7 +111,19 @@ export class CuentaComponent implements OnInit {
     }
 
   }
-
+  llamada(){
+    const id= this.usuarioService.validarUsuarios();      
+   if(id== -1){
+    console.log('el valor es ',id);
+    this.Restriccion=true;
+    alert('No estas logueado por lo que el contenido de la página no se mostrará');
+    return this.Restriccion; 
+   }else{
+    console.log('el valor es ',id);
+     return this.Restriccion=false;
+   }
+    
+}
   eliminarProducto(id) {
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {

@@ -16,11 +16,11 @@ export class NavbarComponent implements OnInit {
   }
 
  
-  async llamada(){
-      var id= this.usuarioService.validarUsuarios();      
-     if(id= -1){
+   llamada(){
+      const id= this.usuarioService.validarUsuarios();      
+     if(id== -1){
       console.log('el valor es ',id);
-       await(100000);
+      // await(100000);
       // this.llamada();
         return this.Restriccion; 
      }else{
