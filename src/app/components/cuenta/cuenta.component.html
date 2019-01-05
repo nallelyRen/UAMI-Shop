@@ -1,5 +1,5 @@
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
-<div id="contenido">
+<div id="contenido" *ngIf="!Restriccion">
 
   <div class="row">
     <div class="col-sm-3">
@@ -47,8 +47,8 @@
             <!-- Default input -->
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputPassword4">Número telefónico:</label>
-                <input type="email" name="telefono">
+                 <label for="inputPassword4">Número telefónico:</label>
+                <input class="form-control" type="tel"  formControlName="telefono">
                 <!-- <p class="grey-text" >{{usuario.telefono}}  
                     </p>-->
               </div>
