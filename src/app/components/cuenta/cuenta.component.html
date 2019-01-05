@@ -78,8 +78,8 @@
                 <p class="card-text text-white">{{product.descripcion}}</p>
               </div>
               <div class="card-footer">
-                <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]" disabled>Editar
-                  información</button>
+                <button class="btn btn-outline-success" (click)="modificarProducto(product)">Editar información</button>
+
                 <button class="btn btn-outline-danger" (click)="eliminarProducto(product.id)">Eliminar</button>
               </div>
             </div>

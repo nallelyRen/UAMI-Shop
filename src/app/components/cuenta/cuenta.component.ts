@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-cuenta',
@@ -14,11 +16,12 @@ export class CuentaComponent implements OnInit {
   Restriccion=true;
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   //usuario:  any[] = [];
+  
 
   categoria = 'Libros';
   forma: FormGroup;
-  constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
-    // creacion del formulario
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router:Router) {
+        // creacion del formulario
     this.forma = new FormGroup({
       'nombre': new FormControl(''),
       'correo': new FormControl(''),
@@ -136,6 +139,12 @@ export class CuentaComponent implements OnInit {
     }
 
   }
+
+  modificarProducto(producto: any) {
+    this.productoService.setProducto(producto);
+    this.router.navigate(['/modificarDatosProducto']);
+  }
+ 
 
   guardarCambios() {
     this.usuario.telefono = this.forma.get('telefono').value;   
