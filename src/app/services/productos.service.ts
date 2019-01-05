@@ -113,14 +113,14 @@ export class ProductosService {
     }));
   }
 
-  nuevaTutoria(nombre, precio, descripcion, file: File, idUsuario, area) {
+  nuevaTutoria(nombre, precio, descripcion, area , file: File, idUsuario){
     const formData: FormData = new FormData();
     formData.append('nombre', nombre);
     formData.append('precio', precio);
     formData.append('descripcion', descripcion);
-    formData.append('file', file);
-    formData.append('idUsuario', idUsuario);
     formData.append('area', area);
+	formData.append('file', file);
+	formData.append('idUsuario', idUsuario);
     return this.http.post( this.url + 'tutorias', formData)
     .pipe(
     map(res => {
