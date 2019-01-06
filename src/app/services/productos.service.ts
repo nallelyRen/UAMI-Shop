@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductosService {
+  public producto: any;
   // cadena que contiene la ruta de las peticiones al back-end
    url = 'https://uamishopbackend.azurewebsites.net/tutorial-spring-boot-0.1.0/';
  // url = 'http://localhost:8080/';
@@ -258,6 +259,14 @@ export class ProductosService {
     }));
   }
 
+  getProducto() {
+    return this.producto;
+  }
+ 
+  setProducto(prod: any) {
+    this.producto = prod;
+  }
+ 
 
   
 }

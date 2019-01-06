@@ -7,7 +7,12 @@ import { ProductoComponent } from './components/producto/producto.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { AgregarProductoComponent } from './components/agregar-producto/agregar-producto.component';
+
+import { ModificarDatosProductoComponent } from './components/modificar-datos-producto/modificar-datos-producto.component';
+import { ModificarImagenProductoComponent } from './components/modificar-imagen-producto/modificar-imagen-producto.component';
+
 import { ListUploadComponent } from './components/list-upload/list-upload.component';
+
 
 const APP_ROUTES: Routes = [
     {path: 'principal', component: PrincipalComponent },
@@ -18,7 +23,10 @@ const APP_ROUTES: Routes = [
     {path: 'agregarProducto', component: AgregarProductoComponent},
     {path: 'productos', component: ProductosComponent },
     {path: 'sobreNosotros', component: SobreNosotrosComponent },
-    {path: 'modificar', component: ListUploadComponent},
+
+    {path: 'modificarDatosProducto', component: ModificarDatosProductoComponent },
+    {path: 'modificarImagenProducto', component: ModificarImagenProductoComponent },
+
     {path: '**', pathMatch: 'full', redirectTo: 'principal'}
 ];
 
