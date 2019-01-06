@@ -34,6 +34,13 @@ export class ProductosComponent implements OnInit {
           console.log('tipo', typeof (this.productos));
         });
       } else {
+      if (categoria === 'tutorias') {
+        this.productoService.obtenerTutorias().subscribe(res => {
+          this.productos = res;
+          console.log(res);
+          console.log('tipo', typeof (this.productos));
+        }); 
+	  } else {
         if (categoria === 'electronica') {
         this.productoService.obtenerElectronicos().subscribe(res => {
           this.productos = res;
@@ -53,7 +60,7 @@ export class ProductosComponent implements OnInit {
       }  
     }
   }
-
+  }
   obtenerProductos() {
     this.productoService.obtenerLibros().subscribe(res => {
       this.productos = res;
@@ -86,5 +93,6 @@ export class ProductosComponent implements OnInit {
     }
 
   }
+
 
 }
