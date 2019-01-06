@@ -28,7 +28,7 @@ export class ModificarImagenProductoComponent implements OnInit {
   cambiaImagen() {
     if (this.siImagen) {
       const id= this.usuarioService.validarUsuarios();    
-      if(id== -1){
+      if(id!= -1){
       this.productoService.modificaImagenProducto(id, this.producto.id, this.file).subscribe(res => {
         if (res.url) {
           this.src = res.url;

@@ -43,7 +43,7 @@ export class ModificarDatosProductoComponent implements OnInit {
       alert('Los campos no pueden ser vacíos, complete la información para continuar');
     } else {
       const id= this.usuarioService.validarUsuarios();    
-      if(id== -1){
+      if(id!= -1){
     this.productoService.modificaDatosProyectos(id, this.producto.id, this.elemento.nombre, this.elemento.precio,
       this.elemento.descripcion, this.elemento.representante, this.elemento.requisitos).subscribe(res => {
         if (res) {
@@ -62,7 +62,7 @@ export class ModificarDatosProductoComponent implements OnInit {
         alert('Los campos no pueden ser vacíos, complete la información para continuar');
       } else {
         const id= this.usuarioService.validarUsuarios();    
-        if(id== -1){
+        if(id!= -1){
       this.productoService.modificaDatosDepartamentos(id, this.producto.id, this.elemento.nombre, this.elemento.precio,
         this.elemento.descripcion, this.elemento.ubicacion).subscribe(res => {
           if (res) {
@@ -80,7 +80,7 @@ export class ModificarDatosProductoComponent implements OnInit {
           alert('Los campos no pueden ser vacíos, complete la información para continuar');
         } else {
           const id= this.usuarioService.validarUsuarios();    
-          if(id== -1){
+          if(id!= -1){
         this.productoService.modificaDatosTutoria(id, this.producto.id, this.elemento.nombre, this.elemento.precio,
           this.elemento.descripcion, this.elemento.area).subscribe(res => {
             if (res) {
@@ -93,7 +93,7 @@ export class ModificarDatosProductoComponent implements OnInit {
         }
       } else {
         const id= this.usuarioService.validarUsuarios();    
-        if(id== -1){
+        if(id!= -1){
         this.productoService.modificaDatosProducto(id, this.producto.id, this.elemento.nombre, this.elemento.precio,
            this.elemento.descripcion).subscribe(res => {
             if (res) {
