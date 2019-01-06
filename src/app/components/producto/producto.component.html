@@ -106,6 +106,15 @@
                   <p class="grey-text" >{{producto.requisitos}} </p>                   
                 </div>
               </div>
+			  <div class="row" *ngIf="producto.area">
+                <div class="col-1 mr-3">
+                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                </div>
+                <div class="col-10" >
+                  <h5 class="feature-title">Division</h5>
+                  <p class="grey-text" >{{producto.area}} </p>                   
+                </div>
+              </div>
               <!--
               <div class="row" *ngIf="producto.direccion">
                 <div class="col-1 mr-3">

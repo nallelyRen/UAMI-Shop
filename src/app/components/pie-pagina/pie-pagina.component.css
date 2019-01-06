@@ -1,11 +1,11 @@
 footer {
 	background-color:rgb(1, 39, 70);
   left:0px;
-  bottom:0px;
-  height:10%;
+  bottom:-30px;
+  height:12%;
   width:100%;
   position:fixed;
-  padding: 15px;
+  padding: 0px;
 }
 
 .main1 { 
@@ -19,7 +19,7 @@ a img:hover {
 
 h6{
   color: rgb(255, 255, 255);
-  font-size: 13pt;
+  font-size: 10pt;
 }
 
 p{
