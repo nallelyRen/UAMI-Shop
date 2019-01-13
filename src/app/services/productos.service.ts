@@ -6,8 +6,10 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductosService {
+  public producto: any;
   // cadena que contiene la ruta de las peticiones al back-end
-  url = 'https://uamishopbackend.azurewebsites.net/tutorial-spring-boot-0.1.0/';
+   url = 'https://uamishopbackend.azurewebsites.net/tutorial-spring-boot-0.1.0/';
+ // url = 'http://localhost:8080/';
   // en el constructor añadimos la clase http
   constructor( private http: Http) { }
 
@@ -29,6 +31,17 @@ export class ProductosService {
     .pipe(map(res => res.json()));
   }
 
+  obtenerDepartamentos() {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url + 'departamentos') // .subscribe(res => console.log(res.json()));
+    .pipe(map(res => res.json()));
+  }
+
+  obtenerTutorias() {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url + 'tutorias') // .subscribe(res => console.log(res.json()));
+    .pipe(map(res => res.json()));
+  }
   obtenerProductos() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'productos') // .subscribe(res => console.log(res.json()));
@@ -86,6 +99,35 @@ export class ProductosService {
     }));
   }
 
+  nuevoDepartamento(nombre, precio, descripcion, file: File, idUsuario, ubicacion) {
+    const formData: FormData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('precio', precio);
+    formData.append('descripcion', descripcion);
+    formData.append('file', file);
+    formData.append('idUsuario', idUsuario);
+    formData.append('ubicacion', ubicacion);
+    return this.http.post( this.url + 'departamentos', formData)
+    .pipe(
+    map(res => {
+      return res.json();
+    }));
+  }
+
+  nuevaTutoria(nombre, precio, descripcion, area , file: File, idUsuario){
+    const formData: FormData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('precio', precio);
+    formData.append('descripcion', descripcion);
+    formData.append('area', area);
+	formData.append('file', file);
+	formData.append('idUsuario', idUsuario);
+    return this.http.post( this.url + 'tutorias', formData)
+    .pipe(
+    map(res => {
+      return res.json();
+    }));
+  }
 
   obtenerProductoConId(idProducto) {
     return this.http.get(this.url + 'productos/' + idProducto)
@@ -146,7 +188,85 @@ export class ProductosService {
         }));
   }
 
+  modificaDatosProducto(idUsuario, idProducto, nombre, precio, descripcion) {
+    const formData: FormData = new FormData();
+    formData.append('idUsuario', idUsuario);
+    formData.append('idProducto', idProducto);
+    formData.append('nombre', nombre);
+    formData.append('precio', precio);
+    formData.append('descripcion', descripcion);
+    return this.http.post( this.url + 'modificaProducto', formData)
+    .pipe(
+    map(res => {
+      return res.json();
+    }));
+  }
 
+  modificaDatosTutoria(idUsuario, idProducto, nombre, precio, descripcion, area) {
+    const formData: FormData = new FormData();
+    formData.append('idUsuario', idUsuario);
+    formData.append('idProducto', idProducto);
+    formData.append('nombre', nombre);
+    formData.append('precio', precio);
+    formData.append('descripcion', descripcion);
+    formData.append('area', area);
+    return this.http.post( this.url + 'modificaTutoria', formData)
+    .pipe(
+      map(res => {
+        return res.json();
+    }));
+  }
+
+  modificaDatosProyectos(idUsuario, idProducto, nombre, precio, descripcion, representante, requisitos) {
+    const formData: FormData = new FormData();
+    formData.append('idUsuario', idUsuario);
+    formData.append('idProducto', idProducto);
+    formData.append('nombre', nombre);
+    formData.append('precio', precio);
+    formData.append('descripcion', descripcion);
+    formData.append('representante', representante);
+    formData.append('requisitos', requisitos);
+    return this.http.post( this.url + 'modificaProyecto', formData)
+    .pipe(
+      map(res => {
+        return res.json();
+    }));
+  }
+
+  modificaDatosDepartamentos(idUsuario, idProducto, nombre, precio, descripcion, ubicacion) {
+    const formData: FormData = new FormData();
+    formData.append('idUsuario', idUsuario);
+    formData.append('idProducto', idProducto);
+    formData.append('nombre', nombre);
+    formData.append('precio', precio);
+    formData.append('descripcion', descripcion);
+    formData.append('ubicacion', ubicacion);
+    return this.http.post( this.url + 'modificaDepartamento', formData)
+    .pipe(
+      map(res => {
+        return res.json();
+    }));
+  }
+
+  modificaImagenProducto(idUsuario, idProducto, file: File) {
+    const formData: FormData = new FormData();
+    formData.append('idUsuario', idUsuario);
+    formData.append('idProducto', idProducto);
+    formData.append('file', file);
+    return this.http.post( this.url + 'modificaImg', formData)
+    .pipe(map(res => {
+        return res.json();
+    }));
+  }
+
+  getProducto() {
+    return this.producto;
+  }
+ 
+  setProducto(prod: any) {
+    this.producto = prod;
+  }
+ 
 
   
 }

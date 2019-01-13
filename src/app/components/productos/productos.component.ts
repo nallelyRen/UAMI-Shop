@@ -10,11 +10,12 @@ export class ProductosComponent implements OnInit {
 
   productos: any[] = [];
   categoria = 'Libros';
+  Restriccion=true;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
   }
 
   ngOnInit() {
-    this.obtenerProductos();
+    this.llamada();
   }
 
   cambio(categoria) {
@@ -33,22 +34,33 @@ export class ProductosComponent implements OnInit {
           console.log('tipo', typeof (this.productos));
         });
       } else {
+      if (categoria === 'tutorias') {
+        this.productoService.obtenerTutorias().subscribe(res => {
+          this.productos = res;
+          console.log(res);
+          console.log('tipo', typeof (this.productos));
+        }); 
+	  } else {
+        if (categoria === 'electronica') {
         this.productoService.obtenerElectronicos().subscribe(res => {
           this.productos = res;
           console.log(res);
           console.log('tipo', typeof (this.productos));
         });
       }
+      }
       if (categoria === 'departamentos') {
-       // this.productoService.obtenerDepartamentos().subscribe(res => {
-         // this.productos = res;
-         // console.log(res);
-         // console.log('tipo', typeof (this.productos));
-        //});
+
+        this.productoService.obtenerDepartamentos().subscribe(res => {
+        this.productos = res;
+         console.log(res);
+          console.log('tipo', typeof (this.productos));
+        });
+
       }  
     }
   }
-
+  }
   obtenerProductos() {
     this.productoService.obtenerLibros().subscribe(res => {
       this.productos = res;
@@ -56,7 +68,19 @@ export class ProductosComponent implements OnInit {
       console.log('tipo', typeof (this.productos));
     });
   }
-
+   llamada(){
+    const id= this.usuarioService.validarUsuarios();      
+   if(id== -1){
+    console.log('el valor es ',id);
+    this.Restriccion=true;
+    alert('No estas logueado por lo que el contenido de la página no se mostrará');
+    return this.Restriccion; 
+   }else{
+    console.log('el valor es ',id);
+     return this.Restriccion=false;
+   }
+    
+}
 
   agregarFavorito(id) {
     const idUsuario = this.usuarioService.validarUsuarios();
@@ -69,5 +93,6 @@ export class ProductosComponent implements OnInit {
     }
 
   }
+
 
 }

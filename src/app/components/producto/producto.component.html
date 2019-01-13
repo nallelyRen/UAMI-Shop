@@ -2,8 +2,9 @@
 <section class="magazine-section my-5">
 
   <!-- Section heading -->
-  <h2 id="titulo" *ngIf="producto" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2> 
-<!--Grid row-->
+  <h2 id="titulo" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2> 
+   
+
 <div id="contenido" *ngIf="producto" class="row animated fadeIn fast">
   
   <!--Grid column-->
@@ -27,7 +28,7 @@
     
       <h3 id="titulos" class="h3 mb-3">Características</h3>
    
-    
+
               <!--First row-->
               <div class="row">
                 <div class="col-1 mr-3">
@@ -40,8 +41,15 @@
               </div>
               <!--/First row-->
   
-              <div style="height:30px"></div>
-  
+                <div class="row" *ngIf="producto.ubicacion">
+                <div class="col-1 mr-3">
+                  <i id="iconos" class="fa fa-check-circle fa-2x indigo-text"></i>
+                </div>
+                <div class="col-10">
+                  <h5 class="feature-title">Dirección</h5>
+                  <p class="grey-text">{{producto.ubicacion}}</p>
+                </div>
+              </div>
               <!--Second row-->
               <div class="row" >
                 <div class="col-1 mr-3">
@@ -98,6 +106,15 @@
                   <p class="grey-text" >{{producto.requisitos}} </p>                   
                 </div>
               </div>
+			  <div class="row" *ngIf="producto.area">
+                <div class="col-1 mr-3">
+                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                </div>
+                <div class="col-10" >
+                  <h5 class="feature-title">Division</h5>
+                  <p class="grey-text" >{{producto.area}} </p>                   
+                </div>
+              </div>
               <!--
               <div class="row" *ngIf="producto.direccion">
                 <div class="col-1 mr-3">
@@ -133,9 +150,7 @@
     </div>
   </div>
   
-
   <div style="height:30px"></div>
-
   
   <div class="row">
     <div class="col-1 mr-3">
@@ -151,5 +166,3 @@
   
 
 </div>
-
-

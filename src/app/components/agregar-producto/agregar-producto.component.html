@@ -12,11 +12,12 @@
                 <option value="proyecto">Proyecto terminal y Servicio Social</option>
                 <option value="electronica">Electronica</option>
                 <option value="departamentos">Departamentos</option>
+				<option value="tutorias">Tutorias</option>
           </select>
             </div>
         </div>
 
-        <div class="form-group row" *ngIf="!condicionDepartamentos">
+        <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
                 <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
@@ -26,7 +27,7 @@
         <div class="form-group row" *ngIf="condicionDepartamentos">
             <label class="col-2 col-form-label">Dirección</label>
             <div class="col-8">
-                <input class="form-control" type="text" placeholder="Dirección" formControlName="nombre">
+                <input class="form-control" type="text" placeholder="Dirección" formControlName="direccion">
             </div>
         </div>
 
@@ -49,7 +50,17 @@
                 <input class="form-control" type="text" placeholder="Requisitos" formControlName="requisitos">
             </div>
         </div>
-       
+        <div class="form-group row" *ngIf="condicionTutorias">
+                        <label class="col-2 col-form-label">Division</label>
+                        <div class="col-md-8">
+                            <select (change)="prueba1()" class="form-control" name="Division" placeholder="Division" formControlName="area">
+                            <option value="CBI">CBI</option>
+                            <option value="CSH">CSH</option>
+                            <option value="CBS">CBS</option>
+                      </select>
+                        </div>
+        </div>
+		
         <div class="form-group row">
             <label class="col-2 col-form-label">Descripción</label>
             <div class="col-8">

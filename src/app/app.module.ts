@@ -16,11 +16,12 @@ import { PiePaginaComponent } from './components/pie-pagina/pie-pagina.component
 import { AyudaComponent } from './components/ayuda/ayuda.component';
 import { AgregarProductoComponent } from './components/agregar-producto/agregar-producto.component';
 
-
 // rutas
 import { RouterModule } from '@angular/router';
 import { APP_ROUTING } from './app.routes';
 import { ListUploadComponent } from './components/list-upload/list-upload.component';
+import { ModificarDatosProductoComponent } from './components/modificar-datos-producto/modificar-datos-producto.component';
+import { ModificarImagenProductoComponent } from './components/modificar-imagen-producto/modificar-imagen-producto.component';
 
 
 
@@ -37,7 +38,11 @@ import { ListUploadComponent } from './components/list-upload/list-upload.compon
     PiePaginaComponent,
     AyudaComponent,
     ListUploadComponent,
-    AgregarProductoComponent
+    AgregarProductoComponent,
+
+    ModificarDatosProductoComponent,
+    ModificarImagenProductoComponent
+
   ],
   imports: [
     BrowserModule,
