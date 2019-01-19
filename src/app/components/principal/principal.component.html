@@ -2,109 +2,97 @@
 <meta name="google-signin-client_id" content="776020824848-81vc06ookqta7juiauqnjgq1ptlitvsq.apps.googleusercontent.com">
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 <body>
-  <style type="text/css">
-    /* Necessary for full page carousel*/
-    html,
-    body,
-    header,
-    .view {
-      height: 889px;
-    }
-
-    /* Carousel*/
-    .carousel,
-    .carousel-item,
-    .carousel-item.active {
-      height: 100%;
-    }
-    .carousel-inner {
-      height: 100%;
-    }
-
-    @media (min-width: 800px) and (max-width: 850px) {
-      .navbar:not(.top-nav-collapse) {
-          background: #1C2331!important;
-      }
-  }
-
-  </style>
-       
-    <!-- data-ride="carousel" -->
-    <!--Carousel Wrapper-->
-    <div id="carousel-example-1z" class="carousel slide carousel-fade">
   
-      <!--Indicators-->
-      <ol class="carousel-indicators">
-        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-      </ol>
-      <!--/.Indicators-->
-  
-      <!--Slides-->
-      <div class="carousel-inner" role="listbox">
-  
-        <!--First slide-->
-        <div class="carousel-item active">
-          <div class="view">
-            <img src="../../../assets/img/patio.jpg" alt="Los Angeles">
-            <!--Video source
-            <video class="video-intro" autoplay loop>
-              <source src="../../../assets/img/principal.mp4" type="video/mp4" />
-            </video>-->
-  
-            <!-- Mask & flexbox options-->
-            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
-  
-              <!-- Content -->
-              <div  class="text-center white-text  wow fadeIn">
-                <h1 id="titulo" class="mb-4" >
-                  <strong>Bienvenido a UAMI Shop</strong>
-                </h1>
-  
-                <p id="cover">
-                  <strong>Pagina de compra y venta gratuita </strong>
-                </p>
-  
-                <p  id="cover" class="d-none d-md-block">
-                  <strong>Una pagina creada por estudiantes para estudiantes</strong>
-                </p>               
-               
-                
-              </div>
-              <!-- Content -->
-  
-            </div>
-            <!-- Mask & flexbox options-->
-  
-          </div>
-        </div>
-        <!--/First slide-->
-  
-        <!--Second slide-->
-        
-        <!--/Second slide-->
-  
-        <!--Third slide-->
-       
-        <!--/Third slide-->
-  
+  <!--Carousel Wrapper-->
+<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <!--First slide-->
+    <div class="carousel-item active">
+      <div class="view">
+        <img class="d-block w-100" src="../../../assets/img/cover-1.jpg" alt="First slide">
+        <div class="mask rgba-black-light"></div>
       </div>
-      <!--/.Slides-->
-  
-      <!--Controls-->
-      <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-      <!--/.Controls-->
-  
+      <div class="carousel-caption">
+        <h1 id="titulo" class="mb-4" >
+          <strong>Bienvenido a UAMI Shop</strong>
+        </h1>
+
+        <p id="cover">
+          <strong>Página de compra y venta gratuita </strong>
+        </p>
+
+        <p  id="cover" class="d-none d-md-block">
+          <strong>Una página creada por estudiantes para estudiantes</strong>
+        </p>          
+      </div>
+      
     </div>
-    <!--/.Carousel Wrapper-->
+    <!--/First slide-->
+    <!--Second slide-->
+    <div class="carousel-item">
+      <div class="view">
+        <img class="d-block w-100" src="../../../assets/img/cover-4.jpg" alt="2 slide">
+        <div class="mask rgba-black-light"></div>
+      </div>
+      <div class="carousel-caption">
+        <h1 id="titulo2" class="mb-4" >
+          <strong>Usa nuestro directorio de servicios sociales y proyectos de investigación</strong>
+        </h1>
+
+        <p id="cover">
+          <strong>Encuentra propuestas de diferentes maestros y alumnos de todas las divisiones </strong>
+        </p>
+
+        <p  id="cover" class="d-none d-md-block">
+          <strong>Coloca tus propuestas y encuentra a tu equipo ideal para tu proyecto</strong>
+        </p>          
+      </div>
+      
+    </div>
+    <!--/Second slide-->
+    <!--Third slide-->
+    <div class="carousel-item">
+      <div class="view">
+        <img class="d-block w-100" src="../../../assets/img/cover-3.jpg" alt="3 slide">
+        <div class="mask rgba-black-light"></div>
+      </div>
+      <div class="carousel-caption">
+        <h1 id="titulo3" class="mb-4" >
+          <strong>¿Tienes ideas para mejorar la página?</strong>
+        </h1>
+
+        <p id="cover2">
+          <strong>Envia un correo a uamishopp@gmail.com </strong>
+        </p>
+
+        <p  id="cover2" class="d-none d-md-block">
+          <strong>Buscanos en Facebook, Youtube y Twitter</strong>
+        </p>          
+      </div>
+    </div>
+    <!--/Third slide-->
+  </div>
+  <!--/.Slides-->
+  <!--Controls-->
+  <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <!--/.Controls-->
+</div>
+<!--/.Carousel Wrapper-->
   
     <!--Main layout-->
     <main>
@@ -129,7 +117,7 @@
   
               <!-- Main heading -->
               <h3 class="h3 mb-3">Consigue todo lo que necesites</h3>
-              <p>UAMI Shop es una pagina diseñada para la comunidad universitaria que cuenta con lo que todo
+              <p>UAMI Shop es una página diseñada para la comunidad universitaria que cuenta con lo que todo
                 estudiante necesita
               </p>              
               <!-- Main heading -->
@@ -137,7 +125,7 @@
               <hr>
   
               <p>
-              <strong>Nuestras categorias te ayudaran a encontrar lo que estas buscando mas rapidamente</strong>
+              <strong>Nuestras categorías te ayudaran a encontrar lo que estás buscando más rápidamente</strong>
               </p>
   
               <!-- CTA -->
@@ -171,7 +159,7 @@
                 </div>
                 <div class="col-10">
                   <h5 class="feature-title">Accesibilidad</h5>
-                  <p class="grey-text">Tus productos y servicios seran vistos por mas gente</p>
+                  <p class="grey-text">Tus productos y servicios serán vistos por más gente</p>
                 </div>
               </div>
               <!--/First row-->
@@ -184,9 +172,9 @@
                   <i id="iconos" class="fa fa-book fa-2x blue-text"></i>
                 </div>
                 <div class="col-10">
-                  <h5 class="feature-title">Mas información</h5>
+                  <h5 class="feature-title">Más información</h5>
                   <p class="grey-text">Coloca fotos, enlaces de video e información de contacto a tus productos para 
-                    que tus compradores puedan contactarte facilmente y conocer mejor tu producto
+                    que tus compradores puedan contactarte fácilmente y conocer mejor tu producto
                   </p>
                 </div>
               </div>
@@ -200,7 +188,7 @@
                   <i id="iconos" class="fa fa-times fa-2x cyan-text"></i>
                 </div>
                 <div class="col-10">
-                  <h5 class="feature-title">No mas publicidad inútil</h5>
+                  <h5 class="feature-title">No más publicidad inútil</h5>
                   <p class="grey-text">Deja de gastar tiempo y dinero en publicitar tus productos con carteles impresos 
                     y en grupos de redes sociales 
                   </p>
@@ -212,7 +200,7 @@
             <!--/Grid column-->
    <!--Grid column-->
    <div class="col-md-6 mb-4">
-   <p class="h5 text-center mb-4">Rápido, eficiente y facil</p>
+   <p class="h5 text-center mb-4">Rápido, eficiente y fácil</p>
       <img src="../../../assets/img/tutor.jpg" class="img-fluid z-depth-1-half" alt="">
 
     </div>
@@ -244,7 +232,7 @@
                 </div>
                 <div class="col-10">
                   <h6 class="feature-title">Publicidad impresa ineficiente</h6>
-                  <p class="grey-text">No llega a gran numero de personas y despues de unos dias termina en la basura al igual 
+                  <p class="grey-text">No llega a gran número de personas y después de unos días termina en la basura al igual 
                     que tus posibilidades de vender 
                   </p>
                   <div style="height:15px"></div>
@@ -260,7 +248,7 @@
                 <div class="col-10">
                   <h6 class="feature-title">¿Grupos en redes sociales?</h6>
                   <p class="grey-text">Tu producto terminara al final de una gran pila creciente de publicaciones ¿Cuantas personas
-                    crees que podran ver tu producto?
+                    crees que podrán ver tu producto?
       
                   </p>
                   <div style="height:15px"></div>
@@ -274,9 +262,9 @@
                   <i  id="iconos" class="fa fa-check-circle fa-2x indigo-text"></i>
                 </div>
                 <div class="col-10">
-                  <h6 class="feature-title">Brinda mas información</h6>
-                  <p class="grey-text">Brinda a tus compradores mas información de tu producto con fotografias o enlaces 
-                    de video. Una imagen habla mas que mil palabras
+                  <h6 class="feature-title">Brinda más información</h6>
+                  <p class="grey-text">Brinda a tus compradores más información de tu producto con fotografías o enlaces 
+                    de video. Una imagen habla más que mil palabras
                   </p>
                   <div style="height:15px"></div>
                 </div>
@@ -289,7 +277,7 @@
                   <i id="iconos" class="fa fa-check-circle fa-2x indigo-text"></i>
                 </div>
                 <div class="col-10">
-                  <h6 class="feature-title">Encuentra productos unicos</h6>
+                  <h6 class="feature-title">Encuentra productos únicos</h6>
                   <p class="grey-text"></p>
                   <div style="height:15px"></div>
                 </div>
@@ -326,7 +314,7 @@
                   <i id="iconos" class="fa fa-check-circle fa-2x indigo-text"></i>
                 </div>
                 <div class="col-10">
-                  <h6 class="feature-title">Ofrece tus servicios de tutoria</h6>
+                  <h6 class="feature-title">Ofrece tus servicios de tutoría</h6>
                   <p class="grey-text"></p>
                   <div style="height:15px"></div>
                 </div>
@@ -354,7 +342,7 @@
                 </div>
                 <div class="col-10">
                   <h6 class="feature-title">Compara precios</h6>
-                  <p class="grey-text">Nuestra pagina te permite encontrar diversas opciones del mismo producto para que
+                  <p class="grey-text">Nuestra página te permite encontrar diversas opciones del mismo producto para que
                     encuentres la que mejor te convenga
                   </p>
                   <div style="height:15px"></div>
@@ -388,7 +376,9 @@
                   <i id="iconos" class="fa fa-firefox fa-2x mb-1 indigo-text" aria-hidden="true"></i>
                 </div>
                 <div class="col-10 mb-2 pl-3">
-                  <h5 class="feature-title font-bold mb-1">Reporta bugs o fallos</h5>
+                  <h5 class="feature-title font-bold mb-1">Reporta bugs o fallos en nuestras redes sociales
+                    o email
+                  </h5>
                   <p class="grey-text mt-2">
                   </p>
                 </div>
@@ -423,7 +413,7 @@
                 </div>
                 <div class="col-10 mb-2">
                   <h5 class="feature-title font-bold mb-1">Sugerencias</h5>
-                  <p class="grey-text mt-2">Somos abiertos a que nos envies sugerencias para mejorar la pagina
+                  <p class="grey-text mt-2">Somos abiertos a que nos envíes sugerencias para mejorar la página
                   </p>
                 </div>
               </div>
@@ -440,7 +430,7 @@
                 </div>
                 <div class="col-10 mb-2">
                     <h5 class="feature-title font-bold mb-1">Dudas</h5>
-                    <p class="grey-text mt-2">No dudes en externarnos tus dudas sobre la pagina
+                    <p class="grey-text mt-2">No dudes en externarnos tus dudas sobre la página
                     </p>
                 </div>
               </div>
@@ -471,57 +461,29 @@
   
       <!--Call to action-->
       <div class="pt-4">
-          <h5 class="feature-title">Contactanos en UAMIShop@gmail.com</h5>
-          <p class="grey-text mt-2">Visitanos tambien en nuestras redes sociales
+          <h5 id="foot"class="feature-title">Contáctanos en uamishopp@gmail.com</h5>
+          <p id="foot" class="grey-text mt-2">Visítanos también en nuestras redes sociales
             </p>
       </div>
       <!--/.Call to action-->
   
-      <hr class="my-4">
+      <hr id="foot" class="my-4">
   
       <!-- Social icons -->
       <div class="pb-4">
-        <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-          <i class="fa fa-facebook mr-3"></i>
-        </a>
-  
-        <a href="https://twitter.com/MDBootstrap" target="_blank">
-          <i class="fa fa-twitter mr-3"></i>
-        </a>
-  
-        <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-          <i class="fa fa-youtube mr-3"></i>
-        </a>
-  
-        <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-          <i class="fa fa-google-plus mr-3"></i>
-        </a>
-  
-        <a href="https://dribbble.com/mdbootstrap" target="_blank">
-          <i class="fa fa-dribbble mr-3"></i>
-        </a>
-  
-        <a href="https://pinterest.com/mdbootstrap" target="_blank">
-          <i class="fa fa-pinterest mr-3"></i>
-        </a>
-  
-        <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-          <i class="fa fa-github mr-3"></i>
-        </a>
-  
-        <a href="http://codepen.io/mdbootstrap/" target="_blank">
-          <i class="fa fa-codepen mr-3"></i>
-        </a>
+        <a id="foot" href="https://www.facebook.com/uami.shopp.1" target="_blank">
+					<i class="fa fa-facebook mr-4"></i>
+					</a>
+				    <a id="foot" href="https://twitter.com/ShopUami" target="_blank">
+					<i class="fa fa-twitter mr-3"></i>
+					</a>
+          <a id="foot"href="https://www.youtube.com/channel/UC65Dze8QOdWVVckYDChaZyA" target="_blank">
+					<i class="fa fa-youtube mr-3"></i>
+					</a>
       </div>
       <!-- Social icons -->
   
-      <!--Copyright-->
-      <div class="footer-copyright py-3">
-        © 2018 Copyright:
-        <a href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank"> MDBootstrap.com </a>
-      </div>
-      <!--/.Copyright-->
-  
+        
     </footer>
     <!--/.Footer-->
   

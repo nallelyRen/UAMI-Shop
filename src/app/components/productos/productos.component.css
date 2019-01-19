@@ -16,14 +16,67 @@
     color:black;
 }
 #productos{
-    padding-top: 25px;    
-    color:white;
-    border-radius: 7px;
+    color:white;    
 }
-
+#cardP{
+    color:white;  
+    font-family: 'K2D', sans-serif;
+    font-weight: lighter;    
+    font-size: 18px;
+}
+.card{
+    padding-bottom: 20 px;
+}
 #registro{
     background-image:url(../../../assets/img/textura.jpg);
 }
+#card-1{
+    background-image:url(../../../assets/img/library.jpg);
+   
+}
+#card-2{
+    background-image:url(../../../assets/img/proyecto.jpg);
+}
+#card-3{
+    background-image:url(../../../assets/img/keyboard.jpg);
+}
+#card-4{
+    background-image:url(../../../assets/img/departamento.jpg);
+}
+#card-5{
+    background-image:url(../../../assets/img/student.jpg);
+}
+#card-6{
+    background-image:url(../../../assets/img/help.jpg);
+}
 #textoR{
     color:black;
+    font-family: 'K2D', sans-serif;
+    font-weight: lighter;  
+    font-size: 27px;    
+}
+#textoB{
+    color:white; 
+    text-align: center;  
+    font-family: 'K2D', sans-serif;
+    font-weight: lighter;  
+    font-size: 27px;    
+}
+#tituloB{
+    color:white; 
+    text-align: center;  
+    font-family: 'K2D', sans-serif;
+    font-weight: lighter;      
+    font-size: 35px;
+}
+#tituloR{
+    color:black; 
+    text-align: center;  
+    font-family: 'K2D', sans-serif;
+    font-weight: lighter;      
+    font-size: 35px;
+}
+.h3{
+    font-family: 'K2D', sans-serif;
+    font-weight: bold;    
 }

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ProductosService } from '../../services/productos.service';
+import { UsuarioService } from '../../services/usuario.service';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-cuenta',
@@ -7,9 +12,159 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CuentaComponent implements OnInit {
 
-  constructor() { }
+  productos: any[] = [];
+  Restriccion=true;
+  usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
+  //usuario:  any[] = [];
+  
 
-  ngOnInit() {
+  categoria = 'Libros';
+  forma: FormGroup;
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router:Router) {
+        // creacion del formulario
+    this.forma = new FormGroup({
+      'nombre': new FormControl(''),
+      'correo': new FormControl(''),
+      'telefono': new FormControl('', [Validators.required]),
+      'calificacion': new FormControl('')
+    });
   }
 
+  ngOnInit() {
+    this.llamada();
+  }
+
+  cambio(categoria) {
+    this.categoria = categoria;
+    if (categoria === 'libros') {
+      this.productoService.obtenerLibros().subscribe(res => {
+        this.productos = res;
+        console.log(res);
+        console.log('tipo', typeof (this.productos));
+      });
+    } else {
+      if (categoria === 'proyectos') {
+        this.productoService.obtenerProyectos().subscribe(res => {
+          this.productos = res;
+          console.log(res);
+          console.log('tipo', typeof (this.productos));
+        });
+      } else {
+        this.productoService.obtenerElectronicos().subscribe(res => {
+          this.productos = res;
+          console.log(res);
+          console.log('tipo', typeof (this.productos));
+        });
+      }
+    }
+  }
+
+
+  obtenerFavoritos() {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+      this.productoService.dameMisFavoritos(idUsuario).subscribe(res => {
+        this.productos = res;
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
+    }
+
+  }
+  obtenerProductosUsuario() {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+      this.productoService.dameMisProductos(idUsuario).subscribe(res => {
+        this.productos = res;
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
+    }
+
+  }
+  eliminarFavoritos(id) {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+      this.productoService.eliminameEnFavoritos(idUsuario, id).subscribe(res => {
+        this.productos = res;
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
+    }
+
+  }
+  obtenerInfoUsuario() {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+      const usuario = this.usuarioService.obtenerUsuarioPorId(idUsuario);
+      console.log(usuario.nombre, usuario.correo);
+      this.usuarioService.logueo(usuario.nombre, usuario.correo).subscribe(res => {
+        // this.usuario=res;
+        this.usuario.nombre = res.nombre;
+        this.usuario.telefono = res.telefono;
+        this.usuario.calificacion = res.calificacion;
+        this.usuario.correo = res.correo;
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
+    }
+
+  }
+  llamada(){
+    const id= this.usuarioService.validarUsuarios();      
+   if(id== -1){
+    console.log('el valor es ',id);
+    this.Restriccion=true;
+    alert('No estas logueado por lo que el contenido de la página no se mostrará');
+    return this.Restriccion; 
+   }else{
+    console.log('el valor es ',id);
+     return this.Restriccion=false;
+   }
+    
+}
+  eliminarProducto(id) {
+    const idUsuario = this.usuarioService.validarUsuarios();
+    if (idUsuario != -1) {
+      this.productoService.eliminameProducto(idUsuario, id).subscribe(res => {
+        this.productos = res;
+        console.log(res);
+      });
+    } else {
+      console.log('no estas logueado');
+    }
+
+  }
+
+  modificarProducto(producto: any) {
+    this.productoService.setProducto(producto);
+    this.router.navigate(['/modificarDatosProducto']);
+  }
+ 
+
+  guardarCambios() {
+    this.usuario.telefono = this.forma.get('telefono').value;   
+
+    // envio de la peticion al servicio
+    if (this.usuario.telefono === '') {
+      alert('El campo telefono es obligatorio');
+    } else {
+      const id = this.usuarioService.validarUsuarios();
+      if (id != -1) {
+        this.usuarioService.modificarUsuario(id, this.usuario.telefono).subscribe(
+          res => {
+            alert('Tu número' + this.usuario.telefono + ' se ha actualizado correctamente');
+           // this.forma.reset(this.Libro2);
+          }
+        );
+      } else {
+        console.log('no esta logueado');
+      }
+    }
+
+  }
 }
