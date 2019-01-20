@@ -1,121 +1,125 @@
 <!-- Section: Magazine v.2 -->
 <section class="magazine-section my-5">
 
-  <!-- Section heading -->
-  <h2 id="titulo" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2> 
-   
+    <!-- Section heading -->
+    <h2 id="titulo" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2>
 
-<div id="contenido" *ngIf="producto" class="row animated fadeIn fast">
-  
-  <!--Grid column-->
-  <div class="col-md-5 mb-10 text-center">
+    <div align="center" *ngIf="carga">
+        <mat-spinner></mat-spinner>
+        <br>
+    </div>
 
-    <img [src]="producto.archivo.url" class="img-fluid z-depth-1-half" alt="">
+    <div id="contenido" *ngIf="producto" class="row animated fadeIn fast">
 
-  </div>
-  <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-md-5 mb-10 text-center">
 
-  <!--Grid column-->
-  <div class="col-md-6 mb-4">
+            <img [src]="producto.archivo.url" class="img-fluid z-depth-1-half" alt="">
 
-    <!-- Main heading -->
-    <h3 id="titulos" class="h3 mb-3">Descripción</h3>
-    <p>{{producto.descripcion}}</p>           
-    <!-- Main heading -->
+        </div>
+        <!--Grid column-->
 
-    
-<hr>
-    
-      <h3 id="titulos" class="h3 mb-3">Características</h3>
-   
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
 
-              <!--First row-->
-              <div class="row">
+            <!-- Main heading -->
+            <h3 id="titulos" class="h3 mb-3">Descripción</h3>
+            <p>{{producto.descripcion}}</p>
+            <!-- Main heading -->
+
+
+            <hr>
+
+            <h3 id="titulos" class="h3 mb-3">Características</h3>
+
+
+            <!--First row-->
+            <div class="row">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x indigo-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x indigo-text"></i>
                 </div>
                 <div class="col-10">
-                  <h5 class="feature-title">Precio</h5>
-                  <p class="grey-text">$ {{producto.precio}}</p>
+                    <h5 class="feature-title">Precio</h5>
+                    <p class="grey-text">$ {{producto.precio}}</p>
                 </div>
-              </div>
-              <!--/First row-->
-  
-                <div class="row" *ngIf="producto.ubicacion">
+            </div>
+            <!--/First row-->
+
+            <div class="row" *ngIf="producto.ubicacion">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x indigo-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x indigo-text"></i>
                 </div>
                 <div class="col-10">
-                  <h5 class="feature-title">Dirección</h5>
-                  <p class="grey-text">{{producto.ubicacion}}</p>
+                    <h5 class="feature-title">Dirección</h5>
+                    <p class="grey-text">{{producto.ubicacion}}</p>
                 </div>
-              </div>
-              <!--Second row-->
-              <div class="row" >
+            </div>
+            <!--Second row-->
+            <div class="row">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x blue-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x blue-text"></i>
                 </div>
                 <div class="col-10" *ngIf="usuarios">
-                  <h5 class="feature-title">Usuario</h5>
-                  <p class="grey-text" >{{producto.usuario.nombre}}
-                  </p>
+                    <h5 class="feature-title">Usuario</h5>
+                    <p class="grey-text">{{producto.usuario.nombre}}
+                    </p>
                 </div>
-              </div>
-              <!--/Second row-->
-  
-              <div style="height:30px"></div>
-  
-              <!--Third row-->
-              <div class="row">
+            </div>
+            <!--/Second row-->
+
+            <div style="height:30px"></div>
+
+            <!--Third row-->
+            <div class="row">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
                 <div class="col-10">
-                  <h5 class="feature-title">Contacto</h5>
-                  <p class="grey-text" >correo: {{producto.usuario.correo}} </p>
-                    <p class="grey-text" > telefono: {{producto.usuario.telefono}}  </p>
+                    <h5 class="feature-title">Contacto</h5>
+                    <p class="grey-text">correo: {{producto.usuario.correo}} </p>
+                    <p class="grey-text"> telefono: {{producto.usuario.telefono}} </p>
                 </div>
-              </div>
+            </div>
 
-              <div class="row">
+            <div class="row">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
                 <div class="col-10">
-                  <h5 class="feature-title">Calificación del usuario</h5>
-                  <p class="grey-text" >Calificación: {{producto.usuario.calificacion}} </p>                   
+                    <h5 class="feature-title">Calificación del usuario</h5>
+                    <p class="grey-text">Calificación: {{producto.usuario.calificacion}} </p>
                 </div>
-              </div>
+            </div>
 
-              <div class="row" *ngIf="producto.representante">
+            <div class="row" *ngIf="producto.representante">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
-                <div class="col-10" >
-                  <h5 class="feature-title">Representante del proyecto</h5>
-                  <p class="grey-text" >Representante: {{producto.representante}} </p>                   
+                <div class="col-10">
+                    <h5 class="feature-title">Representante del proyecto</h5>
+                    <p class="grey-text">Representante: {{producto.representante}} </p>
                 </div>
-              </div>
+            </div>
 
-              <div class="row" *ngIf="producto.requisitos">
+            <div class="row" *ngIf="producto.requisitos">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
-                <div class="col-10" >
-                  <h5 class="feature-title">Requisitos para el proyecto</h5>
-                  <p class="grey-text" >{{producto.requisitos}} </p>                   
+                <div class="col-10">
+                    <h5 class="feature-title">Requisitos para el proyecto</h5>
+                    <p class="grey-text">{{producto.requisitos}} </p>
                 </div>
-              </div>
-			  <div class="row" *ngIf="producto.area">
+            </div>
+            <div class="row" *ngIf="producto.area">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
-                <div class="col-10" >
-                  <h5 class="feature-title">Division</h5>
-                  <p class="grey-text" >{{producto.area}} </p>                   
+                <div class="col-10">
+                    <h5 class="feature-title">Division</h5>
+                    <p class="grey-text">{{producto.area}} </p>
                 </div>
-              </div>
-              <!--
+            </div>
+            <!--
               <div class="row" *ngIf="producto.direccion">
                 <div class="col-1 mr-3">
                   <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
@@ -126,18 +130,18 @@
                 </div>
               </div>
             -->
-              <div class="form-group col-md-6">
+            <div class="form-group col-md-6">
                 <label for="inputCity"> </label>
-                <p class="grey-text" >
+                <p class="grey-text">
                 </p>
-              </div>
+            </div>
 
 
-              <!--/Third row-->
-    <!-- CTA -->
-   
-    </div>
-  <!--Grid column
+            <!--/Third row-->
+            <!-- CTA -->
+
+        </div>
+        <!--Grid column
    
    <div class="row" >
     <div class="col-1 mr-3">
@@ -163,6 +167,6 @@
     </div>
   </div>
   /Third row-->
-  
 
-</div>
+
+    </div>

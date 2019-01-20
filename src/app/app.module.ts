@@ -23,7 +23,9 @@ import { ListUploadComponent } from './components/list-upload/list-upload.compon
 import { ModificarDatosProductoComponent } from './components/modificar-datos-producto/modificar-datos-producto.component';
 import { ModificarImagenProductoComponent } from './components/modificar-imagen-producto/modificar-imagen-producto.component';
 
-
+// angular material
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -39,10 +41,8 @@ import { ModificarImagenProductoComponent } from './components/modificar-imagen-
     AyudaComponent,
     ListUploadComponent,
     AgregarProductoComponent,
-
     ModificarDatosProductoComponent,
     ModificarImagenProductoComponent
-
   ],
   imports: [
     BrowserModule,
@@ -50,6 +50,8 @@ import { ModificarImagenProductoComponent } from './components/modificar-imagen-
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     APP_ROUTING
   ],
   providers: [],

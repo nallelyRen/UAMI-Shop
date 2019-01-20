@@ -13,7 +13,8 @@ export class ProductoComponent implements OnInit {
   id: any;
   producto: any;
   produc: any;
-  flag=false;
+  flag = false;
+  carga = true;
   constructor(private router: ActivatedRoute
               , private usuarioService: UsuarioService,
                 private productoService: ProductosService) {
@@ -42,6 +43,7 @@ export class ProductoComponent implements OnInit {
   obtenerProducto(id) {
     this.productoService.obtenerProductoConId(id).subscribe(res => {
       this.producto = res;
+      this.carga = false;
       console.log('producto', this.producto);
     });
   }

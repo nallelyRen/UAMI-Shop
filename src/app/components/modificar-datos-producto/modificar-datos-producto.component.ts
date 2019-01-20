@@ -18,7 +18,7 @@ export class ModificarDatosProductoComponent implements OnInit {
    requisitos: '',
    descripcion: '',
  };
-
+ carga = false;
  producto: any;
 
  constructor(private usuarioService: UsuarioService, private productoService: ProductosService) {
@@ -30,6 +30,7 @@ export class ModificarDatosProductoComponent implements OnInit {
  }
 
  guardarCambios() {
+  this.carga = true;
   this.elemento.nombre = (<HTMLInputElement>document.getElementById('nombre')).value;
   this.elemento.precio = (<HTMLInputElement>document.getElementById('precio')).value;
   this.elemento.descripcion = (<HTMLInputElement>document.getElementById('descripcion')).value;
@@ -48,8 +49,10 @@ export class ModificarDatosProductoComponent implements OnInit {
       this.elemento.descripcion, this.elemento.representante, this.elemento.requisitos).subscribe(res => {
         if (res) {
           alert('Tu proyecto "' + this.producto.nombre + '" se ha modificado correctamente');
+          this.carga = false;
         } else {
           alert('Ups, tu proyecto "' + this.producto.nombre + '" no se ha podido modificar');
+          this.carga = false;
         }
       });
     }
@@ -67,8 +70,10 @@ export class ModificarDatosProductoComponent implements OnInit {
         this.elemento.descripcion, this.elemento.ubicacion).subscribe(res => {
           if (res) {
             alert('Tu departamento "' + this.producto.nombre + '" se ha modificado correctamente');
+            this.carga = false;
           } else {
             alert('Ups, tu depatramento "' + this.producto.nombre + '" no se ha podido modificar');
+            this.carga = false;
           }
         });
       }
@@ -85,21 +90,25 @@ export class ModificarDatosProductoComponent implements OnInit {
           this.elemento.descripcion, this.elemento.area).subscribe(res => {
             if (res) {
               alert('La tutoría "' + this.producto.nombre + '" se ha modificado correctamente');
+              this.carga = false;
             } else {
               alert('Ups, la tutoría "' + this.producto.nombre + '" no se ha podido modificar');
+              this.carga = false;
             }
           });
         }
         }
       } else {
-        const id= this.usuarioService.validarUsuarios();    
-        if(id!= -1){
+        const id = this.usuarioService.validarUsuarios();
+        if (id != -1) {
         this.productoService.modificaDatosProducto(id, this.producto.id, this.elemento.nombre, this.elemento.precio,
            this.elemento.descripcion).subscribe(res => {
             if (res) {
               alert('El producto "' + this.producto.nombre + '" se ha modificado correctamente');
+              this.carga = false;
             } else {
               alert('Ups, tu producto "' + this.producto.nombre + '" no se ha podido modificar');
+              this.carga = false;
             }
            });
           }

@@ -1,9 +1,12 @@
 <div class="main-container" id="contenedor_de_la_forma">
     <h2 id="titulo" style="margin: 100px auto;">Registra Tu Producto</h2>
-
-    <form  [formGroup]="forma" (ngSubmit)="guardarCambios()">
+    <div align="center" *ngIf="carga">
+        <mat-spinner></mat-spinner>
+        <br>
+    </div>
+    <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
         <!--Creo una forma en angular a la cual le inserto los datos-->
-       
+
         <div class="form-group row">
             <label class="col-2 col-form-label">Categoría</label>
             <div class="col-md-8">
@@ -12,7 +15,8 @@
                 <option value="proyecto">Proyecto terminal y Servicio Social</option>
                 <option value="electronica">Electronica</option>
                 <option value="departamentos">Departamentos</option>
-				<option value="tutorias">Tutorias</option>
+                <option value="tutorias">Tutorias</option>
+                <option value="otros">Otros</option>
           </select>
             </div>
         </div>
@@ -51,16 +55,16 @@
             </div>
         </div>
         <div class="form-group row" *ngIf="condicionTutorias">
-                        <label class="col-2 col-form-label">Division</label>
-                        <div class="col-md-8">
-                            <select (change)="prueba1()" class="form-control" name="Division" placeholder="Division" formControlName="area">
+            <label class="col-2 col-form-label">Division</label>
+            <div class="col-md-8">
+                <select (change)="prueba1()" class="form-control" name="Division" placeholder="Division" formControlName="area">
                             <option value="CBI">CBI</option>
                             <option value="CSH">CSH</option>
                             <option value="CBS">CBS</option>
                       </select>
-                        </div>
+            </div>
         </div>
-		
+
         <div class="form-group row">
             <label class="col-2 col-form-label">Descripción</label>
             <div class="col-8">

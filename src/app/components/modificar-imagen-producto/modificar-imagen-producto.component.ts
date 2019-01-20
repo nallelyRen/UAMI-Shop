@@ -12,6 +12,7 @@ export class ModificarImagenProductoComponent implements OnInit {
   siImagen = false;
   file: File;
   producto;
+  carga = false;
   constructor(private usuarioService: UsuarioService, private productoService: ProductosService) { }
 
   ngOnInit() {
@@ -26,6 +27,7 @@ export class ModificarImagenProductoComponent implements OnInit {
   }
 
   cambiaImagen() {
+    this.carga = true;
     if (this.siImagen) {
       const id= this.usuarioService.validarUsuarios();    
       if(id!= -1){
@@ -33,12 +35,12 @@ export class ModificarImagenProductoComponent implements OnInit {
         if (res.url) {
           this.src = res.url;
           alert('La imagen de tu producto "' + this.producto.nombre + '" se ha modificado correctamente');
+          this.carga = false;
           this.siImagen = false;
         } else {
           alert('Ups, la imagen de tu producto "' + this.producto.nombre + '" no se ha podido modificar correctamente');
         }
       });
-    
     }
     } else {
       alert('Selecciona la nueva imagen de tu producto para continuar');
