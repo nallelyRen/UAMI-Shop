@@ -47,6 +47,12 @@ export class ProductosService {
     return this.http.get(this.url + 'productos') // .subscribe(res => console.log(res.json()));
     .pipe(map(res => res.json()));
   }
+  obtenerOtros() {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url + 'otros') // .subscribe(res => console.log(res.json()));
+    .pipe(map(res => res.json()));
+  }
+
 
 
   nuevoLibro(nombre, precio, descripcion, file: File, idUsuario) {
@@ -57,6 +63,23 @@ export class ProductosService {
     formData.append('file', file);
     formData.append('idUsuario', idUsuario);
     return this.http.post( this.url + 'libros', formData)
+    .pipe(
+    map(res => {
+      console.log('si llego');
+      console.log(res.json());
+      return res.json();
+    }));
+  }
+//EN REVISION TODAVIA NO ESTA CORRECTO, SOLO SE COMPLETO PARA
+//QUE LAS DEPENDENCIAS NO MARCARAN ERROR
+  nuevoOtro(nombre, precio, descripcion, file: File, idUsuario) {
+    const formData: FormData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('precio', precio);
+    formData.append('descripcion', descripcion);
+    formData.append('file', file);
+    formData.append('idUsuario', idUsuario);
+    return this.http.post( this.url + 'otros', formData)
     .pipe(
     map(res => {
       console.log('si llego');

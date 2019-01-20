@@ -14,6 +14,7 @@ export class CuentaComponent implements OnInit {
 
   productos: any[] = [];
   Restriccion=true;
+  carga=false;
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   //usuario:  any[] = [];
   
@@ -61,42 +62,52 @@ export class CuentaComponent implements OnInit {
 
 
   obtenerFavoritos() {
+    this.carga = true ;
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.dameMisFavoritos(idUsuario).subscribe(res => {
         this.productos = res;
+        this.carga = false ;
         console.log(res);
       });
     } else {
+      this.carga = false ;
       console.log('no estas logueado');
     }
 
   }
   obtenerProductosUsuario() {
+    this.carga = true ;
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.dameMisProductos(idUsuario).subscribe(res => {
         this.productos = res;
+        this.carga = false ;
         console.log(res);
       });
     } else {
+      this.carga = false ;
       console.log('no estas logueado');
     }
 
   }
   eliminarFavoritos(id) {
+    this.carga = true ;
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.eliminameEnFavoritos(idUsuario, id).subscribe(res => {
         this.productos = res;
+        this.carga = false ;
         console.log(res);
       });
     } else {
+      this.carga = false ;
       console.log('no estas logueado');
     }
 
   }
   obtenerInfoUsuario() {
+    this.carga = true ;
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       const usuario = this.usuarioService.obtenerUsuarioPorId(idUsuario);
@@ -107,9 +118,11 @@ export class CuentaComponent implements OnInit {
         this.usuario.telefono = res.telefono;
         this.usuario.calificacion = res.calificacion;
         this.usuario.correo = res.correo;
+        this.carga = false ;
         console.log(res);
       });
     } else {
+      this.carga = false ;
       console.log('no estas logueado');
     }
 
@@ -128,13 +141,16 @@ export class CuentaComponent implements OnInit {
     
 }
   eliminarProducto(id) {
+    this.carga = true ;
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.eliminameProducto(idUsuario, id).subscribe(res => {
         this.productos = res;
+        this.carga = false ;
         console.log(res);
       });
     } else {
+      this.carga = false ;
       console.log('no estas logueado');
     }
 
@@ -147,10 +163,12 @@ export class CuentaComponent implements OnInit {
  
 
   guardarCambios() {
+    this.carga = true ;
     this.usuario.telefono = this.forma.get('telefono').value;   
 
     // envio de la peticion al servicio
     if (this.usuario.telefono === '') {
+      this.carga = false ;
       alert('El campo telefono es obligatorio');
     } else {
       const id = this.usuarioService.validarUsuarios();
@@ -158,10 +176,12 @@ export class CuentaComponent implements OnInit {
         this.usuarioService.modificarUsuario(id, this.usuario.telefono).subscribe(
           res => {
             alert('Tu número' + this.usuario.telefono + ' se ha actualizado correctamente');
+            this.carga = false ;
            // this.forma.reset(this.Libro2);
           }
         );
       } else {
+        this.carga = false ;
         console.log('no esta logueado');
       }
     }

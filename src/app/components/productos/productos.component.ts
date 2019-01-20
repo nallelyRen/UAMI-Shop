@@ -11,6 +11,7 @@ export class ProductosComponent implements OnInit {
   productos: any[] = [];
   categoria = 'Libros';
   Restriccion=true;
+  carga = false;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
   }
 
@@ -19,10 +20,13 @@ export class ProductosComponent implements OnInit {
   }
 
   cambio(categoria) {
+    this.productos = [];
+    this.carga = true;
     this.categoria = categoria;
     if (categoria === 'libros') {
       this.productoService.obtenerLibros().subscribe(res => {
         this.productos = res;
+        this.carga = false;
         console.log(res);
         console.log('tipo', typeof (this.productos));
       });
@@ -30,6 +34,7 @@ export class ProductosComponent implements OnInit {
       if (categoria === 'proyectos') {
         this.productoService.obtenerProyectos().subscribe(res => {
           this.productos = res;
+          this.carga = false;
           console.log(res);
           console.log('tipo', typeof (this.productos));
         });
@@ -37,6 +42,7 @@ export class ProductosComponent implements OnInit {
       if (categoria === 'tutorias') {
         this.productoService.obtenerTutorias().subscribe(res => {
           this.productos = res;
+          this.carga = false;
           console.log(res);
           console.log('tipo', typeof (this.productos));
         }); 
@@ -44,6 +50,7 @@ export class ProductosComponent implements OnInit {
         if (categoria === 'electronica') {
         this.productoService.obtenerElectronicos().subscribe(res => {
           this.productos = res;
+          this.carga = false;
           console.log(res);
           console.log('tipo', typeof (this.productos));
         });
@@ -53,14 +60,23 @@ export class ProductosComponent implements OnInit {
 
         this.productoService.obtenerDepartamentos().subscribe(res => {
         this.productos = res;
+        this.carga = false;
          console.log(res);
           console.log('tipo', typeof (this.productos));
         });
-
-      }  
+      }  else{
+        if (categoria === 'otros') {
+          this.productoService.obtenerOtros().subscribe(res => {
+          this.productos = res;
+          this.carga = false;
+           console.log(res);
+            console.log('tipo', typeof (this.productos));
+          });
+        }
+      }
     }
-  }
-  }
+  }//cierre else
+  }//cierre cambio categoria
   obtenerProductos() {
     this.productoService.obtenerLibros().subscribe(res => {
       this.productos = res;
@@ -83,9 +99,11 @@ export class ProductosComponent implements OnInit {
 }
 
   agregarFavorito(id) {
+    this.carga = true;
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
+        this.carga = false;
         console.log(res);
       });
     } else {
