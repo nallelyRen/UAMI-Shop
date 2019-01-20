@@ -1,10 +1,10 @@
 <div class="main-container" id="contenedor_de_la_forma">
-    <h2 id="titulo" style="margin: 100px auto;">Registra Tu Producto</h2>
-   
-    <div align="center" *ngIf="carga">
+   <div align="center" *ngIf="carga">
         <mat-spinner></mat-spinner>
         <br>
-    </div>
+    </div> 
+    <h2 id="titulo" style="margin: 100px auto;">Registra Tu Producto</h2>   
+    
     <form  [formGroup]="forma" (ngSubmit)="guardarCambios()">
         <!--Creo una forma en angular a la cual le inserto los datos-->
        

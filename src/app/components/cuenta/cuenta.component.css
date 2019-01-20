@@ -29,3 +29,9 @@
         padding-left: 0px; 
     }
   }
+  @media screen and (min-width: 700px) {
+    .responsive-width {
+        font-size: 1.2vw;
+        padding-left: 0px; 
+    }
+  }
