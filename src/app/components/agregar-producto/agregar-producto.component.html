@@ -1,6 +1,6 @@
 <div class="main-container" id="contenedor_de_la_forma">
     <h2 id="titulo" style="margin: 100px auto;">Registra Tu Producto</h2>
-
+   
     <form  [formGroup]="forma" (ngSubmit)="guardarCambios()">
         <!--Creo una forma en angular a la cual le inserto los datos-->
        
@@ -19,14 +19,14 @@
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
             </div>
         </div>
 
         <div class="form-group row" *ngIf="condicionDepartamentos">
             <label class="col-2 col-form-label">Dirección</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Dirección" formControlName="direccion">
             </div>
         </div>
@@ -34,19 +34,19 @@
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Precio</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Precio" formControlName="precio">
             </div>
         </div>
         <div class="form-group row" *ngIf="condicionProyecto">
             <label class="col-2 col-form-label">Representante</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Representante" formControlName="representante">
             </div>
         </div>
         <div class="form-group row" *ngIf="condicionProyecto">
             <label class="col-2 col-form-label">Requisitos</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Requisitos" formControlName="requisitos">
             </div>
         </div>
@@ -63,13 +63,13 @@
 		
         <div class="form-group row">
             <label class="col-2 col-form-label">Descripción</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Descripción" formControlName="descripcion">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">Imagen</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="" type="file" id="imgInp" (change)="setImage($event.target.files)">
             </div>
         </div>
@@ -83,4 +83,6 @@
             </div>
         </div>
     </form>
+
+
 </div>
