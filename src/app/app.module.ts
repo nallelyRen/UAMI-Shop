@@ -22,7 +22,8 @@ import { APP_ROUTING } from './app.routes';
 import { ListUploadComponent } from './components/list-upload/list-upload.component';
 import { ModificarDatosProductoComponent } from './components/modificar-datos-producto/modificar-datos-producto.component';
 import { ModificarImagenProductoComponent } from './components/modificar-imagen-producto/modificar-imagen-producto.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -39,7 +40,6 @@ import { ModificarImagenProductoComponent } from './components/modificar-imagen-
     AyudaComponent,
     ListUploadComponent,
     AgregarProductoComponent,
-
     ModificarDatosProductoComponent,
     ModificarImagenProductoComponent
 
@@ -50,6 +50,8 @@ import { ModificarImagenProductoComponent } from './components/modificar-imagen-
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     APP_ROUTING
   ],
   providers: [],

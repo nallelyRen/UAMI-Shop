@@ -1,6 +1,10 @@
 <div class="main-container" id="contenedor_de_la_forma">
-    <h2 id="titulo" style="margin: 100px auto;">Registra Tu Producto</h2>
-   
+   <div align="center" *ngIf="carga">
+        <mat-spinner></mat-spinner>
+        <br>
+    </div> 
+    <h2 id="titulo" style="margin: 100px auto;">Registra Tu Producto</h2>   
+    
     <form  [formGroup]="forma" (ngSubmit)="guardarCambios()">
         <!--Creo una forma en angular a la cual le inserto los datos-->
        
@@ -12,7 +16,8 @@
                 <option value="proyecto">Proyecto terminal y Servicio Social</option>
                 <option value="electronica">Electronica</option>
                 <option value="departamentos">Departamentos</option>
-				<option value="tutorias">Tutorias</option>
+                <option value="tutorias">Tutorias</option>
+                <option value="otros">Otros</option>
           </select>
             </div>
         </div>
