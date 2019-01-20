@@ -6,7 +6,7 @@
 <div id="contenido" *ngIf="!Restriccion">
 		<body>
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <!-- Card -->
             <div class="card-deck">
             <div id="registro" class="card card-image">
@@ -19,7 +19,7 @@
                         <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro es
                             totalmente gratuito
                         </p>
-                        <a class="btn btn-green" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
+                        <a class="btn btn-green btn-block" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
                             Registrar producto</a>
                     </div>
                 </div>
@@ -202,9 +202,9 @@
                                 <p class="card-text text-white">{{product.descripcion}}</p>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                <button class="btn btn-outline-success btn-block" [routerLink]="['/producto', product.id]">ver
                                     más</button>
-                                <button class="btn btn-outline-info" (click)="agregarFavorito(product.id)">Añadir a
+                                <button class="btn btn-outline-info responsive-width btn-block" (click)="agregarFavorito(product.id)">Añadir a
                                     favoritos</button>
                             </div>
                         </div>
