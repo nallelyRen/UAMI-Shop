@@ -6,8 +6,9 @@
 <div id="contenido" *ngIf="!Restriccion">
 		<body>
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <!-- Card -->
+            <div class="card-deck">
             <div id="registro" class="card card-image">
 
                 <!-- Content -->
@@ -18,11 +19,12 @@
                         <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro es
                             totalmente gratuito
                         </p>
-                        <a class="btn btn-green" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
+                        <a class="btn btn-green btn-block" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
                             Registrar producto</a>
                     </div>
                 </div>
             </div>
+        </div>
             <!-- Card -->
             <div class="list-group list-group-flush" id="list-tab" role="tablist">
 
@@ -166,21 +168,25 @@
                             </div>
                         </div>
                         <!-- Card -->
+                        
 
-                        <!-- Card -->
-                        <div id="card-6" class="card card-image">
+                        
+                         <!-- Card -->
+                         <div id="card-6" class="card card-image">
 
                             <!-- Content -->
                             <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                                 <div>
-                                        <h3 id="tituloR" class="card-title pt-2"><i class="fa fa-comments"></i> <strong> (PROXIMAMENTE) Soporte técnico  </strong></h3>
-                                        <p id="textoR">Contrata los servicios técnicos de algún compañero </p> 
+                                        <h3 id="tituloR" class="card-title pt-2"><i class="fa fa-comments"></i> <strong> Próximamente  </strong></h3>
+                                        <p id="textoR">Categoria de servicio técnico  </p> 
                                 </div>
                             </div>
                         </div>
                         <!-- Card -->
                     </div>
                     <!-- Card deck -->
+
+                   
 
                 </div>
 
@@ -196,9 +202,9 @@
                                 <p class="card-text text-white">{{product.descripcion}}</p>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                                <button class="btn btn-outline-success btn-block" [routerLink]="['/producto', product.id]">ver
                                     más</button>
-                                <button class="btn btn-outline-info" (click)="agregarFavorito(product.id)">Añadir a
+                                <button class="btn btn-outline-info responsive-width btn-block" (click)="agregarFavorito(product.id)">Añadir a
                                     favoritos</button>
                             </div>
                         </div>

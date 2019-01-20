@@ -22,3 +22,10 @@
 #productos{
     color: white;
 }
+
+@media screen and (max-width: 600px) {
+    #contenido {
+        padding-top: 50px;
+        padding-left: 0px; 
+    }
+  }
