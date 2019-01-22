@@ -1,14 +1,13 @@
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolling-navbar">
     <a id="titulo" class="navbar-brand" [routerLink]="['principal']">UAMIShop</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-    aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  
+
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        
+
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['ayuda']">Ayuda</a>
@@ -17,11 +16,11 @@
                 <a class="nav-link" [routerLink]="['sobreNosotros']">Sobre nosotros</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['miCuenta']">Mi cuenta</a>
+                <a class="nav-link" (click)="irCuenta()">Mi cuenta</a>
             </li>
-            
+
         </ul>
-        <button type="button" class="btn btn-primary"  [routerLink]="['/productos']">Ir al catalogo</button>            
+        <button type="button" class="btn btn-primary" (click)="irCatalogo()">Ir al catalogo</button>
         <!--Third row
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -30,12 +29,11 @@
         </form>-->
         <div class="g-signin2" data-width="120" data-height="30" data-onsuccess="onSignIn"></div>
         <button class="#" onclick="Salir();" type="salir">Salir</button>
- 
 
-        <div class="fb-login-button" data-width="450" data-max-rows="1" data-size="medium" data-button-type="login_with"
-         data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" onlogin="checkLoginState();"></div>
 
-              
+        <div class="fb-login-button" data-width="450" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false" onlogin="checkLoginState();"></div>
+
+
     </div>
-    
+
 </nav>

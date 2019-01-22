@@ -21,7 +21,7 @@ export class CuentaComponent implements OnInit {
 
   categoria = 'Libros';
   forma: FormGroup;
-  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router:Router) {
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router: Router) {
         // creacion del formulario
     this.forma = new FormGroup({
       'nombre': new FormControl(''),

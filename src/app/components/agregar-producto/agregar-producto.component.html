@@ -25,6 +25,9 @@
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-8">
                 <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+                <div class="alert alert-primary m-2" role="alert">
+                    En este campo escribe el nombre de tu producto, p.e. Libro Resnik
+                </div>
             </div>
         </div>
 
@@ -74,7 +77,7 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Imagen</label>
             <div class="col-8">
-                <input class="" type="file" id="imgInp" (change)="setImage($event.target.files)">
+                <input class="" type="file" id="imgInp" accept="image/*" (change)="setImage($event.target.files)">
             </div>
         </div>
         <div class="form-group row">
