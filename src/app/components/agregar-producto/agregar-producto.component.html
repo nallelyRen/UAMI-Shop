@@ -4,7 +4,9 @@
         <br>
     </div> 
     <h2 id="titulo" style="margin: 100px auto;">Registra Tu Producto</h2>   
-    
+    <div class="alert alert-info" role="alert">
+        Si tienes alguna duda sobre como llenar el formulario los botones "?" te ayudarán
+      </div>
     <form  [formGroup]="forma" (ngSubmit)="guardarCambios()">
         <!--Creo una forma en angular a la cual le inserto los datos-->
        
@@ -25,8 +27,12 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-md-8">
-                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">                
             </div>
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
+                ngbPopover="Ejemplo: Cuarto para dos personas *solo mujeres" popoverTitle="Tip para el nombre de tu apartamento ">          
+        </button>
+        
         </div>
 
         <div class="form-group row" *ngIf="condicionDepartamentos">
@@ -81,11 +87,12 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">&nbsp;</label>
             <div class="input-group col-md-8">
-                <button type="submit" class="btn btn-outline-primary m-2"> <!--El submit envia el formulario-->
+                <button type="submit" class="btn btn-outline-success m-2"> <!--El submit envia el formulario-->
           Guardar
         </button>
-                <a class="btn btn-outline-danger m-2" [routerLink]="['/productos']">Cancelar</a>
-            </div>
+                <a class="btn btn-outline-danger m-2 " [routerLink]="['/productos']">Cancelar</a>
+
+                 </div>
         </div>
     </form>
 
