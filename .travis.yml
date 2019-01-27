@@ -11,3 +11,11 @@ before_script:
 
 script:
   - ng build --prod --aot
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/travis-demo
+  on:
+    branch: master
