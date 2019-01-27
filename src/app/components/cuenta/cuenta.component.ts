@@ -131,10 +131,10 @@ export class CuentaComponent implements OnInit {
     const id= this.usuarioService.validarUsuarios();      
    if(id== -1){
     console.log('el valor es ',id);
-    this.Restriccion=true;
+    this.Restriccion=true;    
     alert('No estas logueado por lo que el contenido de la página no se mostrará');
     return this.Restriccion; 
-   }else{
+   }else{         
     console.log('el valor es ',id);
      return this.Restriccion=false;
    }
