@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
+import {PageEvent} from '@angular/material';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -8,21 +9,32 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class ProductosComponent implements OnInit {
 
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
   productos: any[] = [];
   categoria = 'Libros';
   Restriccion=true;
+  carga = false;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
   }
-
+  
+  pageEvent: PageEvent;
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
   ngOnInit() {
     this.llamada();
   }
 
   cambio(categoria) {
+    this.productos = [];
+    this.carga = true;
     this.categoria = categoria;
     if (categoria === 'libros') {
       this.productoService.obtenerLibros().subscribe(res => {
         this.productos = res;
+        this.carga = false;
         console.log(res);
         console.log('tipo', typeof (this.productos));
       });
@@ -30,6 +42,7 @@ export class ProductosComponent implements OnInit {
       if (categoria === 'proyectos') {
         this.productoService.obtenerProyectos().subscribe(res => {
           this.productos = res;
+          this.carga = false;
           console.log(res);
           console.log('tipo', typeof (this.productos));
         });
@@ -37,6 +50,7 @@ export class ProductosComponent implements OnInit {
       if (categoria === 'tutorias') {
         this.productoService.obtenerTutorias().subscribe(res => {
           this.productos = res;
+          this.carga = false;
           console.log(res);
           console.log('tipo', typeof (this.productos));
         }); 
@@ -44,6 +58,7 @@ export class ProductosComponent implements OnInit {
         if (categoria === 'electronica') {
         this.productoService.obtenerElectronicos().subscribe(res => {
           this.productos = res;
+          this.carga = false;
           console.log(res);
           console.log('tipo', typeof (this.productos));
         });
@@ -53,14 +68,23 @@ export class ProductosComponent implements OnInit {
 
         this.productoService.obtenerDepartamentos().subscribe(res => {
         this.productos = res;
+        this.carga = false;
          console.log(res);
           console.log('tipo', typeof (this.productos));
         });
-
-      }  
+      }  else{
+        if (categoria === 'otros') {
+          this.productoService.obtenerOtros().subscribe(res => {
+          this.productos = res;
+          this.carga = false;
+           console.log(res);
+            console.log('tipo', typeof (this.productos));
+          });
+        }
+      }
     }
-  }
-  }
+  }//cierre else
+  }//cierre cambio categoria
   obtenerProductos() {
     this.productoService.obtenerLibros().subscribe(res => {
       this.productos = res;
@@ -83,9 +107,11 @@ export class ProductosComponent implements OnInit {
 }
 
   agregarFavorito(id) {
+    this.carga = true;
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
+        this.carga = false;
         console.log(res);
       });
     } else {
