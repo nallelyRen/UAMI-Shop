@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
+import {PageEvent} from '@angular/material';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -8,13 +9,20 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class ProductosComponent implements OnInit {
 
+  length = 100;
+  pageSize = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
   productos: any[] = [];
   categoria = 'Libros';
   Restriccion=true;
   carga = false;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
   }
-
+  
+  pageEvent: PageEvent;
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  }
   ngOnInit() {
     this.llamada();
   }
