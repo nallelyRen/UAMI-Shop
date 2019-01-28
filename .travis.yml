@@ -19,3 +19,10 @@ deploy:
   local_dir: dist/UAMIShop
   on:
     branch: master
+    deploy:
+  provider: releases
+  api_key:  $GITHUB_TOKEN
+  file: "test"
+  skip_cleanup: true
+  on:
+    tags: true
