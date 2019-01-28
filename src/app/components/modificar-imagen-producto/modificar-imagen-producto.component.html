@@ -1,0 +1,23 @@
+<br><br><br><br><br><br>
+<h4 align="center"><b>Modificar la imagen de "{{producto.nombre}}"</b></h4>
+<br>
+<div align="center" *ngIf="carga">
+        <mat-spinner></mat-spinner>
+        <br>
+    </div>
+<div align="center">
+    <img [src]="src" width="500px" alt="">
+    <br>
+    <div class="input-group col-md-8">
+        <br>
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <input type="file" id="imgInp" accept="image/*" (change)="setImage($event.target.files)">
+    </div>
+    <div class="input-group col-md-8">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <button type="button" (click)="cambiaImagen()" class="btn btn-outline-primary m-2"> <!--El submit envia el formulario-->
+        Cambiar Imagen
+        </button>
+        <a class="btn btn-outline-danger m-2" [routerLink]="['/miCuenta']">Cancelar</a>
+    </div>
+</div>

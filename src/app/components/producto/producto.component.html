@@ -3,15 +3,18 @@
 
   <!-- Section heading -->
   <h2 id="titulo" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2> 
-   
+    <div align="center" *ngIf="carga">
+          <mat-spinner></mat-spinner>
+          <br>
+      </div>
 
 <div id="contenido" *ngIf="producto" class="row animated fadeIn fast">
   
   <!--Grid column-->
   <div class="col-md-5 mb-10 text-center">
-
+     
     <img [src]="producto.archivo.url" class="img-fluid z-depth-1-half" alt="">
-
+      
   </div>
   <!--Grid column-->
 

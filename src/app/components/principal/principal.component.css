@@ -37,7 +37,7 @@ body,
   font-weight: lighter;
   color:#ffffff;
   text-align: center;
- padding-bottom: 170px;
+ /*padding-bottom: 170px; */
  text-shadow: 3px 2px black;
   
 }
@@ -55,7 +55,7 @@ body,
   font-weight: lighter;
   color:#000000;
   text-align: center;
- padding-bottom: 170px;
+ /*padding-bottom: 170px;*/
  text-shadow: 3px 2px white;
   
 }
@@ -75,7 +75,7 @@ body,
   font-weight: lighter;
   color:#ffffff;
   text-align: center;
- padding-bottom: 170px;
+/* padding-bottom: 170px;*/
  text-shadow: 3px 2px black;
   
 }
@@ -85,6 +85,51 @@ body,
   
 }
 
+@media screen and (min-width: 601px) {
+  #titulo, #titulo2, #titulo3 {
+    font-size: 75px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #titulo, #titulo2, #titulo3 {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 400px) {
+  #titulo, #titulo2, #titulo3 {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 601px) {
+  #cover, #cover2 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #cover, #cover2 {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #cover, #cover2 {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  div.carousel {
+    padding-top: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  div.carousel {
+    padding-top: 67px;
+  }
+}
 #iconos{
  color: #006600;
 }

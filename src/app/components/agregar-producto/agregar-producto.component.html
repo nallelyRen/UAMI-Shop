@@ -1,32 +1,44 @@
 <div class="main-container" id="contenedor_de_la_forma">
+    <div align="center" *ngIf="carga">
+        <mat-spinner></mat-spinner>
+        <br>
+    </div>
     <h2 id="titulo" style="margin: 100px auto;">Registra Tu Producto</h2>
-
-    <form  [formGroup]="forma" (ngSubmit)="guardarCambios()">
+    <div class="alert alert-info" role="alert">
+        Si tienes alguna duda sobre como llenar el formulario los botones "?" te ayudarán
+    </div>
+    <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
         <!--Creo una forma en angular a la cual le inserto los datos-->
-       
+
         <div class="form-group row">
             <label class="col-2 col-form-label">Categoría</label>
             <div class="col-md-8">
-                <select (change)="prueba1()" class="form-control" name="categoria" placeholder="Categoria" formControlName="categoria">
-                <option value="libro">Libro</option>
-                <option value="proyecto">Proyecto terminal y Servicio Social</option>
-                <option value="electronica">Electronica</option>
-                <option value="departamentos">Departamentos</option>
-				<option value="tutorias">Tutorias</option>
-          </select>
+                <select (change)="prueba1()" class="form-control" name="categoria" placeholder="Categoria"
+                    formControlName="categoria">
+                    <option value="libro">Libro</option>
+                    <option value="proyecto">Proyecto terminal y Servicio Social</option>
+                    <option value="electronica">Electronica</option>
+                    <option value="departamentos">Departamentos</option>
+                    <option value="tutorias">Tutorias</option>
+                    <option value="otros">Otros</option>
+                </select>
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
             </div>
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
+                ngbPopover="Ejemplo: Cuarto para dos personas *solo mujeres" popoverTitle="Tip para el nombre de tu apartamento ">
+            </button>
+
         </div>
 
         <div class="form-group row" *ngIf="condicionDepartamentos">
             <label class="col-2 col-form-label">Dirección</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Dirección" formControlName="direccion">
             </div>
         </div>
@@ -34,53 +46,73 @@
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Precio</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Precio" formControlName="precio">
             </div>
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
+                ngbPopover="No dejes el campo vacío, coloca un cero y explica en la descripción del producto la clase de trato a 
+            la que deseas llegar"
+                popoverTitle="¿Tu servicio es gratuito o deseas hacer un intercambio? ">
+            </button>
+
         </div>
         <div class="form-group row" *ngIf="condicionProyecto">
             <label class="col-2 col-form-label">Representante</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Representante" formControlName="representante">
             </div>
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
+            ngbPopover="En caso de no tener maestro tutor aún, escribe sin maestro en lugar de dejar el campo vacio"
+            popoverTitle="Coloca el nombre del profesor que estará a cargo del proyecto ">
+        </button>
         </div>
         <div class="form-group row" *ngIf="condicionProyecto">
             <label class="col-2 col-form-label">Requisitos</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Requisitos" formControlName="requisitos">
             </div>
         </div>
         <div class="form-group row" *ngIf="condicionTutorias">
-                        <label class="col-2 col-form-label">Division</label>
-                        <div class="col-md-8">
-                            <select (change)="prueba1()" class="form-control" name="Division" placeholder="Division" formControlName="area">
-                            <option value="CBI">CBI</option>
-                            <option value="CSH">CSH</option>
-                            <option value="CBS">CBS</option>
-                      </select>
-                        </div>
+            <label class="col-2 col-form-label">Division</label>
+            <div class="col-md-8">
+                <select (change)="prueba1()" class="form-control" name="Division" placeholder="Division"
+                    formControlName="area">
+                    <option value="CBI">CBI</option>
+                    <option value="CSH">CSH</option>
+                    <option value="CBS">CBS</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
+                ngbPopover="Si das asesorías para varias divisiones escoge una de las tres y coloca la información faltante en la descripción"
+                popoverTitle="Coloca la división de tus asesorías, no la división a la que tú perteneces ">
+            </button>
+
         </div>
-		
+
         <div class="form-group row">
             <label class="col-2 col-form-label">Descripción</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Descripción" formControlName="descripcion">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">Imagen</label>
-            <div class="col-8">
+            <div class="col-md-8">
                 <input class="" type="file" id="imgInp" (change)="setImage($event.target.files)">
             </div>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">&nbsp;</label>
             <div class="input-group col-md-8">
-                <button type="submit" class="btn btn-outline-primary m-2"> <!--El submit envia el formulario-->
-          Guardar
-        </button>
-                <a class="btn btn-outline-danger m-2" [routerLink]="['/productos']">Cancelar</a>
+                <button type="submit" class="btn btn-outline-success m-2">
+                    <!--El submit envia el formulario-->
+                    Guardar
+                </button>
+                <a class="btn btn-outline-danger m-2 " [routerLink]="['/productos']">Cancelar</a>
+
             </div>
         </div>
     </form>
+
+
 </div>

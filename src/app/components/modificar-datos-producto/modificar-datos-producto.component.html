@@ -1,0 +1,66 @@
+<br><br><br><br><br>
+<h4 align="center">Modificar los datos de "{{producto.nombre}}"</h4>
+<br><br>
+<div align="center" *ngIf="carga">
+        <mat-spinner></mat-spinner>
+        <br>
+    </div>
+<form (ngSubmit)="guardarCambios()">
+    <!--Creo una forma en angular a la cual le inserto los datos-->
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Nombre</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" id="nombre" placeholder="Nombre" [value]="producto.nombre">
+        </div>
+    </div>
+    <div class="form-group row" *ngIf="producto.ubicacion">
+        <label class="col-2 col-form-label">Dirección</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" placeholder="Dirección" [value]="producto.ubicacion" id="ubicacion">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Precio</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" placeholder="Precio" [value]="producto.precio" id="precio">
+        </div>
+    </div>
+    <div class="form-group row" *ngIf="producto.area">
+        <label class="col-2 col-form-label">Area</label>
+        <div class="col-md-8">
+            <select class="form-control" name="area" [value]="producto.area" placeholder="Area" id="area">
+            <option value="cbi">CBI</option>
+            <option value="cbs">CBS</option>
+            <option value="csh">CSH</option>
+          </select>
+        </div>
+    </div>
+    <div class="form-group row" *ngIf="producto.representante">
+        <label class="col-2 col-form-label">Representante</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" placeholder="Representante" [value]="producto.representante" id="representante">
+        </div>
+    </div>
+    <div class="form-group row" *ngIf="producto.requisitos">
+        <label class="col-2 col-form-label">Requisitos</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" placeholder="Requisitos" [value]="producto.requisitos" id="requisitos">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Descripción</label>
+        <div class="col-md-8">
+            <textarea rows="4" cols="50" class="form-control" id="descripcion" placeholder="Descripcion">{{producto.descripcion}}</textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button type="submit" class="btn btn-outline-primary m-2"> <!--El submit envia el formulario-->
+     Guardar Cambios
+   </button>
+            <a class="btn btn-outline-danger m-2" [routerLink]="['/miCuenta']">Cancelar</a>
+        </div>
+    </div>
+</form>
+<button class="btn btn-outline-success" [routerLink]="['/modificarImagenProducto']">Editar imagen</button>

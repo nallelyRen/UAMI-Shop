@@ -26,8 +26,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule,} from '@angular/material/paginator';
 import { MatInputModule, } from '@angular/material';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
 
 @NgModule({
   declarations: [
@@ -58,7 +56,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatInputModule,
-    NgbModule,
+
     APP_ROUTING
   ],
   providers: [],

@@ -53,7 +53,7 @@
     color:black;
     font-family: 'K2D', sans-serif;
     font-weight: lighter;  
-    font-size: 27px;    
+    font-size: 27px;   
 }
 #textoB{
     color:white; 
@@ -80,3 +80,11 @@
     font-family: 'K2D', sans-serif;
     font-weight: bold;    
 }
+
+
+@media screen and (min-width: 700px) {
+    .responsive-width {
+        font-size: 1.2vw;
+    }
+  }
+    

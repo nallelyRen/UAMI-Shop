@@ -1,12 +1,18 @@
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 <div id="contenido" *ngIf="!Restriccion">
+   
+
 <body>
+
+    
   <div class="row">
     <div class="col-sm-3">
       <!-- imagen -->
       <img src="../../../assets/img/logoBig.png" class="img-fluid rounded-circle hoverable" alt="hoverable">
       <!-- imagen -->
       <div class="list-group list-group-flush" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active " id="list-principal-list" 
+          data-toggle="list" href="#list-principal" role="tab" aria-controls="principal">Bienvenido</a>
         <a class="list-group-item list-group-item-action " id="list-info-list" (click)="obtenerInfoUsuario()"
           data-toggle="list" href="#list-info" role="tab" aria-controls="info">Información</a>
         <a class="list-group-item list-group-item-action" id="list-productos-list" (click)="obtenerProductosUsuario()"
@@ -19,8 +25,54 @@
 
 
     <div class="col-sm-8">
+      <!--  ANIMACIÓN DE CARGA-->
+        <div align="center" *ngIf="carga">
+            <mat-spinner></mat-spinner>
+            <br>
+        </div>
       <div class="tab-content" id="informacion">
-        <div class="tab-pane fade show active  border border-gray " id="list-info" role="tabpanel" aria-labelledby="list-info-list">
+
+          <div class="tab-pane fade show active" id="list-principal" role="tabpanel" aria-labelledby="list-principal-list">
+
+              <h3 class="h3 mb-3">Configuración de cuenta</h3>
+              <hr>
+          <!-- Card image -->
+          <div class="view view-cascade overlay">
+              <img class="card-img-top" src="../../../assets/img/cover-2.jpg" alt="Card image cap">
+              
+          </div>
+
+          <!-- Card content -->
+          <div id="cardP" class="card-body bg-dark white-text text-center">
+
+              <!-- Title -->
+              <h4 class="card-title"><strong>Bienvenido</strong></h4>
+              <!-- Text -->
+              <p id="cardP" class="card-text">En esta página podrás encontrar toda la información relevante de tu cuenta, para un mejor uso de la página te
+                recomendamos lo siguiente:</p>
+                <ul class="a">
+                    <li> Cuando hayas vendido alguno de tus productos, recuerda eliminarlo de la página</li>
+                    <li>Dar tu número de telefono como forma de contacto es totalmente opcional</li>
+                    <li>Si tienes alguna duda sobre los datos personales a los que la página tiene acceso visita la sección de Ayuda</li>
+                  </ul>
+                  
+              <!-- Linkedin -->
+              <a id="cardP" href="https://www.facebook.com/uami.shopp.1" target="_blank">
+                  <i class="fa fa-facebook mr-4"></i>
+              </a>
+              <a id="cardP" href="https://twitter.com/ShopUami" target="_blank">
+                  <i class="fa fa-twitter mr-3"></i>
+              </a>
+              <a  id="cardP" href="https://www.youtube.com/channel/UC65Dze8QOdWVVckYDChaZyA" target="_blank">
+                  <i class="fa fa-youtube mr-3"></i>
+              </a>
+
+          </div>
+              
+    
+            </div>
+
+        <div class="tab-pane fade border border-gray " id="list-info" role="tabpanel" aria-labelledby="list-info-list">
 
           <h3 class="h3 mb-3">Cuenta</h3>
           <hr>
@@ -78,9 +130,9 @@
                 <p class="card-text text-white">{{product.descripcion}}</p>
               </div>
               <div class="card-footer">
-                <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]" disabled>Editar
-                  información</button>
-                <button class="btn btn-outline-danger" (click)="eliminarProducto(product.id)">Eliminar</button>
+                <button class="btn btn-outline-success responsive-width btn-block" (click)="modificarProducto(product)">Editar información</button>
+
+                <button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarProducto(product.id)">Eliminar</button>
               </div>
             </div>
           </div>
@@ -100,8 +152,8 @@
                 <p class="card-text text-white">{{product.descripcion}}</p>
               </div>
               <div class="card-footer">
-                <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">Ver más</button>
-                <button class="btn btn-outline-danger" (click)="eliminarFavoritos(product.id)">Quitar de favoritos</button>
+                <button class="btn btn-outline-success responsive-width btn-block " [routerLink]="['/producto', product.id]">Ver más</button>
+                <button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarFavoritos(product.id)">Quitar de favoritos</button>
               </div>
             </div>
           </div>
@@ -112,7 +164,7 @@
     </div>
   </div>
   </body>
-  <app-pie-pagina></app-pie-pagina>
+  
 </div>
 
   
