@@ -14,6 +14,7 @@ export class ProductosComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   productos: any[] = [];
   categoria = 'Libros';
+
   Restriccion=true;
   carga = false;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
@@ -53,8 +54,8 @@ export class ProductosComponent implements OnInit {
           this.carga = false;
           console.log(res);
           console.log('tipo', typeof (this.productos));
-        }); 
-	  } else {
+        });
+      } else {
         if (categoria === 'electronica') {
         this.productoService.obtenerElectronicos().subscribe(res => {
           this.productos = res;
@@ -63,9 +64,7 @@ export class ProductosComponent implements OnInit {
           console.log('tipo', typeof (this.productos));
         });
       }
-      }
       if (categoria === 'departamentos') {
-
         this.productoService.obtenerDepartamentos().subscribe(res => {
         this.productos = res;
         this.carga = false;
@@ -83,8 +82,9 @@ export class ProductosComponent implements OnInit {
         }
       }
     }
-  }//cierre else
-  }//cierre cambio categoria
+  }
+  }
+}
   obtenerProductos() {
     this.productoService.obtenerLibros().subscribe(res => {
       this.productos = res;
@@ -119,6 +119,4 @@ export class ProductosComponent implements OnInit {
     }
 
   }
-
-
 }

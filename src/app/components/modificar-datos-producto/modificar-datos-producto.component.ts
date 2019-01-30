@@ -18,7 +18,9 @@ export class ModificarDatosProductoComponent implements OnInit {
    requisitos: '',
    descripcion: '',
  };
-carga=false;
+
+ carga=false;
+
  producto: any;
 
  constructor(private usuarioService: UsuarioService, private productoService: ProductosService) {
@@ -99,8 +101,8 @@ carga=false;
         }
         }
       } else {
-        const id= this.usuarioService.validarUsuarios();    
-        if(id!= -1){
+        const id = this.usuarioService.validarUsuarios();
+        if (id != -1) {
         this.productoService.modificaDatosProducto(id, this.producto.id, this.elemento.nombre, this.elemento.precio,
            this.elemento.descripcion).subscribe(res => {
             if (res) {

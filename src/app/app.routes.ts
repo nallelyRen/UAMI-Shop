@@ -23,10 +23,8 @@ const APP_ROUTES: Routes = [
     {path: 'agregarProducto', component: AgregarProductoComponent},
     {path: 'productos', component: ProductosComponent },
     {path: 'sobreNosotros', component: SobreNosotrosComponent },
-
     {path: 'modificarDatosProducto', component: ModificarDatosProductoComponent },
     {path: 'modificarImagenProducto', component: ModificarImagenProductoComponent },
-
     {path: '**', pathMatch: 'full', redirectTo: 'principal'}
 ];
 
