@@ -43,12 +43,7 @@ export class ProductosService {
     .pipe(map(res => res.json()));
   }
 
-  obtenerOtros() {
-    return this.http.get(this.url + 'otros') // .subscribe(res => console.log(res.json()));
-    .pipe(map(res => res.json()));
-  }
-
-  obtenerProductos() {
+   obtenerProductos() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'productos') // .subscribe(res => console.log(res.json()));
     .pipe(map(res => res.json()));
