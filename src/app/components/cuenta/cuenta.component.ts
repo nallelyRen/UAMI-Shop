@@ -14,7 +14,7 @@ export class CuentaComponent implements OnInit {
 
   productos: any[] = [];
   Restriccion=true;
-  carga = false;
+  carga=false;
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   //usuario:  any[] = [];
   
@@ -122,6 +122,7 @@ export class CuentaComponent implements OnInit {
         console.log(res);
       });
     } else {
+      this.carga = false ;
       console.log('no estas logueado');
     }
 
@@ -130,10 +131,10 @@ export class CuentaComponent implements OnInit {
     const id= this.usuarioService.validarUsuarios();      
    if(id== -1){
     console.log('el valor es ',id);
-    this.Restriccion=true;
+    this.Restriccion=true;    
     alert('No estas logueado por lo que el contenido de la página no se mostrará');
     return this.Restriccion; 
-   }else{
+   }else{         
     console.log('el valor es ',id);
      return this.Restriccion=false;
    }
@@ -163,7 +164,7 @@ export class CuentaComponent implements OnInit {
 
   guardarCambios() {
     this.carga = true ;
-    this.usuario.telefono = this.forma.get('telefono').value;
+    this.usuario.telefono = this.forma.get('telefono').value;   
     // envio de la peticion al servicio
     if (this.usuario.telefono === '') {
       this.carga = false ;
@@ -179,6 +180,7 @@ export class CuentaComponent implements OnInit {
           }
         );
       } else {
+        this.carga = false ;
         console.log('no esta logueado');
         this.carga = false ;
       }

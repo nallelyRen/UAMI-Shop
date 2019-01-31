@@ -22,3 +22,31 @@
 #productos{
     color: white;
 }
+#registro{
+    background-image:url(../../../assets/img/textura.jpg);
+}
+#cardP{
+    color:white;  
+    font-family: 'K2D', sans-serif;
+    font-weight: lighter;    
+    font-size: 18px;
+}
+
+ul.a {
+    list-style-type: circle;
+    text-align: left;
+  }
+@media screen and (max-width: 600px) {
+    #contenido {
+        padding-top: 50px;
+        padding-left: 0px; 
+    }
+  }
+  @media screen and (min-width: 700px) {
+    .responsive-width {
+        font-size: 1.2vw;
+        padding-left: 0px; 
+    }
+  }
+
+ 

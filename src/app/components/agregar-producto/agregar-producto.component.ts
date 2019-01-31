@@ -17,8 +17,8 @@ export class AgregarProductoComponent implements OnInit {
     representante: '',
     requisitos: '',
     descripcion: '',
-    direccion:'',
-	area: '',
+    direccion: '',
+    area: '',
   };
   file: any;
   condicionProyecto = false;
@@ -33,8 +33,8 @@ export class AgregarProductoComponent implements OnInit {
     representante: '',
     requisitos: '',
     descripcion: '',
-    direccion:'',
-	area: '',
+    direccion: '',
+    area: '',
   };
   carga = false;
   forma: FormGroup;
@@ -48,8 +48,8 @@ export class AgregarProductoComponent implements OnInit {
       'representante': new FormControl(''),
       'requisitos': new FormControl(''),
       'descripcion': new FormControl('', [Validators.required]),
-      'direccion':new FormControl('', [Validators.required, Validators.minLength(10)]), 
-	  'area': new FormControl('')
+      'direccion': new FormControl('', [Validators.required, Validators.minLength(10)]),
+      'area': new FormControl('')
     });
   }
   // metodo que se ejecuta antes que el demas codigo pero despues del constructor
@@ -67,11 +67,11 @@ export class AgregarProductoComponent implements OnInit {
     } else {
       this.condicionDepartamentos = false;
     }
-	if (this.forma.get('categoria').value === 'tutorias'){
-		this.condicionTutorias = true;
-	} else {
-		this.condicionTutorias = false;
-	}
+    if (this.forma.get('categoria').value === 'tutorias') {
+      this.condicionTutorias = true;
+    } else {
+      this.condicionTutorias = false;
+    }
   }
 
   // evento del boton con el que se obtiene la imagen que sube el usuario
@@ -89,7 +89,7 @@ export class AgregarProductoComponent implements OnInit {
     this.Libro.representante = this.forma.get('representante').value;
     this.Libro.requisitos = this.forma.get('requisitos').value;
     this.Libro.descripcion = this.forma.get('descripcion').value;
-    this.Libro.direccion = this.forma.get('direccion').value;
+    this.Libro.direccion = this.forma.get("direccion").value;
     this.Libro.area = this.forma.get('area').value;
     // envio de la peticion al servicio
     if (this.Libro.nombre === '' || this.Libro.precio === '' || this.Libro.categoria === '' || this.SiImagen === false) {
@@ -111,7 +111,7 @@ export class AgregarProductoComponent implements OnInit {
 
       } else {
         if (this.forma.get('categoria').value === 'proyecto') {
-         const id = this.usuarioService.validarUsuarios();
+          const id = this.usuarioService.validarUsuarios();
           if (id != -1) {
             this.productService.nuevoProyecto(this.Libro.nombre, this.Libro.representante, this.Libro.precio, this.Libro.descripcion,
               this.Libro.requisitos, this.file, id).subscribe(
@@ -140,8 +140,8 @@ export class AgregarProductoComponent implements OnInit {
             console.log('no esta logueado');
           }
         } else {
-          const id = this.usuarioService.validarUsuarios();
-          if (this.forma.get('categoria').value === 'electronica') {
+          if (this.forma.get('categoria').value === 'tutorias') {
+            const id = this.usuarioService.validarUsuarios();
             if (id != -1) {
               this.productService.nuevoElectronico(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
                 res => {
@@ -154,14 +154,12 @@ export class AgregarProductoComponent implements OnInit {
               console.log('no esta logueado');
             }
           } else {
-           const id = this.usuarioService.validarUsuarios();
-            if (this.forma.get('categoria').value === 'departamentos') {
+            const id = this.usuarioService.validarUsuarios();
+            if (this.forma.get('categoria').value === 'electronica') {
               if (id != -1) {
-                this.productService
-                .nuevoDepartamento(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id, this.Libro.direccion)
-                .subscribe(
+                this.productService.nuevoElectronico(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
                   res => {
-                    alert('Tu departamento ' + this.Libro.nombre + ' se a subido correctamente');
+                    alert('Tu electronico ' + this.Libro.nombre + ' se a subido correctamente');
                     this.forma.reset(this.Libro2);
                     this.carga = false;
                   }
@@ -171,25 +169,42 @@ export class AgregarProductoComponent implements OnInit {
               }
             } else {
               const id = this.usuarioService.validarUsuarios();
-               if (this.forma.get('categoria').value === 'otros') {
-                 if (id != -1) {
-                   this.productService
-                   .nuevoOtro(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id)
-                   .subscribe(
-                     res => {
-                       alert('Tu producto ' + this.Libro.nombre + ' se a subido correctamente');
-                       this.forma.reset(this.Libro2);
-                       this.carga = false;
-                     }
-                   );
-                 } else {
-                   console.log('no esta logueado');
-                 }
+              if (this.forma.get('categoria').value === 'departamentos') {
+                if (id != -1) {
+                  this.productService.nuevoDepartamento(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id, this.Libro.direccion).subscribe(
+                    res => {
+                      alert('Tu departamento ' + this.Libro.nombre + ' se a subido correctamente');
+                      this.forma.reset(this.Libro2);
+                      this.carga = false;
+                    }
+                  );
+                } else {
+                  console.log('no esta logueado');
                 }
-          }
+              } else {
+                const id = this.usuarioService.validarUsuarios();
+                if (this.forma.get('categoria').value === 'otros') {
+                  if (id != -1) {
+                    this.productService
+                     .nuevoOtro(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id)
+                      .subscribe(
+                        res => {
+                          alert('Tu producto ' + this.Libro.nombre + ' se a subido correctamente');
+                          this.forma.reset(this.Libro2);
+                          this.carga = false;
+                        }
+                      );
+                  } else {
+                    console.log('no esta logueado');
+                  }
+                }
+              }
 
+
+            }
+          }
         }
-        }
+
       }
     }
 

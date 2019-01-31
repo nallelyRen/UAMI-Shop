@@ -1,29 +1,51 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 
-
 <div id="contenido" *ngIf="!Restriccion">
+        
+		<body>
+    <div class="row">
+        <div class="col-sm-4">
+            <!-- Card -->
+            <div class="card-deck">
+            <div id="registro" class="card card-image">
 
-    <body>
-        <div class="row">
-            <div class="col-sm-3">
-                <!-- Card -->
-                <div id="registro" class="card card-image">
-
-                    <!-- Content -->
-                    <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-                        <div>
-                            <h5 id="textoR" class="green-text"><i class="fa fa-pie-chart"></i> Vende</h5>
-                            <h3 id="textoR" class="card-title pt-2"><strong>Registra tus productos</strong></h3>
-                            <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro es totalmente gratuito
-                            </p>
-                            <a class="btn btn-green" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
+                <!-- Content -->
+                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                    <div>
+                        <h5 id="textoR" class="green-text"><i class="fa fa-pie-chart"></i> Vende</h5>
+                        <h3 id="textoR" class="card-title pt-2"><strong>Registra tus productos</strong></h3>
+                        <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro es
+                            totalmente gratuito
+                        </p>
+                        <a class="btn btn-green btn-block" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
                             Registrar producto</a>
                         </div>
                     </div>
                 </div>
-                <!-- Card -->
-                <div class="list-group list-group-flush" id="list-tab" role="tablist">
+            </div>
+        </div>
+            <!-- Card -->
+            <div class="list-group list-group-flush" id="list-tab" role="tablist">
+
+                <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list"
+                    href="#" role="tab" aria-controls="principal">Categorías</a>
+                <a class="list-group-item list-group-item-action  active" id="list-principal-list" data-toggle="list" href="#principal"
+                    role="tab" aria-controls="pagPrin">Información</a>
+                <a class="list-group-item list-group-item-action " id="list-libros-list" data-toggle="list" href="#list-libros"
+                    role="tab" (click)="cambio('libros')" aria-controls="info">Libros</a>
+                <a class="list-group-item list-group-item-action" id="list-proyecto-list" data-toggle="list" href="#list-libros"
+                    (click)="cambio('proyectos')" role="tab" aria-controls="favoritos">Proyectos terminales o servicio
+                    social</a>
+                <a class="list-group-item list-group-item-action " id="list-electronica-list" data-toggle="list" href="#list-libros"
+                    (click)="cambio('electronica')" role="tab" aria-controls="favoritos">Electrónica y computación</a>
+                <a class="list-group-item list-group-item-action" id="list-departamentos-list" data-toggle="list" href="#list-libros"
+                    (click)="cambio('departamentos')" role="tab" aria-controls="favoritos">Departamentos</a>
+				<a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros"
+                    (click)="cambio('tutorias')" role="tab" aria-controls="favoritos">Tutorias</a>
+            </div>
+
+        </div>
 
                     <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list" href="#" role="tab" aria-controls="principal">Categorías</a>
                     <a class="list-group-item list-group-item-action  active" id="list-principal-list" data-toggle="list" href="#principal" role="tab" aria-controls="pagPrin">Información</a>
@@ -37,8 +59,11 @@
                 </div>
 
             </div>
-
-
+                        <!-- Card image -->
+                        <div class="view view-cascade overlay">
+                            <img class="card-img-top" src="../../../assets/img/cover-2.jpg" alt="Card image cap">
+                            
+                        </div>
             <div class="col-sm-8">
                 <div class="tab-content" id="informacion">
                     <div align="center" *ngIf="carga">
@@ -159,45 +184,58 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Card -->
+                        </div>
+                        <!-- Card -->
+                        
 
-                            <!-- Card -->
-                            <div id="card-6" class="card card-image">
+                        
+                         <!-- Card -->
+                         <div id="card-6" class="card card-image">
 
-                                <!-- Content -->
-                                <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
-                                    <div>
-                                        <h3 id="tituloR" class="card-title pt-2"><i class="fa fa-comments"></i> <strong> (PROXIMAMENTE) Soporte técnico  </strong></h3>
-                                        <p id="textoR">Contrata los servicios técnicos de algún compañero </p>
-                                    </div>
+                            <!-- Content -->
+                            <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                                <div>
+                                        <h3 id="tituloR" class="card-title pt-2"><i class="fa fa-comments"></i> <strong> Próximamente  </strong></h3>
+                                        <p id="textoR">Categoria de servicio técnico  </p> 
                                 </div>
                             </div>
                             <!-- Card -->
                         </div>
-                        <!-- Card deck -->
+                        <!-- Card deck -->               
 
-                    </div>
+                </div>
+
 
                     <div class="tab-pane fade" id="list-libros" role="tabpanel" aria-labelledby="list-info-list">
 
-                        <h3 class="h3 mb-3">{{categoria}}</h3>
-                        <hr>
-                        <div id="productos" class="card-columns rounded " *ngIf="productos">
-                            <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
-                                <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{product.nombre}}</h5>
-                                    <p class="card-text text-white">{{product.descripcion}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <button class="btn btn-outline-success" [routerLink]="['/producto', product.id]">ver
+                    <h3 class="h3 mb-3">{{categoria}}</h3>
+                    <hr>
+                    <div id="productos" class="card-columns rounded " *ngIf="productos">
+                        <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
+                            <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
+                            <div class="card-body">
+                                <h5 class="card-title">{{product.nombre}}</h5>
+                                <p class="card-text text-white">{{product.descripcion}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-outline-success btn-block" [routerLink]="['/producto', product.id]">ver
                                     más</button>
-                                    <button class="btn btn-outline-info" (click)="agregarFavorito(product.id)">Añadir a
+                                <button class="btn btn-outline-info responsive-width btn-block" (click)="agregarFavorito(product.id)">Añadir a
                                     favoritos</button>
                                 </div>
                             </div>
                         </div>
-
+                    </div>
+                    <mat-paginator [length]="length"
+                    [pageSize]="pageSize"
+                    [pageSizeOptions]="pageSizeOptions"
+                    (page)="pageEvent = $event">
+                    </mat-paginator> 
+                    <div *ngIf="pageEvent">
+                    <h5>Page Change Event Properties</h5>
+                    <div>List length: {{pageEvent.length}}</div>
+                    <div>Page size: {{pageEvent.pageSize}}</div>
+                    <div>Page index: {{pageEvent.pageIndex}}</div>
                     </div>
                 </div>
             </div>

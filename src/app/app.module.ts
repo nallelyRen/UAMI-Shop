@@ -26,6 +26,9 @@ import { ModificarImagenProductoComponent } from './components/modificar-imagen-
 // angular material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatPaginatorModule,} from '@angular/material/paginator';
+import { MatInputModule, } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +47,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ModificarDatosProductoComponent,
     ModificarImagenProductoComponent
   ],
+   
   imports: [
     BrowserModule,
     HttpModule,
@@ -52,6 +56,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatInputModule,
     APP_ROUTING
   ],
   providers: [],

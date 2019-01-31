@@ -12,7 +12,7 @@ export class ModificarImagenProductoComponent implements OnInit {
   siImagen = false;
   file: File;
   producto;
-  carga = false;
+  carga=false;
   constructor(private usuarioService: UsuarioService, private productoService: ProductosService) { }
 
   ngOnInit() {
@@ -43,6 +43,7 @@ export class ModificarImagenProductoComponent implements OnInit {
           this.siImagen = false;
         } else {
           alert('Ups, la imagen de tu producto "' + this.producto.nombre + '" no se ha podido modificar correctamente');
+          this.carga = false;
         }
       });
     }

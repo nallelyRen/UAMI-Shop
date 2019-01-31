@@ -13,8 +13,8 @@ export class ProductoComponent implements OnInit {
   id: any;
   producto: any;
   produc: any;
-  flag = false;
-  carga = true;
+  flag=false;
+  carga=true;
   constructor(private router: ActivatedRoute
               , private usuarioService: UsuarioService,
                 private productoService: ProductosService) {

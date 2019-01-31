@@ -18,7 +18,9 @@ export class ModificarDatosProductoComponent implements OnInit {
    requisitos: '',
    descripcion: '',
  };
- carga = false;
+
+ carga=false;
+
  producto: any;
 
  constructor(private usuarioService: UsuarioService, private productoService: ProductosService) {
