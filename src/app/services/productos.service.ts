@@ -71,23 +71,6 @@ export class ProductosService {
       return res.json();
     }));
   }
-//EN REVISION TODAVIA NO ESTA CORRECTO, SOLO SE COMPLETO PARA
-//QUE LAS DEPENDENCIAS NO MARCARAN ERROR
-  nuevoOtro(nombre, precio, descripcion, file: File, idUsuario) {
-    const formData: FormData = new FormData();
-    formData.append('nombre', nombre);
-    formData.append('precio', precio);
-    formData.append('descripcion', descripcion);
-    formData.append('file', file);
-    formData.append('idUsuario', idUsuario);
-    return this.http.post( this.url + 'otros', formData)
-    .pipe(
-    map(res => {
-      console.log('si llego');
-      console.log(res.json());
-      return res.json();
-    }));
-  }
 
   nuevoProyecto(nombre, representante, precio, descripcion, requisitos, file: File, idUsuario) {
     const formData: FormData = new FormData();
