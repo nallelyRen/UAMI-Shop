@@ -20,6 +20,7 @@ export class ProductosService {
     .pipe(map(res => res.json()));
   }
 
+  
   obtenerProyectos() {
     return this.http.get(this.url + 'proyectos')
     .pipe(map(res => res.json()));
