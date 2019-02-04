@@ -22,9 +22,13 @@ import { APP_ROUTING } from './app.routes';
 import { ListUploadComponent } from './components/list-upload/list-upload.component';
 import { ModificarDatosProductoComponent } from './components/modificar-datos-producto/modificar-datos-producto.component';
 import { ModificarImagenProductoComponent } from './components/modificar-imagen-producto/modificar-imagen-producto.component';
+
+// angular material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatPaginatorModule,} from '@angular/material/paginator';
+import { MatInputModule, } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -42,8 +46,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AgregarProductoComponent,
     ModificarDatosProductoComponent,
     ModificarImagenProductoComponent
-
   ],
+   
   imports: [
     BrowserModule,
     HttpModule,
@@ -52,7 +56,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    NgbModule,
+    MatPaginatorModule,
+    MatInputModule,
     APP_ROUTING
   ],
   providers: [],

@@ -21,7 +21,7 @@ export class CuentaComponent implements OnInit {
 
   categoria = 'Libros';
   forma: FormGroup;
-  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router:Router) {
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router: Router) {
         // creacion del formulario
     this.forma = new FormGroup({
       'nombre': new FormControl(''),
@@ -165,7 +165,6 @@ export class CuentaComponent implements OnInit {
   guardarCambios() {
     this.carga = true ;
     this.usuario.telefono = this.forma.get('telefono').value;   
-
     // envio de la peticion al servicio
     if (this.usuario.telefono === '') {
       this.carga = false ;
@@ -183,6 +182,7 @@ export class CuentaComponent implements OnInit {
       } else {
         this.carga = false ;
         console.log('no esta logueado');
+        this.carga = false ;
       }
     }
 
