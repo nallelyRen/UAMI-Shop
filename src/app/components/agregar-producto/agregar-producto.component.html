@@ -29,9 +29,6 @@
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
-                <div class="alert alert-primary m-2" role="alert">
-                    En este campo escribe el nombre de tu producto, p.e. Libro Resnik
-                </div>
             </div>
             <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
                 ngbPopover="Ejemplo: Cuarto para dos personas *solo mujeres" popoverTitle="Tip para el nombre de tu apartamento ">
@@ -46,8 +43,7 @@
             </div>
         </div>
 
-      
-      
+           
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Precio</label>
@@ -91,6 +87,7 @@
                 ngbPopover="Si das asesorías para varias divisiones escoge una de las tres y coloca la información faltante en la descripción"
                 popoverTitle="Coloca la división de tus asesorías, no la división a la que tú perteneces ">
             </button>
+
         </div>
 
         <div class="form-group row">
@@ -101,8 +98,8 @@
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">Imagen</label>
-            <div class="col-8">
-                <input class="" type="file" id="imgInp" accept="image/*" (change)="setImage($event.target.files)">
+            <div class="col-md-8">
+                <input class="" type="file" id="imgInp" (change)="setImage($event.target.files)">
             </div>
         </div>
         <div class="form-group row">
