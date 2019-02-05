@@ -29,11 +29,8 @@
             <label class="col-2 col-form-label">Nombre</label>
             <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
-                <div class="alert alert-primary m-2" role="alert">
-                    En este campo escribe el nombre de tu producto, p.e. Libro Resnik
-                </div>
-            </div>
-            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
+                        </div>
+            <button *ngIf="condicionDepartamentos" type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
                 ngbPopover="Ejemplo: Cuarto para dos personas *solo mujeres" popoverTitle="Tip para el nombre de tu apartamento ">
             </button>
 
