@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // componentes
 import { AppComponent } from './app.component';
@@ -57,6 +58,7 @@ import { MatInputModule, } from '@angular/material';
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
+    NgbModule,
     MatInputModule,
     APP_ROUTING
   ],
