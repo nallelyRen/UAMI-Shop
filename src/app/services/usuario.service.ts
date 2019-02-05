@@ -6,8 +6,10 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsuarioService {
+
     url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
-  // url = 'http://localhost:8080/';
+  //url = 'http://localhost:8080/';
+
   constructor(private http: Http) { }
   Nombre = "";
   Correo = "";
@@ -39,18 +41,16 @@ export class UsuarioService {
    validarUsuarios() {
     if (localStorage.getItem('nombre')) {
       if (this.id != "") {
-        
         this.Nombre =  localStorage.getItem('nombre');
         this.Correo = localStorage.getItem('correo');
         console.log(this.Nombre + 'entro con id  ' + this.Correo);
         return this.id;
       } else {
-        
         this.logueo(localStorage.getItem('nombre'),localStorage.getItem('correo')).subscribe(res=>{
           console.log(res);
-          this.id=res.id;
-          this.Nombre=res.nombre;
-          this.Correo=res.correo;
+          this.id = res.id;
+          this.Nombre = res.nombre;
+          this.Correo = res.correo;
           return this.id;
         });
         console.log(this.Nombre + 'entro sin id ' + this.Correo);
@@ -67,9 +67,7 @@ export class UsuarioService {
   }
 
   obtenerUsuarioPorId(id){
-      
     return {"nombre":this.Nombre, "correo":this.Correo };
-      
   }
 
   modificarUsuario(idUsuario, telefono) {

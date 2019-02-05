@@ -122,20 +122,34 @@ export class AgregarProductoComponent implements OnInit {
                 }
               );
           } else {
+                console.log('no esta logueado');
+              }
+          } else {
+        if (this.forma.get('categoria').value === 'tutorias') {
+          const id = this.usuarioService.validarUsuarios();
+          if (id != -1) {
+            this.productService.nuevaTutoria(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.Libro.area,
+              this.file, id ).subscribe(
+                res => {
+                  alert('Tu tutoria ' + this.Libro.nombre + ' se a subido correctamente');
+                  this.forma.reset(this.Libro2);
+                  this.carga = false;
+                }
+              );
+        } else {
             console.log('no esta logueado');
           }
         } else {
           if (this.forma.get('categoria').value === 'tutorias') {
             const id = this.usuarioService.validarUsuarios();
             if (id != -1) {
-              this.productService.nuevaTutoria(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.Libro.area,
-                this.file, id).subscribe(
-                  res => {
-                    alert('Tu tutoria ' + this.Libro.nombre + ' se a subido correctamente');
-                    this.forma.reset(this.Libro2);
-                    this.carga = false;
-                  }
-                );
+              this.productService.nuevoElectronico(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
+                res => {
+                  alert('Tu electronico ' + this.Libro.nombre + ' se a subido correctamente');
+                  this.forma.reset(this.Libro2);
+                  this.carga = false;
+                }
+              );
             } else {
               console.log('no esta logueado');
             }
@@ -193,6 +207,7 @@ export class AgregarProductoComponent implements OnInit {
 
       }
     }
+
+  }
   }
 }
-

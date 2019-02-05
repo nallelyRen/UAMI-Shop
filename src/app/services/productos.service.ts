@@ -8,8 +8,10 @@ import { map } from 'rxjs/operators';
 export class ProductosService {
   public producto: any;
   // cadena que contiene la ruta de las peticiones al back-end
-   url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
- // url = 'http://localhost:8080/';
+
+  url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
+  //url = 'http://localhost:8080/';
+
   // en el constructor añadimos la clase http
   constructor( private http: Http) { }
 
@@ -43,7 +45,8 @@ export class ProductosService {
     return this.http.get(this.url + 'tutorias') // .subscribe(res => console.log(res.json()));
     .pipe(map(res => res.json()));
   }
-  obtenerProductos() {
+
+   obtenerProductos() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'productos') // .subscribe(res => console.log(res.json()));
     .pipe(map(res => res.json()));
@@ -64,23 +67,6 @@ export class ProductosService {
     formData.append('file', file);
     formData.append('idUsuario', idUsuario);
     return this.http.post( this.url + 'libros', formData)
-    .pipe(
-    map(res => {
-      console.log('si llego');
-      console.log(res.json());
-      return res.json();
-    }));
-  }
-//EN REVISION TODAVIA NO ESTA CORRECTO, SOLO SE COMPLETO PARA
-//QUE LAS DEPENDENCIAS NO MARCARAN ERROR
-  nuevoOtro(nombre, precio, descripcion, file: File, idUsuario) {
-    const formData: FormData = new FormData();
-    formData.append('nombre', nombre);
-    formData.append('precio', precio);
-    formData.append('descripcion', descripcion);
-    formData.append('file', file);
-    formData.append('idUsuario', idUsuario);
-    return this.http.post( this.url + 'otros', formData)
     .pipe(
     map(res => {
       console.log('si llego');
@@ -144,11 +130,27 @@ export class ProductosService {
     formData.append('precio', precio);
     formData.append('descripcion', descripcion);
     formData.append('area', area);
-	formData.append('file', file);
-	formData.append('idUsuario', idUsuario);
+  formData.append('file', file);
+  formData.append('idUsuario', idUsuario);
     return this.http.post( this.url + 'tutorias', formData)
     .pipe(
     map(res => {
+      return res.json();
+    }));
+  }
+
+  nuevoOtro(nombre, precio, descripcion, file: File, idUsuario) {
+    const formData: FormData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('precio', precio);
+    formData.append('descripcion', descripcion);
+    formData.append('file', file);
+    formData.append('idUsuario', idUsuario);
+    return this.http.post( this.url + 'Otros', formData)
+    .pipe(
+    map(res => {
+      console.log('si entro');
+      console.log(res.json());
       return res.json();
     }));
   }
