@@ -87,6 +87,7 @@
                 ngbPopover="Si das asesorías para varias divisiones escoge una de las tres y coloca la información faltante en la descripción"
                 popoverTitle="Coloca la división de tus asesorías, no la división a la que tú perteneces ">
             </button>
+
         </div>
 
         <div class="form-group row">
@@ -97,8 +98,8 @@
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">Imagen</label>
-            <div class="col-8">
-                <input class="" type="file" id="imgInp" accept="image/*" (change)="setImage($event.target.files)">
+            <div class="col-md-8">
+                <input class="" type="file" id="imgInp" (change)="setImage($event.target.files)">
             </div>
         </div>
         <div class="form-group row">
