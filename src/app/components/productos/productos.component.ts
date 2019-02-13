@@ -113,11 +113,11 @@ export class ProductosComponent implements OnInit {
     if (idUsuario != -1) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
         this.carga = false;
-        alert('Se agrego a tu lista de productos favoritos correctamente');
+        alert('Se agrego a tu lista de favoritos correctamente');
         console.log(res);
       });
     } else {
-      alert('Ups no se pudo agregar a tu lista de productos favoritos');
+      alert('Ups no se pudo agregar a tu lista de favoritos');
       console.log('no estas logueado');
     }
 
