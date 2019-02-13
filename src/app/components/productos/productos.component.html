@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 
 
@@ -17,9 +16,7 @@
                             <div>
                                 <h5 id="textoR" class="green-text"><i class="fa fa-pie-chart"></i> Vende</h5>
                                 <h3 id="textoR" class="card-title pt-2"><strong>Registra tus productos</strong></h3>
-                                <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El
-                                    registro es
-                                    totalmente gratuito
+                                <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro es totalmente gratuito
                                 </p>
                                 <a class="btn btn-green btn-block" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
                                     Registrar producto</a>
@@ -30,25 +27,17 @@
                 <!-- Card -->
                 <div class="list-group list-group-flush" id="list-tab" role="tablist">
 
-                    <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list"
-                        href="#" role="tab" aria-controls="principal">Categorías</a>
-                    <a class="list-group-item list-group-item-action  active" id="list-principal-list" data-toggle="list"
-                        href="#principal" role="tab" aria-controls="pagPrin">Información</a>
-                    <a class="list-group-item list-group-item-action " id="list-libros-list" data-toggle="list" href="#list-libros"
-                        role="tab" (click)="cambio('libros')" aria-controls="info">Libros</a>
-                    <a class="list-group-item list-group-item-action" id="list-proyecto-list" data-toggle="list" href="#list-libros"
-                        (click)="cambio('proyectos')" role="tab" aria-controls="favoritos">Proyectos terminales o
+                    <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list" href="#" role="tab" aria-controls="principal">Categorías</a>
+                    <a class="list-group-item list-group-item-action  active" id="list-principal-list" data-toggle="list" href="#principal" role="tab" aria-controls="pagPrin">Información</a>
+                    <a class="list-group-item list-group-item-action " id="list-libros-list" data-toggle="list" href="#list-libros" role="tab" (click)="cambio('libros')" aria-controls="info">Libros</a>
+                    <a class="list-group-item list-group-item-action" id="list-proyecto-list" data-toggle="list" href="#list-libros" (click)="cambio('proyectos')" role="tab" aria-controls="favoritos">Proyectos terminales o
                         servicio
                         social</a>
-                    <a class="list-group-item list-group-item-action " id="list-electronica-list" data-toggle="list"
-                        href="#list-libros" (click)="cambio('electronica')" role="tab" aria-controls="favoritos">Electrónica
+                    <a class="list-group-item list-group-item-action " id="list-electronica-list" data-toggle="list" href="#list-libros" (click)="cambio('electronica')" role="tab" aria-controls="favoritos">Electrónica
                         y computación</a>
-                    <a class="list-group-item list-group-item-action" id="list-departamentos-list" data-toggle="list"
-                        href="#list-libros" (click)="cambio('departamentos')" role="tab" aria-controls="favoritos">Departamentos</a>
-                    <a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros"
-                        (click)="cambio('tutorias')" role="tab" aria-controls="favoritos">Tutorias</a>
-                    <a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros"
-                        (click)="cambio('otros')" role="tab" aria-controls="favoritos">Otros</a>
+                    <a class="list-group-item list-group-item-action" id="list-departamentos-list" data-toggle="list" href="#list-libros" (click)="cambio('departamentos')" role="tab" aria-controls="favoritos">Departamentos</a>
+                    <a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros" (click)="cambio('tutorias')" role="tab" aria-controls="favoritos">Tutorias</a>
+                    <a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros" (click)="cambio('otros')" role="tab" aria-controls="favoritos">Otros</a>
                 </div>
 
             </div>
@@ -74,13 +63,8 @@
                                 <!-- Title -->
                                 <h4 class="card-title"><strong>Bienvenido</strong></h4>
                                 <!-- Text -->
-                                <p id="cardP" class="card-text">UAMIShop sigue siendo un proyecto en desarrollo, por lo
-                                    que hacemos
-                                    actualizaciones continuamente. En esta pestaña podrás encontrar información sobre
-                                    las categorías disponibles
-                                    actualmente y las que estarán en un futuro. Si tienes ideas sobre una nueva
-                                    categoría no dudes en contactarnos
-                                    por nuestras redes sociales.
+                                <p id="cardP" class="card-text">UAMIShop sigue siendo un proyecto en desarrollo, por lo que hacemos actualizaciones continuamente. En esta pestaña podrás encontrar información sobre las categorías disponibles actualmente y las que estarán en un futuro.
+                                    Si tienes ideas sobre una nueva categoría no dudes en contactarnos por nuestras redes sociales.
                                 </p>
 
                                 <!-- Linkedin -->
@@ -207,6 +191,10 @@
 
                         <h3 class="h3 mb-3">{{categoria}}</h3>
                         <hr>
+                        <div align="center" *ngIf="carga">
+                            <mat-spinner></mat-spinner>
+                            <br>
+                        </div>
                         <div id="productos" class="card-columns rounded " *ngIf="productos">
                             <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
                                 <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
