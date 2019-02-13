@@ -32,7 +32,7 @@ export class ProductosComponent implements OnInit {
     this.productos = [];
     this.carga = true;
     this.categoria = categoria;
-    if (categoria === 'libros') {
+    if (categoria === 'Libros') {
       this.productoService.obtenerLibros().subscribe(res => {
         this.productos = res;
         this.carga = false;
@@ -40,7 +40,7 @@ export class ProductosComponent implements OnInit {
         console.log('tipo', typeof (this.productos));
       });
     } else {
-      if (categoria === 'proyectos') {
+      if (categoria === 'Proyectos') {
         this.productoService.obtenerProyectos().subscribe(res => {
           this.productos = res;
           this.carga = false;
@@ -48,7 +48,7 @@ export class ProductosComponent implements OnInit {
           console.log('tipo', typeof (this.productos));
         });
       } else {
-      if (categoria === 'tutorias') {
+      if (categoria === 'Tutorias') {
         this.productoService.obtenerTutorias().subscribe(res => {
           this.productos = res;
           this.carga = false;
@@ -56,7 +56,7 @@ export class ProductosComponent implements OnInit {
           console.log('tipo', typeof (this.productos));
         });
       } else {
-        if (categoria === 'electronica') {
+        if (categoria === 'Electrónica') {
         this.productoService.obtenerElectronicos().subscribe(res => {
           this.productos = res;
           this.carga = false;
@@ -64,7 +64,7 @@ export class ProductosComponent implements OnInit {
           console.log('tipo', typeof (this.productos));
         });
       }
-      if (categoria === 'departamentos') {
+      if (categoria === 'Departamentos') {
         this.productoService.obtenerDepartamentos().subscribe(res => {
         this.productos = res;
         this.carga = false;
@@ -72,7 +72,7 @@ export class ProductosComponent implements OnInit {
           console.log('tipo', typeof (this.productos));
         });
       }  else{
-        if (categoria === 'otros') {
+        if (categoria === 'Otros') {
           this.productoService.obtenerOtros().subscribe(res => {
           this.productos = res;
           this.carga = false;
