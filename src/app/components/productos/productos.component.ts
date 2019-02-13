@@ -29,6 +29,7 @@ export class ProductosComponent implements OnInit {
   }
 
   cambio(categoria) {
+    this.carga = true;
     this.productos = [];
     this.carga = true;
     this.categoria = categoria;
@@ -112,9 +113,11 @@ export class ProductosComponent implements OnInit {
     if (idUsuario != -1) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
         this.carga = false;
+        alert('Se agrego a tu lista de favoritos correctamente');
         console.log(res);
       });
     } else {
+      alert('Ups no se pudo agregar a tu lista de favoritos');
       console.log('no estas logueado');
     }
 

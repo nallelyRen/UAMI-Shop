@@ -15,6 +15,8 @@ export class CuentaComponent implements OnInit {
   productos: any[] = [];
   Restriccion=true;
   carga=false;
+  carga2 = false;
+  carga3 = false;
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   //usuario:  any[] = [];
   
@@ -62,46 +64,48 @@ export class CuentaComponent implements OnInit {
 
 
   obtenerFavoritos() {
-    this.carga = true ;
+    this.carga3 = true ;
+    this.productos = [];
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.dameMisFavoritos(idUsuario).subscribe(res => {
         this.productos = res;
-        this.carga = false ;
+        this.carga3 = false ;
         console.log(res);
       });
     } else {
-      this.carga = false ;
+      this.carga3 = false ;
       console.log('no estas logueado');
     }
 
   }
   obtenerProductosUsuario() {
-    this.carga = true ;
+    this.carga2 = true ;
+    this.productos = [];
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.dameMisProductos(idUsuario).subscribe(res => {
         this.productos = res;
-        this.carga = false ;
+        this.carga2 = false ;
         console.log(res);
       });
     } else {
-      this.carga = false ;
+      this.carga2 = false ;
       console.log('no estas logueado');
     }
 
   }
   eliminarFavoritos(id) {
-    this.carga = true ;
+    this.carga3 = true ;
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.eliminameEnFavoritos(idUsuario, id).subscribe(res => {
         this.productos = res;
-        this.carga = false ;
+        this.carga3 = false ;
         console.log(res);
       });
     } else {
-      this.carga = false ;
+      this.carga3 = false ;
       console.log('no estas logueado');
     }
 
@@ -141,16 +145,16 @@ export class CuentaComponent implements OnInit {
     
 }
   eliminarProducto(id) {
-    this.carga = true ;
+    this.carga2 = true ;
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.eliminameProducto(idUsuario, id).subscribe(res => {
         this.productos = res;
-        this.carga = false ;
+        this.carga2 = false ;
         console.log(res);
       });
     } else {
-      this.carga = false ;
+      this.carga2 = false ;
       console.log('no estas logueado');
     }
 
