@@ -11,5 +11,5 @@ export class PrincipalComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  //ya se pudo enlazar bien
 }
