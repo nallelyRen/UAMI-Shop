@@ -25,3 +25,14 @@ p {
 #contenido {
     margin-top: 100px;
 }
+
+#foot {
+    color: #ffffff;
+}
+
+
+/* Footer color for sake of consistency with Navbar */
+
+.page-footer {
+    background-color: #1C2331;
+}
