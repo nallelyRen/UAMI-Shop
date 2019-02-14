@@ -1,4 +1,4 @@
-<div class="main-container" id="contenedor_de_la_forma">
+<div class="main-container container" id="contenedor_de_la_forma">
     <div align="center" *ngIf="carga">
         <mat-spinner></mat-spinner>
         <br>
@@ -7,15 +7,14 @@
     <div class="alert alert-info" role="alert">
         Si tienes alguna duda sobre como llenar el formulario los botones "?" te ayudarán
     </div>
-    
+
     <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
         <!--Creo una forma en angular a la cual le inserto los datos-->
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Categoría</label>
             <div class="col-md-8">
-                <select (change)="prueba1()" class="form-control" name="categoria" placeholder="Categoria"
-                    formControlName="categoria">
+                <select (change)="prueba1()" class="form-control" name="categoria" placeholder="Categoria" formControlName="categoria">
                     <option value="libro">Libro</option>
                     <option value="proyecto">Proyecto terminal y Servicio Social</option>
                     <option value="electronica">Electronica</option>
@@ -30,9 +29,8 @@
             <label class="col-2 col-form-label">Nombre del producto</label>
             <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
-                        </div>
-            <button *ngIf="condicionDepartamentos" type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
-                ngbPopover="Ejemplo: Cuarto para dos personas *solo mujeres" popoverTitle="Tip para el nombre de tu apartamento ">
+            </div>
+            <button *ngIf="condicionDepartamentos" type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="Ejemplo: Cuarto para dos personas *solo mujeres" popoverTitle="Tip para el nombre de tu apartamento ">
             </button>
 
         </div>
@@ -44,17 +42,15 @@
             </div>
         </div>
 
-           
+
 
         <div class="form-group row">
             <label class="col-2 col-form-label">Precio</label>
             <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Precio" formControlName="precio">
             </div>
-            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
-                ngbPopover="No dejes el campo vacío, coloca un cero y explica en la descripción del producto la clase de trato a 
-            la que deseas llegar"
-                popoverTitle="¿Tu servicio es gratuito o deseas hacer un intercambio? ">
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="No dejes el campo vacío, coloca un cero y explica en la descripción del producto la clase de trato a 
+            la que deseas llegar" popoverTitle="¿Tu servicio es gratuito o deseas hacer un intercambio? ">
             </button>
 
         </div>
@@ -63,9 +59,7 @@
             <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Representante" formControlName="representante">
             </div>
-            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
-            ngbPopover="En caso de no tener maestro tutor aún, escribe sin maestro en lugar de dejar el campo vacio"
-            popoverTitle="Coloca el nombre del profesor que estará a cargo del proyecto ">
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="En caso de no tener maestro tutor aún, escribe sin maestro en lugar de dejar el campo vacio" popoverTitle="Coloca el nombre del profesor que estará a cargo del proyecto ">
         </button>
         </div>
         <div class="form-group row" *ngIf="condicionProyecto">
@@ -77,16 +71,13 @@
         <div class="form-group row" *ngIf="condicionTutorias">
             <label class="col-2 col-form-label">Division</label>
             <div class="col-md-8">
-                <select (change)="prueba1()" class="form-control" name="Division" placeholder="Division"
-                    formControlName="area">
+                <select (change)="prueba1()" class="form-control" name="Division" placeholder="Division" formControlName="area">
                     <option value="CBI">CBI</option>
                     <option value="CSH">CSH</option>
                     <option value="CBS">CBS</option>
                 </select>
             </div>
-            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right"
-                ngbPopover="Si das asesorías para varias divisiones escoge una de las tres y coloca la información faltante en la descripción"
-                popoverTitle="Coloca la división de tus asesorías, no la división a la que tú perteneces ">
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="Si das asesorías para varias divisiones escoge una de las tres y coloca la información faltante en la descripción" popoverTitle="Coloca la división de tus asesorías, no la división a la que tú perteneces ">
             </button>
 
         </div>
@@ -104,7 +95,7 @@
             </div>
         </div>
         <div class="alert alert-info" role="alert">
-           Recuerda: Debes llenar todos los campos para poder subir tu producto
+            Recuerda: Debes llenar todos los campos para poder subir tu producto
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">&nbsp;</label>

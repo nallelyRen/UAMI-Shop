@@ -1,22 +1,22 @@
 <!-- Section: Magazine v.2 -->
-<section class="magazine-section my-5">
+<section class="magazine-section my-5 container">
 
-  <!-- Section heading -->
-  <h2 id="titulo" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2> 
+    <!-- Section heading -->
+    <h2 id="titulo" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2>
     <div align="center" *ngIf="carga">
-          <mat-spinner></mat-spinner>
-          <br>
-      </div>
+        <mat-spinner></mat-spinner>
+        <br>
+    </div>
 
-<div id="contenido" *ngIf="producto" class="row animated fadeIn fast">
-  
-  <!--Grid column-->
-  <div class="col-md-5 mb-10 text-center">
-     
-    <img [src]="producto.archivo.url" class="img-fluid z-depth-1-half" alt="">
-      
-  </div>
-  <!--Grid column-->
+    <div id="contenido" *ngIf="producto" class="row animated fadeIn fast">
+
+        <!--Grid column-->
+        <div class="col-md-5 mb-10 text-center">
+
+            <img [src]="producto.archivo.url" class="img-fluid z-depth-1-half" alt="">
+
+        </div>
+        <!--Grid column-->
 
         <!--Grid column-->
         <div class="col-md-6 mb-4">
@@ -140,32 +140,5 @@
             <!-- CTA -->
 
         </div>
-        <!--Grid column
-   
-   <div class="row" >
-    <div class="col-1 mr-3">
-      <i id="iconos" class="fa fa-check-circle fa-2x blue-text"></i>
-    </div>
-    <div class="col-10" *ngIf="usuarios">
-      <h5 class="feature-title">Usuario</h5>
-      <p class="grey-text" *ngFor="let usuario of usuarios">{{usuario.nombre}}
-      </p>
-    </div>
-  </div>
-  
-  <div style="height:30px"></div>
-  
-  <div class="row">
-    <div class="col-1 mr-3">
-      <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
-    </div>
-    <div class="col-10">
-      <h5 class="feature-title">Contacto</h5>
-      <p class="grey-text" *ngFor="let usuario of usuarios">correo: {{usuario.correo}} telefono: {{usuario.telefono}}
-      </p>
-    </div>
-  </div>
-  /Third row-->
-
 
     </div>
