@@ -191,4 +191,9 @@ export class CuentaComponent implements OnInit {
     }
 
   }
+
+
+  agregar(){
+    this.router.navigate(['/agregarProducto']);
+  }
 }
