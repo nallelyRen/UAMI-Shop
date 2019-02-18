@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class UsuarioService {
 
-    url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
+  url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
   //url = 'http://localhost:8080/';
 
   constructor(private http: Http) { }
@@ -43,7 +43,7 @@ export class UsuarioService {
       if (this.id != "") {
         this.Nombre =  localStorage.getItem('nombre');
         this.Correo = localStorage.getItem('correo');
-        console.log(this.Nombre + 'entro con id  ' + this.Correo);
+        console.log(this.Nombre + 'entro con correo  ' + this.Correo + 'id' + this.id);
         return this.id;
       } else {
         this.logueo(localStorage.getItem('nombre'),localStorage.getItem('correo')).subscribe(res=>{
