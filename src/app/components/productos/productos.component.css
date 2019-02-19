@@ -24,50 +24,19 @@
     font-weight: lighter;    
     font-size: 18px;
 }
-.card{
-    padding-bottom: 20 px;
+#card{
+    padding-left: 20px; 
+   
 }
 #registro{
     background-image:url(../../../assets/img/textura.jpg);
 }
-#card-1{
-    background-image:url(../../../assets/img/library.jpg);
-   
-}
-#card-2{
-    background-image:url(../../../assets/img/proyecto.jpg);
-}
-#card-3{
-    background-image:url(../../../assets/img/keyboard.jpg);
-}
-#card-4{
-    background-image:url(../../../assets/img/departamento.jpg);
-}
-#card-5{
-    background-image:url(../../../assets/img/student.jpg);
-}
-#card-6{
-    background-image:url(../../../assets/img/help.jpg);
-}
+
 #textoR{
     color:black;
     font-family: 'K2D', sans-serif;
     font-weight: lighter;  
     font-size: 27px;   
-}
-#textoB{
-    color:white; 
-    text-align: center;  
-    font-family: 'K2D', sans-serif;
-    font-weight: lighter;  
-    font-size: 27px;    
-}
-#tituloB{
-    color:white; 
-    text-align: center;  
-    font-family: 'K2D', sans-serif;
-    font-weight: lighter;      
-    font-size: 35px;
 }
 #tituloR{
     color:black; 
@@ -90,11 +59,13 @@
 
 
   .flip-card {
+    
     background-color: transparent;
     width: 300px;
-    height: 200px;
-    border: 1px solid #f1f1f1;
+    height: 300px;
+    border: 5px solid #ffffff;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
+     align-content: center;
   }
   
   /* This container is needed to position the front and back side */
@@ -107,6 +78,7 @@
     font-weight: lighter;    
     transition: transform 0.8s;
     transform-style: preserve-3d;
+   
   }
   
   /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -130,7 +102,7 @@
   
   /* Style the back side */
   .flip-card-back {
-    background-color: dodgerblue;
+    background-color: rgba(18, 52, 87, 0.986);
     color: white;
     transform: rotateY(180deg);
   }
