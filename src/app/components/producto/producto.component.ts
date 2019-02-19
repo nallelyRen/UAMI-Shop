@@ -2,13 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 import { ProductosService } from '../../services/productos.service';
+import {FormControl, Validators} from '@angular/forms';
+import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
-  styleUrls: ['./producto.component.css']
+  styleUrls: ['./producto.component.css'],
+  providers: [NgbRatingConfig] 
 })
-export class ProductoComponent implements OnInit {
 
+export class ProductoComponent implements OnInit {
+  
+  
   usuarios: any[] = [];
   id: any;
   producto: any;
@@ -17,12 +22,15 @@ export class ProductoComponent implements OnInit {
   carga=true;
   constructor(private router: ActivatedRoute
               , private usuarioService: UsuarioService,
-                private productoService: ProductosService) {
+                private productoService: ProductosService, config: NgbRatingConfig) {
                 this.router.params.subscribe(params => {
                   console.log(params['id']);
                   this.id = params['id'];
                   this.obtenerProducto(this.id);
                 });
+
+                config.max = 10;
+               config.readonly = true;
               }
 
   ngOnInit() {
@@ -56,4 +64,5 @@ export class ProductoComponent implements OnInit {
       console.log(typeof(this.usuarios));
     });
 }
+
 }
