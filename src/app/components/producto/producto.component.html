@@ -84,8 +84,10 @@
                 <div class="col-1 mr-3">
                     <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
+               
                 <div class="col-10">
                     <h5 class="feature-title">Calificación del usuario</h5>
+                    <ngb-rating [rate]="producto.usuario.calificacion"></ngb-rating>
                     <p class="grey-text">Calificación: {{producto.usuario.calificacion}} </p>
                 </div>
             </div>
