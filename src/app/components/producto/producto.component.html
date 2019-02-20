@@ -16,6 +16,7 @@
             <img [src]="producto.archivo.url" class="img-fluid z-depth-1-half" alt="">
 
         </div>
+
         <!--Grid column-->
 
         <!--Grid column-->
@@ -80,18 +81,6 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-1 mr-3">
-                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
-                </div>
-               
-                <div class="col-10">
-                    <h5 class="feature-title">Calificación del usuario</h5>
-                    <ngb-rating [rate]="producto.usuario.calificacion"></ngb-rating>
-                    <p class="grey-text">Calificación: {{producto.usuario.calificacion}} </p>
-                </div>
-            </div>
-
             <div class="row" *ngIf="producto.representante">
                 <div class="col-1 mr-3">
                     <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
@@ -116,26 +105,57 @@
                     <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
                 <div class="col-10">
-                    <h5 class="feature-title">Division</h5>
+                    <h5 class="feature-title">División</h5>
                     <p class="grey-text">{{producto.area}} </p>
                 </div>
             </div>
-            <!--
-              <div class="row" *ngIf="producto.direccion">
+            <div class="row">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
-                <div class="col-10" >
-                  <h5 class="feature-title">Dirección</h5>
-                  <p class="grey-text" >{{producto.direccion}} </p>                   
+
+                <div class="col-10">
+                    <h5 class="feature-title">Calificación del usuario</h5>
+                    <ngb-rating [rate]="producto.usuario.calificacion"></ngb-rating>
+                    <p class="grey-text">Calificación: {{producto.usuario.calificacion}} </p>
+
                 </div>
-              </div>
-            -->
-            <div class="form-group col-md-6">
-                <label for="inputCity"> </label>
-                <p class="grey-text">
-                </p>
             </div>
+            <div class="row">
+                <div class="col-1 mr-3">
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                </div>
+
+                <div class="col-10">
+                    <h5 class="feature-title">¿Cómo calificarías a este usuario?</h5>
+                    <p>Si has utilizado algún producto/servicio de este usuario, por favor califícalo</p>
+                    <form>
+                        <div class="form-group row">
+                            
+                            <div class="col-md-8">
+                               <button type="submit" class="btn btn-outline-success m-2">
+                                Enviar </button> 
+                                <select>
+                                    <option value="volvo">10</option>
+                                    <option value="saab">9</option>
+                                    <option value="mercedes">8</option>
+                                    <option value="audi">7</option>
+                                    <option value="audi">6</option>
+                                    <option value="audi">5</option>
+                                    <option value="audi">4</option>
+                                    <option value="audi">3</option>
+                                    <option value="audi">2</option>
+                                    <option value="audi">1</option>                                   
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
 
 
             <!--/Third row-->
