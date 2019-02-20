@@ -102,7 +102,7 @@
   
   /* Style the back side */
   .flip-card-back {
-    background-color: rgba(18, 52, 87, 0.986);
+    background-color: rgba(7, 70, 31, 0.986);
     color: white;
     transform: rotateY(180deg);
   }
