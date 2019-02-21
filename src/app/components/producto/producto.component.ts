@@ -69,6 +69,10 @@ guardarCalificacion(){
   } else {
     const id = this.producto.idUsuario;
     if (id != -1) {
+      //codigo para el promedio
+      // var aux= this.usuario.calificacion + this.usuario.suma;
+      //this.usuario.suma =aux;
+      // this.usuario.calificacion= aux/this.usuario.total;
       this.usuarioService.modificarCalificacion(id, this.usuario.calificacion).subscribe(
         res => {
           alert('Tu calificación' + this.usuario.calificacion + ' se ha enviado correctamente');
