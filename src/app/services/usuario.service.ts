@@ -83,10 +83,19 @@ export class UsuarioService {
       }));
   }
 
+
+  modificarCalificacion(idUsuario, calificiacion) {
+    return this.http.put(this.url + 'usuarios?idUsuario=' + idUsuario + '&calificacion=' + calificiacion, null)
+    .pipe(
+      map(res => {
+        return res.json();
+      }));
+
   validar(texto) {
     if (texto.length === 0 || /^\s+$/.test(texto)) {
         return false;
     }
     return true;
+
   }
 }
