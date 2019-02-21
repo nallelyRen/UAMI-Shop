@@ -29,38 +29,44 @@ export class UsuarioService {
     const formData: FormData = new FormData();
     formData.append('nombre', nombre);
     formData.append('correo', correo);
-    console.log('entro en logueo 2'+ nombre + correo);
-    return this.http.post(this.url + 'usuarios', formData)    
+    console.log('entro en logueo 2' + nombre + correo);
+    return this.http.post(this.url + 'usuarios', formData)
       .pipe(
         map(res => {
           console.log(res.json());
           return res.json();
         }));
   }
-
-   validarUsuarios() {
-    if (localStorage.getItem('correo')) {
-      if ( this.validar(localStorage.getItem('nombre')) && this.validar(localStorage.getItem('correo'))) {
-      if (this.id !== '') {
-        this.Nombre =  localStorage.getItem('nombre');
-        this.Correo = localStorage.getItem('correo');
-        console.log(this.Nombre + 'entro con correo  ' + this.Correo + 'id' + this.id);
-        return this.id;
-      } else {
-        this.logueo(localStorage.getItem('nombre'),localStorage.getItem('correo')).subscribe(res=>{
-          console.log(res);
-          this.id = res.id;
-          this.Nombre = res.nombre;
-          this.Correo = res.correo;
-          return this.id;
-        });
-        console.log(this.Nombre + 'entro sin id ' + this.Correo);
-
-      }
-    } else {
-      alert('Hoho, parece que ocurrio un problema al acceder a tu cuenta, por favor intenta entrar nuevamente');
-      return -1;
+  validar(texto) {
+    if (texto.length === 0 || /^\s+$/.test(texto)) {
+      return false;
     }
+    return true;
+
+  }
+  validarUsuarios() {
+    if (localStorage.getItem('correo')) {
+      if (this.validar(localStorage.getItem('nombre')) && this.validar(localStorage.getItem('correo'))) {
+        if (this.id !== '') {
+          this.Nombre = localStorage.getItem('nombre');
+          this.Correo = localStorage.getItem('correo');
+          console.log(this.Nombre + 'entro con correo  ' + this.Correo + 'id' + this.id);
+          return this.id;
+        } else {
+          this.logueo(localStorage.getItem('nombre'), localStorage.getItem('correo')).subscribe(res => {
+            console.log(res);
+            this.id = res.id;
+            this.Nombre = res.nombre;
+            this.Correo = res.correo;
+            return this.id;
+          });
+          console.log(this.Nombre + 'entro sin id ' + this.Correo);
+
+        }
+      } else {
+        alert('Hoho, parece que ocurrio un problema al acceder a tu cuenta, por favor intenta entrar nuevamente');
+        return -1;
+      }
 
     } else {
       this.Nombre = '';
@@ -71,31 +77,27 @@ export class UsuarioService {
     }
   }
 
-  obtenerUsuarioPorId(id){
-    return {"nombre":this.Nombre, "correo":this.Correo };
+  obtenerUsuarioPorId(id) {
+    return { "nombre": this.Nombre, "correo": this.Correo };
   }
 
   modificarUsuario(idUsuario, telefono) {
     return this.http.put(this.url + 'usuarios?idUsuario=' + idUsuario + '&telefono=' + telefono, null)
-    .pipe(
-      map(res => {
-        return res.json();
-      }));
+      .pipe(
+        map(res => {
+          return res.json();
+        }));
   }
 
 
   modificarCalificacion(idUsuario, calificiacion) {
     return this.http.put(this.url + 'usuarios?idUsuario=' + idUsuario + '&calificacion=' + calificiacion, null)
-    .pipe(
-      map(res => {
-        return res.json();
-      }));
+      .pipe(
+        map(res => {
+          return res.json();
+        }));
 
-  validar(texto) {
-    if (texto.length === 0 || /^\s+$/.test(texto)) {
-        return false;
-    }
-    return true;
 
   }
 }
+
