@@ -67,14 +67,15 @@ guardarCalificacion(){
     this.carga = false ;
     alert('El campo calificación es obligatorio');
   } else {
+    const idUsuario = this.usuarioService.validarUsuarios();
     const id = this.producto.idUsuario;
-    if (id != -1) {
+    if (idUsuario != -1) {
       //codigo para el promedio
       // var aux= this.usuario.calificacion + this.usuario.suma;
       //this.usuario.suma =aux;
       // this.usuario.calificacion= aux/this.usuario.total;
       //this.usuario.total=++this.usuario.total;
-      this.usuarioService.modificarCalificacion(id, this.usuario.calificacion).subscribe(
+      this.usuarioService.modificarCalificacion(idUsuario,this.usuario.calificacion,id).subscribe(
         res => {
           alert('Tu calificación' + this.usuario.calificacion + ' se ha enviado correctamente');
           this.carga = false ;

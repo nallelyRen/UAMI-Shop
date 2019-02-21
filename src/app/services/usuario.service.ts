@@ -90,8 +90,8 @@ export class UsuarioService {
   }
 
 
-  modificarCalificacion(idUsuario, calificiacion) {
-    return this.http.put(this.url + 'usuarios?idUsuario=' + idUsuario + '&calificacion=' + calificiacion, null)
+  modificarCalificacion(idUsuario,id, calificacion) {
+    return this.http.post(this.url + 'calificaUsuario?idUsuario=' + idUsuario +'&calificacion=' + calificacion+'usuarios?idUsuarioAcalificar=' + id, null)
       .pipe(
         map(res => {
           return res.json();
