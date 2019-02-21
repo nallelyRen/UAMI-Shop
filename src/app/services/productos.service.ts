@@ -178,6 +178,7 @@ export class ProductosService {
   }
 
   agregameEnFavoritos(idUsuario, idProducto) {
+    console.log('idUsuario =', idUsuario, 'idProducto=', idProducto);
     return this.http.put(this.url + 'agregaFavorito/' + idUsuario + '/' + idProducto, null)
     .pipe(
       map(res => {
