@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 })
 export class UsuarioService {
 
-    url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
+  url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
   //url = 'http://localhost:8080/';
 
   constructor(private http: Http) { }
@@ -24,7 +24,7 @@ export class UsuarioService {
       }));
   }
 
-  logueo(nombre, correo) {    
+  logueo(nombre, correo) {
     console.log('entro en logueo');
     const formData: FormData = new FormData();
     formData.append('nombre', nombre);
@@ -39,11 +39,12 @@ export class UsuarioService {
   }
 
    validarUsuarios() {
-    if (localStorage.getItem('nombre')) {
-      if (this.id != "") {
+    if (localStorage.getItem('correo')) {
+      if ( this.validar(localStorage.getItem('nombre')) && this.validar(localStorage.getItem('correo'))) {
+      if (this.id !== '') {
         this.Nombre =  localStorage.getItem('nombre');
         this.Correo = localStorage.getItem('correo');
-        console.log(this.Nombre + 'entro con id  ' + this.Correo);
+        console.log(this.Nombre + 'entro con correo  ' + this.Correo + 'id' + this.id);
         return this.id;
       } else {
         this.logueo(localStorage.getItem('nombre'),localStorage.getItem('correo')).subscribe(res=>{
@@ -56,6 +57,10 @@ export class UsuarioService {
         console.log(this.Nombre + 'entro sin id ' + this.Correo);
 
       }
+    } else {
+      alert('Hoho, parece que ocurrio un problema al acceder a tu cuenta, por favor intenta entrar nuevamente');
+      return -1;
+    }
 
     } else {
       this.Nombre = '';
@@ -78,11 +83,19 @@ export class UsuarioService {
       }));
   }
 
+
   modificarCalificacion(idUsuario, calificiacion) {
     return this.http.put(this.url + 'usuarios?idUsuario=' + idUsuario + '&calificacion=' + calificiacion, null)
     .pipe(
       map(res => {
         return res.json();
       }));
+
+  validar(texto) {
+    if (texto.length === 0 || /^\s+$/.test(texto)) {
+        return false;
+    }
+    return true;
+
   }
 }

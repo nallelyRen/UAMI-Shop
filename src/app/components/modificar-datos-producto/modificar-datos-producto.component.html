@@ -13,6 +13,8 @@
             <div class="col-md-8">
                 <input class="form-control" type="text" id="nombre" placeholder="Nombre" [value]="producto.nombre">
             </div>
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="Escribe en breves palabras el nombre de tu producto o servicio, recuerda que éste aparecera como el título del mismo" popoverTitle="Tip para el nombre de tu producto">
+            </button>
         </div>
         <div class="form-group row" *ngIf="producto.ubicacion">
             <label class="col-2 col-form-label">Dirección</label>
@@ -25,6 +27,8 @@
             <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Precio" [value]="producto.precio" id="precio">
             </div>
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="Escribe únicamente la cantidad, sin tipo de moneda ni ningún otro caracter que no sea número" popoverTitle="Como escribir el precio de tu producto">
+            </button>
         </div>
         <div class="form-group row" *ngIf="producto.area">
             <label class="col-2 col-form-label">Area</label>
@@ -41,18 +45,25 @@
             <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Representante" [value]="producto.representante" id="representante">
             </div>
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="Normalmente todos los proyectos terminales y de servicio social tienen un profesor que esta a cargo, escribir el nombre del mismo o en su defecto el nombre de la persona a la que se puedan dirigir las personas interesadas en el mismo"
+                popoverTitle="A que representante se refiere">
+            </button>
         </div>
         <div class="form-group row" *ngIf="producto.requisitos">
             <label class="col-2 col-form-label">Requisitos</label>
             <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Requisitos" [value]="producto.requisitos" id="requisitos">
             </div>
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="Conocimientos en algún tema, numero de creditos, etc." popoverTitle="A que requisitos se refieren">
+            </button>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">Descripción</label>
             <div class="col-md-8">
                 <textarea rows="4" cols="50" class="form-control" id="descripcion" placeholder="Descripcion">{{producto.descripcion}}</textarea>
             </div>
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="Escribe todas las caracteristicas que consideres importantes de tu producto o servicio." popoverTitle="Tip para la Descripción de tu producto">
+            </button>
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">&nbsp;</label>
