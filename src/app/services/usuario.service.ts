@@ -77,4 +77,12 @@ export class UsuarioService {
         return res.json();
       }));
   }
+
+  modificarCalificacion(idUsuario, calificiacion) {
+    return this.http.put(this.url + 'usuarios?idUsuario=' + idUsuario + '&calificacion=' + calificiacion, null)
+    .pipe(
+      map(res => {
+        return res.json();
+      }));
+  }
 }

@@ -69,7 +69,7 @@ guardarCalificacion(){
   } else {
     const id = this.producto.idUsuario;
     if (id != -1) {
-      this.usuarioService.modificarUsuario(id, this.usuario.calificacion).subscribe(
+      this.usuarioService.modificarCalificacion(id, this.usuario.calificacion).subscribe(
         res => {
           alert('Tu calificación' + this.usuario.calificacion + ' se ha enviado correctamente');
           this.carga = false ;
