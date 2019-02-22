@@ -11,6 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   providers: [NgbRatingConfig]
 })
 
+
 export class ProductoComponent implements OnInit {
 
 
@@ -111,9 +112,10 @@ export class ProductoComponent implements OnInit {
       }
     }
   }
+  
 
   calculaPromedio() {
-    console.log('entro al metodo p');
+    //console.log('entro al metodo p');
     //codigo para el promedio
     //dividimos el conjunto en subcadenas eliminando "-"
 
@@ -138,7 +140,10 @@ export class ProductoComponent implements OnInit {
     }
     var promedio = suma / total;
     //  console.log('el promedio es '+promedio);
-    return promedio;
+   
+    document.getElementById("calif").innerHTML = '10';
+   // return promedio;
+   
   }
 
 
