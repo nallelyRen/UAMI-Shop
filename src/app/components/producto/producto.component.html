@@ -114,11 +114,11 @@
                     <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
 
-                <div class="col-10" >
+                <div class="col-10">
                     <h5 class="feature-title">Calificación del usuario</h5>
-                    <ngb-rating [rate]="producto.usuario.calificacion"></ngb-rating>
-                    <p id="calif" class="grey-text">Calificación </p>
-
+                    <ngb-rating [rate]="promedio"></ngb-rating>
+                    <p class="grey-text">Calificación : {{promedio}} </p>
+                    <p class="grey-text">Basado en {{totalCalif}} calificaciones.</p>
                 </div>
             </div>
             <div class="row">
