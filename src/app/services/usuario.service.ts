@@ -90,8 +90,12 @@ export class UsuarioService {
   }
 
 
-  modificarCalificacion(idUsuario, calificiacion) {
-    return this.http.put(this.url + 'usuarios?idUsuario=' + idUsuario + '&calificacion=' + calificiacion, null)
+  modificarCalificacion(idUsuario,idUsuarioAcalificar, calificacion) {
+    const formData: FormData = new FormData();
+    formData.append('idUsuario', idUsuario);
+    formData.append('calificacion', calificacion);
+    formData.append('idUsuarioAcalificar', idUsuarioAcalificar);   
+    return this.http.post( this.url + 'calificaUsuario', formData)   
       .pipe(
         map(res => {
           return res.json();
