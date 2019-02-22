@@ -40,7 +40,7 @@ export class ProductoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.calculaPromedio;
+    this.calculaPromedio();
   }
 
   obtenerProducto(id) {
@@ -75,8 +75,10 @@ export class ProductoComponent implements OnInit {
         if (id === calificador) {
           alert('No puedes calificarte tu mismo, tu calificación no se ha enviado');
         } else {
-          var separador = "-";
-          var calificaciones = this.producto.usuario.calificacion.split(separador);
+          var cadena = this.producto.usuario.calificacion.toString();
+          var arreglo = cadena.split("-");
+          var cadena2 = arreglo.toString();
+          var calificaciones = cadena2.split(",");
           var bandera = false;
           //for para obtener todos los id 
           // Verificamos que el usuario no haya calificado ya
@@ -86,9 +88,10 @@ export class ProductoComponent implements OnInit {
               //Sustituimos la calificación vieja por la nueva
               calificaciones[i + 1] = this.usuario.calificacion;
               alert('Tu calificación' + this.usuario.calificacion + ' se ha modificado correctamente');
+              break;
             }
             i++;
-          }    
+          }
 
           if (!bandera) {
             //Agregamos la calificación enviada al arreglo del usuario
@@ -97,32 +100,44 @@ export class ProductoComponent implements OnInit {
                 alert('Tu calificación' + this.usuario.calificacion + ' se ha enviado correctamente');
                 this.carga = false;
               }
-            );           
+            );
           }
-           this.calculaPromedio();
+          this.calculaPromedio();
         }
       } else {
         this.carga = false;
-        console.log('Tu calificación no se envió correctamente');
+        alert('Tu calificación no se envió correctamente');
         this.carga = false;
       }
     }
   }
 
   calculaPromedio() {
+    console.log('entro al metodo p');
     //codigo para el promedio
     //dividimos el conjunto en subcadenas eliminando "-"
-    var separador = "-";
-    var calificaciones = this.producto.usuario.calificacion.split(separador);
+
+    //pruebas
+    //var arreglo=["1-10","3-6","6-8","45-3","6-10"];
+    //var cadena2= arreglo.toString();
+    //var arreglo2= cadena2.split("-");
+    //var cadena3= arreglo2.toString();
+    //var calificaciones=cadena3.split(",");
+
+    var cadena = this.producto.usuario.calificacion.toString();
+    var arreglo = cadena.split("-");
+    var cadena2 = arreglo.toString();
+    var calificaciones = cadena2.split(",");
     var suma = 0;
-    var total = calificaciones.length;
+    var total = calificaciones.length / 2;
     //sumamos todas las calificaciones
     for (var i = 1; i < calificaciones.length; i++) {
-      suma = suma + calificaciones[i];
+      suma = suma + parseInt(calificaciones[i]);
+      //console.log('calificacion '+calificaciones[i]);
       i++;
     }
-    total = calificaciones.length;
     var promedio = suma / total;
+    //  console.log('el promedio es '+promedio);
     return promedio;
   }
 
