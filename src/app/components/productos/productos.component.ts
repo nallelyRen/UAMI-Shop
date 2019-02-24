@@ -31,7 +31,6 @@ export class ProductosComponent implements OnInit {
   cambio(categoria) {
     this.carga = true;
     this.productos = [];
-    this.carga = true;
     this.categoria = categoria;
     if (categoria === 'Libros') {
       this.productoService.obtenerLibros().subscribe(res => {
@@ -117,6 +116,7 @@ export class ProductosComponent implements OnInit {
         console.log(res);
       });
     } else {
+      this.carga = false;
       alert('Ups no se pudo agregar a tu lista de favoritos');
       console.log('no estas logueado');
     }

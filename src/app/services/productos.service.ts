@@ -289,11 +289,9 @@ export class ProductosService {
   getProducto() {
     return this.producto;
   }
- 
+
   setProducto(prod: any) {
     this.producto = prod;
   }
- 
 
-  
 }

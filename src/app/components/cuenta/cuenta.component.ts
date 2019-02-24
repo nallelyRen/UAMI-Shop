@@ -165,7 +165,7 @@ export class CuentaComponent implements OnInit {
 
   modificarProducto(producto: any) {
     this.productoService.setProducto(producto);
-    this.router.navigate(['/modificarDatosProducto']);
+    this.router.navigate(['/modificarDatosProducto/' + producto.id]);
   }
  
 
