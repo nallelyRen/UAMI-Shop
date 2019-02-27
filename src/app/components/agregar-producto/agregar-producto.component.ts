@@ -94,6 +94,7 @@ export class AgregarProductoComponent implements OnInit {
     // envio de la peticion al servicio
     if (this.Libro.nombre === '' || this.Libro.precio === '' || this.Libro.categoria === '' || this.SiImagen === false) {
       alert('El campo nombre,categoria y precio, son obligatorios');
+      this.carga = false;
     } else {
       if (this.forma.get('categoria').value === 'libro') {
         const id = this.usuarioService.validarUsuarios();
@@ -106,6 +107,7 @@ export class AgregarProductoComponent implements OnInit {
             }
           );
         } else {
+          this.carga = false;
           console.log('no esta logueado');
         }
 
@@ -122,8 +124,9 @@ export class AgregarProductoComponent implements OnInit {
                 }
               );
           } else {
-                console.log('no esta logueado');
-              }
+              this.carga = false;
+              console.log('no esta logueado');
+            }
           } else {
         if (this.forma.get('categoria').value === 'tutorias') {
           const id = this.usuarioService.validarUsuarios();
@@ -137,6 +140,7 @@ export class AgregarProductoComponent implements OnInit {
                 }
               );
         } else {
+            this.carga = false;
             console.log('no esta logueado');
           }
         } else {
@@ -151,6 +155,7 @@ export class AgregarProductoComponent implements OnInit {
                 }
               );
             } else {
+              this.carga = false;
               console.log('no esta logueado');
             }
           } else {
@@ -165,6 +170,7 @@ export class AgregarProductoComponent implements OnInit {
                   }
                 );
               } else {
+                this.carga = false;
                 console.log('no esta logueado');
               }
             } else {
@@ -179,6 +185,7 @@ export class AgregarProductoComponent implements OnInit {
                     }
                   );
                 } else {
+                  this.carga = false;
                   console.log('no esta logueado');
                 }
               } else {
@@ -195,6 +202,7 @@ export class AgregarProductoComponent implements OnInit {
                         }
                       );
                   } else {
+                    this.carga = false;
                     console.log('no esta logueado');
                   }
                 }

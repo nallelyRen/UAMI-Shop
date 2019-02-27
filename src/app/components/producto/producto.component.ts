@@ -14,13 +14,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export class ProductoComponent implements OnInit {
 
-
   usuarios: any[] = [];
   id: any;
   producto: any;
   produc: any;
   flag = false;
   carga = true;
+  promedio = 0;
+  totalCalif = 0;
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   forma: FormGroup;
   constructor(private router: ActivatedRoute
@@ -31,7 +32,6 @@ export class ProductoComponent implements OnInit {
       this.id = params['id'];
       this.obtenerProducto(this.id);
     });
-
     config.max = 10;
     config.readonly = true;
 
@@ -41,7 +41,7 @@ export class ProductoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.calculaPromedio();
+
   }
 
   obtenerProducto(id) {
@@ -49,6 +49,7 @@ export class ProductoComponent implements OnInit {
       this.producto = res;
       this.carga = false;
       console.log('producto', this.producto);
+      this.calculaPromedio(this.producto.usuario.calificacion.toString());
     });
   }
 
@@ -60,6 +61,7 @@ export class ProductoComponent implements OnInit {
       console.log(typeof (this.usuarios));
     });
   }
+
   guardarCalificacion() {
     this.carga = true;
     this.usuario.calificacion = this.forma.get('calificacion').value;
@@ -69,82 +71,43 @@ export class ProductoComponent implements OnInit {
       alert('El campo calificación es obligatorio');
     } else {
       const idUsuario = this.usuarioService.validarUsuarios();
-      const id = this.producto.idUsuario;
-      const calificador = this.usuarioService.obtenerUsuarioPorId(idUsuario);
-      if (idUsuario != -1) {
-        //Verificamos que el usuario no sea el mismo que se esta calificando 
-        if (id === calificador) {
+      // const id = this.producto.idUsuario;
+      const idUsuarioAcalificar = this.producto.usuario.id;
+      if (idUsuario !== -1) {
+        // Verificamos que el usuario no sea el mismo que se esta calificando 
+        if (idUsuario === idUsuarioAcalificar) {
+          this.carga = false;
           alert('No puedes calificarte tu mismo, tu calificación no se ha enviado');
         } else {
-          var cadena = this.producto.usuario.calificacion.toString();
-          var arreglo = cadena.split("-");
-          var cadena2 = arreglo.toString();
-          var calificaciones = cadena2.split(",");
-          var bandera = false;
-          //for para obtener todos los id 
-          // Verificamos que el usuario no haya calificado ya
-          for (var i = 0; i < calificaciones.length; i++) {
-            if (calificador === calificaciones[i]) {
-              bandera = true;
-              //Sustituimos la calificación vieja por la nueva
-              calificaciones[i + 1] = this.usuario.calificacion;
-              alert('Tu calificación' + this.usuario.calificacion + ' se ha modificado correctamente');
-              break;
-            }
-            i++;
-          }
-
-          if (!bandera) {
-            //Agregamos la calificación enviada al arreglo del usuario
-            this.usuarioService.modificarCalificacion(idUsuario, this.usuario.calificacion, id).subscribe(
-              res => {
-                alert('Tu calificación' + this.usuario.calificacion + ' se ha enviado correctamente');
-                this.carga = false;
-              }
-            );
-          }
-          this.calculaPromedio();
+          this.usuarioService.modificarCalificacion(idUsuario, idUsuarioAcalificar, this.usuario.calificacion ).subscribe(
+            res => {
+              const arreglo = res;
+              this.calculaPromedio(arreglo.toString());
+              alert('Tu calificación de ' + this.usuario.calificacion + ' se ha enviado correctamente');
+              this.carga = false;
+            });
         }
       } else {
-        this.carga = false;
         alert('Tu calificación no se envió correctamente');
         this.carga = false;
       }
     }
   }
-  
 
-  calculaPromedio() {
-    //console.log('entro al metodo p');
-    //codigo para el promedio
-    //dividimos el conjunto en subcadenas eliminando "-"
-
-    //pruebas
-    //var arreglo=["1-10","3-6","6-8","45-3","6-10"];
-    //var cadena2= arreglo.toString();
-    //var arreglo2= cadena2.split("-");
-    //var cadena3= arreglo2.toString();
-    //var calificaciones=cadena3.split(",");
-
-    var cadena = this.producto.usuario.calificacion.toString();
-    var arreglo = cadena.split("-");
-    var cadena2 = arreglo.toString();
-    var calificaciones = cadena2.split(",");
-    var suma = 0;
-    var total = calificaciones.length / 2;
+  calculaPromedio( cadena: String) {
+    const arreglo = cadena.split("-");
+    const cadena2 = arreglo.toString();
+    const calificaciones = cadena2.split(",");
+    if (calificaciones.length > 1) {
+      var suma = 0;
+      this.totalCalif = calificaciones.length / 2;
     //sumamos todas las calificaciones
-    for (var i = 1; i < calificaciones.length; i++) {
-      suma = suma + parseInt(calificaciones[i]);
-      //console.log('calificacion '+calificaciones[i]);
-      i++;
+      for (var i = 1; i < calificaciones.length; i++) {
+        suma = suma + parseInt(calificaciones[i]);
+        i++;
+      }
+      this.promedio = suma / this.totalCalif;
     }
-    var promedio = suma / total;
-    //  console.log('el promedio es '+promedio);
-   
-    document.getElementById("calif").innerHTML = '10';
-   // return promedio;
-   
   }
-
 
 }
