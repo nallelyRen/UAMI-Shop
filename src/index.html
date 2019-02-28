@@ -26,15 +26,18 @@
 
 
 <body>
+    <!--Código login de facebook
     <div id="fb-root"></div>
-
+-->
     <script>
+        //Código login de facebook
+        /*
         usrNombre = '';
         usrApellidos = '';
         usrCorreo = '';
         usrID = '';
         usrSexo = '';
-
+    
         function statusChangeCallback(response) {
             console.log('statusChangeCallback');
             console.log(response);
@@ -116,7 +119,7 @@
                 // 'Thanks for logging in UAMIShop, ' + response.name + '!';
             });
         }
-
+*/
 
         //lo de google
 
@@ -140,8 +143,8 @@
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
             if (validar(localStorage.getItem('correo'))) {
                 console.log(localStorage.getItem('correo'));
-                //window.location = "http://localhost:4200/#/productos";
-                window.location = "https://uamishop.azurewebsites.net/#/productos";
+                window.location = "http://localhost:4200/#/productos";
+               // window.location = "https://uamishop.azurewebsites.net/#/productos";
                 alert(this.gooNombre + ' has iniciado sesión correctamente');
             } else {
                 alert('Ups parece que huvo un problema al iniciar tu sesion, porfavor inicia tu sesion nuevamente');
@@ -155,8 +158,8 @@
             auth2.signOut().then(function() {
                 console.log('User signed out.');
             });
-            //window.location = "http://localhost:4200";
-            window.location = "https://uamishop.azurewebsites.net"
+            window.location = "http://localhost:4200";
+           // window.location = "https://uamishop.azurewebsites.net"
             alert('tu sesión se cerro correctamente');
         }
 
