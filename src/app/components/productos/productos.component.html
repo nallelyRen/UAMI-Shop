@@ -1,24 +1,23 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 
-
 <div id="contenido" *ngIf="!Restriccion" class="container">
 
     <body>
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <!-- Card -->
                 <div class="card-deck">
                     <div id="registro" class="card card-image">
 
                         <!-- Content -->
-                        <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                        <div class="text-white text-center align-items-center rgba-black-strong py-5 px-4">
                             <div>
                                 <h5 id="textoR" class="green-text"><i class="fa fa-pie-chart"></i> Vende</h5>
-                                <h3 id="textoR" class="card-title pt-2"><strong>Registra tus productos</strong></h3>
+                                <h3 id="textoR" class="card-title pt-2 responsive-width"><strong>Registra tus productos</strong></h3>
                                 <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro es totalmente gratuito
                                 </p>
-                                <a class="btn btn-success" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
+                                <a class="btn btn-dark responsive-width" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
                                     Registrar producto</a>
                             </div>
                         </div>
@@ -45,7 +44,7 @@
             </div>
 
 
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <div class="tab-content" id="informacion">
 
                     <div class="tab-pane fade show active" id="principal" role="tabpanel" aria-labelledby="pagPrin">
@@ -87,30 +86,30 @@
 
                         <!-- Card deck -->
                         <div id="card" class="card-deck">
-                            <div  class="flip-card">
+                            <div class="flip-card">
                                 <div class="flip-card-inner">
-                                  <div class="flip-card-front">
-                                    <img src="../../../assets/img/library.jpg" alt="libros" style="width:300px;height:300px;">
-                                  </div>
-                                  <div class="flip-card-back">
-                                    <h1><i class="fa fa-book"></i> Libros</h1> 
-                                    <p>Con la opción de vender, rentar o intercambiar</p>                                     
-                                  </div>
+                                    <div class="flip-card-front">
+                                        <img src="../../../assets/img/library.jpg" alt="libros" style="width:300px;height:300px;">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h1><i class="fa fa-book"></i> Libros</h1>
+                                        <p>Con la opción de vender, rentar o intercambiar</p>
+                                    </div>
                                 </div>
-                              </div>
-                            
+                            </div>
+
                             <!-- Card -->
                             <div class="flip-card">
                                 <div class="flip-card-inner">
-                                  <div class="flip-card-front">
-                                    <img src="../../../assets/img/proyecto.jpg" alt="libros" style="width:300px;height:300px;">
-                                  </div>
-                                  <div class="flip-card-back">
-                                    <h1>Proyectos terminales y servicio social</h1> 
-                                    <p>Busca propuestras vigentes o crea la tuya</p>                                     
-                                  </div>
+                                    <div class="flip-card-front">
+                                        <img src="../../../assets/img/proyecto.jpg" alt="libros" style="width:300px;height:300px;">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h1>Proyectos terminales y servicio social</h1>
+                                        <p>Busca propuestras vigentes o crea la tuya</p>
+                                    </div>
                                 </div>
-                              </div>                           
+                            </div>
                             <!-- Card -->
                         </div>
                         <!-- Card deck -->
@@ -121,90 +120,90 @@
 
                             <div class="flip-card">
                                 <div class="flip-card-inner">
-                                  <div class="flip-card-front">
-                                    <img src="../../../assets/img/keyboard.jpg" alt="libros" style="width:300px;height:300px;">
-                                  </div>
-                                  <div class="flip-card-back">
-                                    <h1><i class="fa fa-laptop"></i>  Electrónica y computación</h1> 
-                                    <p>Con la opción de vender, rentar o intercambiar</p>                                     
-                                  </div>
-                                </div>
-                              </div>       
-                           
-                            <!-- Card -->
-                           
-
-                            <!-- Card -->
-                             <div class="flip-card">
-                                <div class="flip-card-inner">
-                                  <div class="flip-card-front">
-                                    <img src="../../../assets/img/departamento.jpg" alt="libros" style="width:300px;height:300px;">
-                                  </div>
-                                  <div class="flip-card-back">
-                                    <h1><i class="fa fa-home"></i> Departamentos</h1> 
-                                    <p>Con la opción de vender, rentar </p>                                     
-                                  </div>
-                                </div>
-                              </div>                                
-                            <!-- Card -->
-                        </div>
-                        <!-- Card deck -->
-                        <!-- Card deck -->
-                        <div  id="card" class="card-deck">
-
-                            <!-- Card -->
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                  <div class="flip-card-front">
-                                    <img src="../../../assets/img/student.jpg" alt="libros" style="width:300px;height:300px;">
-                                  </div>
-                                  <div class="flip-card-back">
-                                    <h1><i class="fa fa-university"></i> Tutorías</h1> 
-                                    <p>Clasificadas por división para una búsqueda más rápida</p>                                     
-                                  </div>
-                                </div>
-                              </div>                                 
-                            
-                            <!-- Card -->
-
-
-
-                            <!-- Card -->
-
-                            <div class="flip-card">
-                                <div class="flip-card-inner">
-                                  <div class="flip-card-front">
-                                    <img src="../../../assets/img/unique.jpg" alt="libros" style="width:300px;height:300px;">
-                                  </div>
-                                  <div class="flip-card-back">
-                                    <h1><i class="fa fa-compass"></i> Otros</h1> 
-                                    <p>Para productos diferentes y únicos que no entran en categorías convencionales</p>                                     
-                                  </div>
-                                </div>
-                              </div>  
-                            <!-- Card -->
-                        </div>
-                        <!-- Card deck -->
-
-                        <!-- Card deck -->
-                        <div  id="card" class="card-deck">
-
-                               <!-- Card -->
-    
-                                <div class="flip-card">
-                                    <div class="flip-card-inner">
-                                      <div class="flip-card-front">
-                                        <img src="../../../assets/img/help.jpg" alt="libros" style="width:300px;height:300px;">
-                                      </div>
-                                      <div class="flip-card-back">
-                                        <h1><i class="fa fa-comments"></i> Próximamente</h1> 
-                                        <p>Categoría de servicio técnico</p>                                     
-                                      </div>
+                                    <div class="flip-card-front">
+                                        <img src="../../../assets/img/keyboard.jpg" alt="libros" style="width:300px;height:300px;">
                                     </div>
-                                  </div>  
-                                <!-- Card -->
+                                    <div class="flip-card-back">
+                                        <h1><i class="fa fa-laptop"></i> Electrónica y computación</h1>
+                                        <p>Con la opción de vender, rentar o intercambiar</p>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- Card deck -->
+
+                            <!-- Card -->
+
+
+                            <!-- Card -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../../../assets/img/departamento.jpg" alt="libros" style="width:300px;height:300px;">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h1><i class="fa fa-home"></i> Departamentos</h1>
+                                        <p>Con la opción de vender, rentar </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        </div>
+                        <!-- Card deck -->
+                        <!-- Card deck -->
+                        <div id="card" class="card-deck">
+
+                            <!-- Card -->
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../../../assets/img/student.jpg" alt="libros" style="width:300px;height:300px;">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h1><i class="fa fa-university"></i> Tutorías</h1>
+                                        <p>Clasificadas por división para una búsqueda más rápida</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card -->
+
+
+
+                            <!-- Card -->
+
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../../../assets/img/unique.jpg" alt="libros" style="width:300px;height:300px;">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h1><i class="fa fa-compass"></i> Otros</h1>
+                                        <p>Para productos diferentes y únicos que no entran en categorías convencionales</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        </div>
+                        <!-- Card deck -->
+
+                        <!-- Card deck -->
+                        <div id="card" class="card-deck">
+
+                            <!-- Card -->
+
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="../../../assets/img/help.jpg" alt="libros" style="width:300px;height:300px;">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h1><i class="fa fa-comments"></i> Próximamente</h1>
+                                        <p>Categoría de servicio técnico</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        </div>
+                        <!-- Card deck -->
 
 
 
@@ -226,7 +225,7 @@
                                     <p class="card-text text-white">{{product.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success btn-block" [routerLink]="['/producto', product.id]">ver
+                                    <button class="btn btn-outline-success btn-block responsive-width" [routerLink]="['/producto', product.id]">ver
                                         más</button>
                                     <button class="btn btn-outline-info responsive-width btn-block" (click)="agregarFavorito(product.id)">Añadir
                                         a

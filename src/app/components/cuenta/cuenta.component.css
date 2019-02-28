@@ -45,10 +45,34 @@ ul.a {
     }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 576px) {
     .responsive-width {
-        font-size: 1.2vw;
+        white-space: normal;
+        font-size: 1.5vw;
         padding-left: 0px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 833px) {
+    .responsive-width {
+        white-space: normal;
+        font-size: 1.3vw;
+    }
+}
+
+@media screen and (min-width: 834px) {
+    .responsive-width {
+        text-align: center;
+        white-space: normal;
+        font-size: 1.1vw;
+    }
+}
+
+@media screen and (min-width: 985px) and (max-width: 991px) {
+    .responsive-width {
+        text-align: center;
+        white-space: normal;
+        font-size: 1vw;
     }
 }
 
