@@ -1,18 +1,16 @@
-
 <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>UAMIShop</title>
-    <base href="/">
+    <base href="">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-   <meta name="google-signin-client_id" content=" AIzaSyBqoCHW_mCg8N3GXN61EUWrBESRxF5o96s ">
+    <meta name="google-signin-client_id" content=" AIzaSyBqoCHW_mCg8N3GXN61EUWrBESRxF5o96s ">
 
     <meta name="viewport" content="width=device-width,  initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -22,22 +20,24 @@
     <!-- Your custom styles (optional) -->
     <link href="../src/style.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 
 
 <body>
+    <!--Código login de facebook
     <div id="fb-root"></div>
-
+-->
     <script>
+        //Código login de facebook
+        /*
         usrNombre = '';
         usrApellidos = '';
         usrCorreo = '';
         usrID = '';
         usrSexo = '';
- 
+    
         function statusChangeCallback(response) {
             console.log('statusChangeCallback');
             console.log(response);
@@ -46,10 +46,10 @@
                 datPer(); // Extraer los datos
                 testAPI();
                 localStorage.setItem("nombre", this.usrNombre + ' ' + this.usrApellidos);
-                localStorage.setItem("correo", this.usrCorreo);               
+                localStorage.setItem("correo", this.usrCorreo);
             });
             if (response.status === 'connected') {
- 
+
             } else {
                 console.log("no esta logueado")
                     //document.getElementById('status').innerHTML = 'Please log ' +
@@ -58,10 +58,10 @@
                 localStorage.removeItem("correo");
             }
         }
- 
- 
+
+
         function datPer() {
- 
+
             FB.api(
                 '/me',
                 'GET', {
@@ -76,15 +76,15 @@
                     console.log(usrCorreo, usrNombre, usrApellidos, usrID, usrSexo);
                 }
             );
- 
+
         }
- 
+
         function checkLoginState() {
             FB.getLoginStatus(function(response) {
                 statusChangeCallback(response);
             });
         }
- 
+
         window.fbAsyncInit = function() {
             FB.init({
                 appId: '108607856727273',
@@ -92,15 +92,15 @@
                 xfbml: true,
                 version: 'v3.1'
             });
- 
+
             FB.AppEvents.logPageView();
- 
+
             FB.getLoginStatus(function(response) {
                 statusChangeCallback(response);
             });
- 
+
         };
- 
+
         (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
@@ -109,7 +109,7 @@
             js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.1&appId=108607856727273&autoLogAppEvents=1';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
- 
+
         function testAPI() {
             // console.log('Welcome!  Fetching your information.... ');
             FB.api('/me', function(response) {
@@ -119,16 +119,16 @@
                 // 'Thanks for logging in UAMIShop, ' + response.name + '!';
             });
         }
- 
- 
+*/
+
         //lo de google
- 
+
         gooNombre = ' ';
         gooID = ' ';
         gooEmail = ' ';
         gooImagen = ' ';
- 
- 
+
+
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
             this.gooNombre = profile.getName();
@@ -141,8 +141,18 @@
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            if (validar(localStorage.getItem('correo'))) {
+                console.log(localStorage.getItem('correo'));
+
+                //window.location = "http://localhost:4200/#/productos";
+                window.location = "https://uamishop.azurewebsites.net/#/productos";
+
+                alert(this.gooNombre + ' has iniciado sesión correctamente');
+            } else {
+                alert('Ups parece que huvo un problema al iniciar tu sesion, porfavor inicia tu sesion nuevamente');
+            }
         }
- 
+
         function Salir() {
             var auth2 = gapi.auth2.getAuthInstance();
             localStorage.removeItem("nombre");
@@ -150,28 +160,38 @@
             auth2.signOut().then(function() {
                 console.log('User signed out.');
             });
+
+            //window.location = "http://localhost:4200";
+            window.location = "https://uamishop.azurewebsites.net"
+            alert('Tu sesión se cerro correctamente');
+
         }
- 
+
         function Datos() {
             console.log('Name Goo: ' + gooNombre);
             console.log('Email Goo: ' + gooEmail);
             console.log('Imagen Goo: ' + gooImagen);
             console.log('Name FB: ' + usrNombre);
         }
+
+        function validar(texto) {
+            if (texto.length === 0 || /^\s+$/.test(texto)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     </script>
- 
+
 
 
 
 
     <app-root></app-root>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
     <!-- JQuery -->
     <script type="text/javascript" src="../src/jquery-3.3.1.min.js"></script>
     <!-- Bootstrap tooltips -->

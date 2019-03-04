@@ -302,7 +302,7 @@ export class NgbdModalComponent  implements OnInit{
 
   modificarProducto(producto: any) {
     this.productoService.setProducto(producto);
-    this.router.navigate(['/modificarDatosProducto']);
+    this.router.navigate(['/modificarDatosProducto/' + producto.id]);
   }
  
 
@@ -318,7 +318,7 @@ export class NgbdModalComponent  implements OnInit{
       if (id != -1) {
         this.usuarioService.modificarUsuario(id, this.usuario.telefono).subscribe(
           res => {
-            alert('Tu número' + this.usuario.telefono + ' se ha actualizado correctamente');
+            alert('Tu número ' + this.usuario.telefono + ' se ha actualizado correctamente');
             this.carga = false ;
             this.forma.reset();
            // this.forma.reset(this.Libro2);
@@ -332,7 +332,7 @@ export class NgbdModalComponent  implements OnInit{
     }
 
   }
-
+    
   calculaPromedio( cadena: String) {
     const arreglo = cadena.split("-");
     const cadena2 = arreglo.toString();

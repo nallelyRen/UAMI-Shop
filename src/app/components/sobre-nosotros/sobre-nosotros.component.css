@@ -1,10 +1,23 @@
-#texto{
+#texto {
     text-align: justify;
 }
+
 h2 {
     font-family: 'K2D', sans-serif;
     text-align: center;
 }
-#contenido{
+
+#contenido {
     padding-top: 100px;
+}
+
+#foot {
+    color: #ffffff;
+}
+
+
+/* Footer color for sake of consistency with Navbar */
+
+.page-footer {
+    background-color: #1C2331;
 }

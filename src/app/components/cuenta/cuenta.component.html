@@ -5,7 +5,7 @@
 
 
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <!-- imagen -->
                 <img src="../../../assets/img/logoBig.png" class="img-fluid rounded-circle hoverable" alt="hoverable">
                 <!-- imagen -->
@@ -18,9 +18,7 @@
                     <a class="list-group-item list-group-item-action" id="list-agregar-list" (click)="agregar()" data-toggle="list" href="#list-agregar" role="tab" aria-controls="agregar">Agregar producto</a>
                 </div>
             </div>
-
-
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <!--  ANIMACIÓN DE CARGA-->
                 <div class="tab-content" id="informacion">
 
@@ -157,6 +155,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <button class="btn btn-outline-success responsive-width btn-block " [routerLink]="['/producto', product.id]">Ver más</button>
+
                                     <button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarFavoritos(product.id)">Quitar de favoritos</button>
                                 </div>
                             </div>
