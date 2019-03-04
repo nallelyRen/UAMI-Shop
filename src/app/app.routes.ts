@@ -1,6 +1,6 @@
 import {RouterModule, Routes} from '@angular/router';
 import { PrincipalComponent } from './components/principal/principal.component';
-import { CuentaComponent } from './components/cuenta/cuenta.component';
+import { NgbdModalComponent } from './components/cuenta/cuenta.component';
 import { AyudaComponent } from './components/ayuda/ayuda.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductoComponent } from './components/producto/producto.component';
@@ -16,18 +16,16 @@ import { ListUploadComponent } from './components/list-upload/list-upload.compon
 
 const APP_ROUTES: Routes = [
     {path: 'principal', component: PrincipalComponent },
-    {path: 'miCuenta', component: CuentaComponent },
+    {path: 'miCuenta', component: NgbdModalComponent },
     {path: 'ayuda', component: AyudaComponent },
     {path: 'login', component: LoginComponent },
     {path: 'producto/:id', component: ProductoComponent },
     {path: 'agregarProducto', component: AgregarProductoComponent},
     {path: 'productos', component: ProductosComponent },
     {path: 'sobreNosotros', component: SobreNosotrosComponent },
-
-    {path: 'modificarDatosProducto', component: ModificarDatosProductoComponent },
-    {path: 'modificarImagenProducto', component: ModificarImagenProductoComponent },
-
+    {path: 'modificarDatosProducto/:id', component: ModificarDatosProductoComponent },
+    {path: 'modificarImagenProducto/:id', component: ModificarImagenProductoComponent },
     {path: '**', pathMatch: 'full', redirectTo: 'principal'}
 ];
 
-export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);
+export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES, {useHash: true});
