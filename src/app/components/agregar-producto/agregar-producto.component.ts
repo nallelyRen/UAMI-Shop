@@ -128,6 +128,7 @@ export class AgregarProductoComponent implements OnInit {
               );
           } 
           else {
+                this.carga = false;
                 console.log('no esta logueado');
               }
           }} else {
@@ -146,29 +147,10 @@ export class AgregarProductoComponent implements OnInit {
                 }
               );
         } else {
-            console.log('no esta logueado');
-          }
-        }} else {
             this.carga = false;
             console.log('no esta logueado');
           }
-        } else {
-          if (this.forma.get('categoria').value === 'tutorias') {
-            const id = this.usuarioService.validarUsuarios();
-            if (id != -1) {
-              this.productService.nuevoElectronico(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
-                res => {
-                  alert('Tu electronico ' + this.Libro.nombre + ' se a subido correctamente');
-                  this.forma.reset(this.Libro2);
-                  this.carga = false;
-                }
-              );
-            } else {
-              this.carga = false;
-              console.log('no esta logueado');
-            }
-          } else {
-            const id = this.usuarioService.validarUsuarios();
+        }} else {
             if (this.forma.get('categoria').value === 'electronica') {
               const id = this.usuarioService.validarUsuarios();
               if (id != -1) {
