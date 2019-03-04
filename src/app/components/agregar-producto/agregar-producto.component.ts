@@ -92,9 +92,8 @@ export class AgregarProductoComponent implements OnInit {
     this.Libro.direccion = this.forma.get("direccion").value;
     this.Libro.area = this.forma.get('area').value;
     // envio de la peticion al servicio
-    if (this.Libro.nombre === '' || this.Libro.precio === '' || this.Libro.categoria === '' || this.SiImagen === false) {
-      alert('El campo nombre,categoria y precio, son obligatorios');
-      this.carga = false;
+    if (this.Libro.nombre === '' || this.Libro.precio === '' || this.Libro.categoria === '' || this.Libro.descripcion === ''  || this.SiImagen === false) {
+      alert('Todos los campos son requeridos');
     } else {
       if (this.forma.get('categoria').value === 'libro') {
         const id = this.usuarioService.validarUsuarios();
@@ -114,6 +113,10 @@ export class AgregarProductoComponent implements OnInit {
       } else {
         if (this.forma.get('categoria').value === 'proyecto') {
           const id = this.usuarioService.validarUsuarios();
+          if (this.Libro.representante === '' || this.Libro.requisitos === '') {
+            alert('Todos los campos son requeridos');
+          }
+          else {
           if (id != -1) {
             this.productService.nuevoProyecto(this.Libro.nombre, this.Libro.representante, this.Libro.precio, this.Libro.descripcion,
               this.Libro.requisitos, this.file, id).subscribe(
@@ -123,13 +126,16 @@ export class AgregarProductoComponent implements OnInit {
                   this.carga = false;
                 }
               );
-          } else {
-              this.carga = false;
-              console.log('no esta logueado');
-            }
-          } else {
+          } 
+          else {
+                console.log('no esta logueado');
+              }
+          }} else {
         if (this.forma.get('categoria').value === 'tutorias') {
           const id = this.usuarioService.validarUsuarios();
+          if (this.Libro.area === '') {
+            alert('Todos los campos son requeridos');
+          } else {
           if (id != -1) {
             this.productService.nuevaTutoria(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.Libro.area,
               this.file, id ).subscribe(
@@ -140,6 +146,9 @@ export class AgregarProductoComponent implements OnInit {
                 }
               );
         } else {
+            console.log('no esta logueado');
+          }
+        }} else {
             this.carga = false;
             console.log('no esta logueado');
           }
@@ -161,6 +170,7 @@ export class AgregarProductoComponent implements OnInit {
           } else {
             const id = this.usuarioService.validarUsuarios();
             if (this.forma.get('categoria').value === 'electronica') {
+              const id = this.usuarioService.validarUsuarios();
               if (id != -1) {
                 this.productService.nuevoElectronico(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
                   res => {
@@ -173,9 +183,12 @@ export class AgregarProductoComponent implements OnInit {
                 this.carga = false;
                 console.log('no esta logueado');
               }
-            } else {
-              const id = this.usuarioService.validarUsuarios();
+            } else { 
               if (this.forma.get('categoria').value === 'departamentos') {
+                const id = this.usuarioService.validarUsuarios();
+                if (this.Libro.direccion === '' ) {
+                  alert('Todos los campos son requeridos');
+                } else {
                 if (id != -1) {
                   this.productService.nuevoDepartamento(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id, this.Libro.direccion).subscribe(
                     res => {
@@ -188,9 +201,9 @@ export class AgregarProductoComponent implements OnInit {
                   this.carga = false;
                   console.log('no esta logueado');
                 }
-              } else {
-                const id = this.usuarioService.validarUsuarios();
+              }} else {
                 if (this.forma.get('categoria').value === 'otros') {
+                  const id = this.usuarioService.validarUsuarios();
                   if (id != -1) {
                     this.productService
                      .nuevoOtro(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id)
@@ -214,8 +227,6 @@ export class AgregarProductoComponent implements OnInit {
         }
 
       }
-    }
-
   }
   }
 }
