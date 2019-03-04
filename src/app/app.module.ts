@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbdModalContent } from './components/cuenta/cuenta.component';
+import { HttpClientModule } from '@angular/common/http';
 // componentes
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './components/principal/principal.component';
@@ -10,7 +12,7 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductoComponent } from './components/producto/producto.component';
-import { CuentaComponent } from './components/cuenta/cuenta.component';
+import { NgbdModalComponent } from './components/cuenta/cuenta.component';
 import { LoginComponent } from './components/login/login.component';
 import { PiePaginaComponent } from './components/pie-pagina/pie-pagina.component';
 import { AyudaComponent } from './components/ayuda/ayuda.component';
@@ -38,14 +40,16 @@ import { MatInputModule, } from '@angular/material';
     NavbarComponent,
     ProductosComponent,
     ProductoComponent,
-    CuentaComponent,
+    //CuentaComponent,
     LoginComponent,
     PiePaginaComponent,
     AyudaComponent,
     ListUploadComponent,
     AgregarProductoComponent,
     ModificarDatosProductoComponent,
-    ModificarImagenProductoComponent
+    ModificarImagenProductoComponent,
+    NgbdModalComponent, 
+    NgbdModalContent
   ],
    
   imports: [
@@ -53,6 +57,7 @@ import { MatInputModule, } from '@angular/material';
     HttpModule,
     RouterModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
@@ -62,6 +67,7 @@ import { MatInputModule, } from '@angular/material';
     APP_ROUTING
   ],
   providers: [],
+  entryComponents: [NgbdModalContent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
