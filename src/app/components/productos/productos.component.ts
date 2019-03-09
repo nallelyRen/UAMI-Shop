@@ -13,11 +13,21 @@ export class ProductosComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   productos: any[] = [];
-  categoria = 'Libros';
-
+  categoria = '';
+  inicio = true;
   Restriccion=true;
   carga = false;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
+      const cat = this.productoService.getCategoria();
+      if (cat !== undefined) {
+        this.categoria = cat;
+        const prod = this.productoService.getProductos();
+        if (prod !== undefined) {
+          this.productos = prod;
+          console.log(this.productos, this.categoria);
+          this.inicio = false;
+        }
+      }
   }
   
   pageEvent: PageEvent;
