@@ -48,13 +48,23 @@ export class ModificarDatosProductoComponent implements OnInit {
   this.router1.navigate(['/modificarImagenProducto/' + this.id]);
 }
 
+validarPrecio(precio: number) {
+  if ( precio < 0 || precio > 20000 || precio.toString().length < 1) {
+    return true;
+  } else {
+      return false;
+  }
+}
+
  guardarCambios() {
+  console.log((<HTMLInputElement>document.getElementById('precio')).value);
   this.carga = true;
   this.elemento.nombre = (<HTMLInputElement>document.getElementById('nombre')).value;
   this.elemento.precio = (<HTMLInputElement>document.getElementById('precio')).value;
   this.elemento.descripcion = (<HTMLInputElement>document.getElementById('descripcion')).value;
-  if (this.elemento.nombre.length < 1 || this.elemento.precio.length < 1 || this.elemento.descripcion.length < 1) {
-    alert('Los campos no pueden ser vacíos, complete la información para continuar');
+  if (this.elemento.nombre.length < 1 || this.elemento.precio.length < 1 || this.validarPrecio(parseFloat( this.elemento.precio))
+     || this.elemento.descripcion.length < 1) {
+    alert('Los campos no pueden ser vacíos y el precio debe ser menor de 20000, complete la información para continuar');
     this.carga = false;
   } else {
    if (this.producto.representante) {
