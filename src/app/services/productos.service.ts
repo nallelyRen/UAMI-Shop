@@ -7,9 +7,15 @@ import { map } from 'rxjs/operators';
 })
 export class ProductosService {
   public producto: any;
-
+  // para el catalogo
   public productos: any;
   public categoria: string;
+
+  // para producto de catalogo
+  public productoCat: any;
+
+  // para el scroll de la pantalla
+  public scrollY: number;
   // cadena que contiene la ruta de las peticiones al back-end
 
   url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
@@ -326,5 +332,21 @@ export class ProductosService {
 
   getCategoria() {
     return this.categoria;
+  }
+
+  getProductoCat() {
+    return this.productoCat;
+  }
+
+  setProductoCat(prod: any) {
+    this.productoCat = prod;
+  }
+
+  getScroll(): number {
+    return this.scrollY;
+  }
+
+  setScroll(pos: number) {
+    this.scrollY = pos;
   }
 }

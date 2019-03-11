@@ -4,6 +4,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { ProductosService } from '../../services/productos.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
@@ -30,7 +31,16 @@ export class ProductoComponent implements OnInit {
     this.router.params.subscribe(params => {
       console.log(params['id']);
       this.id = params['id'];
-      this.obtenerProducto(this.id);
+      this.producto = this.productoService.getProductoCat();
+      console.log(this.producto);
+      if (this.producto == null) {
+        this.obtenerProducto(this.id);
+        console.log('no habia producto');
+      } else {
+        this.carga = false;
+        this.calculaPromedio(this.producto.usuario.calificacion.toString());
+        console.log('HABIA producto');
+      }
     });
     config.max = 10;
     config.readonly = true;
@@ -41,7 +51,6 @@ export class ProductoComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   obtenerProducto(id) {
