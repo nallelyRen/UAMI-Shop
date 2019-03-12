@@ -92,7 +92,7 @@ export class ProductoComponent implements OnInit {
             res => {
               const arreglo = res;
               this.calculaPromedio(arreglo.toString());
-              alert('Tu calificación de ' + this.usuario.calificacion + ' se ha enviado correctamente');
+              alert('Tu calificación de ' + this.usuario.calificacion + ' se ha enviado correctamente, los cambios pueden demorar unos minutos en aparecer');
               this.carga = false;
             });
         }

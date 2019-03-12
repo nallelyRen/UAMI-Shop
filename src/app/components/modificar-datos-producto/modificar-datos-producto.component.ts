@@ -49,7 +49,7 @@ export class ModificarDatosProductoComponent implements OnInit {
 }
 
 validarPrecio(precio: number) {
-  if ( precio < 0 || precio > 20000 || precio.toString().length < 1) {
+  if ( precio < 0 || precio > 10000 || precio.toString().length < 1) {
     return true;
   } else {
       return false;
@@ -62,9 +62,9 @@ validarPrecio(precio: number) {
   this.elemento.nombre = (<HTMLInputElement>document.getElementById('nombre')).value;
   this.elemento.precio = (<HTMLInputElement>document.getElementById('precio')).value;
   this.elemento.descripcion = (<HTMLInputElement>document.getElementById('descripcion')).value;
-  if (this.elemento.nombre.length < 1 || this.elemento.precio.length < 1 || this.validarPrecio(parseFloat( this.elemento.precio))
+  if (this.elemento.nombre.length < 1 || this.elemento.precio === null || this.validarPrecio(parseFloat( this.elemento.precio))
      || this.elemento.descripcion.length < 1) {
-    alert('Los campos no pueden ser vacíos y el precio debe ser menor de 20000, complete la información para continuar');
+    alert('Los campos no pueden ser vacíos y el precio debe ser menor de 10000, complete la información para continuar');
     this.carga = false;
   } else {
    if (this.producto.representante) {
@@ -79,7 +79,7 @@ validarPrecio(precio: number) {
     this.productoService.modificaDatosProyectos(id, this.producto.id, this.elemento.nombre, this.elemento.precio,
       this.elemento.descripcion, this.elemento.representante, this.elemento.requisitos).subscribe(res => {
         if (res) {
-          alert('Tu proyecto "' + this.elemento.nombre  + '" se ha modificado correctamente');
+          alert('Tu proyecto "' + this.elemento.nombre  + '" se ha modificado correctamente, los cambios pueden demorar unos minutos en aparecer');
           this.carga = false;
           this.producto.nombre = this.elemento.nombre;
         } else {
@@ -102,7 +102,7 @@ validarPrecio(precio: number) {
       this.productoService.modificaDatosDepartamentos(id, this.producto.id, this.elemento.nombre, this.elemento.precio,
         this.elemento.descripcion, this.elemento.ubicacion).subscribe(res => {
           if (res) {
-            alert('Tu departamento "' + this.elemento.nombre  + '" se ha modificado correctamente');
+            alert('Tu departamento "' + this.elemento.nombre  + '" se ha modificado correctamente, los cambios pueden demorar unos minutos en aparecer');
             this.carga = false;
             this.producto.nombre = this.elemento.nombre;
           } else {
@@ -124,7 +124,7 @@ validarPrecio(precio: number) {
         this.productoService.modificaDatosTutoria(id, this.producto.id, this.elemento.nombre, this.elemento.precio,
           this.elemento.descripcion, this.elemento.area).subscribe(res => {
             if (res) {
-              alert('La tutoría "' + this.elemento.nombre  + '" se ha modificado correctamente');
+              alert('La tutoría "' + this.elemento.nombre  + '" se ha modificado correctamente, los cambios pueden demorar unos minutos en aparecer');
               this.carga = false;
               this.producto.nombre = this.elemento.nombre;
             } else {
@@ -140,7 +140,7 @@ validarPrecio(precio: number) {
         this.productoService.modificaDatosProducto(id, this.producto.id, this.elemento.nombre, this.elemento.precio,
            this.elemento.descripcion).subscribe(res => {
             if (res) {
-              alert('El producto "' + this.elemento.nombre + '" se ha modificado correctamente');
+              alert('El producto "' + this.elemento.nombre + '" se ha modificado correctamente, los cambios pueden demorar unos minutos en aparecer');
               this.carga = false;
               this.producto.nombre = this.elemento.nombre;
             } else {

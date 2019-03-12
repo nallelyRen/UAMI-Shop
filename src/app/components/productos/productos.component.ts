@@ -133,7 +133,7 @@ export class ProductosComponent implements OnInit {
     if (idUsuario != -1) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
         this.carga = false;
-        alert('Se agrego a tu lista de favoritos correctamente');
+        alert('Se agrego a tu lista de favoritos correctamente, los cambios pueden demorar unos minutos en aparecer');
         console.log(res);
       });
     } else {
