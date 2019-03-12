@@ -50,4 +50,13 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['/principal']);
     }
   }
+  irProducto() {
+    const id = this.usuarioService.validarUsuarios();
+    if (id !== -1) {
+      this.router.navigate(['/agregarProducto']);
+    } else {
+      alert('Necesitas estar logueado para acceder a esta sección');
+      this.router.navigate(['/principal']);
+    }
+  }
 }

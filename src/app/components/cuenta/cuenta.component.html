@@ -5,7 +5,7 @@
 
 
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <!-- imagen -->
                 <img src="../../../assets/img/logoBig.png" class="img-fluid rounded-circle hoverable" alt="hoverable">
                 <!-- imagen -->
@@ -15,12 +15,10 @@
                     <a class="list-group-item list-group-item-action " id="list-info-list" (click)="obtenerInfoUsuario()" data-toggle="list" href="#list-info" role="tab" aria-controls="info">Información</a>
                     <a class="list-group-item list-group-item-action" id="list-productos-list" (click)="obtenerProductosUsuario()" data-toggle="list" href="#list-productos" role="tab" aria-controls="productos">Mis productos</a>
                     <a class="list-group-item list-group-item-action" id="list-favoritos-list" (click)="obtenerFavoritos()" data-toggle="list" href="#list-favoritos" role="tab" aria-controls="favoritos">Mis favoritos</a>
-
+                    <a class="list-group-item list-group-item-action" id="list-agregar-list" (click)="agregar()" data-toggle="list" href="#list-agregar" role="tab" aria-controls="agregar">Agregar producto</a>
                 </div>
             </div>
-
-
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <!--  ANIMACIÓN DE CARGA-->
                 <div class="tab-content" id="informacion">
 
@@ -94,14 +92,16 @@
                             <!-- Default input -->
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Número telefónico:</label>
-                                    <input class="form-control" type="tel" formControlName="telefono">
+                                    <label for="inputPassword4">Número telefónico: {{usuario.telefono}}</label>
+                                    <input class="form-control" placeholder="Modificar telefono" type="tel" formControlName="telefono">
                                     <!-- <p class="grey-text" >{{usuario.telefono}}  
                         </p>-->
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Calificación: </label>
-                                    <p class="grey-text">{{usuario.calificacion}}
+                                    <p class="grey-text">Tu calificacion es de: {{promedio}}
+                                    </p>
+                                    <p class="grey-text">Basada en {{totalCalif}} calificaciones
                                     </p>
                                 </div>
 
@@ -129,9 +129,9 @@
                                     <p class="card-text text-white">{{product.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success responsive-width btn-block" (click)="modificarProducto(product)">Editar información</button>
-
-                                    <button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarProducto(product.id)">Eliminar</button>
+                                    <button class="btn btn-outline-success responsive-width btn-block" (click)="modificarProducto(product)">Editar</button>
+                                    <button class="btn btn-outline-danger responsive-width btn-block" (click)="open(product.id)">Eliminar</button>
+                                    <!--<button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarProducto(product.id)">Eliminar</button>-->
                                 </div>
                             </div>
                         </div>
@@ -155,12 +155,15 @@
                                 </div>
                                 <div class="card-footer">
                                     <button class="btn btn-outline-success responsive-width btn-block " [routerLink]="['/producto', product.id]">Ver más</button>
-                                    <button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarFavoritos(product.id)">Quitar de favoritos</button>
+
+                                    <button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarFavoritos(product.id)">Eliminar</button>
                                 </div>
                             </div>
                         </div>
 
                     </div>
+
+
 
                 </div>
             </div>
@@ -192,6 +195,7 @@
         </a>
     </div>
     <!-- Social icons -->
+
 
 
 </footer>

@@ -16,6 +16,7 @@
             <img [src]="producto.archivo.url" class="img-fluid z-depth-1-half" alt="">
 
         </div>
+
         <!--Grid column-->
 
         <!--Grid column-->
@@ -80,16 +81,6 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-1 mr-3">
-                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
-                </div>
-                <div class="col-10">
-                    <h5 class="feature-title">Calificación del usuario</h5>
-                    <p class="grey-text">Calificación: {{producto.usuario.calificacion}} </p>
-                </div>
-            </div>
-
             <div class="row" *ngIf="producto.representante">
                 <div class="col-1 mr-3">
                     <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
@@ -114,26 +105,52 @@
                     <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
                 <div class="col-10">
-                    <h5 class="feature-title">Division</h5>
+                    <h5 class="feature-title">División</h5>
                     <p class="grey-text">{{producto.area}} </p>
                 </div>
             </div>
-            <!--
-              <div class="row" *ngIf="producto.direccion">
+            <div class="row">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
-                <div class="col-10" >
-                  <h5 class="feature-title">Dirección</h5>
-                  <p class="grey-text" >{{producto.direccion}} </p>                   
+
+                <div class="col-10">
+                    <h5 class="feature-title">Calificación del usuario</h5>
+                    <ngb-rating [rate]="promedio"></ngb-rating>
+                    <p class="grey-text">Calificación : {{promedio}} </p>
+                    <p class="grey-text">Basado en {{totalCalif}} calificaciones.</p>
                 </div>
-              </div>
-            -->
-            <div class="form-group col-md-6">
-                <label for="inputCity"> </label>
-                <p class="grey-text">
-                </p>
             </div>
+            <div class="row">
+                <div class="col-1 mr-3">
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                </div>
+
+                <div class="col-10">
+                    <h5 class="feature-title">¿Cómo calificarías a este usuario?</h5>
+                    <p>Si has utilizado algún producto/servicio de este usuario, por favor califícalo</p>
+                    <form [formGroup]="forma" (ngSubmit)="guardarCalificacion()">
+
+                        <div class="form-group col-md-7">
+                            <select class="form-control" name="calificacion" formControlName="calificacion">
+                                <option value="10">10</option>
+                                <option value="9">9</option>
+                                <option value="8">8</option>
+                                <option value="7">7</option>
+                                <option value="6">6</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-success m-2">Enviar </button>
+                    </form>
+                </div>
+            </div>
+
 
 
             <!--/Third row-->

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
 import {PageEvent} from '@angular/material';
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -13,11 +15,28 @@ export class ProductosComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   productos: any[] = [];
-  categoria = 'Libros';
-
+  categoria = '';
+  inicio = true;
   Restriccion=true;
   carga = false;
-  constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router: Router) {
+      const cat = this.productoService.getCategoria();
+      if (cat !== undefined) {
+        this.categoria = cat;
+        const prod = this.productoService.getProductos();
+        if (prod !== undefined) {
+          const scroll: number = this.productoService.getScroll();
+          console.log(scroll, 'ya esta');
+          setTimeout(function(){ window.scrollTo(0, scroll);}, 50);
+          this.productos = prod;
+          console.log(this.productos, this.categoria);
+          this.inicio = false;
+        } else {
+          //  window.scrollTo(0, 0);
+        }
+      } else {
+        // window.scrollTo(0, 0);
+      }
   }
   
   pageEvent: PageEvent;
@@ -26,12 +45,13 @@ export class ProductosComponent implements OnInit {
   }
   ngOnInit() {
     this.llamada();
+    // console.log(typeof( this.productoService.getScroll()), 'regreso');
+    // window.scrollTo(0, this.productoService.getScroll());
   }
 
   cambio(categoria) {
     this.carga = true;
     this.productos = [];
-    this.carga = true;
     this.categoria = categoria;
     if (categoria === 'Libros') {
       this.productoService.obtenerLibros().subscribe(res => {
@@ -117,9 +137,18 @@ export class ProductosComponent implements OnInit {
         console.log(res);
       });
     } else {
+      this.carga = false;
       alert('Ups no se pudo agregar a tu lista de favoritos');
       console.log('no estas logueado');
     }
 
+  }
+
+  verProducto(producto: any) {
+    console.log(window.scrollY, 'ida');
+    // console.log(window.pageYOffset);
+    this.productoService.setScroll(window.scrollY);
+    this.productoService.setProductoCat(producto);
+    this.router.navigate(['/producto/' + producto.id]);
   }
 }

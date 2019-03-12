@@ -7,6 +7,15 @@ import { map } from 'rxjs/operators';
 })
 export class ProductosService {
   public producto: any;
+  // para el catalogo
+  public productos: any;
+  public categoria: string;
+
+  // para producto de catalogo
+  public productoCat: any;
+
+  // para el scroll de la pantalla
+  public scrollY: number;
   // cadena que contiene la ruta de las peticiones al back-end
 
   url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
@@ -19,31 +28,50 @@ export class ProductosService {
   obtenerLibros() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'libros') // .subscribe(res => console.log(res.json()));
-    .pipe(map(res => res.json()));
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Libros';
+      return res.json();
+    }));
   }
 
-  
   obtenerProyectos() {
     return this.http.get(this.url + 'proyectos')
-    .pipe(map(res => res.json()));
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Proyectos';
+      return res.json();
+    }));
   }
 
   obtenerElectronicos() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'electronica') // .subscribe(res => console.log(res.json()));
-    .pipe(map(res => res.json()));
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Electrónica';
+      return res.json();
+    }));
   }
 
   obtenerDepartamentos() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'departamentos') // .subscribe(res => console.log(res.json()));
-    .pipe(map(res => res.json()));
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Departamentos';
+      return res.json();
+    }));
   }
 
   obtenerTutorias() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'tutorias') // .subscribe(res => console.log(res.json()));
-    .pipe(map(res => res.json()));
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Tutorias';
+      return res.json();
+    }));
   }
 
    obtenerProductos() {
@@ -54,7 +82,11 @@ export class ProductosService {
   obtenerOtros() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'otros') // .subscribe(res => console.log(res.json()));
-    .pipe(map(res => res.json()));
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Otros';
+      return res.json();
+    }));
   }
 
 
@@ -178,6 +210,7 @@ export class ProductosService {
   }
 
   agregameEnFavoritos(idUsuario, idProducto) {
+    console.log('idUsuario =', idUsuario, 'idProducto=', idProducto);
     return this.http.put(this.url + 'agregaFavorito/' + idUsuario + '/' + idProducto, null)
     .pipe(
       map(res => {
@@ -288,11 +321,32 @@ export class ProductosService {
   getProducto() {
     return this.producto;
   }
- 
+
   setProducto(prod: any) {
     this.producto = prod;
   }
- 
 
-  
+  getProductos() {
+    return this.productos;
+  }
+
+  getCategoria() {
+    return this.categoria;
+  }
+
+  getProductoCat() {
+    return this.productoCat;
+  }
+
+  setProductoCat(prod: any) {
+    this.productoCat = prod;
+  }
+
+  getScroll(): number {
+    return this.scrollY;
+  }
+
+  setScroll(pos: number) {
+    this.scrollY = pos;
+  }
 }
