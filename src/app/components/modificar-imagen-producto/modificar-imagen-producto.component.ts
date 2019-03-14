@@ -58,7 +58,7 @@ export class ModificarImagenProductoComponent implements OnInit {
       this.productoService.modificaImagenProducto(id, this.producto.id, this.file).subscribe(res => {
         if (res.url) {
           this.src = res.url;
-          alert('La imagen de tu producto "' + this.producto.nombre + '" se ha modificado correctamente');
+          alert('La imagen de tu producto "' + this.producto.nombre + '" se ha modificado correctamente, los cambios pueden demorar unos minutos en aparecer');
           this.carga = false;
           this.siImagen = false;
         } else {

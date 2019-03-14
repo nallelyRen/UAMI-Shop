@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
 import {PageEvent} from '@angular/material';
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -13,11 +15,28 @@ export class ProductosComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   productos: any[] = [];
-  categoria = 'Libros';
-
+  categoria = '';
+  inicio = true;
   Restriccion=true;
   carga = false;
-  constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router: Router) {
+      const cat = this.productoService.getCategoria();
+      if (cat !== undefined) {
+        this.categoria = cat;
+        const prod = this.productoService.getProductos();
+        if (prod !== undefined) {
+          const scroll: number = this.productoService.getScroll();
+          console.log(scroll, 'ya esta');
+          setTimeout(function(){ window.scrollTo(0, scroll);}, 50);
+          this.productos = prod;
+          console.log(this.productos, this.categoria);
+          this.inicio = false;
+        } else {
+          //  window.scrollTo(0, 0);
+        }
+      } else {
+        // window.scrollTo(0, 0);
+      }
   }
   
   pageEvent: PageEvent;
@@ -26,6 +45,8 @@ export class ProductosComponent implements OnInit {
   }
   ngOnInit() {
     this.llamada();
+    // console.log(typeof( this.productoService.getScroll()), 'regreso');
+    // window.scrollTo(0, this.productoService.getScroll());
   }
 
   cambio(categoria) {
@@ -112,7 +133,7 @@ export class ProductosComponent implements OnInit {
     if (idUsuario != -1) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
         this.carga = false;
-        alert('Se agrego a tu lista de favoritos correctamente');
+        alert('Se agrego a tu lista de favoritos correctamente, los cambios pueden demorar unos minutos en aparecer');
         console.log(res);
       });
     } else {
@@ -121,5 +142,13 @@ export class ProductosComponent implements OnInit {
       console.log('no estas logueado');
     }
 
+  }
+
+  verProducto(producto: any) {
+    console.log(window.scrollY, 'ida');
+    // console.log(window.pageYOffset);
+    this.productoService.setScroll(window.scrollY);
+    this.productoService.setProductoCat(producto);
+    this.router.navigate(['/producto/' + producto.id]);
   }
 }

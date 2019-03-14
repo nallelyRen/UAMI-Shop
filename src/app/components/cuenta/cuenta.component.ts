@@ -318,7 +318,7 @@ export class NgbdModalComponent  implements OnInit{
       if (id != -1) {
         this.usuarioService.modificarUsuario(id, this.usuario.telefono).subscribe(
           res => {
-            alert('Tu número ' + this.usuario.telefono + ' se ha actualizado correctamente');
+            alert('Tu número ' + this.usuario.telefono + ' se ha actualizado correctamente, los cambios pueden demorar unos minutos en aparecer');
             this.carga = false ;
             this.forma.reset();
            // this.forma.reset(this.Libro2);

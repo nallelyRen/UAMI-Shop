@@ -1,18 +1,15 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 
 <div id="contenido" *ngIf="!Restriccion" class="container">
 
     <body>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <h4 style="text-align:center"class="alert-heading">Aviso</h4>
-            <p style="text-align:justify">Ten en cuenta que esta página continúa en desarrollo, es decir añadimos 
-                    cambios constantemente lo que puede provocar que la página no esté disponible en 
-                    pequeños lapsos de tiempo o que tenga algunos errores, de igual manera los productos
-                    contenidos en el catalogo de la página pueden ser borrados sin previo aviso.</p>
+            <h4 style="text-align:center" class="alert-heading">Aviso</h4>
+            <p style="text-align:justify">Ten en cuenta que esta página continúa en desarrollo, es decir añadimos cambios constantemente lo que puede provocar que la página no esté disponible en pequeños lapsos de tiempo o que tenga algunos errores, de igual manera los productos contenidos
+                en el catalogo de la página pueden ser borrados sin previo aviso.</p>
             <hr>
-            <p style="text-align:center"class="mb-0">Gracias por tu comprensión</p>
+            <p style="text-align:center" class="mb-0">Gracias por tu comprensión</p>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -28,8 +25,7 @@
                             <div>
                                 <h5 id="textoR" class="green-text"><i class="fa fa-pie-chart"></i> Vende</h5>
                                 <h3 id="textoR" class="card-title pt-2 responsive-width"><strong>Registra tus productos</strong></h3>
-                                <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El
-                                    registro es totalmente gratuito
+                                <p id="textoR">Haz que tus productos lleguen a más gente y aumenta tus ventas. El registro es totalmente gratuito
                                 </p>
                                 <a class="btn btn-dark responsive-width" [routerLink]="['/agregarProducto']"><i class="fa fa-clone left"></i>
                                     Registrar producto</a>
@@ -41,35 +37,25 @@
                 <div class="list-group list-group-flush" id="list-tab" role="tablist">
 
 
-                    <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list"
-                        href="#" role="tab" aria-controls="principal">Categorías</a>
-                    <a class="list-group-item list-group-item-action  active" id="list-principal-list" data-toggle="list"
-                        href="#principal" role="tab" aria-controls="pagPrin">Información</a>
-                    <a class="list-group-item list-group-item-action " id="list-libros-list" data-toggle="list" href="#list-libros"
-                        role="tab" (click)="cambio('Libros')" aria-controls="info">Libros</a>
-                    <a class="list-group-item list-group-item-action" id="list-proyecto-list" data-toggle="list" href="#list-libros"
-                        (click)="cambio('Proyectos')" role="tab" aria-controls="favoritos">Proyectos terminales o
+                    <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list" href="#" role="tab" aria-controls="principal">Categorías</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': categoria === ''}" id="list-principal-list" data-toggle="list" href="#principal" role="tab" aria-controls="pagPrin">Información</a>
+                    <a class="list-group-item list-group-item-action" id="list-libros-list" data-toggle="list" href="#list-libros" role="tab" (click)="cambio('Libros')" aria-controls="info">Libros</a>
+                    <a class="list-group-item list-group-item-action" id="list-proyecto-list" data-toggle="list" href="#list-libros" (click)="cambio('Proyectos')" role="tab" aria-controls="favoritos">Proyectos terminales o
                         servicio
                         social</a>
-                    <a class="list-group-item list-group-item-action " id="list-electronica-list" data-toggle="list"
-                        href="#list-libros" (click)="cambio('Electrónica')" role="tab" aria-controls="favoritos">Electrónica
+                    <a class="list-group-item list-group-item-action" id="list-electronica-list" data-toggle="list" href="#list-libros" (click)="cambio('Electrónica')" role="tab" aria-controls="favoritos">Electrónica
                         y computación</a>
-                    <a class="list-group-item list-group-item-action" id="list-departamentos-list" data-toggle="list"
-                        href="#list-libros" (click)="cambio('Departamentos')" role="tab" aria-controls="favoritos">Departamentos</a>
-                    <a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros"
-                        (click)="cambio('Tutorias')" role="tab" aria-controls="favoritos">Tutorias</a>
-                    <a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros"
-                        (click)="cambio('Otros')" role="tab" aria-controls="favoritos">Otros</a>
-
+                    <a class="list-group-item list-group-item-action" id="list-departamentos-list" data-toggle="list" href="#list-libros" (click)="cambio('Departamentos')" role="tab" aria-controls="favoritos">Departamentos</a>
+                    <a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros" (click)="cambio('Tutorias')" role="tab" aria-controls="favoritos">Tutorias</a>
+                    <a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros" (click)="cambio('Otros')" role="tab" aria-controls="favoritos">Otros</a>
                 </div>
 
             </div>
 
-
             <div class="col-md-8">
                 <div class="tab-content" id="informacion">
 
-                    <div class="tab-pane fade show active" id="principal" role="tabpanel" aria-labelledby="pagPrin">
+                    <div class="tab-pane fade" [ngClass]="{'show': inicio, 'active': inicio}" id="principal" role="tabpanel" aria-labelledby="pagPrin">
 
                         <!-- Card -->
                         <div id="espacio" class="card card-cascade wider reverse">
@@ -86,12 +72,8 @@
                                 <!-- Title -->
                                 <h4 class="card-title"><strong>Bienvenido</strong></h4>
                                 <!-- Text -->
-                                <p id="cardP" class="card-text">UAMIShop sigue siendo un proyecto en desarrollo, por lo
-                                    que hacemos actualizaciones continuamente. En esta pestaña podrás encontrar
-                                    información sobre las categorías disponibles actualmente y las que estarán en un
-                                    futuro.
-                                    Si tienes ideas sobre una nueva categoría no dudes en contactarnos por nuestras
-                                    redes sociales.
+                                <p id="cardP" class="card-text">UAMIShop sigue siendo un proyecto en desarrollo, por lo que hacemos actualizaciones continuamente. En esta pestaña podrás encontrar información sobre las categorías disponibles actualmente y las que estarán en un futuro.
+                                    Si tienes ideas sobre una nueva categoría no dudes en contactarnos por nuestras redes sociales.
                                 </p>
 
                                 <!-- Linkedin -->
@@ -203,8 +185,8 @@
                                     </div>
                                     <div class="flip-card-back">
                                         <h1><i class="fa fa-compass"></i> Otros</h1>
-                                        <p>Para productos diferentes y únicos que no entran en categorías
-                                            convencionales</p>
+                                        <p>Para productos diferentes y únicos que no entran en categorías convencionales
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -236,7 +218,7 @@
 
                     </div>
 
-                    <div class="tab-pane fade" id="list-libros" role="tabpanel" aria-labelledby="list-info-list">
+                    <div class="tab-pane fade" [ngClass]="{'show': !inicio, 'active': !inicio}" id="list-libros" role="tabpanel" aria-labelledby="list-info-list">
 
                         <h3 class="h3 mb-3">{{categoria}}</h3>
                         <hr>
@@ -252,7 +234,7 @@
                                     <p class="card-text text-white">{{product.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success btn-block responsive-width" [routerLink]="['/producto', product.id]">ver
+                                    <button class="btn btn-outline-success btn-block responsive-width" (click)="verProducto(product)">ver
                                         más</button>
                                     <button class="btn btn-outline-info responsive-width btn-block" (click)="agregarFavorito(product.id)">Añadir
                                         a
