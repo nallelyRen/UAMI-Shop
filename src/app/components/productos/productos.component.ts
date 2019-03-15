@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
 import {PageEvent} from '@angular/material';
@@ -9,28 +9,47 @@ import {Router} from '@angular/router';
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent implements OnInit {
+export class ProductosComponent implements OnInit, OnDestroy {
 
   length = 100;
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   productos: any[] = [];
   categoria = '';
-  inicio = true;
+  inicio = 1;
+  actual = 1;
   Restriccion=true;
   carga = false;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router: Router) {
       const cat = this.productoService.getCategoria();
       if (cat !== undefined) {
         this.categoria = cat;
+        if (cat === 'Libros') {
+          this.actual = 2;
+        }
+        if (cat === 'Proyectos') {
+          this.actual = 3;
+        }
+        if (cat === 'Electrónica') {
+          this.actual = 4;
+        }
+        if (cat === 'Departamentos') {
+          this.actual = 5;
+        }
+        if (cat === 'Tutorias') {
+          this.actual = 6;
+        }
+        if (cat === 'Otros') {
+          this.actual = 7;
+        }
         const prod = this.productoService.getProductos();
         if (prod !== undefined) {
           const scroll: number = this.productoService.getScroll();
           console.log(scroll, 'ya esta');
-          setTimeout(function(){ window.scrollTo(0, scroll);}, 50);
+          setTimeout(function() { window.scrollTo(0, scroll); }, 50);
           this.productos = prod;
           console.log(this.productos, this.categoria);
-          this.inicio = false;
+          this.inicio = 2;
         } else {
           //  window.scrollTo(0, 0);
         }
@@ -47,6 +66,12 @@ export class ProductosComponent implements OnInit {
     this.llamada();
     // console.log(typeof( this.productoService.getScroll()), 'regreso');
     // window.scrollTo(0, this.productoService.getScroll());
+  }
+
+  ngOnDestroy() {
+    console.log(window.scrollY, 'ida');
+    // console.log(window.pageYOffset);
+    this.productoService.setScroll(window.scrollY);
   }
 
   cambio(categoria) {
@@ -145,9 +170,6 @@ export class ProductosComponent implements OnInit {
   }
 
   verProducto(producto: any) {
-    console.log(window.scrollY, 'ida');
-    // console.log(window.pageYOffset);
-    this.productoService.setScroll(window.scrollY);
     this.productoService.setProductoCat(producto);
     this.router.navigate(['/producto/' + producto.id]);
   }

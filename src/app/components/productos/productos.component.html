@@ -38,16 +38,16 @@
 
 
                     <a id="tituloCategorias" class="list-group-item list-group-item-action disabled" data-toggle="list" href="#" role="tab" aria-controls="principal">Categorías</a>
-                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': categoria === ''}" id="list-principal-list" data-toggle="list" href="#principal" role="tab" aria-controls="pagPrin">Información</a>
-                    <a class="list-group-item list-group-item-action" id="list-libros-list" data-toggle="list" href="#list-libros" role="tab" (click)="cambio('Libros')" aria-controls="info">Libros</a>
-                    <a class="list-group-item list-group-item-action" id="list-proyecto-list" data-toggle="list" href="#list-libros" (click)="cambio('Proyectos')" role="tab" aria-controls="favoritos">Proyectos terminales o
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 1}" id="list-principal-list" data-toggle="list" href="#principal" role="tab" aria-controls="pagPrin">Información</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 2}" id="list-libros-list" data-toggle="list" href="#list-libros" role="tab" (click)="cambio('Libros')" aria-controls="info">Libros</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 3}" id="list-proyecto-list" data-toggle="list" href="#list-libros" (click)="cambio('Proyectos')" role="tab" aria-controls="favoritos">Proyectos terminales o
                         servicio
                         social</a>
-                    <a class="list-group-item list-group-item-action" id="list-electronica-list" data-toggle="list" href="#list-libros" (click)="cambio('Electrónica')" role="tab" aria-controls="favoritos">Electrónica
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 4}" id="list-electronica-list" data-toggle="list" href="#list-libros" (click)="cambio('Electrónica')" role="tab" aria-controls="favoritos">Electrónica
                         y computación</a>
-                    <a class="list-group-item list-group-item-action" id="list-departamentos-list" data-toggle="list" href="#list-libros" (click)="cambio('Departamentos')" role="tab" aria-controls="favoritos">Departamentos</a>
-                    <a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros" (click)="cambio('Tutorias')" role="tab" aria-controls="favoritos">Tutorias</a>
-                    <a class="list-group-item list-group-item-action" id="list-tutorias-list" data-toggle="list" href="#list-libros" (click)="cambio('Otros')" role="tab" aria-controls="favoritos">Otros</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 5}" id="list-departamentos-list" data-toggle="list" href="#list-libros" (click)="cambio('Departamentos')" role="tab" aria-controls="favoritos">Departamentos</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 6}" id="list-tutorias-list" data-toggle="list" href="#list-libros" (click)="cambio('Tutorias')" role="tab" aria-controls="favoritos">Tutorias</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 7}" id="list-tutorias-list" data-toggle="list" href="#list-libros" (click)="cambio('Otros')" role="tab" aria-controls="favoritos">Otros</a>
                 </div>
 
             </div>
@@ -55,7 +55,7 @@
             <div class="col-md-8">
                 <div class="tab-content" id="informacion">
 
-                    <div class="tab-pane fade" [ngClass]="{'show': inicio, 'active': inicio}" id="principal" role="tabpanel" aria-labelledby="pagPrin">
+                    <div class="tab-pane fade" [ngClass]="{'show': inicio == 1, 'active': inicio == 1}" id="principal" role="tabpanel" aria-labelledby="pagPrin">
 
                         <!-- Card -->
                         <div id="espacio" class="card card-cascade wider reverse">
@@ -218,7 +218,7 @@
 
                     </div>
 
-                    <div class="tab-pane fade" [ngClass]="{'show': !inicio, 'active': !inicio}" id="list-libros" role="tabpanel" aria-labelledby="list-info-list">
+                    <div class="tab-pane fade" [ngClass]="{'show': inicio == 2, 'active': inicio == 2}" id="list-libros" role="tabpanel" aria-labelledby="list-info-list">
 
                         <h3 class="h3 mb-3">{{categoria}}</h3>
                         <hr>
