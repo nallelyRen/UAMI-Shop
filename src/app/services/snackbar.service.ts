@@ -6,7 +6,10 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material';
-
+@Component({
+    encapsulation: ViewEncapsulation.None,
+  
+})
 @Injectable({
   providedIn: 'root'
 })
@@ -23,12 +26,11 @@ export class SnackbarService {
   
 constructor(public snackBar: MatSnackBar) {
   }
-   open(texto) {
-     this.message=texto;
-    let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;   
-    this.snackBar.open(this.message, this.action ? this.actionButtonLabel : undefined, config);
+  open(message: string,) {
+    alert('Hoho, parece que ocurrio un problema al acceder a tu cuenta, por favor intenta entrar nuevamente');
+    var action="avion";
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 }
