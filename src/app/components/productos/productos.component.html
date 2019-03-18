@@ -242,7 +242,10 @@
                                 </div>
                             </div>
                         </div>
-
+                        <br>
+                        <div>
+                            <ngb-pagination class="d-flex justify-content-center" [collectionSize]="numPag" [(page)]="pagina" [maxSize]="5" [rotate]="true" [ellipses]="false" size="lg" pageSize="2" (pageChange)="cambioPagina($event)"></ngb-pagination>
+                        </div>
                     </div>
                 </div>
             </div>

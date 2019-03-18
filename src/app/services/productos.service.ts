@@ -93,7 +93,65 @@ export class ProductosService {
     }));
   }
 
+  // estos seran usados para la paginacion
+  librosPorPagina(pagina: number, elementos: number) {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url + 'librosPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Libros';
+      return res.json();
+    }));
+  }
 
+ proyectosPorPagina(pagina: number, elementos: number) {
+    return this.http.get(this.url + 'proyectosPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Proyectos';
+      return res.json();
+    }));
+  }
+
+  electronicosPorPagina(pagina: number, elementos: number) {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url + 'electronicaPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Electrónica';
+      return res.json();
+    }));
+  }
+
+  departamentosPorPagina(pagina: number, elementos: number) {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url + 'departamentosPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Departamentos';
+      return res.json();
+    }));
+  }
+
+  tutoriasPorPagina(pagina: number, elementos: number) {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url +  'tutoriasPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Tutorias';
+      return res.json();
+    }));
+  }
+
+  otrosPorPagina(pagina: number, elementos: number) {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url +  'otrosPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Otros';
+      return res.json();
+    }));
+  }
 
   nuevoLibro(nombre, precio, descripcion, file: File, idUsuario) {
     const formData: FormData = new FormData();
