@@ -11,10 +11,10 @@
                 <!-- imagen -->
 
                 <div class="list-group list-group-flush" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active " id="list-principal-list" data-toggle="list" href="#list-principal" role="tab" aria-controls="principal">Bienvenido</a>
-                    <a class="list-group-item list-group-item-action " id="list-info-list" (click)="obtenerInfoUsuario()" data-toggle="list" href="#list-info" role="tab" aria-controls="info">Información</a>
-                    <a class="list-group-item list-group-item-action" id="list-productos-list" (click)="obtenerProductosUsuario()" data-toggle="list" href="#list-productos" role="tab" aria-controls="productos">Mis productos</a>
-                    <a class="list-group-item list-group-item-action" id="list-favoritos-list" (click)="obtenerFavoritos()" data-toggle="list" href="#list-favoritos" role="tab" aria-controls="favoritos">Mis favoritos</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': inicio == 1}" id="list-principal-list" data-toggle="list" href="#list-principal" role="tab" aria-controls="principal">Bienvenido</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': inicio == 2}" id="list-info-list" (click)="obtenerInfoUsuario()" data-toggle="list" href="#list-info" role="tab" aria-controls="info">Información</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': inicio == 3}" id="list-productos-list" (click)="obtenerProductosUsuario()" data-toggle="list" href="#list-productos" role="tab" aria-controls="productos">Mis productos</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': inicio == 4}" id="list-favoritos-list" (click)="obtenerFavoritos()" data-toggle="list" href="#list-favoritos" role="tab" aria-controls="favoritos">Mis favoritos</a>
                     <a class="list-group-item list-group-item-action" id="list-agregar-list" (click)="agregar()" data-toggle="list" href="#list-agregar" role="tab" aria-controls="agregar">Agregar producto</a>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 <!--  ANIMACIÓN DE CARGA-->
                 <div class="tab-content" id="informacion">
 
-                    <div class="tab-pane fade show active" id="list-principal" role="tabpanel" aria-labelledby="list-principal-list">
+                    <div class="tab-pane fade" [ngClass]="{'show': inicio == 1, 'active': inicio == 1}" id="list-principal" role="tabpanel" aria-labelledby="list-principal-list">
 
                         <h3 class="h3 mb-3">Configuración de cuenta</h3>
                         <hr>
@@ -61,7 +61,7 @@
 
                     </div>
 
-                    <div class="tab-pane fade border border-gray " id="list-info" role="tabpanel" aria-labelledby="list-info-list">
+                    <div class="tab-pane fade border border-gray" [ngClass]="{'show': inicio == 2, 'active': inicio == 2}" id="list-info" role="tabpanel" aria-labelledby="list-info-list">
 
                         <h3 class="h3 mb-3">Cuenta</h3>
                         <hr>
@@ -114,7 +114,7 @@
 
                     </div>
 
-                    <div class="tab-pane fade" id="list-productos" role="tabpanel" aria-labelledby="list-productos-list">
+                    <div class="tab-pane fade" [ngClass]="{'show': inicio == 3, 'active': inicio == 3}" id="list-productos" role="tabpanel" aria-labelledby="list-productos-list">
                         <h3 class="h3 mb-3">Productos del usuario</h3>
                         <hr>
                         <div align="center" *ngIf="carga2">
@@ -139,7 +139,7 @@
 
                     </div>
 
-                    <div class="tab-pane fade" id="list-favoritos" role="tabpanel" aria-labelledby="list-favoritos-list">
+                    <div class="tab-pane fade" [ngClass]="{'show': inicio == 4, 'active': inicio == 4}" id="list-favoritos" role="tabpanel" aria-labelledby="list-favoritos-list">
                         <h3 class="h3 mb-3">Favoritos</h3>
                         <hr>
                         <div align="center" *ngIf="carga3">
@@ -154,7 +154,7 @@
                                     <p class="card-text text-white">{{product.descripcion}}</p>
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-outline-success responsive-width btn-block " [routerLink]="['/producto', product.id]">Ver más</button>
+                                    <button class="btn btn-outline-success responsive-width btn-block" (click)="verProducto(product)">Ver más</button>
 
                                     <button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarFavoritos(product.id)">Eliminar</button>
                                 </div>

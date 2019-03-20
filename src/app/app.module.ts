@@ -63,6 +63,7 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    // MatPaginatorModule,
     NgbPaginationModule,
     NgbModule,
     MatInputModule,

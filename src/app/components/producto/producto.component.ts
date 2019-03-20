@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { UsuarioService } from '../../services/usuario.service';
 import { ProductosService } from '../../services/productos.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SnackbarService } from '../../services/snackbar.service';
 import {MatSnackBar} from '@angular/material';
+
 
 @Component({
   selector: 'app-producto',
@@ -27,13 +29,14 @@ export class ProductoComponent implements OnInit {
   totalCalif = 0;
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   forma: FormGroup;
-  constructor(private router: ActivatedRoute
-    , private usuarioService: UsuarioService,
+  constructor(private router: ActivatedRoute, private usuarioService: UsuarioService,
     private productoService: ProductosService, config: NgbRatingConfig,
     public snackbarService: SnackbarService, private snackBar: MatSnackBar) {
+
     this.router.params.subscribe(params => {
       //console.log(params['id']);
       this.id = params['id'];
+
       this.producto = this.productoService.getProductoCat();
       //console.log(this.producto);
       if (this.producto == null) {
@@ -43,6 +46,7 @@ export class ProductoComponent implements OnInit {
         this.carga = false;
         this.calculaPromedio(this.producto.usuario.calificacion.toString());
        // console.log('HABIA producto');
+
       }
     });
     config.max = 10;
@@ -54,6 +58,11 @@ export class ProductoComponent implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+  volver() {
+    this.location.back();
   }
 
   obtenerProducto(id) {
@@ -97,6 +106,7 @@ export class ProductoComponent implements OnInit {
               const arreglo = res;
               this.calculaPromedio(arreglo.toString());
               this.snackbarService.open("Tu calificación de " + this.usuario.calificacion +" se ha enviado","los cambios pueden demorar unos minutos en aparecer");
+
               this.carga = false;
             });
         }

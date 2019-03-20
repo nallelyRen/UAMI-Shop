@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
@@ -39,7 +40,7 @@ export class AgregarProductoComponent implements OnInit {
   carga = false;
   forma: FormGroup;
   // constructor de la clase, este inicializa el formulario y conecta con el servicio
-  constructor(private productService: ProductosService, private usuarioService: UsuarioService) {
+  constructor(private productService: ProductosService, private usuarioService: UsuarioService, private location: Location) {
     // creacion del formulario
     this.forma = new FormGroup({
       'nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -72,6 +73,10 @@ export class AgregarProductoComponent implements OnInit {
     } else {
       this.condicionTutorias = false;
     }
+  }
+
+  volverAtras() {
+    this.location.back();
   }
 
   // evento del boton con el que se obtiene la imagen que sube el usuario
