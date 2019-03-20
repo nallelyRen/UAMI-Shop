@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { Location } from '@angular/common';
 import { UsuarioService } from '../../services/usuario.service';
 import { ProductosService } from '../../services/productos.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -30,7 +30,7 @@ export class ProductoComponent implements OnInit {
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   forma: FormGroup;
   constructor(private router: ActivatedRoute, private usuarioService: UsuarioService,
-    private productoService: ProductosService, config: NgbRatingConfig,
+    private productoService: ProductosService, config: NgbRatingConfig, private location: Location,
     public snackbarService: SnackbarService, private snackBar: MatSnackBar) {
 
     this.router.params.subscribe(params => {
@@ -43,6 +43,7 @@ export class ProductoComponent implements OnInit {
         this.obtenerProducto(this.id);
        // console.log('no habia producto');
       } else {
+        this.producto = prod;
         this.carga = false;
         this.calculaPromedio(this.producto.usuario.calificacion.toString());
        // console.log('HABIA producto');
@@ -61,6 +62,10 @@ export class ProductoComponent implements OnInit {
 
   }
 
+  volver() {
+    this.location.back();
+  }
+  
   obtenerProducto(id) {
     this.productoService.obtenerProductoConId(id).subscribe(res => {
       this.producto = res;
