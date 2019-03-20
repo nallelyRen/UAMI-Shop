@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Component, ViewEncapsulation} from '@angular/core';
 import {
   MatSnackBar,
   MatSnackBarConfig,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material';
-@Component({
-    encapsulation: ViewEncapsulation.None,
-  
-})
+
 @Injectable({
   providedIn: 'root'
 })
