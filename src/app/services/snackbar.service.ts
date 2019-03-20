@@ -18,19 +18,21 @@ export class SnackbarService {
   actionButtonLabel: string = 'Retry';
   action: boolean = true;
   setAutoHide: boolean = true;
-  autoHide: number = 2000;
+  autoHide: number = 2500;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   
   
   
 constructor(public snackBar: MatSnackBar) {
+ 
   }
-  open(message: string,) {
-    alert('Hoho, parece que ocurrio un problema al acceder a tu cuenta, por favor intenta entrar nuevamente');
-    var action="avion";
+  open(message: string, action: string, config?:MatSnackBarConfig<any>) {
+     type MatSnackBarVerticalPosition='top';
     this.snackBar.open(message, action, {
-      duration: 2000,
+        duration: 2000,
+        verticalPosition:'bottom',
+        horizontalPosition:'center'
     });
   }
 }

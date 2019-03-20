@@ -13,15 +13,8 @@ export class AyudaComponent implements OnInit {
   constructor( public snackbarService: SnackbarService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-  //  this.snackbarService.open("texto de prueba");
+    this.snackbarService.open("esta es la prueba de ayuda","prueba 2");
   }
-   open(){
-      alert('Hoho, parece que ocurrio un problema al acceder a tu cuenta, por favor intenta entrar nuevamente');
-    //this.snackbar.open("texto de prueba");
-  }
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 2000,
-    });
-  }
+  
+ 
 }
