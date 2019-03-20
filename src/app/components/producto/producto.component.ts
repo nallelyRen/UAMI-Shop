@@ -39,7 +39,7 @@ export class ProductoComponent implements OnInit {
 
       const prod = this.productoService.getProductoCat();
       //console.log(this.producto);
-      if (prod == null) {
+      if (prod == null || prod.id != this.id) {
         this.obtenerProducto(this.id);
        // console.log('no habia producto');
       } else {

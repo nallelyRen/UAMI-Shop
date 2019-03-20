@@ -1,6 +1,6 @@
 import {RouterModule, Routes} from '@angular/router';
 import { PrincipalComponent } from './components/principal/principal.component';
-import { NgbdModalComponent } from './components/cuenta/cuenta.component';
+import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { AyudaComponent } from './components/ayuda/ayuda.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProductoComponent } from './components/producto/producto.component';
@@ -16,7 +16,7 @@ import { ListUploadComponent } from './components/list-upload/list-upload.compon
 
 const APP_ROUTES: Routes = [
     {path: 'principal', component: PrincipalComponent },
-    {path: 'miCuenta', component: NgbdModalComponent },
+    {path: 'miCuenta', component: CuentaComponent },
     {path: 'ayuda', component: AyudaComponent },
     {path: 'login', component: LoginComponent },
     {path: 'producto/:id', component: ProductoComponent },
