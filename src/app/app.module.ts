@@ -34,7 +34,6 @@ import { MatInputModule, } from '@angular/material';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 @NgModule({
   declarations: [
     AppComponent,
