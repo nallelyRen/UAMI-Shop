@@ -32,6 +32,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule,} from '@angular/material/paginator';
 import { MatInputModule, } from '@angular/material';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule,
+    // MatPaginatorModule,
+    NgbPaginationModule,
     NgbModule,
     MatInputModule,
     MatSnackBarModule,

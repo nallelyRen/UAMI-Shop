@@ -2,7 +2,7 @@
 <section class="magazine-section my-5 container">
 
     <!-- Section heading -->
-    <h2 id="titulo" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2>
+    <h2 id="titulo" class="h1-responsive font-weight-bold text-center my-5" *ngIf="producto">{{producto.nombre}}</h2>
     <div align="center" *ngIf="carga">
         <mat-spinner></mat-spinner>
         <br>
@@ -149,13 +149,11 @@
                         <button type="submit" class="btn btn-outline-success m-2">Enviar </button>
                     </form>
                 </div>
+                <div class="col-3">
+                    <button type="button" class="btn btn-danger m-2 p-2" (click)="volver()">Volver</button>
+                </div>
             </div>
-
-
-
-            <!--/Third row-->
-            <!-- CTA -->
-
         </div>
 
     </div>
+</section>
