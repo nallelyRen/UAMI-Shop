@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { NgbdModalContent } from './components/cuenta/cuenta.component';
 import { HttpClientModule } from '@angular/common/http';
 
 // componentes
@@ -13,7 +12,7 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductoComponent } from './components/producto/producto.component';
-import { NgbdModalComponent } from './components/cuenta/cuenta.component';
+import { CuentaComponent} from './components/cuenta/cuenta.component';
 import { LoginComponent } from './components/login/login.component';
 import { PiePaginaComponent } from './components/pie-pagina/pie-pagina.component';
 import { AyudaComponent } from './components/ayuda/ayuda.component';
@@ -33,6 +32,7 @@ import {MatPaginatorModule,} from '@angular/material/paginator';
 import { MatInputModule, } from '@angular/material';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModuloEliminarComponent } from './components/modulo-eliminar/modulo-eliminar.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     NavbarComponent,
     ProductosComponent,
     ProductoComponent,
-    //CuentaComponent,
+    CuentaComponent,
     LoginComponent,
     PiePaginaComponent,
     AyudaComponent,
@@ -50,8 +50,7 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     AgregarProductoComponent,
     ModificarDatosProductoComponent,
     ModificarImagenProductoComponent,
-    NgbdModalComponent, 
-    NgbdModalContent
+     ModuloEliminarComponent
   ],
    
   imports: [
@@ -71,7 +70,7 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     APP_ROUTING
   ],
   providers: [],
-  entryComponents: [NgbdModalContent],
+  entryComponents: [ModuloEliminarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
