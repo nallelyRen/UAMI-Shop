@@ -9,6 +9,7 @@ import { SnackbarService } from '../../services/snackbar.service';
 import {MatSnackBar} from '@angular/material';
 
 
+
 @Component({
   selector: 'app-cuenta-component',
   templateUrl: './cuenta.component.html',
@@ -32,6 +33,7 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
   forma: FormGroup;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService, 
     private router: Router, private modalService: NgbModal,public snackbarService: SnackbarService, private snackBar: MatSnackBar) {
+
         // creacion del formulario
     this.forma = new FormGroup({
       'nombre': new FormControl(''),
@@ -167,7 +169,9 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
     if (idUsuario != -1) {
       this.productoService.eliminameEnFavoritos(idUsuario, id).subscribe(res => {
         this.productos = res;
+
         this.snackbarService.open("El producto se ha eliminado de tus favoritos correctamente","");       
+
         this.carga3 = false ;
      //   console.log(res);
       });
@@ -219,8 +223,10 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
         this.productoService.eliminameProducto(idUsuario, id).subscribe(res => {
         this.productos = res;
         this.carga2 = false ;
+
         this.snackbarService.open("Tu producto ha sido eliminado correctamente, los cambios pueden demorar unos minutos en aparecer","");
          //  console.log(res);
+
       });
     } else {
       this.carga2 = false ;
