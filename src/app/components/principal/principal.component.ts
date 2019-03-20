@@ -25,10 +25,6 @@ export class PrincipalComponent implements OnInit {
       this.router.navigate(['/principal']);
     }
   }
-abrirModal(){
- 
-
-}
 
   
 }
