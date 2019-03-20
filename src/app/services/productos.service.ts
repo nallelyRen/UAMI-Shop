@@ -6,16 +6,20 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductosService {
+  // editar producto
   public producto: any;
   // para el catalogo
   public productos: any;
   public categoria: string;
 
-  // para producto de catalogo
+  // para producto de catalogo ver mas
   public productoCat: any;
 
-  // para el scroll de la pantalla
+  // para el scroll de la pantalla del catalogo
   public scrollY: number;
+
+  // para el componente de la pantalla de la cuenta
+  public productosCuenta: any;
   // cadena que contiene la ruta de las peticiones al back-end
 
   url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
@@ -89,7 +93,65 @@ export class ProductosService {
     }));
   }
 
+  // estos seran usados para la paginacion
+  librosPorPagina(pagina: number, elementos: number) {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url + 'librosPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Libros';
+      return res.json();
+    }));
+  }
 
+ proyectosPorPagina(pagina: number, elementos: number) {
+    return this.http.get(this.url + 'proyectosPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Proyectos';
+      return res.json();
+    }));
+  }
+
+  electronicosPorPagina(pagina: number, elementos: number) {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url + 'electronicaPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Electrónica';
+      return res.json();
+    }));
+  }
+
+  departamentosPorPagina(pagina: number, elementos: number) {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url + 'departamentosPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Departamentos';
+      return res.json();
+    }));
+  }
+
+  tutoriasPorPagina(pagina: number, elementos: number) {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url +  'tutoriasPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Tutorias';
+      return res.json();
+    }));
+  }
+
+  otrosPorPagina(pagina: number, elementos: number) {
+    // this.http.get(this.url2).subscribe(res => console.log('hola', res));
+    return this.http.get(this.url +  'otrosPorPagina?pagina=' + pagina + '&elementos=' + elementos)
+    .pipe(map(res => {
+      this.productos = res.json();
+      this.categoria = 'Otros';
+      return res.json();
+    }));
+  }
 
   nuevoLibro(nombre, precio, descripcion, file: File, idUsuario) {
     const formData: FormData = new FormData();
@@ -204,6 +266,7 @@ export class ProductosService {
     return this.http.get(this.url + 'misFavoritos/' + idUsuario)
     .pipe(
       map(res => {
+        this.productosCuenta = res.json();
         console.log(res.json());
         return res.json();
       }));
@@ -224,6 +287,7 @@ export class ProductosService {
     return this.http.put(this.url + 'eliminaFavorito/' + idUsuario + '/' + idProducto, null)
     .pipe(
       map(res => {
+        this.productosCuenta = res.json();
         console.log(res.json());
         return res.json();
       }));
@@ -233,6 +297,7 @@ export class ProductosService {
     return this.http.get(this.url + 'misProductos/' + idUsuario)
     .pipe(
       map(res => {
+        this.productosCuenta = res.json();
         console.log(res.json());
         return res.json();
       }));
@@ -242,6 +307,7 @@ export class ProductosService {
       return this.http.delete(this.url + 'productos?idUsuario=' + idUsuario + '&idProducto=' + idProducto)
       .pipe(
         map(res => {
+          this.productosCuenta = res.json();
           console.log(res.json());
           return res.json();
         }));
@@ -317,7 +383,7 @@ export class ProductosService {
         return res.json();
     }));
   }
-
+  // editar producto e imagen
   getProducto() {
     return this.producto;
   }
@@ -325,7 +391,7 @@ export class ProductosService {
   setProducto(prod: any) {
     this.producto = prod;
   }
-
+  // catalogo de productos
   getProductos() {
     return this.productos;
   }
@@ -349,4 +415,9 @@ export class ProductosService {
   setScroll(pos: number) {
     this.scrollY = pos;
   }
+  // para la pantalla de cuenta
+  getProductosCuenta(): any {
+    return this.productosCuenta;
+  }
+
 }
