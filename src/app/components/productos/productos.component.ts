@@ -3,6 +3,9 @@ import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
 import {PageEvent} from '@angular/material';
 import {Router} from '@angular/router';
+import { SnackbarService } from '../../services/snackbar.service';
+import {MatSnackBar} from '@angular/material';
+
 
 @Component({
   selector: 'app-productos',
@@ -22,7 +25,10 @@ export class ProductosComponent implements OnInit, OnDestroy {
   actual = 1;
   Restriccion=true;
   carga = false;
-  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router: Router) {
+
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, 
+    private router: Router, public snackbarService: SnackbarService, private snackBar: MatSnackBar) {
+
       const cat = this.productoService.getCategoria();
       if (cat !== undefined) {
         this.categoria = cat;
@@ -47,12 +53,16 @@ export class ProductosComponent implements OnInit, OnDestroy {
         const prod = this.productoService.getProductos();
         if (prod !== undefined) {
           const scroll: number = this.productoService.getScroll();
-          console.log(scroll, 'ya esta');
+
+         // console.log(scroll, 'ya esta');
+
           setTimeout(function() { window.scrollTo(0, scroll); }, 50);
           this.productos = prod.content;
           this.numPag = prod.totalElements;
           this.pagina = prod.number + 1;
-          console.log(this.productos, this.categoria);
+
+          //console.log(this.productos, this.categoria);
+
           this.inicio = 2;
         } else {
           //  window.scrollTo(0, 0);
@@ -68,12 +78,15 @@ export class ProductosComponent implements OnInit, OnDestroy {
   // }
   ngOnInit() {
     this.llamada();
+
     // console.log(typeof( this.productoService.getScroll()), 'regreso');
     // window.scrollTo(0, this.productoService.getScroll());
   }
 
   ngOnDestroy() {
-    console.log(window.scrollY, 'ida');
+
+   // console.log(window.scrollY, 'ida');
+
     // console.log(window.pageYOffset);
     this.productoService.setScroll(window.scrollY);
   }
@@ -98,7 +111,9 @@ export class ProductosComponent implements OnInit, OnDestroy {
           this.productos = res.content;
           this.carga = false;
           this.numPag = res.totalElements;
-          console.log(res);
+
+         // console.log(res);
+
           // console.log('tipo', typeof (this.productos));
         });
       } else {
@@ -108,7 +123,9 @@ export class ProductosComponent implements OnInit, OnDestroy {
           this.productos = res.content;
           this.carga = false;
           this.numPag = res.totalElements;
-          console.log(res);
+
+         // console.log(res);
+
           // console.log('tipo', typeof (this.productos));
         });
       } else {
@@ -118,7 +135,9 @@ export class ProductosComponent implements OnInit, OnDestroy {
           this.productos = res.content;
           this.carga = false;
           this.numPag = res.totalElements;
-          console.log(res);
+
+         // console.log(res);
+
           // console.log('tipo', typeof (this.productos));
         });
       }
@@ -128,7 +147,9 @@ export class ProductosComponent implements OnInit, OnDestroy {
         this.productos = res.content;
         this.carga = false;
         this.numPag = res.totalElements;
-        console.log(res);
+
+       // console.log(res);
+
         // console.log('tipo', typeof (this.productos));
         });
       }  else {
@@ -138,7 +159,9 @@ export class ProductosComponent implements OnInit, OnDestroy {
           this.productos = res.content;
           this.carga = false;
           this.numPag = res.totalElements;
-          console.log(res);
+
+          //console.log(res);
+
           // console.log('tipo', typeof (this.productos));
           });
         }
@@ -151,20 +174,22 @@ export class ProductosComponent implements OnInit, OnDestroy {
 obtenerProductos() {
     this.productoService.obtenerLibros().subscribe(res => {
       this.productos = res;
-      console.log(res);
-      console.log('tipo', typeof (this.productos));
+     // console.log(res);
+     // console.log('tipo', typeof (this.productos));
     });
 }
 
 llamada(){
     const id= this.usuarioService.validarUsuarios();      
    if(id== -1){
-    console.log('el valor es ',id);
+    //console.log('el valor es ',id);
     this.Restriccion=true;
     alert('No estas logueado por lo que el contenido de la página no se mostrará');
     return this.Restriccion; 
    } else {
-    console.log('el valor es ',id);
+
+   // console.log('el valor es ',id);
+
      return this.Restriccion=false;
    }
 }
@@ -175,13 +200,15 @@ agregarFavorito(id) {
     if (idUsuario != -1) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
         this.carga = false;
-        alert('Se agrego a tu lista de favoritos correctamente, los cambios pueden demorar unos minutos en aparecer');
-        console.log(res);
+
+        this.snackbarService.open("Se agrego a tu lista de favoritos correctamente","los cambios pueden demorar unos minutos en aparecer");
+       //  console.log(res);
+
       });
     } else {
       this.carga = false;
-      alert('Ups no se pudo agregar a tu lista de favoritos');
-      console.log('no estas logueado');
+      this.snackbarService.open("Ups no se pudo agregar a tu lista de favoritos","");
+     //  console.log('no estas logueado');
     }
 
 }
@@ -210,7 +237,9 @@ cambioPagina() {
           this.productos = res.content;
           this.carga = false;
           this.numPag = res.totalElements;
-          console.log(res);
+
+          //console.log(res);
+
           // console.log('tipo', typeof (this.productos));
         });
       } else {
@@ -220,7 +249,9 @@ cambioPagina() {
           this.productos = res.content;
           this.carga = false;
           this.numPag = res.totalElements;
-          console.log(res);
+
+         // console.log(res);
+
           // console.log('tipo', typeof (this.productos));
         });
       } else {
@@ -230,7 +261,9 @@ cambioPagina() {
           this.productos = res.content;
           this.carga = false;
           this.numPag = res.totalElements;
-          console.log(res);
+
+          //console.log(res);
+
           // console.log('tipo', typeof (this.productos));
         });
       }
@@ -240,7 +273,9 @@ cambioPagina() {
         this.productos = res.content;
         this.carga = false;
         this.numPag = res.totalElements;
-        console.log(res);
+
+      //  console.log(res);
+
         // console.log('tipo', typeof (this.productos));
         });
       }  else {
@@ -250,13 +285,17 @@ cambioPagina() {
           this.productos = res.content;
           this.carga = false;
           this.numPag = res.totalElements;
-          console.log(res);
+
+         // console.log(res);
+
           // console.log('tipo', typeof (this.productos));
           });
         }
       }
     }
+
   }
   }
+
 }
 }

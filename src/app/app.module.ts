@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgbdModalContent } from './components/cuenta/cuenta.component';
 import { HttpClientModule } from '@angular/common/http';
+
 // componentes
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './components/principal/principal.component';
@@ -30,9 +31,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule,} from '@angular/material/paginator';
 import { MatInputModule, } from '@angular/material';
-
-// bootstrap
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     NgbPaginationModule,
     NgbModule,
     MatInputModule,
+    MatSnackBarModule,
     APP_ROUTING
   ],
   providers: [],

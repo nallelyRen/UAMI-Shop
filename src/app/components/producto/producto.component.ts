@@ -5,6 +5,9 @@ import { UsuarioService } from '../../services/usuario.service';
 import { ProductosService } from '../../services/productos.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { SnackbarService } from '../../services/snackbar.service';
+import {MatSnackBar} from '@angular/material';
+
 
 @Component({
   selector: 'app-producto',
@@ -26,22 +29,24 @@ export class ProductoComponent implements OnInit {
   totalCalif = 0;
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   forma: FormGroup;
-  constructor(private router: ActivatedRoute
-    , private usuarioService: UsuarioService, private location: Location,
-    private productoService: ProductosService, config: NgbRatingConfig) {
+  constructor(private router: ActivatedRoute, private usuarioService: UsuarioService,
+    private productoService: ProductosService, config: NgbRatingConfig,
+    public snackbarService: SnackbarService, private snackBar: MatSnackBar) {
+
     this.router.params.subscribe(params => {
-      console.log(params['id']);
+      //console.log(params['id']);
       this.id = params['id'];
-      const prod = this.productoService.getProductoCat();
-      console.log(prod);
-      if (prod == null || prod.id != this.id) {
+
+      this.producto = this.productoService.getProductoCat();
+      //console.log(this.producto);
+      if (this.producto == null) {
         this.obtenerProducto(this.id);
-        console.log('no habia producto');
+       // console.log('no habia producto');
       } else {
-        this.producto = prod;
         this.carga = false;
         this.calculaPromedio(this.producto.usuario.calificacion.toString());
-        console.log('HABIA producto');
+       // console.log('HABIA producto');
+
       }
     });
     config.max = 10;
@@ -53,6 +58,7 @@ export class ProductoComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   volver() {
@@ -63,7 +69,7 @@ export class ProductoComponent implements OnInit {
     this.productoService.obtenerProductoConId(id).subscribe(res => {
       this.producto = res;
       this.carga = false;
-      console.log('producto', this.producto);
+      //console.log('producto', this.producto);
       this.calculaPromedio(this.producto.usuario.calificacion.toString());
     });
   }
@@ -83,7 +89,8 @@ export class ProductoComponent implements OnInit {
     // envio de la peticion al servicio
     if (this.usuario.calificacion === '') {
       this.carga = false;
-      alert('El campo calificación es obligatorio');
+      this.snackbarService.open("El campo calificación es","obligatorio");
+     
     } else {
       const idUsuario = this.usuarioService.validarUsuarios();
       // const id = this.producto.idUsuario;
@@ -92,13 +99,14 @@ export class ProductoComponent implements OnInit {
         // Verificamos que el usuario no sea el mismo que se esta calificando 
         if (idUsuario === idUsuarioAcalificar) {
           this.carga = false;
-          alert('No puedes calificarte tu mismo, tu calificación no se ha enviado');
+          this.snackbarService.open("No puedes calificarte tu mismo","tu calificación no se ha enviado");          
         } else {
           this.usuarioService.modificarCalificacion(idUsuario, idUsuarioAcalificar, this.usuario.calificacion ).subscribe(
             res => {
               const arreglo = res;
               this.calculaPromedio(arreglo.toString());
-              alert('Tu calificación de ' + this.usuario.calificacion + ' se ha enviado correctamente, los cambios pueden demorar unos minutos en aparecer');
+              this.snackbarService.open("Tu calificación de " + this.usuario.calificacion +" se ha enviado","los cambios pueden demorar unos minutos en aparecer");
+
               this.carga = false;
             });
         }
