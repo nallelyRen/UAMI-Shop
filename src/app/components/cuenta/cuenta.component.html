@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <button class="btn btn-outline-success responsive-width btn-block" (click)="modificarProducto(product)">Editar</button>
-                                    <button class="btn btn-outline-danger responsive-width btn-block" (click)="open(product.id)">Eliminar</button>
+                                    <button class="btn btn-outline-danger responsive-width btn-block" (click)="modalEliminarProductos(product.id)">Eliminar</button>
                                     <!--<button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarProducto(product.id)">Eliminar</button>-->
                                 </div>
                             </div>
@@ -156,7 +156,7 @@
                                 <div class="card-footer">
                                     <button class="btn btn-outline-success responsive-width btn-block" (click)="verProducto(product)">Ver más</button>
 
-                                    <button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarFavoritos(product.id)">Eliminar</button>
+                                    <button class="btn btn-outline-danger responsive-width btn-block" (click)="modalEliminarFavoritos(product.id)">Eliminar</button>
                                 </div>
                             </div>
                         </div>

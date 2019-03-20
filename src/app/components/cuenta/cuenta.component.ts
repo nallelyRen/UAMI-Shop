@@ -1,147 +1,18 @@
-import { Component, Input, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
 import {Router} from '@angular/router';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-
-@Component({
-  selector:'ngbd-modal-content',
-  template: `
-    <div class="modal-header">
-      <h4 class="modal-title">Confirmación de eliminar</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>¿Estas seguro de eliminar tu producto? </p>
-    </div>
-    <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Cerrar</button>
-    <button type="button" class="btn btn-primary" (click)="activeModal.dismiss (eliminarProducto(name))">Eliminar</button> 
-    </div>
-     `
-})
-
-export class NgbdModalContent implements OnInit {
-  
-  @Input() name;
-
-  productos: any[] = [];
-  Restriccion=true;
-  carga2 = false;
-  carga3 = false;
-  categoria = 'Libros';
-  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router: Router, private modalService: NgbModal, public activeModal: NgbActiveModal) {
-        // creacion del formulario
-  }
-
-  ngOnInit() {
-    this.llamada();
-  }
-
-  cambio(categoria) {
-    this.categoria = categoria;
-    if (categoria === 'libros') {
-      this.productoService.obtenerLibros().subscribe(res => {
-        this.productos = res;
-        console.log(res);
-        console.log('tipo', typeof (this.productos));
-      });
-    } else {
-      if (categoria === 'proyectos') {
-        this.productoService.obtenerProyectos().subscribe(res => {
-          this.productos = res;
-          console.log(res);
-          console.log('tipo', typeof (this.productos));
-        });
-      } else {
-        this.productoService.obtenerElectronicos().subscribe(res => {
-          this.productos = res;
-          console.log(res);
-          console.log('tipo', typeof (this.productos));
-        });
-      }
-    }
-  }
-
-  obtenerProductosUsuario() {
-    this.carga2 = true ;
-    this.productos = [];
-    const idUsuario = this.usuarioService.validarUsuarios();
-    if (idUsuario != -1) {
-      this.productoService.dameMisProductos(idUsuario).subscribe(res => {
-        this.productos = res;
-        this.carga2 = false ;
-        console.log(res);
-      });
-    } else {
-      this.carga2 = false ;
-      console.log('no estas logueado');
-    }
-  }
-
-  llamada(){
-    const id= this.usuarioService.validarUsuarios();      
-   if(id== -1){
-    console.log('el valor es ',id);
-    this.Restriccion=true;    
-    alert('No estas logueado por lo que el contenido de la página no se mostrará');
-    return this.Restriccion; 
-   }else{         
-    console.log('el valor es ',id);
-     return this.Restriccion=false;
-   }
-    
-}
-
-  eliminarFavoritos(id) {
-    this.carga3 = true ;
-    const idUsuario = this.usuarioService.validarUsuarios();
-    if (idUsuario != -1) {
-      this.productoService.eliminameEnFavoritos(idUsuario, id).subscribe(res => {
-        this.productos = res;
-        alert('Tu producto '+ this.productos + 'ha sido eliminado de tus favoritos');
-        this.carga3 = false ;
-        console.log(res);
-      });
-    } else {
-      this.carga3 = false ;
-      console.log('no estas logueado');
-    } 
-
-  }
-
-  eliminarProducto(id) {
-    this.carga2 = true ;
-    const idUsuario = this.usuarioService.validarUsuarios();
-    if (idUsuario != -1) {
-        this.productoService.eliminameProducto(idUsuario, id).subscribe(res => {
-        this.productos = res;
-        this.carga2 = false ;
-        console.log(res);
-      });
-    } else {
-      this.carga2 = false ;
-      console.log('no estas logueado');
-    }
-
-  }  
-  modificarProducto(producto: any) {
-    this.productoService.setProducto(producto);
-    this.router.navigate(['/modificarDatosProducto']);
-  }
-}
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {ModuloEliminarComponent } from '../modulo-eliminar/modulo-eliminar.component';
 
 @Component({
-  selector: 'ngbd-modal-component',
+  selector: 'app-cuenta-component',
   templateUrl: './cuenta.component.html',
   styleUrls: ['./cuenta.component.css']
 })
 
-export class NgbdModalComponent  implements OnInit, OnDestroy  {
+export class CuentaComponent  implements OnInit, OnDestroy  {
   
   productos: any[] = [];
   Restriccion=true;
@@ -156,7 +27,8 @@ export class NgbdModalComponent  implements OnInit, OnDestroy  {
 
   categoria = 'Libros';
   forma: FormGroup;
-  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, private router: Router, private modalService: NgbModal) {
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, 
+    private router: Router, private modalService: NgbModal) {
         // creacion del formulario
     this.forma = new FormGroup({
       'nombre': new FormControl(''),
@@ -198,11 +70,24 @@ export class NgbdModalComponent  implements OnInit, OnDestroy  {
       }
   }
 
- open(id) {
-   const id2 = id;  
-   const modalRef = this.modalService.open(NgbdModalContent );
-   modalRef.componentInstance.name = id2; 
+ modalEliminarProductos(id) {
+   const modalRef = this.modalService.open(ModuloEliminarComponent ).result.then((result) => {
+    // console.log(result, 'elimino');
+    this.eliminarProducto(id);
+  }, (reason) => {
+    // console.log('no elimino');
+  });
   }
+
+  modalEliminarFavoritos(id) {
+    const modalRef = this.modalService.open(ModuloEliminarComponent ).result.then((result) => {
+     // console.log(result, 'elimino');
+     this.eliminarFavoritos(id);
+   }, (reason) => {
+     // console.log('no elimino');
+   });
+    // modalRef.componentInstance.name = id;
+   }
 
   ngOnInit() {
     this.llamada();
@@ -279,7 +164,7 @@ export class NgbdModalComponent  implements OnInit, OnDestroy  {
     if (idUsuario != -1) {
       this.productoService.eliminameEnFavoritos(idUsuario, id).subscribe(res => {
         this.productos = res;
-        alert('Tu producto '+ this.productos + 'ha sido eliminado de tus favoritos');
+        alert('El producto se ha eliminado de tus favoritos correctamente');
         this.carga3 = false ;
         console.log(res);
       });
@@ -331,6 +216,7 @@ export class NgbdModalComponent  implements OnInit, OnDestroy  {
         this.productoService.eliminameProducto(idUsuario, id).subscribe(res => {
         this.productos = res;
         this.carga2 = false ;
+        alert('Tu producto ha sido eliminado correctamente, los cambios pueden demorar unos minutos en aparecer');
         console.log(res);
       });
     } else {
