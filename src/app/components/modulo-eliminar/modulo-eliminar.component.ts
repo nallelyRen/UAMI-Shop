@@ -21,7 +21,7 @@ export class ModuloEliminarComponent implements OnInit {
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService,
      private router: Router, private modalService: NgbModal, public activeModal: NgbActiveModal) {
         // creacion del formulario
-        setTimeout(function() { console.log('soy constructor aparte jijiji', this.name); }, 3000);
+      console.log('soy componente aparte jijiji', this.name);
   }
 
   ngOnInit() {
