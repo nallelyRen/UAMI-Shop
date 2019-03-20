@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import {Router} from '@angular/router';
-import { SnackbarService } from '../../services/snackbar.service';
-import {MatSnackBar} from '@angular/material';
+
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +10,7 @@ import {MatSnackBar} from '@angular/material';
 })
 export class NavbarComponent implements OnInit {
  Restriccion = true;
-  constructor(private usuarioService: UsuarioService, private router: Router, public snackbarService: SnackbarService, private snackBar: MatSnackBar ) {
+  constructor(private usuarioService: UsuarioService, private router: Router ) {
 
   }
 
@@ -37,8 +36,7 @@ export class NavbarComponent implements OnInit {
     const id = this.usuarioService.validarUsuarios();
     if (id !== -1) {
       this.router.navigate(['/miCuenta']);
-    } else {
-      //this.snackbarService.open("esta es la prueba de ayuda","");
+    } else {     
       alert('Necesitas estar logueado para acceder a esta sección');
       this.router.navigate(['/principal']);
     }
