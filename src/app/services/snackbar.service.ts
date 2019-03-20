@@ -28,11 +28,12 @@ constructor(public snackBar: MatSnackBar) {
  
   }
   open(message: string, action: string, config?:MatSnackBarConfig<any>) {
-     type MatSnackBarVerticalPosition='top';
-    this.snackBar.open(message, action, {
+     this.snackBar.open(message, action, {
         duration: 2000,
         verticalPosition:'bottom',
-        horizontalPosition:'center'
+        horizontalPosition:'center',
+        
     });
+    
   }
 }

@@ -13,7 +13,8 @@ export class AyudaComponent implements OnInit {
   constructor( public snackbarService: SnackbarService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.snackbarService.open("esta es la prueba de ayuda","prueba 2");
+    //this.snackbarService.open("esta es la prueba de ayuda","");
+    
   }
   
  
