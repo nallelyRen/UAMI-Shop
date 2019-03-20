@@ -7,13 +7,20 @@ import { map } from 'rxjs/operators';
 })
 export class UsuarioService {
 
+  // para el scroll de la pantalla de la cuenta
+  public infoUsuario: any;
+  public tipo: string;
+  public scrollCuenta: number;
+
+  // usuario
+  Nombre = "";
+  Correo = "";
+  id = "";
+
   url = 'https://uamishopback.azurewebsites.net/tutorial-spring-boot-0.1.0/';
   //url = 'http://localhost:8080/';
 
   constructor(private http: Http) { }
-  Nombre = "";
-  Correo = "";
-  id = "";
 
   obtenerUsuarios() {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
@@ -33,6 +40,8 @@ export class UsuarioService {
     return this.http.post(this.url + 'usuarios', formData)
       .pipe(
         map(res => {
+          this.infoUsuario = res.json();
+          this.tipo = 'infoUsuario';
           console.log(res.json());
           return res.json();
         }));
@@ -85,6 +94,8 @@ export class UsuarioService {
     return this.http.put(this.url + 'usuarios?idUsuario=' + idUsuario + '&telefono=' + telefono, null)
       .pipe(
         map(res => {
+          this.infoUsuario = res.json();
+          this.tipo = 'infoUsuario';
           return res.json();
         }));
   }
@@ -100,8 +111,28 @@ export class UsuarioService {
         map(res => {
           return res.json();
         }));
-
-
   }
+
+  getInfoUsuario(): any {
+    return this.infoUsuario;
+  }
+
+  getTipoCuenta(): string {
+    return this.tipo;
+  }
+
+  setTipoCuenta(tipo: string) {
+    this.tipo = tipo;
+  }
+
+  // pagina de cuenta
+  getScrollCuenta(): number {
+    return this.scrollCuenta;
+  }
+
+  setScrollCuenta(pos: number) {
+    this.scrollCuenta = pos;
+  }
+
 }
 

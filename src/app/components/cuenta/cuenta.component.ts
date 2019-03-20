@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
@@ -25,7 +25,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
      `
 })
 
-export class NgbdModalContent implements OnInit  {
+export class NgbdModalContent implements OnInit {
   
   @Input() name;
 
@@ -141,7 +141,7 @@ export class NgbdModalContent implements OnInit  {
   styleUrls: ['./cuenta.component.css']
 })
 
-export class NgbdModalComponent  implements OnInit{
+export class NgbdModalComponent  implements OnInit, OnDestroy  {
   
   productos: any[] = [];
   Restriccion=true;
@@ -150,6 +150,7 @@ export class NgbdModalComponent  implements OnInit{
   carga3 = false;
   totalCalif = 0;
   promedio = 0;
+  inicio = 1;
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   //usuario:  any[] = [];
 
@@ -163,6 +164,38 @@ export class NgbdModalComponent  implements OnInit{
       'telefono': new FormControl('', [Validators.required]),
       'calificacion': new FormControl('')
     });
+    const tipo = this.usuarioService.getTipoCuenta();
+      if (tipo !== undefined) {
+        const scroll: number = this.usuarioService.getScrollCuenta();
+        console.log(scroll, 'ya esta');
+        setTimeout(function() { window.scrollTo(0, scroll); }, 50);
+        if (tipo === 'infoUsuario') {  // carga los datos del usuario
+          const info = this.usuarioService.getInfoUsuario();
+          if (info !== undefined) {
+            this.usuario = info;
+            console.log(tipo, this.usuario);
+            this.inicio = 2;
+          }
+        } else {
+          if (tipo === 'productosUsuario') { // productos de usuario
+            const prod = this.productoService.getProductosCuenta();
+            if (prod !== undefined) {
+              this.productos = prod;
+              this.inicio = 3;
+            }
+          } else {  // favoritos
+            if (tipo === 'favoritosUsuario') {
+              const prod = this.productoService.getProductosCuenta();
+              if (prod !== undefined) {
+                this.productos = prod;
+                this.inicio = 4;
+              }
+            }
+          }
+        }
+      } else {
+        // window.scrollTo(0, 0);
+      }
   }
 
  open(id) {
@@ -173,6 +206,11 @@ export class NgbdModalComponent  implements OnInit{
 
   ngOnInit() {
     this.llamada();
+  }
+
+  ngOnDestroy() {
+    console.log(window.scrollY, 'px');
+    this.usuarioService.setScrollCuenta(window.scrollY);
   }
 
   cambio(categoria) {
@@ -206,6 +244,7 @@ export class NgbdModalComponent  implements OnInit{
     this.productos = [];
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
+      this.usuarioService.setTipoCuenta('favoritosUsuario');
       this.productoService.dameMisFavoritos(idUsuario).subscribe(res => {
         this.productos = res;
         this.carga3 = false ;
@@ -222,6 +261,7 @@ export class NgbdModalComponent  implements OnInit{
     this.productos = [];
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
+      this.usuarioService.setTipoCuenta('productosUsuario');
       this.productoService.dameMisProductos(idUsuario).subscribe(res => {
         this.productos = res;
         this.carga2 = false ;
@@ -318,7 +358,7 @@ export class NgbdModalComponent  implements OnInit{
       if (id != -1) {
         this.usuarioService.modificarUsuario(id, this.usuario.telefono).subscribe(
           res => {
-            alert('Tu número ' + this.usuario.telefono + ' se ha actualizado correctamente');
+            alert('Tu número ' + this.usuario.telefono + ' se ha actualizado correctamente, los cambios pueden demorar unos minutos en aparecer');
             this.carga = false ;
             this.forma.reset();
            // this.forma.reset(this.Libro2);
@@ -347,6 +387,11 @@ export class NgbdModalComponent  implements OnInit{
       }
       this.promedio = suma / this.totalCalif;
     }
+  }
+
+  verProducto(producto: any) {
+    this.productoService.setProductoCat(producto);
+    this.router.navigate(['/producto/' + producto.id]);
   }
   
   agregar(){

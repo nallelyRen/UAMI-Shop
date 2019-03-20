@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
@@ -39,7 +40,7 @@ export class AgregarProductoComponent implements OnInit {
   carga = false;
   forma: FormGroup;
   // constructor de la clase, este inicializa el formulario y conecta con el servicio
-  constructor(private productService: ProductosService, private usuarioService: UsuarioService) {
+  constructor(private productService: ProductosService, private usuarioService: UsuarioService, private location: Location) {
     // creacion del formulario
     this.forma = new FormGroup({
       'nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -74,6 +75,10 @@ export class AgregarProductoComponent implements OnInit {
     }
   }
 
+  volverAtras() {
+    this.location.back();
+  }
+
   // evento del boton con el que se obtiene la imagen que sube el usuario
   setImage(files: FileList) {
     this.file = files.item(0);
@@ -87,7 +92,7 @@ export class AgregarProductoComponent implements OnInit {
   }
 
   validarPrecio(precio: number) {
-    if ( precio < 0 || precio > 20000 || precio.toString().length < 1) {
+    if ( precio < 0 || precio > 10000 || precio.toString().length < 1) {
       return true;
     } else {
         return false;
@@ -109,7 +114,7 @@ export class AgregarProductoComponent implements OnInit {
     // envio de la peticion al servicio
     if (this.Libro.nombre === '' || this.Libro.precio === null || this.Libro.categoria === '' ||
      this.Libro.descripcion === ''  || this.SiImagen === false || this.validarPrecio(parseFloat( this.Libro.precio))) {
-      alert('Todos los campos son requeridos y el campo precio solo admite numeros entre 0-20000');
+      alert('Todos los campos son requeridos y el campo precio solo admite numeros entre 0-10000');
       this.carga = false;
     } else {
       if (this.forma.get('categoria').value === 'libro') {
@@ -117,7 +122,7 @@ export class AgregarProductoComponent implements OnInit {
         if (id != -1) {
           this.productService.nuevoLibro(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
             res => {
-              alert('Tu libro ' + this.Libro.nombre + ' se a subido correctamente');
+              alert('Tu libro ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
               this.forma.reset(this.Libro2);
               this.carga = false;
             }
@@ -139,7 +144,7 @@ export class AgregarProductoComponent implements OnInit {
             this.productService.nuevoProyecto(this.Libro.nombre, this.Libro.representante, this.Libro.precio, this.Libro.descripcion,
               this.Libro.requisitos, this.file, id).subscribe(
                 res => {
-                  alert('Tu proyecto ' + this.Libro.nombre + ' se a subido correctamente');
+                  alert('Tu proyecto ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
                   this.forma.reset(this.Libro2);
                   this.carga = false;
                 }
@@ -160,7 +165,7 @@ export class AgregarProductoComponent implements OnInit {
             this.productService.nuevaTutoria(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.Libro.area,
               this.file, id ).subscribe(
                 res => {
-                  alert('Tu tutoria ' + this.Libro.nombre + ' se a subido correctamente');
+                  alert('Tu tutoria ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
                   this.forma.reset(this.Libro2);
                   this.carga = false;
                 }
@@ -175,7 +180,7 @@ export class AgregarProductoComponent implements OnInit {
               if (id != -1) {
                 this.productService.nuevoElectronico(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
                   res => {
-                    alert('Tu electronico ' + this.Libro.nombre + ' se a subido correctamente');
+                    alert('Tu electronico ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
                     this.forma.reset(this.Libro2);
                     this.carga = false;
                   }
@@ -194,7 +199,7 @@ export class AgregarProductoComponent implements OnInit {
                 if (id != -1) {
                   this.productService.nuevoDepartamento(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id, this.Libro.direccion).subscribe(
                     res => {
-                      alert('Tu departamento ' + this.Libro.nombre + ' se a subido correctamente');
+                      alert('Tu departamento ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
                       this.forma.reset(this.Libro2);
                       this.carga = false;
                     }
@@ -211,7 +216,7 @@ export class AgregarProductoComponent implements OnInit {
                      .nuevoOtro(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id)
                       .subscribe(
                         res => {
-                          alert('Tu producto ' + this.Libro.nombre + ' se a subido correctamente');
+                          alert('Tu producto ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
                           this.forma.reset(this.Libro2);
                           this.carga = false;
                         }
