@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+
 import { UsuarioService } from '../../services/usuario.service';
 import { ProductosService } from '../../services/productos.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -59,10 +59,6 @@ export class ProductoComponent implements OnInit {
 
   ngOnInit() {
 
-  }
-
-  volver() {
-    this.location.back();
   }
 
   obtenerProducto(id) {
