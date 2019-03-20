@@ -201,7 +201,7 @@ agregarFavorito(id) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
         this.carga = false;
 
-        this.snackbarService.open("Se agrego a tu lista de favoritos correctamente","los cambios pueden demorar unos minutos en aparecer");
+        this.snackbarService.open("Se agrego a tu lista de favoritos correctamente los cambios pueden demorar unos minutos en aparecer","");
        //  console.log(res);
 
       });
