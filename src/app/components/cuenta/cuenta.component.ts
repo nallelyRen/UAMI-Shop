@@ -70,10 +70,24 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
       }
   }
 
- open(id) {
-   const modalRef = this.modalService.open(ModuloEliminarComponent );
-   modalRef.componentInstance.name = id; 
+ modalEliminarProductos(id) {
+   const modalRef = this.modalService.open(ModuloEliminarComponent ).result.then((result) => {
+    // console.log(result, 'elimino');
+    this.eliminarProducto(id);
+  }, (reason) => {
+    // console.log('no elimino');
+  });
   }
+
+  modalEliminarFavoritos(id) {
+    const modalRef = this.modalService.open(ModuloEliminarComponent ).result.then((result) => {
+     // console.log(result, 'elimino');
+     this.eliminarFavoritos(id);
+   }, (reason) => {
+     // console.log('no elimino');
+   });
+    // modalRef.componentInstance.name = id;
+   }
 
   ngOnInit() {
     this.llamada();
@@ -150,7 +164,7 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
     if (idUsuario != -1) {
       this.productoService.eliminameEnFavoritos(idUsuario, id).subscribe(res => {
         this.productos = res;
-        alert('Tu producto '+ this.productos + 'ha sido eliminado de tus favoritos');
+        alert('El producto se ha eliminado de tus favoritos correctamente');
         this.carga3 = false ;
         console.log(res);
       });
@@ -202,6 +216,7 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
         this.productoService.eliminameProducto(idUsuario, id).subscribe(res => {
         this.productos = res;
         this.carga2 = false ;
+        alert('Tu producto ha sido eliminado correctamente, los cambios pueden demorar unos minutos en aparecer');
         console.log(res);
       });
     } else {
