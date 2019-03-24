@@ -26,23 +26,23 @@ export class UsuarioService {
     // this.http.get(this.url2).subscribe(res => console.log('hola', res));
     return this.http.get(this.url + 'usuarios')// .subscribe(res => console.log(res.json()));
       .pipe(map(res => {
-        console.log(res.json());
+       // console.log(res.json());
         return res.json();
       }));
   }
 
   logueo(nombre, correo) {
-    console.log('entro en logueo');
+    //console.log('entro en logueo');
     const formData: FormData = new FormData();
     formData.append('nombre', nombre);
     formData.append('correo', correo);
-    console.log('entro en logueo 2' + nombre + correo);
+    //console.log('entro en logueo 2' + nombre + correo);
     return this.http.post(this.url + 'usuarios', formData)
       .pipe(
         map(res => {
           this.infoUsuario = res.json();
           this.tipo = 'infoUsuario';
-          console.log(res.json());
+         // console.log(res.json());
           return res.json();
         }));
   }
@@ -59,17 +59,17 @@ export class UsuarioService {
         if (this.id !== '') {
           this.Nombre = localStorage.getItem('nombre');
           this.Correo = localStorage.getItem('correo');
-          console.log(this.Nombre + 'entro con correo  ' + this.Correo + 'id' + this.id);
+         // console.log(this.Nombre + 'entro con correo  ' + this.Correo + 'id' + this.id);
           return this.id;
         } else {
           this.logueo(localStorage.getItem('nombre'), localStorage.getItem('correo')).subscribe(res => {
-            console.log(res);
+         //   console.log(res);
             this.id = res.id;
             this.Nombre = res.nombre;
             this.Correo = res.correo;
             return this.id;
           });
-          console.log(this.Nombre + 'entro sin id ' + this.Correo);
+        //  console.log(this.Nombre + 'entro sin id ' + this.Correo);
 
         }
       } else {
@@ -81,7 +81,7 @@ export class UsuarioService {
       this.Nombre = '';
       this.Correo = '';
       this.id = '';
-      console.log(this.Nombre + 'no esta logueado ' + this.Correo);
+     // console.log(this.Nombre + 'no esta logueado ' + this.Correo);
       return -1;
     }
   }
