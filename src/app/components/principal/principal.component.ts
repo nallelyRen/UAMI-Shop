@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import {Router} from '@angular/router';
 import { $ } from 'protractor';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent implements OnInit {
   hero=true;
-  constructor(private usuarioService: UsuarioService, private router: Router ) { }
+  closeResult: string;
+  constructor(private usuarioService: UsuarioService, private router: Router, private modalService: NgbModal ) { }
   
   ngOnInit() {
    
@@ -25,10 +28,10 @@ export class PrincipalComponent implements OnInit {
       this.router.navigate(['/principal']);
     }
   }
-abrirModal(){
- 
 
-}
+  openLg(content) {
+    this.modalService.open(content, { size: 'lg' });
+  }
 
   
 }
