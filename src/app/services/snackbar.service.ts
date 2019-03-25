@@ -25,7 +25,7 @@ constructor(public snackBar: MatSnackBar) {
   }
   open(message: string, action: string, config?:MatSnackBarConfig<any>) {
      this.snackBar.open(message, action, {
-        duration: 2500,
+        duration: 3500,
         verticalPosition:'bottom',
         horizontalPosition:'center',
         
@@ -34,7 +34,7 @@ constructor(public snackBar: MatSnackBar) {
   }
   openmore(message: string, action: string, config?:MatSnackBarConfig<any>) {
     this.snackBar.open(message, action, {
-       duration: 3500,
+       duration: 4500,
        verticalPosition:'bottom',
        horizontalPosition:'center',
        
