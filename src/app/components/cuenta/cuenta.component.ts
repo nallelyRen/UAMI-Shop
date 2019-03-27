@@ -50,6 +50,8 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
           const info = this.usuarioService.getInfoUsuario();
           if (info !== undefined) {
             this.usuario = info;
+            console.log(info);
+            this.calculaPromedio(info.calificacion.toString());
            // console.log(tipo, this.usuario);
             this.inicio = 2;
           }
