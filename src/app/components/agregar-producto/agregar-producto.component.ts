@@ -3,6 +3,8 @@ import { Location } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
+import { SnackbarService } from '../../services/snackbar.service';
+import {MatSnackBar} from '@angular/material';
 @Component({
   selector: 'app-agregar-producto',
   templateUrl: './agregar-producto.component.html',
@@ -40,7 +42,8 @@ export class AgregarProductoComponent implements OnInit {
   carga = false;
   forma: FormGroup;
   // constructor de la clase, este inicializa el formulario y conecta con el servicio
-  constructor(private productService: ProductosService, private usuarioService: UsuarioService, private location: Location) {
+  constructor(private productService: ProductosService, private usuarioService: UsuarioService, private location: Location,
+     public snackbarService: SnackbarService, private snackBar: MatSnackBar) {
     // creacion del formulario
     this.forma = new FormGroup({
       'nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -101,7 +104,7 @@ export class AgregarProductoComponent implements OnInit {
 
   // metodo con el cual enviamos la peticion al servicio, para que este conece con el back-end
   guardarCambios() {
-    console.log(this.forma.get('precio').value);
+   // console.log(this.forma.get('precio').value);
     this.carga = true;
     this.Libro.nombre = this.forma.get('nombre').value;
     this.Libro.categoria = this.forma.get('categoria').value;
@@ -114,7 +117,7 @@ export class AgregarProductoComponent implements OnInit {
     // envio de la peticion al servicio
     if (this.Libro.nombre === '' || this.Libro.precio === null || this.Libro.categoria === '' ||
      this.Libro.descripcion === ''  || this.SiImagen === false || this.validarPrecio(parseFloat( this.Libro.precio))) {
-      alert('Todos los campos son requeridos y el campo precio solo admite numeros entre 0-10000');
+      this.snackbarService.open("Todos los campos son requeridos, precio solo admite números entre 0-10000","");           
       this.carga = false;
     } else {
       if (this.forma.get('categoria').value === 'libro') {
@@ -122,21 +125,21 @@ export class AgregarProductoComponent implements OnInit {
         if (id != -1) {
           this.productService.nuevoLibro(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
             res => {
-              alert('Tu libro ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
+              this.snackbarService.open(this.Libro.nombre +" se ha subido correctamente, los cambios pueden demorar unos minutos en aparecer","");             
               this.forma.reset(this.Libro2);
               this.carga = false;
             }
           );
         } else {
           this.carga = false;
-          console.log('no esta logueado');
+        //  console.log('no esta logueado');
         }
 
       } else {
         if (this.forma.get('categoria').value === 'proyecto') {
           const id = this.usuarioService.validarUsuarios();
           if (this.Libro.representante === '' || this.Libro.requisitos === '') {
-            alert('Todos los campos son requeridos');
+            this.snackbarService.open("Todos los campos son requeridos","");            
             this.carga = false;
           }
           else {
@@ -144,7 +147,7 @@ export class AgregarProductoComponent implements OnInit {
             this.productService.nuevoProyecto(this.Libro.nombre, this.Libro.representante, this.Libro.precio, this.Libro.descripcion,
               this.Libro.requisitos, this.file, id).subscribe(
                 res => {
-                  alert('Tu proyecto ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
+                  this.snackbarService.open(this.Libro.nombre +" se ha subido correctamente, los cambios pueden demorar unos minutos en aparecer","");                 
                   this.forma.reset(this.Libro2);
                   this.carga = false;
                 }
@@ -152,27 +155,27 @@ export class AgregarProductoComponent implements OnInit {
           } 
           else {
                 this.carga = false;
-                console.log('no esta logueado');
+             //   console.log('no esta logueado');
               }
           }} else {
         if (this.forma.get('categoria').value === 'tutorias') {
           const id = this.usuarioService.validarUsuarios();
           if (this.Libro.area === '') {
-            alert('Todos los campos son requeridos');
+            this.snackbarService.open("Todos los campos son requeridos","");  
             this.carga = false;
           } else {
           if (id != -1) {
             this.productService.nuevaTutoria(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.Libro.area,
               this.file, id ).subscribe(
                 res => {
-                  alert('Tu tutoria ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
+                  this.snackbarService.open(this.Libro.nombre +" se ha subido correctamente, los cambios pueden demorar unos minutos en aparecer ","");                  
                   this.forma.reset(this.Libro2);
                   this.carga = false;
                 }
               );
         } else {
             this.carga = false;
-            console.log('no esta logueado');
+           // console.log('no esta logueado');
           }
         }} else {
             if (this.forma.get('categoria').value === 'electronica') {
@@ -180,33 +183,33 @@ export class AgregarProductoComponent implements OnInit {
               if (id != -1) {
                 this.productService.nuevoElectronico(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id).subscribe(
                   res => {
-                    alert('Tu electronico ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
+                    this.snackbarService.open(this.Libro.nombre +" se ha subido correctamente, los cambios pueden demorar unos minutos en aparecer","");
                     this.forma.reset(this.Libro2);
                     this.carga = false;
                   }
                 );
               } else {
                 this.carga = false;
-                console.log('no esta logueado');
+               // console.log('no esta logueado');
               }
             } else { 
               if (this.forma.get('categoria').value === 'departamentos') {
                 const id = this.usuarioService.validarUsuarios();
                 if (this.Libro.direccion === '' ) {
-                  alert('Todos los campos son requeridos');
+                  this.snackbarService.open("Todos los campos son requeridos",""); 
                   this.carga = false;
                 } else {
                 if (id != -1) {
                   this.productService.nuevoDepartamento(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id, this.Libro.direccion).subscribe(
                     res => {
-                      alert('Tu departamento ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
+                      this.snackbarService.open(this.Libro.nombre +" se ha subido correctamente, los cambios pueden demorar unos minutos en aparecer","");
                       this.forma.reset(this.Libro2);
                       this.carga = false;
                     }
                   );
                 } else {
                   this.carga = false;
-                  console.log('no esta logueado');
+                  //console.log('no esta logueado');
                 }
               }} else {
                 if (this.forma.get('categoria').value === 'otros') {
@@ -216,14 +219,14 @@ export class AgregarProductoComponent implements OnInit {
                      .nuevoOtro(this.Libro.nombre, this.Libro.precio, this.Libro.descripcion, this.file, id)
                       .subscribe(
                         res => {
-                          alert('Tu producto ' + this.Libro.nombre + ' se a subido correctamente, los cambios pueden demorar unos minutos en aparecer');
+                          this.snackbarService.open(this.Libro.nombre +" se ha subido correctamente, los cambios pueden demorar unos minutos en aparecer","");
                           this.forma.reset(this.Libro2);
                           this.carga = false;
                         }
                       );
                   } else {
                     this.carga = false;
-                    console.log('no esta logueado');
+                   // console.log('no esta logueado');
                   }
                 }
               }

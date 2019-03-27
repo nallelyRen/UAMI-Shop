@@ -90,7 +90,7 @@ export class ProductoComponent implements OnInit {
     // envio de la peticion al servicio
     if (this.usuario.calificacion === '') {
       this.carga = false;
-      this.snackbarService.open("El campo calificación es","obligatorio");
+      this.snackbarService.open("El campo calificación es obligatorio","");
      
     } else {
       const idUsuario = this.usuarioService.validarUsuarios();
@@ -100,19 +100,19 @@ export class ProductoComponent implements OnInit {
         // Verificamos que el usuario no sea el mismo que se esta calificando 
         if (idUsuario === idUsuarioAcalificar) {
           this.carga = false;
-          this.snackbarService.open("No puedes calificarte tu mismo","tu calificación no se ha enviado");          
+          this.snackbarService.open("No puedes calificarte tu mismo, tu calificación no se ha enviado","");          
         } else {
           this.usuarioService.modificarCalificacion(idUsuario, idUsuarioAcalificar, this.usuario.calificacion ).subscribe(
             res => {
               const arreglo = res;
               this.calculaPromedio(arreglo.toString());
-              this.snackbarService.open("Tu calificación de " + this.usuario.calificacion +" se ha enviado","los cambios pueden demorar unos minutos en aparecer");
+              this.snackbarService.open("Tu calificación de " + this.usuario.calificacion +" se ha enviado los cambios pueden demorar unos minutos en aparecer","");
 
               this.carga = false;
             });
         }
       } else {
-        alert('Tu calificación no se envió correctamente');
+        this.snackbarService.open("Tu calificación no se envió correctamente","");        
         this.carga = false;
       }
     }

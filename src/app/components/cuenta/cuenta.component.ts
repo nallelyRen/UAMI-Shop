@@ -5,6 +5,10 @@ import { UsuarioService } from '../../services/usuario.service';
 import {Router} from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {ModuloEliminarComponent } from '../modulo-eliminar/modulo-eliminar.component';
+import { SnackbarService } from '../../services/snackbar.service';
+import {MatSnackBar} from '@angular/material';
+
+
 
 @Component({
   selector: 'app-cuenta-component',
@@ -28,7 +32,8 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
   categoria = 'Libros';
   forma: FormGroup;
   constructor(private productoService: ProductosService, private usuarioService: UsuarioService, 
-    private router: Router, private modalService: NgbModal) {
+    private router: Router, private modalService: NgbModal,public snackbarService: SnackbarService, private snackBar: MatSnackBar) {
+
         // creacion del formulario
     this.forma = new FormGroup({
       'nombre': new FormControl(''),
@@ -39,13 +44,15 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
     const tipo = this.usuarioService.getTipoCuenta();
       if (tipo !== undefined) {
         const scroll: number = this.usuarioService.getScrollCuenta();
-        console.log(scroll, 'ya esta');
+        //console.log(scroll, 'ya esta');
         setTimeout(function() { window.scrollTo(0, scroll); }, 50);
         if (tipo === 'infoUsuario') {  // carga los datos del usuario
           const info = this.usuarioService.getInfoUsuario();
           if (info !== undefined) {
             this.usuario = info;
-            console.log(tipo, this.usuario);
+            console.log(info);
+            this.calculaPromedio(info.calificacion.toString());
+           // console.log(tipo, this.usuario);
             this.inicio = 2;
           }
         } else {
@@ -94,7 +101,7 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
   }
 
   ngOnDestroy() {
-    console.log(window.scrollY, 'px');
+    //console.log(window.scrollY, 'px');
     this.usuarioService.setScrollCuenta(window.scrollY);
   }
 
@@ -103,21 +110,21 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
     if (categoria === 'libros') {
       this.productoService.obtenerLibros().subscribe(res => {
         this.productos = res;
-        console.log(res);
-        console.log('tipo', typeof (this.productos));
+      //  console.log(res);
+       // console.log('tipo', typeof (this.productos));
       });
     } else {
       if (categoria === 'proyectos') {
         this.productoService.obtenerProyectos().subscribe(res => {
           this.productos = res;
-          console.log(res);
-          console.log('tipo', typeof (this.productos));
+       //   console.log(res);
+         // console.log('tipo', typeof (this.productos));
         });
       } else {
         this.productoService.obtenerElectronicos().subscribe(res => {
           this.productos = res;
-          console.log(res);
-          console.log('tipo', typeof (this.productos));
+        //  console.log(res);
+         // console.log('tipo', typeof (this.productos));
         });
       }
     }
@@ -133,11 +140,11 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
       this.productoService.dameMisFavoritos(idUsuario).subscribe(res => {
         this.productos = res;
         this.carga3 = false ;
-        console.log(res);
+      //  console.log(res);
       });
     } else {
       this.carga3 = false ;
-      console.log('no estas logueado');
+      //console.log('no estas logueado');
     }
 
   }
@@ -150,11 +157,11 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
       this.productoService.dameMisProductos(idUsuario).subscribe(res => {
         this.productos = res;
         this.carga2 = false ;
-        console.log(res);
+      //  console.log(res);
       });
     } else {
       this.carga2 = false ;
-      console.log('no estas logueado');
+     // console.log('no estas logueado');
     }
 
   }
@@ -164,13 +171,15 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
     if (idUsuario != -1) {
       this.productoService.eliminameEnFavoritos(idUsuario, id).subscribe(res => {
         this.productos = res;
-        alert('El producto se ha eliminado de tus favoritos correctamente');
+
+        this.snackbarService.open("El producto se ha eliminado de tus favoritos correctamente","");       
+
         this.carga3 = false ;
-        console.log(res);
+     //   console.log(res);
       });
     } else {
       this.carga3 = false ;
-      console.log('no estas logueado');
+    //  console.log('no estas logueado');
     } 
 
   }
@@ -179,7 +188,7 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       const usuario = this.usuarioService.obtenerUsuarioPorId(idUsuario);
-      console.log(usuario.nombre, usuario.correo);
+    //  console.log(usuario.nombre, usuario.correo);
       this.usuarioService.logueo(usuario.nombre, usuario.correo).subscribe(res => {
         // this.usuario=res;
         this.usuario.nombre = res.nombre;
@@ -187,24 +196,24 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
         this.usuario.calificacion = res.calificacion;
         this.usuario.correo = res.correo;
         this.carga = false ;
-        console.log(res.calificacion.toString());
+     //   console.log(res.calificacion.toString());
         this.calculaPromedio(res.calificacion.toString());
       });
     } else {
       this.carga = false ;
-      console.log('no estas logueado');
+    //  console.log('no estas logueado');
     }
 
   }
   llamada(){
     const id= this.usuarioService.validarUsuarios();      
    if(id== -1){
-    console.log('el valor es ',id);
+   // console.log('el valor es ',id);
     this.Restriccion=true;    
-    alert('No estas logueado por lo que el contenido de la página no se mostrará');
+    this.snackbarService.openmore("No estas logueado por lo que el contenido de la página no se mostrará","");   
     return this.Restriccion; 
    }else{         
-    console.log('el valor es ',id);
+    //console.log('el valor es ',id);
      return this.Restriccion=false;
    }
     
@@ -216,12 +225,14 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
         this.productoService.eliminameProducto(idUsuario, id).subscribe(res => {
         this.productos = res;
         this.carga2 = false ;
-        alert('Tu producto ha sido eliminado correctamente, los cambios pueden demorar unos minutos en aparecer');
-        console.log(res);
+
+        this.snackbarService.open("Tu producto ha sido eliminado correctamente, los cambios pueden demorar unos minutos en aparecer","");
+         //  console.log(res);
+
       });
     } else {
       this.carga2 = false ;
-      console.log('no estas logueado');
+     // console.log('no estas logueado');
     }
 
   }
@@ -238,13 +249,14 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
     // envio de la peticion al servicio
     if (this.usuario.telefono === '') {
       this.carga = false ;
-      alert('El campo telefono es obligatorio');
+      this.snackbarService.open("El campo telefono es obligatorio","");     
     } else {
       const id = this.usuarioService.validarUsuarios();
       if (id != -1) {
         this.usuarioService.modificarUsuario(id, this.usuario.telefono).subscribe(
           res => {
-            alert('Tu número ' + this.usuario.telefono + ' se ha actualizado correctamente, los cambios pueden demorar unos minutos en aparecer');
+            this.snackbarService.openmore("Tu número"+ this.usuario.telefono +"se ha actualizado correctamente, los cambios pueden demorar unos minutos en aparecer","");
+            
             this.carga = false ;
             this.forma.reset();
            // this.forma.reset(this.Libro2);
@@ -252,7 +264,7 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
         );
       } else {
         this.carga = false ;
-        console.log('no esta logueado');
+     //   console.log('no esta logueado');
         this.carga = false ;
       }
     }

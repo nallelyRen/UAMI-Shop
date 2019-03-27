@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import {Router} from '@angular/router';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -21,12 +22,12 @@ export class NavbarComponent implements OnInit {
    llamada(){
       const id = this.usuarioService.validarUsuarios();
      if(id== -1){
-      console.log('el valor es ', id);
+    //  console.log('el valor es ', id);
       // await(100000);
       // this.llamada();
         return this.Restriccion; 
      }else{
-      console.log('el valor es ', id);
+     // console.log('el valor es ', id);
        return this.Restriccion = false;
      }
   }
@@ -35,7 +36,7 @@ export class NavbarComponent implements OnInit {
     const id = this.usuarioService.validarUsuarios();
     if (id !== -1) {
       this.router.navigate(['/miCuenta']);
-    } else {
+    } else {     
       alert('Necesitas estar logueado para acceder a esta sección');
       this.router.navigate(['/principal']);
     }

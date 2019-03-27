@@ -25,11 +25,20 @@ constructor(public snackBar: MatSnackBar) {
   }
   open(message: string, action: string, config?:MatSnackBarConfig<any>) {
      this.snackBar.open(message, action, {
-        duration: 2000,
+        duration: 3500,
         verticalPosition:'bottom',
         horizontalPosition:'center',
         
     });
     
   }
+  openmore(message: string, action: string, config?:MatSnackBarConfig<any>) {
+    this.snackBar.open(message, action, {
+       duration: 4500,
+       verticalPosition:'bottom',
+       horizontalPosition:'center',
+       
+   });
+   
+ }
 }

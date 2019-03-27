@@ -97,7 +97,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
     this.categoria = categoria;
     this.pagina = 1;
     if (categoria === 'Libros') {
-      this.productoService.librosPorPagina(0, 2)
+      this.productoService.librosPorPagina(0, 12)
       .subscribe(res => {
         this.productos = res.content;
         this.carga = false;
@@ -106,7 +106,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
       });
     } else {
       if (categoria === 'Proyectos') {
-        this.productoService.proyectosPorPagina(0, 2)
+        this.productoService.proyectosPorPagina(0, 12)
         .subscribe(res => {
           this.productos = res.content;
           this.carga = false;
@@ -118,7 +118,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
         });
       } else {
       if (categoria === 'Tutorias') {
-        this.productoService.tutoriasPorPagina(0, 2)
+        this.productoService.tutoriasPorPagina(0, 12)
         .subscribe(res => {
           this.productos = res.content;
           this.carga = false;
@@ -130,7 +130,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
         });
       } else {
         if (categoria === 'Electrónica') {
-          this.productoService.electronicosPorPagina(0, 2)
+          this.productoService.electronicosPorPagina(0, 12)
           .subscribe(res => {
           this.productos = res.content;
           this.carga = false;
@@ -142,7 +142,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
         });
       }
       if (categoria === 'Departamentos') {
-        this.productoService.departamentosPorPagina(0, 2)
+        this.productoService.departamentosPorPagina(0, 12)
         .subscribe(res => {
         this.productos = res.content;
         this.carga = false;
@@ -154,7 +154,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
         });
       }  else {
         if (categoria === 'Otros') {
-          this.productoService.otrosPorPagina(0, 2)
+          this.productoService.otrosPorPagina(0, 12)
           .subscribe(res => {
           this.productos = res.content;
           this.carga = false;
@@ -201,7 +201,7 @@ agregarFavorito(id) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
         this.carga = false;
 
-        this.snackbarService.open("Se agrego a tu lista de favoritos correctamente","los cambios pueden demorar unos minutos en aparecer");
+        this.snackbarService.open("Se agrego a tu lista de favoritos correctamente los cambios pueden demorar unos minutos en aparecer","");
        //  console.log(res);
 
       });
@@ -223,7 +223,7 @@ cambioPagina() {
   this.productos = [];
   const pagina = this.pagina - 1;
     if (this.categoria === 'Libros') {
-      this.productoService.librosPorPagina(pagina, 2)
+      this.productoService.librosPorPagina(pagina, 12)
       .subscribe(res => {
         this.productos = res.content;
         this.carga = false;
@@ -232,7 +232,7 @@ cambioPagina() {
       });
     } else {
       if (this.categoria === 'Proyectos') {
-        this.productoService.proyectosPorPagina(pagina, 2)
+        this.productoService.proyectosPorPagina(pagina, 12)
         .subscribe(res => {
           this.productos = res.content;
           this.carga = false;
@@ -244,7 +244,7 @@ cambioPagina() {
         });
       } else {
       if (this.categoria === 'Tutorias') {
-        this.productoService.tutoriasPorPagina(pagina, 2)
+        this.productoService.tutoriasPorPagina(pagina, 12)
         .subscribe(res => {
           this.productos = res.content;
           this.carga = false;
@@ -256,7 +256,7 @@ cambioPagina() {
         });
       } else {
         if (this.categoria === 'Electrónica') {
-          this.productoService.electronicosPorPagina(pagina, 2)
+          this.productoService.electronicosPorPagina(pagina, 12)
           .subscribe(res => {
           this.productos = res.content;
           this.carga = false;
@@ -268,7 +268,7 @@ cambioPagina() {
         });
       }
       if (this.categoria === 'Departamentos') {
-        this.productoService.departamentosPorPagina(pagina, 2)
+        this.productoService.departamentosPorPagina(pagina, 12)
         .subscribe(res => {
         this.productos = res.content;
         this.carga = false;
@@ -280,7 +280,7 @@ cambioPagina() {
         });
       }  else {
         if (this.categoria === 'Otros') {
-          this.productoService.otrosPorPagina(pagina, 2)
+          this.productoService.otrosPorPagina(pagina, 12)
           .subscribe(res => {
           this.productos = res.content;
           this.carga = false;
