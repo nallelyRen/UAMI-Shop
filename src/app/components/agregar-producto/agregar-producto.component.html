@@ -1,7 +1,7 @@
 <div class="main-container container" id="contenedor_de_la_forma">
     <h2 id="titulo" style="margin: 100px auto;">Registra Tu Producto</h2>
     <div class="alert alert-info" role="alert">
-        Si tienes alguna duda sobre como llenar el formulario los botones "?" te ayudarán
+        Si tienes alguna duda sobre cómo llenar el formulario los botones "?" te ayudarán
     </div>
 
     <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
@@ -13,9 +13,9 @@
                 <select (change)="prueba1()" class="form-control" name="categoria" placeholder="Categoria" formControlName="categoria">
                     <option value="libro">Libro</option>
                     <option value="proyecto">Proyecto terminal y Servicio Social</option>
-                    <option value="electronica">Electronica</option>
+                    <option value="electronica">Electrónica</option>
                     <option value="departamentos">Departamentos</option>
-                    <option value="tutorias">Tutorias</option>
+                    <option value="tutorias">Tutorías</option>
                     <option value="otros">Otros</option>
                 </select>
             </div>
@@ -55,7 +55,7 @@
             <div class="col-md-8">
                 <input class="form-control" type="text" placeholder="Representante" formControlName="representante">
             </div>
-            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="En caso de no tener maestro tutor aún, escribe sin maestro en lugar de dejar el campo vacio" popoverTitle="Coloca el nombre del profesor que estará a cargo del proyecto ">
+            <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="En caso de no tener maestro tutor aún, escribe sin maestro en lugar de dejar el campo vacío" popoverTitle="Coloca el nombre del profesor que estará a cargo del proyecto ">
         </button>
         </div>
         <div class="form-group row" *ngIf="condicionProyecto">
@@ -65,7 +65,7 @@
             </div>
         </div>
         <div class="form-group row" *ngIf="condicionTutorias">
-            <label class="col-2 col-form-label">Division</label>
+            <label class="col-2 col-form-label">División</label>
             <div class="col-md-8">
                 <select (change)="prueba1()" class="form-control" name="Division" placeholder="Division" formControlName="area">
                     <option value="CBI">CBI</option>
