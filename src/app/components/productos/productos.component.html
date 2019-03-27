@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="776020824848-81vc06ookqta7juiauqnjgq1ptlitvsq.apps.googleusercontent.com">
 <div id="contenido" *ngIf="!Restriccion" class="container">
 
     <body>
@@ -244,7 +245,7 @@
                         </div>
                         <br>
                         <div>
-                            <ngb-pagination class="d-flex justify-content-center" [collectionSize]="numPag" [(page)]="pagina" [maxSize]="5" [rotate]="true" [ellipses]="false" size="lg" pageSize="2" (pageChange)="cambioPagina($event)"></ngb-pagination>
+                            <ngb-pagination class="d-flex justify-content-center" [collectionSize]="numPag" [(page)]="pagina" [maxSize]="5" [rotate]="true" [ellipses]="false" size="lg" pageSize="12" [boundaryLinks]="true" (pageChange)="cambioPagina($event)"></ngb-pagination>
                         </div>
                     </div>
                 </div>

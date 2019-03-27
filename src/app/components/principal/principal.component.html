@@ -2,6 +2,23 @@
 <meta name="google-signin-client_id" content="776020824848-81vc06ookqta7juiauqnjgq1ptlitvsq.apps.googleusercontent.com">
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 
+<ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Avisos UAM-I</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Dia 51 sin clases...
+            ¿Que es compilar?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        </div>
+      </ng-template>
+
 <body>
 
     <!--Carousel Wrapper-->
@@ -97,6 +114,9 @@
 
     <!--Main layout-->
     <main>
+             
+        <a class='flotante' (click)="openLg(content)"><img src='../../../assets/img/Mashu.jpg' border="0"/><p>Avisos UAM-I</p></a>
+
         <div class="container">
 
             <!--Section: Main info-->
@@ -415,7 +435,7 @@
                         <!--Grid row-->
                         <div class="row">
                             <div class="col-2">
-                                <i id="iconos" class="fa fa-comments-o fa-2x mb-1 indigo-text" aria-hidden="true"></i>
+                                <button onclick="location.href= 'https://www.facebook.com/uami.shopp.1'"><i id="iconos" class="fa fa-comments-o fa-2x mb-1 indigo-text" aria-hidden="true"></i></button>                     
                             </div>
                             <div class="col-10 mb-2">
                                 <h5 class="feature-title font-bold mb-1">Sugerencias</h5>
@@ -433,7 +453,7 @@
                         <!--Grid row-->
                         <div class="row">
                             <div class="col-2">
-                                <i id="iconos" class="fa fa-question fa-2x mb-1 indigo-text" aria-hidden="true"></i>
+                                    <button onclick="location.href= 'https://www.facebook.com/uami.shopp.1'"> <i id="iconos" class="fa fa-question fa-2x mb-1 indigo-text" aria-hidden="true"></i></button>  
                             </div>
                             <div class="col-10 mb-2">
                                 <h5 class="feature-title font-bold mb-1">Dudas</h5>
