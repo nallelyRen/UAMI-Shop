@@ -92,6 +92,7 @@ export class AgregarProductoComponent implements OnInit {
       this.SiImagen = false;
       this.file = null;
     }
+   // console.log("el valor es"+this.SiImagen);
   }
 
   validarPrecio(precio: number) {
