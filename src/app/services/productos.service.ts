@@ -163,8 +163,8 @@ export class ProductosService {
     return this.http.post( this.url + 'libros', formData)
     .pipe(
     map(res => {
-      console.log('si llego');
-      console.log(res.json());
+     // console.log('si llego');
+      //console.log(res.json());
       return res.json();
     }));
   }
@@ -181,8 +181,8 @@ export class ProductosService {
     return this.http.post( this.url + 'proyectos', formData)
     .pipe(
     map(res => {
-      console.log('si entro');
-      console.log(res.json());
+     // console.log('si entro');
+      //console.log(res.json());
       return res.json();
     }));
   }
@@ -197,8 +197,8 @@ export class ProductosService {
     return this.http.post( this.url + 'electronica', formData)
     .pipe(
     map(res => {
-      console.log('si entro');
-      console.log(res.json());
+      //console.log('si entro');
+    //  console.log(res.json());
       return res.json();
     }));
   }
@@ -243,8 +243,8 @@ export class ProductosService {
     return this.http.post( this.url + 'Otros', formData)
     .pipe(
     map(res => {
-      console.log('si entro');
-      console.log(res.json());
+     // console.log('si entro');
+      //console.log(res.json());
       return res.json();
     }));
   }
@@ -253,8 +253,8 @@ export class ProductosService {
     return this.http.get(this.url + 'productos/' + idProducto)
     .pipe(
       map(res => {
-        console.log('si entro');
-        console.log(res.json());
+       // console.log('si entro');
+        //console.log(res.json());
         return res.json();
       }));
   }
@@ -262,22 +262,22 @@ export class ProductosService {
   // metodo para obtener los productos favoritos de un usuario regresa una
   // coleccion de los productos favoritos del usuario
   dameMisFavoritos(idUsuario) {
-    console.log(idUsuario);
+  //  console.log(idUsuario);
     return this.http.get(this.url + 'misFavoritos/' + idUsuario)
     .pipe(
       map(res => {
         this.productosCuenta = res.json();
-        console.log(res.json());
+       // console.log(res.json());
         return res.json();
       }));
   }
 
   agregameEnFavoritos(idUsuario, idProducto) {
-    console.log('idUsuario =', idUsuario, 'idProducto=', idProducto);
+  //  console.log('idUsuario =', idUsuario, 'idProducto=', idProducto);
     return this.http.put(this.url + 'agregaFavorito/' + idUsuario + '/' + idProducto, null)
     .pipe(
       map(res => {
-        console.log(res.json());
+       // console.log(res.json());
         return res.json();
       }));
   }
@@ -288,7 +288,7 @@ export class ProductosService {
     .pipe(
       map(res => {
         this.productosCuenta = res.json();
-        console.log(res.json());
+      //  console.log(res.json());
         return res.json();
       }));
   }
@@ -298,7 +298,7 @@ export class ProductosService {
     .pipe(
       map(res => {
         this.productosCuenta = res.json();
-        console.log(res.json());
+      //  console.log(res.json());
         return res.json();
       }));
   }
@@ -308,7 +308,7 @@ export class ProductosService {
       .pipe(
         map(res => {
           this.productosCuenta = res.json();
-          console.log(res.json());
+       //   console.log(res.json());
           return res.json();
         }));
   }
