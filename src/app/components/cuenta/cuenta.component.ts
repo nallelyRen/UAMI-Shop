@@ -249,7 +249,7 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
     // envio de la peticion al servicio
     if (this.usuario.telefono === '') {
       this.carga = false ;
-      this.snackbarService.open("El campo telefono es obligatorio","");     
+      this.snackbarService.open("El campo teléfono es obligatorio","");     
     } else {
       const id = this.usuarioService.validarUsuarios();
       if (id != -1) {

@@ -44,7 +44,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
         if (cat === 'Departamentos') {
           this.actual = 5;
         }
-        if (cat === 'Tutorias') {
+        if (cat === 'Tutorías') {
           this.actual = 6;
         }
         if (cat === 'Otros') {
@@ -117,6 +117,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
           // console.log('tipo', typeof (this.productos));
         });
       } else {
+
       if (categoria === 'Tutorias') {
         this.productoService.tutoriasPorPagina(0, 12)
         .subscribe(res => {
@@ -201,7 +202,7 @@ agregarFavorito(id) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
         this.carga = false;
 
-        this.snackbarService.open("Se agrego a tu lista de favoritos correctamente los cambios pueden demorar unos minutos en aparecer","");
+        this.snackbarService.open("Se agregó a tu lista de favoritos correctamente los cambios pueden demorar unos minutos en aparecer","");
        //  console.log(res);
 
       });
@@ -243,6 +244,7 @@ cambioPagina() {
           // console.log('tipo', typeof (this.productos));
         });
       } else {
+
       if (this.categoria === 'Tutorias') {
         this.productoService.tutoriasPorPagina(pagina, 12)
         .subscribe(res => {
