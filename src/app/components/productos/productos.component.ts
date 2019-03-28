@@ -118,7 +118,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
         });
       } else {
 
-      if (categoria === 'Tutorias') {
+      if (categoria === 'Tutorías') {
         this.productoService.tutoriasPorPagina(0, 12)
         .subscribe(res => {
           this.productos = res.content;
@@ -245,7 +245,7 @@ cambioPagina() {
         });
       } else {
 
-      if (this.categoria === 'Tutorias') {
+      if (this.categoria === 'Tutorías') {
         this.productoService.tutoriasPorPagina(pagina, 12)
         .subscribe(res => {
           this.productos = res.content;
