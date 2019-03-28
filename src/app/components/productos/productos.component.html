@@ -231,7 +231,7 @@
                                 <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
                                 <div class="card-body">
                                     <h5 class="card-title">{{product.nombre}}</h5>
-                                   
+
                                 </div>
                                 <div class="card-footer">
                                     <button class="btn btn-outline-success btn-block responsive-width" (click)="verProducto(product)">ver
@@ -244,7 +244,7 @@
                         </div>
                         <br>
                         <div>
-                            <ngb-pagination class="d-flex justify-content-center" [collectionSize]="numPag" [(page)]="pagina" [maxSize]="5" [rotate]="true" [ellipses]="false" size="lg" pageSize="2" (pageChange)="cambioPagina($event)"></ngb-pagination>
+                            <ngb-pagination class="d-flex justify-content-center" [collectionSize]="numPag" [(page)]="pagina" [maxSize]="5" [rotate]="true" [ellipses]="false" size="lg" pageSize="12" [boundaryLinks]="true" (pageChange)="cambioPagina($event)"></ngb-pagination>
                         </div>
                     </div>
                 </div>
