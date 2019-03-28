@@ -47,12 +47,12 @@
                         y computación</a>
                     <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 5}" id="list-departamentos-list" data-toggle="list" href="#list-libros" (click)="cambio('Departamentos')" role="tab" aria-controls="favoritos">Departamentos</a>
                     <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 6}" id="list-tutorias-list" data-toggle="list" href="#list-libros" (click)="cambio('Tutorías')" role="tab" aria-controls="favoritos">Tutorías</a>
-                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 7}" id="list-tutorias-list" data-toggle="list" href="#list-libros" (click)="cambio('Otros')" role="tab" aria-controls="favoritos">Otros</a>
+                    <a class="list-group-item list-group-item-action" [ngClass]="{'active': actual == 7}" id="list-otros-list" data-toggle="list" href="#list-libros" (click)="cambio('Otros')" role="tab" aria-controls="favoritos">Otros</a>
                 </div>
 
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-8" id="arriba">
                 <div class="tab-content" id="informacion">
 
                     <div class="tab-pane fade" [ngClass]="{'show': inicio == 1, 'active': inicio == 1}" id="principal" role="tabpanel" aria-labelledby="pagPrin">
@@ -244,7 +244,8 @@
                         </div>
                         <br>
                         <div>
-                            <ngb-pagination class="d-flex justify-content-center" [collectionSize]="numPag" [(page)]="pagina" [maxSize]="5" [rotate]="true" [ellipses]="false" size="lg" pageSize="12" [boundaryLinks]="true" (pageChange)="cambioPagina($event)"></ngb-pagination>
+                            <h3 align="center">Página</h3>
+                            <ngb-pagination class="d-flex justify-content-center" [collectionSize]="numPag" [(page)]="pagina" [maxSize]="5" [rotate]="true" [ellipses]="false" pageSize="12" [boundaryLinks]="true" (pageChange)="cambioPagina($event)"></ngb-pagination>
                         </div>
                     </div>
                 </div>

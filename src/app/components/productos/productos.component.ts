@@ -221,6 +221,7 @@ verProducto(producto: any) {
 
 cambioPagina() {
   this.carga = true;
+  document.getElementById('arriba').scrollIntoView(true);
   this.productos = [];
   const pagina = this.pagina - 1;
     if (this.categoria === 'Libros') {
@@ -298,6 +299,5 @@ cambioPagina() {
 
   }
   }
-
 }
 }
