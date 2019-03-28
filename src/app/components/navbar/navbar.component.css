@@ -18,8 +18,7 @@
 /* Adding color to the Navbar on mobile */
 @media only screen and (max-width: 768px) {
   .navbar {
-    background-color: #1C2331; } }
-
+    background-color: #1C2331; } } 
     #catalogo{
       padding-right: 20px
         }
