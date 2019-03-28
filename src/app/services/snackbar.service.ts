@@ -22,12 +22,14 @@ export class SnackbarService {
   
 constructor(public snackBar: MatSnackBar) {
  
+
   }
   open(message: string, action: string, config?:MatSnackBarConfig<any>) {
      this.snackBar.open(message, action, {
         duration: 3500,
         verticalPosition:'bottom',
         horizontalPosition:'center',
+        panelClass: ['bluesnackbar'],
         
     });
     
@@ -37,6 +39,7 @@ constructor(public snackBar: MatSnackBar) {
        duration: 4500,
        verticalPosition:'bottom',
        horizontalPosition:'center',
+       panelClass: ['bluesnackbar'],
        
    });
    
