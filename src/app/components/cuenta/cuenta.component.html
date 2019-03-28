@@ -41,7 +41,7 @@
                             <p id="cardP" class="card-text">En esta página podrás encontrar toda la información relevante de tu cuenta, para un mejor uso de la página te recomendamos lo siguiente:</p>
                             <ul class="a">
                                 <li> Cuando hayas vendido alguno de tus productos, recuerda eliminarlo de la página</li>
-                                <li>Dar tu número de telefono como forma de contacto es totalmente opcional</li>
+                                <li>Dar tu número de teléfono como forma de contacto es totalmente opcional</li>
                                 <li>Si tienes alguna duda sobre los datos personales a los que la página tiene acceso visita la sección de Ayuda</li>
                             </ul>
 
@@ -93,13 +93,13 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">Número telefónico: {{usuario.telefono}}</label>
-                                    <input class="form-control" placeholder="Modificar telefono" type="tel" formControlName="telefono">
+                                    <input class="form-control" placeholder="Modificar teléfono" type="tel" formControlName="telefono">
                                     <!-- <p class="grey-text" >{{usuario.telefono}}  
                         </p>-->
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">Calificación: </label>
-                                    <p class="grey-text">Tu calificacion es de: {{promedio}}
+                                    <p class="grey-text">Tu calificación es de: {{promedio}}
                                     </p>
                                     <p class="grey-text">Basada en {{totalCalif}} calificaciones
                                     </p>
@@ -125,8 +125,7 @@
                             <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
                                 <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{product.nombre}}</h5>
-                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                    <h5 class="card-title">{{product.nombre}}</h5>                                   
                                 </div>
                                 <div class="card-footer">
                                     <button class="btn btn-outline-success responsive-width btn-block" (click)="modificarProducto(product)">Editar</button>
@@ -150,8 +149,7 @@
                             <div class="card bg-dark animated fadeIn fast " *ngFor="let product of productos; let i=index">
                                 <img class="card-img-top" [src]="product.archivo.url" [alt]="product.nombre">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{product.nombre}}</h5>
-                                    <p class="card-text text-white">{{product.descripcion}}</p>
+                                    <h5 class="card-title">{{product.nombre}}</h5>                                   
                                 </div>
                                 <div class="card-footer">
                                     <button class="btn btn-outline-success responsive-width btn-block" (click)="verProducto(product)">Ver más</button>

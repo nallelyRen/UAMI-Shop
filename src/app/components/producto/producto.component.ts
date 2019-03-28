@@ -100,7 +100,7 @@ export class ProductoComponent implements OnInit {
         // Verificamos que el usuario no sea el mismo que se esta calificando 
         if (idUsuario === idUsuarioAcalificar) {
           this.carga = false;
-          this.snackbarService.open("No puedes calificarte tu mismo, tu calificación no se ha enviado","");          
+          this.snackbarService.open("No puedes calificarte tú mismo, tu calificación no se ha enviado","");          
         } else {
           this.usuarioService.modificarCalificacion(idUsuario, idUsuarioAcalificar, this.usuario.calificacion ).subscribe(
             res => {
