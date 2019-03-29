@@ -1,7 +1,7 @@
 #titulo{
     padding-top: 80px;
     padding-bottom: 20px;
-    font-family: 'K2D', sans-serif;
+    font-family: sans-serif;
 }
 #texto{
     font-family: 'K2D', sans-serif;
@@ -14,3 +14,10 @@
      font-size: 30px;
 }
 
+h2 {
+    font-family: black , sans-serif;
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 20px;
+    font-size: 50px;
+}
