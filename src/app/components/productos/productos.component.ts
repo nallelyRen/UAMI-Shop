@@ -96,6 +96,8 @@ export class ProductosComponent implements OnInit, OnDestroy {
     this.productos = [];
     this.categoria = categoria;
     this.pagina = 1;
+    document.getElementById('arriba').scrollIntoView(true);
+    
     if (categoria === 'Libros') {
       this.productoService.librosPorPagina(0, 12)
       .subscribe(res => {
