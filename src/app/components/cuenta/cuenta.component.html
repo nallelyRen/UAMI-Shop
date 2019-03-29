@@ -1,3 +1,6 @@
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="776020824848-81vc06ookqta7juiauqnjgq1ptlitvsq.apps.googleusercontent.com">
+
 <div id="contenido" *ngIf="!Restriccion" class="container">
 
 
@@ -128,6 +131,7 @@
                                     <h5 class="card-title">{{product.nombre}}</h5>                                   
                                 </div>
                                 <div class="card-footer">
+                                    <button class="btn btn-secondary responsive-width btn-block" (click)="verProducto(product)">Ver más</button>
                                     <button class="btn btn-outline-success responsive-width btn-block" (click)="modificarProducto(product)">Editar</button>
                                     <button class="btn btn-outline-danger responsive-width btn-block" (click)="modalEliminarProductos(product.id)">Eliminar</button>
                                     <!--<button class="btn btn-outline-danger responsive-width btn-block" (click)="eliminarProducto(product.id)">Eliminar</button>-->
