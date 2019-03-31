@@ -10,8 +10,11 @@ import {Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
  Restriccion = true;
+ colapsar = false;
   constructor(private usuarioService: UsuarioService, private router: Router ) {
-
+    if (window.screen.width < 992) {
+      this.colapsar = true;
+    }
   }
 
   ngOnInit() {
@@ -33,6 +36,11 @@ export class NavbarComponent implements OnInit {
   }
 
   irCuenta() {
+    if (window.screen.width < 992) {
+      this.colapsar = true;
+    } else {
+      this.colapsar = false;
+    }
     const id = this.usuarioService.validarUsuarios();
     if (id !== -1) {
       this.router.navigate(['/miCuenta']);
@@ -43,6 +51,11 @@ export class NavbarComponent implements OnInit {
   }
 
   irCatalogo() {
+    if (window.screen.width < 992) {
+      this.colapsar = true;
+    } else {
+      this.colapsar = false;
+    }
     const id = this.usuarioService.validarUsuarios();
     if (id !== -1) {
       this.router.navigate(['/productos']);
@@ -52,6 +65,11 @@ export class NavbarComponent implements OnInit {
     }
   }
   irProducto() {
+    if (window.screen.width < 992) {
+      this.colapsar = true;
+    } else {
+      this.colapsar = false;
+    }
     const id = this.usuarioService.validarUsuarios();
     if (id !== -1) {
       this.router.navigate(['/agregarProducto']);
