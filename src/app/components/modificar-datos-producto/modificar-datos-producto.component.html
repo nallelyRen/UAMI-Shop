@@ -47,7 +47,7 @@
         <div class="form-group row" *ngIf="producto.representante">
             <label class="col-2 col-form-label">Representante</label>
             <div class="col-md-8">
-                <input class="form-control" type="text" placeholder="Representante" [value]="producto.representante" id="representante" maxlength="255">
+                <input class="form-control" type="text" placeholder="Representante" [value]="producto.representante" maxlength="255" id="representante">
             </div>
             <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="Normalmente todos los proyectos terminales y de servicio social tienen un profesor que está a cargo, escribir el nombre del mismo o en su defecto el nombre de la persona a la que se puedan dirigir las personas interesadas en el mismo"
                 popoverTitle="A que representante se refiere">
