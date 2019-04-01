@@ -10,8 +10,16 @@
           </button>
     </div>
     <div class="modal-body">
-        <p>Dia 51 sin clases... ¿Que es compilar?
+        <p>En esta sección se podra consultar información relevante sobre UAMI-Shop, asi como información
+            sobre la UAM Iztapalapa
         </p>
+        El dia de hoy se lanza oficialmente para su uso, así mismo nos gustaria saber sus opiniones 
+            respecto a la pagina
+        
+        <p>En nuestras redes sociales (se encuentran hasta el final de la página) podrán dejar sus comentarios
+            así como reportar algun fallo que se encuentre
+        </p>
+        Gracias por usar UAMI-Shop
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
@@ -50,7 +58,7 @@
                         <strong>Una página creada por estudiantes para estudiantes</strong>
                     </p>
 
-                    <button type="button" class="btn btn-success" (click)="irCatalogo()">Ir al catalogo</button>
+                    <!--<button type="button" class="btn btn-success" (click)="irCatalogo()">Ir al catalogo</button>-->
 
                 </div>
 
@@ -114,15 +122,16 @@
     <!--Main layout-->
     <main>
 
-        <a class='flotante' (click)="openLg(content)"><img src='../../../assets/img/Mashu.jpg' border="0" />
+        <a class='flotante' (click)="openLg(content)"><img src='../../../assets/img/uam1.jpg' border="0" />
             <p>Avisos UAM-I</p>
         </a>
 
         <div class="container">
-
             <!--Section: Main info-->
             <section class="mt-5 wow fadeIn">
-
+                    <h3 class="h3 text-center mb-5">
+                    <button type="button" class="btn btn-success" (click)="irCatalogo()">Ir al catalogo</button>
+                    </h3>
                 <!--Grid row-->
                 <div class="row">
 
@@ -392,10 +401,11 @@
                         <div class="row">
                             <div class="col-2">
                                 <!--<i id="iconos" class="fa fa-firefox fa-2x mb-1 indigo-text" aria-hidden="true"></i>-->
-                                <button onclick="location.href= 'https://www.facebook.com/uami.shopp.1'"><i id="iconos" class="fa fa-firefox fa-2x mb-1 indigo-text" aria-hidden="true"></i></button>
+                                <button onclick="location.href= 'https://www.facebook.com/UamiShop'"><i id="iconos" class="fa fa-firefox fa-2x mb-1 indigo-text" aria-hidden="true"></i></button>
                             </div>
                             <div class="col-10 mb-2 pl-3">
-                                <h5 class="feature-title font-bold mb-1">Reporta bugs o fallos en nuestras redes sociales o email
+                                <h5 class="feature-title font-bold mb-1">
+                                <a href="https://www.facebook.com/UamiShop" target="_blank">Reporta bugs o fallos en nuestras redes sociales o email</a>
                                 </h5>
                                 <p class="grey-text mt-2">
                                 </p>
@@ -427,10 +437,10 @@
                         <!--Grid row-->
                         <div class="row">
                             <div class="col-2">
-                                <button onclick="location.href= 'https://www.facebook.com/uami.shopp.1'"><i id="iconos" class="fa fa-comments-o fa-2x mb-1 indigo-text" aria-hidden="true"></i></button>
+                                <button onclick="location.href= 'https://www.facebook.com/UamiShop'"><i id="iconos" class="fa fa-comments-o fa-2x mb-1 indigo-text" aria-hidden="true"></i></button>
                             </div>
                             <div class="col-10 mb-2">
-                                <h5 class="feature-title font-bold mb-1">Sugerencias</h5>
+                                    <a href="https://www.facebook.com/UamiShop" target="_blank"><h5 class="feature-title font-bold mb-1">Sugerencias</h5></a>
                                 <p class="grey-text mt-2">Somos abiertos a que nos envíes sugerencias para mejorar la página
                                 </p>
                             </div>
@@ -444,10 +454,10 @@
                         <!--Grid row-->
                         <div class="row">
                             <div class="col-2">
-                                <button onclick="location.href= 'https://www.facebook.com/uami.shopp.1'"> <i id="iconos" class="fa fa-question fa-2x mb-1 indigo-text" aria-hidden="true"></i></button>
+                                <button onclick="location.href= 'https://www.facebook.com/UamiShop'"> <i id="iconos" class="fa fa-question fa-2x mb-1 indigo-text" aria-hidden="true"></i></button>
                             </div>
                             <div class="col-10 mb-2">
-                                <h5 class="feature-title font-bold mb-1">Dudas</h5>
+                                    <a href="https://www.facebook.com/UamiShop" target="_blank"><h5 class="feature-title font-bold mb-1">Dudas</h5></a>
                                 <p class="grey-text mt-2">No dudes en externarnos tus dudas sobre la página
                                 </p>
                             </div>
@@ -504,7 +514,7 @@
 
     <!-- Social icons -->
     <div class="pb-4">
-        <a id="foot" href="https://www.facebook.com/uami.shopp.1" target="_blank">
+        <a id="foot" href="https://www.facebook.com/UamiShop" target="_blank">
             <i class="fa fa-facebook mr-4"></i>
         </a>
         <a id="foot" href="https://twitter.com/ShopUami" target="_blank">
