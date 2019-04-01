@@ -3,7 +3,7 @@
 <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
 
 <div class="container">
-<!--<div class="main-container container" id="contenedor_de_la_forma">-->
+    <!--<div class="main-container container" id="contenedor_de_la_forma">-->
     <h2 style="margin: 100px auto;">Registra Tu Producto</h2>
     <div class="alert alert-info" role="alert">
         Si tienes alguna duda sobre cómo llenar el formulario los botones "?" te ayudarán
@@ -29,7 +29,7 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre del producto</label>
             <div class="col-md-8">
-                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" maxlength="255">
             </div>
             <button *ngIf="condicionDepartamentos" type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="Ejemplo: Cuarto para dos personas *solo mujeres" popoverTitle="Tip para el nombre de tu apartamento ">
             </button>
@@ -39,7 +39,7 @@
         <div class="form-group row" *ngIf="condicionDepartamentos">
             <label class="col-2 col-form-label">Dirección</label>
             <div class="col-md-8">
-                <input class="form-control" type="text" placeholder="Dirección" formControlName="direccion">
+                <input class="form-control" type="text" placeholder="Dirección" formControlName="direccion" maxlength="255">
             </div>
         </div>
 
@@ -58,7 +58,7 @@
         <div class="form-group row" *ngIf="condicionProyecto">
             <label class="col-2 col-form-label">Representante</label>
             <div class="col-md-8">
-                <input class="form-control" type="text" placeholder="Representante" formControlName="representante">
+                <input class="form-control" type="text" placeholder="Representante" formControlName="representante" maxlength="255">
             </div>
             <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="En caso de no tener maestro tutor aún, escribe sin maestro en lugar de dejar el campo vacío" popoverTitle="Coloca el nombre del profesor que estará a cargo del proyecto ">
         </button>
@@ -66,7 +66,7 @@
         <div class="form-group row" *ngIf="condicionProyecto">
             <label class="col-2 col-form-label">Requisitos</label>
             <div class="col-md-8">
-                <input class="form-control" type="text" placeholder="Requisitos" formControlName="requisitos">
+                <input class="form-control" type="text" placeholder="Requisitos" formControlName="requisitos" maxlength="255">
             </div>
         </div>
         <div class="form-group row" *ngIf="condicionTutorias">
@@ -87,19 +87,19 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Descripción</label>
             <div class="col-md-8">
-                    <textarea rows="4" cols="50" class="form-control" id="descripcion" placeholder="Descripcion" formControlName="descripcion"></textarea>
+                <textarea rows="4" cols="50" class="form-control" id="descripcion" placeholder="Descripcion" formControlName="descripcion" maxlength="255"></textarea>
                 <!--<input class="form-control" type="text" placeholder="Descripción" formControlName="descripcion">-->
             </div>
         </div>
         <div class="form-group row ">
-                <label for="file-upload" class="custom-file-upload">
+            <label for="file-upload" class="custom-file-upload">
                         <i class="fa fa-cloud-upload"></i> Subir imagen
                     </label>
-                    <input id="file-upload"  type="file" accept="image/*" (change)="setImage($event.target.files)"/>                           
+            <input id="file-upload" type="file" accept="image/*" (change)="setImage($event.target.files)" />
         </div>
         <div class="alert alert-primary" role="alert" align="center" *ngIf="SiImagen">
-                Has seleccionado la imagen, presiona subir imagen para cambiarla 
-            </div>
+            Has seleccionado la imagen, presiona subir imagen para cambiarla
+        </div>
         <div class="alert alert-info" role="alert">
             Recuerda: Debes llenar todos los campos para poder subir tu producto
         </div>
