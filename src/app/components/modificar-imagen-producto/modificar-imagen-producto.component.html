@@ -1,26 +1,32 @@
-<br><br><br><br><br><br>
-<h4 align="center"><b>Modificar la imagen de "{{producto.nombre}}"</b></h4>
-<br>
-<div align="center" *ngIf="carga">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="776020824848-81vc06ookqta7juiauqnjgq1ptlitvsq.apps.googleusercontent.com">
+
+<div class="magazine-section my-5 container">
+    <br><br>
+    <h4 align="center"><b>Modificar la imagen de "{{producto.nombre}}"</b></h4>
+    <br>
+    <div align="center" *ngIf="carga">
         <mat-spinner></mat-spinner>
         <br>
     </div>
-<div align="center">
-    <img [src]="src" width="500px" alt="">
-    <br>
-    <div class="input-group col-md-8">
-        <br>
-        <label class="col-2 col-form-label">&nbsp;</label>
-        <input type="file" id="imgInp" accept="image/*" (change)="setImage($event.target.files)">
-    </div>
-    <div class="alert alert-primary" role="alert" align="center" *ngIf="siImagen">
-        Has selccionado la imagen, preciona cambiar imagen para cambiarla o cancelar para dejar la anterior
-    </div>
-    <div class="input-group col-md-8">
-        <label class="col-2 col-form-label">&nbsp;</label>
-        <button type="button" (click)="cambiaImagen()" class="btn btn-outline-primary m-2"> <!--El submit envia el formulario-->
+    <div align="center">
+        <img [src]="src" width="50%" alt="tu imagnen">
+        <br><br>
+        <div>
+            <label for="imagenForma" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i> Subir imagen
+            </label>
+            <input id="imagenForma" type="file" accept="image/*" (change)="setImage($event.target.files)" />
+        </div>
+        <div class="alert alert-primary" role="alert" align="center" *ngIf="siImagen">
+            Has seleccionado la imagen, presiona cambiar imagen para cambiarla o cancelar para dejar la anterior
+        </div>
+        <div class="input-group col-md-4">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <button type="button" (click)="cambiaImagen()" class="btn btn-outline-primary m-2"> <!--El submit envia el formulario-->
         Cambiar Imagen
         </button>
-        <a class="btn btn-outline-danger m-2" [routerLink]="['/miCuenta']">Cancelar</a>
+            <a class="btn btn-outline-danger m-2" [routerLink]="['/miCuenta']">Cancelar</a>
+        </div>
     </div>
 </div>

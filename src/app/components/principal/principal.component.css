@@ -19,6 +19,7 @@ body,
 
 .top-nav-collapse {
   background-color: #1C2331; }
+  
 
 /* Adding color to the Navbar on mobile */
 @media only screen and (max-width: 768px) {
@@ -85,13 +86,13 @@ body,
   
 }
 
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 1001px) {
   #titulo, #titulo2, #titulo3 {
     font-size: 75px;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   #titulo, #titulo2, #titulo3 {
     font-size: 25px;
   }
@@ -103,7 +104,7 @@ body,
 }
 @media screen and (min-width: 601px) {
   #cover, #cover2 {
-    font-size: 25px;
+    font-size: 20px;
   }
 }
 
@@ -141,3 +142,10 @@ body,
 .page-footer {
   background-color: #1C2331; }
   .carousel,.carousel .carousel-inner,.carousel .carousel-inner .active,.carousel .carousel-inner .carousel-item,.view,body,html{height:100%}.navbar{background-color:rgba(0,0,0,.2)}.page-footer,.top-nav-collapse{background-color:#1C2331}@media only screen and (max-width:768px){.navbar{background-color:#1C2331}}
+
+  .flotante {
+    display:scroll;
+        position:fixed;
+        bottom:320px;
+        right:0px;
+}

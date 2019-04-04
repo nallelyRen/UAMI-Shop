@@ -1,22 +1,25 @@
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="776020824848-81vc06ookqta7juiauqnjgq1ptlitvsq.apps.googleusercontent.com">
 <!-- Section: Magazine v.2 -->
-<section class="magazine-section my-5">
+<section class="magazine-section my-5 container">
 
-  <!-- Section heading -->
-  <h2 id="titulo" class="h1-responsive font-weight-bold text-center my-5">{{producto.nombre}}</h2> 
+    <!-- Section heading -->
+    <h2 class="h1-responsive font-weight-bold text-center my-5" *ngIf="producto">{{producto.nombre}}</h2>
     <div align="center" *ngIf="carga">
-          <mat-spinner></mat-spinner>
-          <br>
-      </div>
+        <mat-spinner></mat-spinner>
+        <br>
+    </div>
 
-<div id="contenido" *ngIf="producto" class="row animated fadeIn fast">
-  
-  <!--Grid column-->
-  <div class="col-md-5 mb-10 text-center">
-     
-    <img [src]="producto.archivo.url" class="img-fluid z-depth-1-half" alt="">
-      
-  </div>
-  <!--Grid column-->
+    <div id="contenido" *ngIf="producto" class="row animated fadeIn fast">
+
+        <!--Grid column-->
+        <div class="col-md-5 mb-10 text-center">
+
+            <img [src]="producto.archivo.url" class="img-fluid z-depth-1-half" alt="">
+
+        </div>
+
+        <!--Grid column-->
 
         <!--Grid column-->
         <div class="col-md-6 mb-4">
@@ -80,16 +83,6 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-1 mr-3">
-                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
-                </div>
-                <div class="col-10">
-                    <h5 class="feature-title">Calificación del usuario</h5>
-                    <p class="grey-text">Calificación: {{producto.usuario.calificacion}} </p>
-                </div>
-            </div>
-
             <div class="row" *ngIf="producto.representante">
                 <div class="col-1 mr-3">
                     <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
@@ -114,58 +107,55 @@
                     <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
                 <div class="col-10">
-                    <h5 class="feature-title">Division</h5>
+                    <h5 class="feature-title">División</h5>
                     <p class="grey-text">{{producto.area}} </p>
                 </div>
             </div>
-            <!--
-              <div class="row" *ngIf="producto.direccion">
+            <div class="row">
                 <div class="col-1 mr-3">
-                  <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
                 </div>
-                <div class="col-10" >
-                  <h5 class="feature-title">Dirección</h5>
-                  <p class="grey-text" >{{producto.direccion}} </p>                   
+
+                <div class="col-10">
+                    <h5 class="feature-title">Calificación del usuario</h5>
+                    <ngb-rating [rate]="promedio"></ngb-rating>
+                    <p class="grey-text">Calificación : {{promedio}} </p>
+                    <p class="grey-text">Basado en {{totalCalif}} calificaciones.</p>
                 </div>
-              </div>
-            -->
-            <div class="form-group col-md-6">
-                <label for="inputCity"> </label>
-                <p class="grey-text">
-                </p>
             </div>
+            <div class="row">
+                <div class="col-1 mr-3">
+                    <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
+                </div>
 
+                <div class="col-10">
+                    <h5 class="feature-title">¿Cómo calificarías a este usuario?</h5>
+                    <p>Si has utilizado algún producto/servicio de este usuario, por favor califícalo</p>
+                    <form [formGroup]="forma" (ngSubmit)="guardarCalificacion()">
 
-            <!--/Third row-->
-            <!-- CTA -->
+                        <div class="form-group col-md-7">
+                            <select class="form-control" name="calificacion" formControlName="calificacion">
+                                <option value="10">10</option>
+                                <option value="9">9</option>
+                                <option value="8">8</option>
+                                <option value="7">7</option>
+                                <option value="6">6</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                        </div>
 
+                        <button type="submit" class="btn btn-outline-success m-2">Enviar </button>
+                    </form>
+                </div>  
+                <div class="col-3">
+                    <button type="button" class="btn btn-danger m-2 p-2" (click)="volver()">Volver</button>
+                </div>
+            </div>
         </div>
-        <!--Grid column
-   
-   <div class="row" >
-    <div class="col-1 mr-3">
-      <i id="iconos" class="fa fa-check-circle fa-2x blue-text"></i>
-    </div>
-    <div class="col-10" *ngIf="usuarios">
-      <h5 class="feature-title">Usuario</h5>
-      <p class="grey-text" *ngFor="let usuario of usuarios">{{usuario.nombre}}
-      </p>
-    </div>
-  </div>
-  
-  <div style="height:30px"></div>
-  
-  <div class="row">
-    <div class="col-1 mr-3">
-      <i id="iconos" class="fa fa-check-circle fa-2x cyan-text"></i>
-    </div>
-    <div class="col-10">
-      <h5 class="feature-title">Contacto</h5>
-      <p class="grey-text" *ngFor="let usuario of usuarios">correo: {{usuario.correo}} telefono: {{usuario.telefono}}
-      </p>
-    </div>
-  </div>
-  /Third row-->
-
 
     </div>
+</section>

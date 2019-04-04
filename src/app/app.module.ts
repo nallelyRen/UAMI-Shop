@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+
 // componentes
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './components/principal/principal.component';
@@ -10,7 +12,7 @@ import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotr
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductoComponent } from './components/producto/producto.component';
-import { CuentaComponent } from './components/cuenta/cuenta.component';
+import { CuentaComponent} from './components/cuenta/cuenta.component';
 import { LoginComponent } from './components/login/login.component';
 import { PiePaginaComponent } from './components/pie-pagina/pie-pagina.component';
 import { AyudaComponent } from './components/ayuda/ayuda.component';
@@ -28,7 +30,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatPaginatorModule,} from '@angular/material/paginator';
 import { MatInputModule, } from '@angular/material';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModuloEliminarComponent } from './components/modulo-eliminar/modulo-eliminar.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,8 @@ import { MatInputModule, } from '@angular/material';
     ListUploadComponent,
     AgregarProductoComponent,
     ModificarDatosProductoComponent,
-    ModificarImagenProductoComponent
+    ModificarImagenProductoComponent,
+     ModuloEliminarComponent
   ],
    
   imports: [
@@ -53,15 +58,19 @@ import { MatInputModule, } from '@angular/material';
     HttpModule,
     RouterModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule,
+    // MatPaginatorModule,
+    NgbPaginationModule,
     NgbModule,
     MatInputModule,
+    MatSnackBarModule,
     APP_ROUTING
   ],
   providers: [],
+  entryComponents: [ModuloEliminarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

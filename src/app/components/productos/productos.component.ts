@@ -1,83 +1,170 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductosService } from '../../services/productos.service';
 import { UsuarioService } from '../../services/usuario.service';
 import {PageEvent} from '@angular/material';
+import {Router} from '@angular/router';
+import { SnackbarService } from '../../services/snackbar.service';
+import {MatSnackBar} from '@angular/material';
+
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent implements OnInit {
+export class ProductosComponent implements OnInit, OnDestroy {
 
-  length = 100;
-  pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  pagina = 1;
+  numPag = 0;
+  // length = 100;
+  // pageSize = 10;
+  // pageSizeOptions: number[] = [5, 10, 25, 100];
   productos: any[] = [];
-  categoria = 'Libros';
-
+  categoria = '';
+  inicio = 1;
+  actual = 1;
   Restriccion=true;
   carga = false;
-  constructor(private productoService: ProductosService, private usuarioService: UsuarioService) {
+
+  constructor(private productoService: ProductosService, private usuarioService: UsuarioService, 
+    private router: Router, public snackbarService: SnackbarService, private snackBar: MatSnackBar) {
+
+      const cat = this.productoService.getCategoria();
+      if (cat !== undefined) {
+        this.categoria = cat;
+        if (cat === 'Libros') {
+          this.actual = 2;
+        }
+        if (cat === 'Proyectos') {
+          this.actual = 3;
+        }
+        if (cat === 'Electrónica') {
+          this.actual = 4;
+        }
+        if (cat === 'Departamentos') {
+          this.actual = 5;
+        }
+        if (cat === 'Tutorías') {
+          this.actual = 6;
+        }
+        if (cat === 'Otros') {
+          this.actual = 7;
+        }
+        const prod = this.productoService.getProductos();
+        if (prod !== undefined) {
+          const scroll: number = this.productoService.getScroll();
+
+         // console.log(scroll, 'ya esta');
+
+          setTimeout(function() { window.scrollTo(0, scroll); }, 50);
+          this.productos = prod.content;
+          this.numPag = prod.totalElements;
+          this.pagina = prod.number + 1;
+
+          //console.log(this.productos, this.categoria);
+
+          this.inicio = 2;
+        } else {
+          //  window.scrollTo(0, 0);
+        }
+      } else {
+        // window.scrollTo(0, 0);
+      }
   }
   
-  pageEvent: PageEvent;
-  setPageSizeOptions(setPageSizeOptionsInput: string) {
-    this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-  }
+  // pageEvent: PageEvent;
+  // setPageSizeOptions(setPageSizeOptionsInput: string) {
+    // this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+  // }
   ngOnInit() {
     this.llamada();
+
+    // console.log(typeof( this.productoService.getScroll()), 'regreso');
+    // window.scrollTo(0, this.productoService.getScroll());
+  }
+
+  ngOnDestroy() {
+
+   // console.log(window.scrollY, 'ida');
+
+    // console.log(window.pageYOffset);
+    this.productoService.setScroll(window.scrollY);
   }
 
   cambio(categoria) {
-    this.productos = [];
     this.carga = true;
+    this.productos = [];
     this.categoria = categoria;
-    if (categoria === 'libros') {
-      this.productoService.obtenerLibros().subscribe(res => {
-        this.productos = res;
+    this.pagina = 1;
+    document.getElementById('arriba').scrollIntoView(true);
+    if (categoria === 'Libros') {
+      this.productoService.librosPorPagina(0, 12)
+      .subscribe(res => {
+        this.productos = res.content;
         this.carga = false;
-        console.log(res);
-        console.log('tipo', typeof (this.productos));
+        this.numPag = res.totalElements;
+        // console.log('tipo', typeof (this.productos));
       });
     } else {
-      if (categoria === 'proyectos') {
-        this.productoService.obtenerProyectos().subscribe(res => {
-          this.productos = res;
+      if (categoria === 'Proyectos') {
+        this.productoService.proyectosPorPagina(0, 12)
+        .subscribe(res => {
+          this.productos = res.content;
           this.carga = false;
-          console.log(res);
-          console.log('tipo', typeof (this.productos));
+          this.numPag = res.totalElements;
+
+         // console.log(res);
+
+          // console.log('tipo', typeof (this.productos));
         });
       } else {
-      if (categoria === 'tutorias') {
-        this.productoService.obtenerTutorias().subscribe(res => {
-          this.productos = res;
+
+      if (categoria === 'Tutorías') {
+        this.productoService.tutoriasPorPagina(0, 12)
+        .subscribe(res => {
+          this.productos = res.content;
           this.carga = false;
-          console.log(res);
-          console.log('tipo', typeof (this.productos));
+          this.numPag = res.totalElements;
+
+         // console.log(res);
+
+          // console.log('tipo', typeof (this.productos));
         });
       } else {
-        if (categoria === 'electronica') {
-        this.productoService.obtenerElectronicos().subscribe(res => {
-          this.productos = res;
+        if (categoria === 'Electrónica') {
+          this.productoService.electronicosPorPagina(0, 12)
+          .subscribe(res => {
+          this.productos = res.content;
           this.carga = false;
-          console.log(res);
-          console.log('tipo', typeof (this.productos));
+          this.numPag = res.totalElements;
+
+         // console.log(res);
+
+          // console.log('tipo', typeof (this.productos));
         });
       }
-      if (categoria === 'departamentos') {
-        this.productoService.obtenerDepartamentos().subscribe(res => {
-        this.productos = res;
+      if (categoria === 'Departamentos') {
+        this.productoService.departamentosPorPagina(0, 12)
+        .subscribe(res => {
+        this.productos = res.content;
         this.carga = false;
-         console.log(res);
-          console.log('tipo', typeof (this.productos));
+        this.numPag = res.totalElements;
+
+       // console.log(res);
+
+        // console.log('tipo', typeof (this.productos));
         });
-      }  else{
-        if (categoria === 'otros') {
-          this.productoService.obtenerOtros().subscribe(res => {
-          this.productos = res;
+      }  else {
+        if (categoria === 'Otros') {
+          this.productoService.otrosPorPagina(0, 12)
+          .subscribe(res => {
+          this.productos = res.content;
           this.carga = false;
-           console.log(res);
-            console.log('tipo', typeof (this.productos));
+          this.numPag = res.totalElements;
+
+          //console.log(res);
+
+          // console.log('tipo', typeof (this.productos));
           });
         }
       }
@@ -85,38 +172,133 @@ export class ProductosComponent implements OnInit {
   }
   }
 }
-  obtenerProductos() {
+
+obtenerProductos() {
     this.productoService.obtenerLibros().subscribe(res => {
       this.productos = res;
-      console.log(res);
-      console.log('tipo', typeof (this.productos));
+     // console.log(res);
+     // console.log('tipo', typeof (this.productos));
     });
-  }
-   llamada(){
+}
+
+llamada(){
     const id= this.usuarioService.validarUsuarios();      
    if(id== -1){
-    console.log('el valor es ',id);
+    //console.log('el valor es ',id);
     this.Restriccion=true;
     alert('No estas logueado por lo que el contenido de la página no se mostrará');
     return this.Restriccion; 
-   }else{
-    console.log('el valor es ',id);
+   } else {
+
+   // console.log('el valor es ',id);
+
      return this.Restriccion=false;
    }
-    
 }
 
-  agregarFavorito(id) {
+agregarFavorito(id) {
     this.carga = true;
     const idUsuario = this.usuarioService.validarUsuarios();
     if (idUsuario != -1) {
       this.productoService.agregameEnFavoritos(idUsuario, id).subscribe(res => {
         this.carga = false;
-        console.log(res);
+
+        this.snackbarService.open("Se agregó a tu lista de favoritos correctamente los cambios pueden demorar unos minutos en aparecer","");
+       //  console.log(res);
+
       });
     } else {
-      console.log('no estas logueado');
+      this.carga = false;
+      this.snackbarService.open("Ups no se pudo agregar a tu lista de favoritos","");
+     //  console.log('no estas logueado');
+    }
+
+}
+
+verProducto(producto: any) {
+    this.productoService.setProductoCat(producto);
+    this.router.navigate(['/producto/' + producto.id]);
+}
+
+cambioPagina() {
+  this.carga = true;
+  document.getElementById('arriba').scrollIntoView(true);
+  this.productos = [];
+  const pagina = this.pagina - 1;
+    if (this.categoria === 'Libros') {
+      this.productoService.librosPorPagina(pagina, 12)
+      .subscribe(res => {
+        this.productos = res.content;
+        this.carga = false;
+        this.numPag = res.totalElements;
+        // console.log('tipo', typeof (this.productos));
+      });
+    } else {
+      if (this.categoria === 'Proyectos') {
+        this.productoService.proyectosPorPagina(pagina, 12)
+        .subscribe(res => {
+          this.productos = res.content;
+          this.carga = false;
+          this.numPag = res.totalElements;
+
+          //console.log(res);
+
+          // console.log('tipo', typeof (this.productos));
+        });
+      } else {
+
+      if (this.categoria === 'Tutorías') {
+        this.productoService.tutoriasPorPagina(pagina, 12)
+        .subscribe(res => {
+          this.productos = res.content;
+          this.carga = false;
+          this.numPag = res.totalElements;
+
+         // console.log(res);
+
+          // console.log('tipo', typeof (this.productos));
+        });
+      } else {
+        if (this.categoria === 'Electrónica') {
+          this.productoService.electronicosPorPagina(pagina, 12)
+          .subscribe(res => {
+          this.productos = res.content;
+          this.carga = false;
+          this.numPag = res.totalElements;
+
+          //console.log(res);
+
+          // console.log('tipo', typeof (this.productos));
+        });
+      }
+      if (this.categoria === 'Departamentos') {
+        this.productoService.departamentosPorPagina(pagina, 12)
+        .subscribe(res => {
+        this.productos = res.content;
+        this.carga = false;
+        this.numPag = res.totalElements;
+
+      //  console.log(res);
+
+        // console.log('tipo', typeof (this.productos));
+        });
+      }  else {
+        if (this.categoria === 'Otros') {
+          this.productoService.otrosPorPagina(pagina, 12)
+          .subscribe(res => {
+          this.productos = res.content;
+          this.carga = false;
+          this.numPag = res.totalElements;
+
+         // console.log(res);
+
+          // console.log('tipo', typeof (this.productos));
+          });
+        }
+      }
     }
 
   }
+  }
+}
 }

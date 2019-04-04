@@ -67,3 +67,11 @@ header,
         background: #1C2331!important;
     }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bluesnackbar {
+    background: rgb(12, 120, 207);
+    color: white;
+}

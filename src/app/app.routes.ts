@@ -23,9 +23,9 @@ const APP_ROUTES: Routes = [
     {path: 'agregarProducto', component: AgregarProductoComponent},
     {path: 'productos', component: ProductosComponent },
     {path: 'sobreNosotros', component: SobreNosotrosComponent },
-    {path: 'modificarDatosProducto', component: ModificarDatosProductoComponent },
-    {path: 'modificarImagenProducto', component: ModificarImagenProductoComponent },
+    {path: 'modificarDatosProducto/:id', component: ModificarDatosProductoComponent },
+    {path: 'modificarImagenProducto/:id', component: ModificarImagenProductoComponent },
     {path: '**', pathMatch: 'full', redirectTo: 'principal'}
 ];
 
-export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);
+export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES, {useHash: true, scrollPositionRestoration: 'enabled'});
