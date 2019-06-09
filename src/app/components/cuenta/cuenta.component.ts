@@ -26,6 +26,7 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
   totalCalif = 0;
   promedio = 0;
   inicio = 1;
+  numeros = "0123456789";
   usuario = { "nombre": '', "correo": '', "telefono": '', "calificacion": '' };
   //usuario:  any[] = [];
 
@@ -241,22 +242,30 @@ export class CuentaComponent  implements OnInit, OnDestroy  {
     this.productoService.setProducto(producto);
     this.router.navigate(['/modificarDatosProducto/' + producto.id]);
   }
- 
+  
+  tiene_numeros(texto){
+    for(let i=0; i<texto.length; i++){
+       if (this.numeros.indexOf(texto.charAt(i), 0) === -1) {
+          return 1;
+       }
+    }
+    return 0;
+ }
 
   guardarCambios() {
     this.carga = true ;
-    this.usuario.telefono = this.forma.get('telefono').value;   
+    const telTemp: string = this.forma.get('telefono').value;
     // envio de la peticion al servicio
-    if (this.usuario.telefono === '') {
+    if (telTemp == null || telTemp.length < 8 || telTemp.length > 13 || this.tiene_numeros(telTemp) === 1) {
       this.carga = false ;
-      this.snackbarService.open("El campo teléfono es obligatorio","");     
+      this.snackbarService.open("El campo teléfono es obligatorio y debe ser un telefono válido.","");     
     } else {
       const id = this.usuarioService.validarUsuarios();
       if (id != -1) {
-        this.usuarioService.modificarUsuario(id, this.usuario.telefono).subscribe(
+        this.usuarioService.modificarUsuario(id, telTemp).subscribe(
           res => {
-            this.snackbarService.openmore("Tu número"+ this.usuario.telefono +"se ha actualizado correctamente, los cambios pueden demorar unos minutos en aparecer","");
-            
+            this.snackbarService.openmore("Tu número "+ telTemp +" se ha actualizado correctamente, los cambios pueden demorar unos minutos en aparecer","");
+            this.usuario.telefono = telTemp;
             this.carga = false ;
             this.forma.reset();
            // this.forma.reset(this.Libro2);
