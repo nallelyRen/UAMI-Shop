@@ -1,11 +1,11 @@
 #titulo{    
-    font-family: 'K2D', sans-serif;
+    font-family:'K2D', sans-serif;
     text-align: center;
     font-size: 50px;
 }
 #contenedor_de_la_forma{
     padding-left: 20px;
-    font-family: 'K2D', sans-serif;   
+    font-family: 'K2D' ,sans-serif;   
     font-size: 20px;
 }
    
@@ -23,4 +23,11 @@
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;    
+}
+
+h2 {
+    font-family: black , sans-serif;
+    text-align: center;
+    font-size: 50px;
+    padding-left: 20px;
 }
