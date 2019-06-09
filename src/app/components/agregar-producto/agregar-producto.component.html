@@ -29,18 +29,19 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Nombre del producto</label>
             <div class="col-md-8">
-                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" maxlength="255">
+                <input class="form-control" type="text" placeholder="Nombre (Máximo 100 caracteres)" formControlName="nombre" maxlength="255">
             </div>
             <button *ngIf="condicionDepartamentos" type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="Ejemplo: Cuarto para dos personas *solo mujeres" popoverTitle="Tip para el nombre de tu apartamento ">
             </button>
-
+           
         </div>
 
         <div class="form-group row" *ngIf="condicionDepartamentos">
             <label class="col-2 col-form-label">Dirección</label>
             <div class="col-md-8">
-                <input class="form-control" type="text" placeholder="Dirección" formControlName="direccion" maxlength="255">
+                <input class="form-control" type="text" placeholder="Dirección (Máximo 250 caracteres)" formControlName="direccion" maxlength="255">
             </div>
+            
         </div>
 
 
@@ -53,12 +54,14 @@
             <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="No dejes el campo vacío, coloca un cero y explica en la descripción del producto la clase de trato a 
             la que deseas llegar" popoverTitle="¿Tu servicio es gratuito o deseas hacer un intercambio? ">
             </button>
+            <button type="button" class="btn btn-outline-danger mr-2 fa fa-exclamation" container="body" placement="right" ngbPopover="" popoverTitle="Precio máximo: 10000">
+            </button>
 
         </div>
         <div class="form-group row" *ngIf="condicionProyecto">
             <label class="col-2 col-form-label">Representante</label>
             <div class="col-md-8">
-                <input class="form-control" type="text" placeholder="Representante" formControlName="representante" maxlength="255">
+                <input class="form-control" type="text" placeholder="Representante (Máximo 250 caracteres)" formControlName="representante" maxlength="255">
             </div>
             <button type="button" class="btn btn-outline-info mr-2 fa fa-question" container="body" placement="right" ngbPopover="En caso de no tener maestro tutor aún, escribe sin maestro en lugar de dejar el campo vacío" popoverTitle="Coloca el nombre del profesor que estará a cargo del proyecto ">
         </button>
@@ -66,7 +69,7 @@
         <div class="form-group row" *ngIf="condicionProyecto">
             <label class="col-2 col-form-label">Requisitos</label>
             <div class="col-md-8">
-                <input class="form-control" type="text" placeholder="Requisitos" formControlName="requisitos" maxlength="255">
+                <input class="form-control" type="text" placeholder="Requisitos (Máximo 250 caracteres)" formControlName="requisitos" maxlength="255">
             </div>
         </div>
         <div class="form-group row" *ngIf="condicionTutorias">
@@ -87,8 +90,8 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Descripción</label>
             <div class="col-md-8">
-                <textarea rows="4" cols="50" class="form-control" id="descripcion" placeholder="Descripcion" formControlName="descripcion" maxlength="255"></textarea>
-                <!--<input class="form-control" type="text" placeholder="Descripción" formControlName="descripcion">-->
+                <textarea rows="4" cols="50" class="form-control" id="descripcion" placeholder="Descripción (Máximo 250 caracteres)" formControlName="descripcion" maxlength="255"></textarea>
+                <!--<input class="form-control" type="text" placeholder="Descripción" formControlName="descripción">-->
             </div>
         </div>
         <div class="form-group row ">
