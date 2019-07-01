@@ -33,15 +33,20 @@
     padding-left: 20px;
 }
 
+
+
 #registro {
-    background-image: url(../../assets/img/textura.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #textoR {
     color: black;
     font-family: 'K2D', sans-serif;
     font-weight: lighter;
-    font-size: 27px;
+    font-size: 21px;
+    text-align: center;
 }
 
 #tituloR {
